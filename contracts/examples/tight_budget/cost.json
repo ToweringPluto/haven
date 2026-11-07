@@ -1,0 +1,79 @@
+{
+  "property_id": "ill-prop-gorgie-flat",
+  "profile_id": "persona-tight-budget",
+  "lines": [
+    {
+      "kind": "rent",
+      "label": "Rent",
+      "monthly_gbp": {
+        "value": 795.0,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "council_tax",
+      "label": "Council tax (band B)",
+      "monthly_gbp": {
+        "value": 125.0,
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "energy",
+      "label": "Estimated energy",
+      "monthly_gbp": {
+        "value": 185.0,
+        "origin": "estimate",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "estimated",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": 150.0,
+      "high_gbp": 230.0
+    },
+    {
+      "kind": "other",
+      "label": "Broadband",
+      "monthly_gbp": {
+        "value": 30.0,
+        "origin": "user",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    }
+  ],
+  "total_monthly_gbp": {
+    "value": 1135.0,
+    "origin": "estimate",
+    "source": "illustrative fixture",
+    "as_of": "2026-11-01",
+    "confidence": null,
+    "status": "estimated",
+    "note": "Illustrative value for the API contract; not real data."
+  },
+  "total_low_gbp": 1100.0,
+  "total_high_gbp": 1180.0,
+  "budget_monthly_gbp": 1000.0,
+  "budget_comparison": "over"
+}

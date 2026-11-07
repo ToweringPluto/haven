@@ -1,0 +1,377 @@
+{
+  "id": "ill-report-tb",
+  "created_at": "2026-11-01T10:00:00Z",
+  "illustrative": true,
+  "profile": {
+    "id": "persona-tight-budget",
+    "label": "Renter on a tight budget (illustrative persona)",
+    "monthly_budget_gbp": 1000.0,
+    "priorities": [
+      "total_cost",
+      "heating_cost"
+    ],
+    "access": {
+      "wheelchair_user": false,
+      "step_free_entrance_required": false,
+      "lift_required_above_floor": null,
+      "max_walk_to_stop_m": null
+    },
+    "destinations": [],
+    "other_recurring_costs": [
+      {
+        "label": "Broadband",
+        "monthly_gbp": {
+          "value": 30.0,
+          "origin": "user",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        }
+      }
+    ]
+  },
+  "property": {
+    "id": "ill-prop-gorgie-flat",
+    "title": "Illustrative property — not a real listing: 2-bed flat, Gorgie",
+    "illustrative": true,
+    "area": "Gorgie",
+    "latitude": 55.938,
+    "longitude": -3.235,
+    "rent_pcm_gbp": {
+      "value": 795.0,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "bedrooms": {
+      "value": 2,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "property_type": {
+      "value": "flat",
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "floor_area_m2": {
+      "value": 60.0,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "council_tax_band": {
+      "value": "B",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "epc_rating": {
+      "value": "F",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "main_fuel": {
+      "value": "electricity",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "floor_level": {
+      "value": 1,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "has_lift": {
+      "value": false,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "entrance_steps": {
+      "value": 2,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "other_recurring_costs": []
+  },
+  "cost": {
+    "property_id": "ill-prop-gorgie-flat",
+    "profile_id": "persona-tight-budget",
+    "lines": [
+      {
+        "kind": "rent",
+        "label": "Rent",
+        "monthly_gbp": {
+          "value": 795.0,
+          "origin": "listing",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": null,
+        "high_gbp": null
+      },
+      {
+        "kind": "council_tax",
+        "label": "Council tax (band B)",
+        "monthly_gbp": {
+          "value": 125.0,
+          "origin": "public_data",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": null,
+        "high_gbp": null
+      },
+      {
+        "kind": "energy",
+        "label": "Estimated energy",
+        "monthly_gbp": {
+          "value": 185.0,
+          "origin": "estimate",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "estimated",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": 150.0,
+        "high_gbp": 230.0
+      },
+      {
+        "kind": "other",
+        "label": "Broadband",
+        "monthly_gbp": {
+          "value": 30.0,
+          "origin": "user",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": null,
+        "high_gbp": null
+      }
+    ],
+    "total_monthly_gbp": {
+      "value": 1135.0,
+      "origin": "estimate",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "estimated",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "total_low_gbp": 1100.0,
+    "total_high_gbp": 1180.0,
+    "budget_monthly_gbp": 1000.0,
+    "budget_comparison": "over"
+  },
+  "findings": [
+    {
+      "id": "tb-budget-fit",
+      "rule_id": "budget_fit",
+      "category": "cost",
+      "outcome": "concern",
+      "title": "Estimated monthly cost is over budget",
+      "reason": "Even the low end of the estimated total is above the stated budget.",
+      "facts": [
+        {
+          "name": "total_monthly_gbp",
+          "evidence": {
+            "value": 1135,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask for recent energy bills and check whether the rent is negotiable."
+    },
+    {
+      "id": "tb-epc-heating-cost",
+      "rule_id": "epc_heating_cost_risk",
+      "category": "cost",
+      "outcome": "concern",
+      "title": "Heating costs could be high",
+      "reason": "EPC band F with electric heating suggests higher than average energy costs.",
+      "facts": [
+        {
+          "name": "epc_rating",
+          "evidence": {
+            "value": "F",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        },
+        {
+          "name": "main_fuel",
+          "evidence": {
+            "value": "electricity",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask what the heating system is and for the last year's energy bills."
+    },
+    {
+      "id": "tb-council-tax-band",
+      "rule_id": "council_tax_band_known",
+      "category": "missing_info",
+      "outcome": "meets",
+      "title": "Council tax band known",
+      "reason": "The council tax band is available from public data.",
+      "facts": [
+        {
+          "name": "council_tax_band",
+          "evidence": {
+            "value": "B",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    }
+  ],
+  "signals": [
+    {
+      "id": "tb-sig-damp",
+      "kind": "possible_damp",
+      "likelihood": "possible",
+      "evidence_quality": "limited",
+      "confidence": null,
+      "upload_id": "ill-upload-tb-bathroom",
+      "source": "illustrative fixture",
+      "note": "Illustrative output, not a measured model probability."
+    },
+    {
+      "id": "tb-sig-mould",
+      "kind": "possible_mould",
+      "likelihood": "insufficient_evidence",
+      "evidence_quality": "limited",
+      "confidence": null,
+      "upload_id": "ill-upload-tb-bathroom",
+      "source": "illustrative fixture",
+      "note": "Illustrative output: the photo is too dark to judge."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What works",
+      "sentences": [
+        {
+          "text": "The council tax band is known.",
+          "cites": [
+            "tb-council-tax-band"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "What may be unsuitable",
+      "sentences": [
+        {
+          "text": "Possible damp in the uploaded bathroom photo; inspect before signing.",
+          "cites": [
+            "tb-sig-damp"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "What could be expensive",
+      "sentences": [
+        {
+          "text": "The estimated monthly cost is over your stated budget.",
+          "cites": [
+            "tb-budget-fit"
+          ]
+        },
+        {
+          "text": "Heating costs could be high for an EPC band F flat with electric heating.",
+          "cites": [
+            "tb-epc-heating-cost"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Check before signing",
+      "sentences": [
+        {
+          "text": "There is not enough evidence to say anything about mould; ask to see the bathroom in daylight.",
+          "cites": [
+            "tb-sig-mould"
+          ]
+        },
+        {
+          "text": "Ask for the last year's energy bills.",
+          "cites": [
+            "tb-epc-heating-cost"
+          ]
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Haven is a prototype and decision-support tool. It is not a legal, safety, accessibility or compliance certification system. Its assessments are indicative and should be checked against the property in person and with appropriate professional advice."
+}

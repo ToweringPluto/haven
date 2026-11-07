@@ -1,0 +1,34 @@
+{
+  "id": "ill-upload-tb-bathroom",
+  "kind": "photo",
+  "filename": "bathroom_ceiling.jpg",
+  "content_type": "image/jpeg",
+  "size_bytes": 356201,
+  "uploaded_at": "2026-11-01T10:00:00Z",
+  "property_id": "ill-prop-gorgie-flat",
+  "metadata_stripped": true,
+  "evidence_quality": "limited",
+  "signals": [
+    {
+      "id": "tb-sig-damp",
+      "kind": "possible_damp",
+      "likelihood": "possible",
+      "evidence_quality": "limited",
+      "confidence": null,
+      "upload_id": "ill-upload-tb-bathroom",
+      "source": "illustrative fixture",
+      "note": "Illustrative output, not a measured model probability."
+    },
+    {
+      "id": "tb-sig-mould",
+      "kind": "possible_mould",
+      "likelihood": "insufficient_evidence",
+      "evidence_quality": "limited",
+      "confidence": null,
+      "upload_id": "ill-upload-tb-bathroom",
+      "source": "illustrative fixture",
+      "note": "Illustrative output: the photo is too dark to judge."
+    }
+  ],
+  "extracted_facts": []
+}

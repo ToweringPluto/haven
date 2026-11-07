@@ -537,3 +537,16 @@ FodyWeavers.xsd
 .claude
 CLAUDE.md
 
+
+# Ralph loop harness (local only, never committed)
+ralph/
+
+# Large raw data downloads
+data/raw/
+
+# Python virtualenvs and backend runtime data (uploads, sqlite)
+.venv/
+backend/var/
+
+# Docker tool volumes (openrouteservice graphs, OSM extracts)
+/var/

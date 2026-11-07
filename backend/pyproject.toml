@@ -1,0 +1,76 @@
+[project]
+name = "haven"
+version = "0.1.0"
+description = "Haven (Housing And Visibility Edinburgh Network): decision-support API for Edinburgh renters"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.162.2",
+    "httpx>=0.28.1",
+    "pydantic>=2",
+    "pydantic-settings>=2.16.2",
+    "python-multipart>=0.0.33",
+    "pyyaml>=6.0.3",
+    "sqlmodel>=0.0.48",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "openapi-schema-validator>=0.9.0",
+    "openapi-spec-validator>=0.9.0",
+    "poethepoet>=0.49.0",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.4",
+    "types-pyyaml>=6.0.12.20261103",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["haven"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["haven"]
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--import-mode=importlib"
+
+[tool.poe.tasks]
+fmt = { shell = "ruff format . && ruff check --fix .", help = "Format code and apply safe lint fixes" }
+test = { cmd = "pytest -q", help = "Run the test suite" }
+export-openapi = { cmd = "python scripts/export_openapi.py", help = "Write contracts/openapi.yaml from the app" }
+mock = { cmd = "python scripts/mock.py", help = "Serve the contract's examples with the Prism mock server on :4010" }
+serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
+
+[tool.poe.tasks.lint]
+help = "ruff check, ruff format --check, mypy"
+sequence = [
+  { cmd = "ruff check ." },
+  { cmd = "ruff format --check ." },
+  { cmd = "mypy" },
+]
+
+[tool.poe.tasks.contract-check]
+help = "Fail if contracts/openapi.yaml is stale or invalid, or if any fixture doesn't validate"
+sequence = [
+  { cmd = "python scripts/export_openapi.py --check" },
+  { cmd = "python scripts/make_examples.py --check" },
+  { cmd = "pytest -q tests/contracts" },
+]
