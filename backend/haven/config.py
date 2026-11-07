@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field
+from pydantic import BaseModel, ConfigDict, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -15,8 +15,31 @@ UPLOAD_DIR = REPO_ROOT / "backend" / "var" / "uploads"
 UPLOAD_MAX_BYTES = 15 * 1024 * 1024
 
 
+class QualityThresholds(BaseModel):
+    """Image quality gate thresholds (Haven's own heuristics, not an external standard).
+
+    Each check grades a photo ``good`` / ``limited`` / ``poor``; the worst grade wins.
+    Blur is the variance of a 3x3 Laplacian on the grayscale image after scaling its longest
+    side to ``blur_analysis_side_px``, so it's comparable across photo sizes.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    min_side_px_poor: int = Field(default=224, gt=0, description="Shorter side below = poor.")
+    min_side_px_good: int = Field(default=640, gt=0, description="Shorter side below = limited.")
+    blur_analysis_side_px: int = Field(default=1024, gt=0)
+    blur_variance_poor: float = Field(default=15.0, ge=0, description="Below = poor (blurred).")
+    blur_variance_good: float = Field(default=60.0, ge=0, description="Below = limited.")
+    dark_level: int = Field(default=16, ge=0, le=255, description="Pixels at or below are dark.")
+    bright_level: int = Field(default=240, ge=0, le=255, description="At or above = blown out.")
+    clipped_share_poor: float = Field(default=0.6, gt=0, le=1, description="Above = poor.")
+    clipped_share_good: float = Field(default=0.25, gt=0, le=1, description="Above = limited.")
+
+
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="HAVEN_", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_prefix="HAVEN_", env_nested_delimiter="__", extra="ignore"
+    )
 
     cors_origins: str = Field(
         default="",
@@ -47,6 +70,10 @@ class Settings(BaseSettings):
     upload_dir: Path = Field(
         default=UPLOAD_DIR,
         description="Where uploaded evidence is stored (HAVEN_UPLOAD_DIR); gitignored.",
+    )
+    quality: QualityThresholds = Field(
+        default_factory=QualityThresholds,
+        description="Image quality gate thresholds (HAVEN_QUALITY__<NAME>).",
     )
     upload_max_bytes: int = Field(
         default=UPLOAD_MAX_BYTES, gt=0, description="Largest accepted upload, in bytes."
