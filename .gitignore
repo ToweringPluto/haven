@@ -537,3 +537,10 @@ FodyWeavers.xsd
 .claude
 CLAUDE.md
 
+
+# Ralph loop runtime files
+ralph/logs/
+ralph/STOP
+
+# Large raw data downloads
+data/raw/
