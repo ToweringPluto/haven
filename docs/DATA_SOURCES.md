@@ -14,8 +14,8 @@ Licences marked *to confirm* haven't been checked against the publisher's terms 
 
 | Need | Source | URL | Licence | Retrieval status | Known gaps |
 | --- | --- | --- | --- | --- | --- |
-| Council tax + water + waste water charges by band, 2025/26 | City of Edinburgh Council, "Council tax charges 2025" (PDF) | https://www.edinburgh.gov.uk/downloads/file/36923/council-tax-charges-2025 | Council website content; to confirm | not retrieved | Gives charges by band only. The property's band must come from the listing, the user or the Scottish Assessors. Discounts and exemptions (e.g. full-time students, single-person discount) are not modelled. |
-| Council tax + water + waste water charges by band, 2026/27 | City of Edinburgh Council, "Council tax charges 2026" (PDF) | https://www.edinburgh.gov.uk/downloads/file/39463/council-tax-charges-2026 | Council website content; to confirm | not retrieved | As above. Index page: https://www.edinburgh.gov.uk/counciltaxbands |
+| Council tax + water + waste water charges by band, 2025/26 | City of Edinburgh Council, "Council tax charges 2025" (PDF) | https://www.edinburgh.gov.uk/downloads/file/36923/council-tax-charges-2025 | © City of Edinburgh Council, all rights reserved; site terms (https://www.edinburgh.gov.uk/terms) allow personal, non-commercial use, no open licence stated. Confirm before redistribution. | retrieved 2026-11-07 | Parsed into `data/reference/council_tax_edinburgh.yaml` by `backend/scripts/ingest_council_tax.py`. Gives charges by band only. The property's band must come from the listing, the user or the Scottish Assessors. Discounts and exemptions (e.g. full-time students, single-person discount) are not modelled. |
+| Council tax + water + waste water charges by band, 2026/27 | City of Edinburgh Council, "Council tax charges 2026" (PDF) | https://www.edinburgh.gov.uk/downloads/file/39463/council-tax-charges-2026 | As above | retrieved 2026-11-07 | As above. Index page: https://www.edinburgh.gov.uk/counciltaxbands |
 | Council tax band of a specific property | Scottish Assessors Association | https://www.saa.gov.uk/ | to confirm | not retrieved (lookup only, no bulk use planned) | Lookups are manual. Haven takes the band from the listing or the user and marks it `insufficient` when missing. |
 | Energy unit rates and standing charges (electricity, gas), South Scotland, direct debit | Ofgem, energy price cap unit rates and standing charges | https://www.ofgem.gov.uk/information-consumers/energy-advice-households/energy-price-cap-unit-rates-and-standing-charges | Open Government Licence v3.0; to confirm on page | not retrieved | Covers capped default tariffs only. A renter's actual tariff can differ. The cap changes quarterly, so the YAML holds `valid_from`/`valid_to`. |
 | Energy use per m² by EPC band, property type and main fuel (Edinburgh) | Scottish Government, "Domestic Energy Performance Certificates - Dataset to Q1 2026" | https://data.gov.scot/dataset/domestic_energy_performance_certificates___dataset_to_q1_2026 | Open Government Licence v3.0; address fields are subject to Royal Mail copyright | not retrieved | EPC energy figures are modelled (SAP/RdSAP), not metered. They cover only dwellings with a current EPC. Haven uses aggregates only and never stores addresses. 7z archive; exact file URL, size and sha256 are to be recorded by P1-04. |
@@ -36,7 +36,8 @@ Record each downloaded file here: dataset, exact file URL, retrieval date, size 
 
 | Dataset | File URL | Retrieved | Size (bytes) | sha256 |
 | --- | --- | --- | --- | --- |
-| (none yet) | | | | |
+| Council tax charges 2025/26 (`data/raw/council_tax/council-tax-charges-2025.pdf`) | https://www.edinburgh.gov.uk/downloads/file/36923/council-tax-charges-2025 | 2026-11-07 | 210741 | 1722c3ba281d4e1f0a9df038512febccfdb115b1c02aa57c7db3d06cb9318b7b |
+| Council tax charges 2026/27 (`data/raw/council_tax/council-tax-charges-2026.pdf`) | https://www.edinburgh.gov.uk/downloads/file/39463/council-tax-charges-2026 | 2026-11-07 | 228240 | ab61287025d4c50ac85588ba57a041b8db540a511acd5a4cfa51519f210b9442 |
 
 ## Known gaps (cross-cutting)
 
