@@ -8,6 +8,7 @@ from haven.store.seed import (
     SeedStore,
     load_seed,
 )
+from haven.store.uploads import UploadRejected, UploadStore
 
 __all__ = [
     "ILLUSTRATIVE_TITLE_PREFIX",
@@ -15,5 +16,7 @@ __all__ = [
     "SeedFile",
     "SeedMeta",
     "SeedStore",
+    "UploadRejected",
+    "UploadStore",
     "load_seed",
 ]
