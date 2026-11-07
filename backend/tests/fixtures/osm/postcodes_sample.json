@@ -1,0 +1,5 @@
+{"result": [
+ {"query": "EH6 6AA", "result": {"latitude": 55.9712, "longitude": -3.1735}},
+ {"query": "EH10 6QT", "result": {"latitude": 55.9100, "longitude": -3.2200}},
+ {"query": "EH99 9ZZ", "result": null}
+]}

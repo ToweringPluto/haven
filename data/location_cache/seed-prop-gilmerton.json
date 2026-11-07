@@ -1,0 +1,826 @@
+{
+  "schema_version": 1,
+  "property_id": "seed-prop-gilmerton",
+  "origin": {
+    "latitude": 55.90444,
+    "longitude": -3.12903,
+    "name": null
+  },
+  "nearby": [
+    {
+      "kind": "bus_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": [
+        {
+          "kind": "bus_stop",
+          "name": "Drum Cottages",
+          "latitude": 55.9042911,
+          "longitude": -3.128511,
+          "distance_m": 36.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532959",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Cottages",
+          "latitude": 55.9041745,
+          "longitude": -3.1272989,
+          "distance_m": 111.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/5331473041",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Street",
+          "latitude": 55.9050448,
+          "longitude": -3.131355,
+          "distance_m": 159.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532638",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Street",
+          "latitude": 55.9052815,
+          "longitude": -3.1323245,
+          "distance_m": 225.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532960",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ferniehill Avenue",
+          "latitude": 55.9069794,
+          "longitude": -3.1312605,
+          "distance_m": 314.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532955",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ferniehill Avenue",
+          "latitude": 55.9066649,
+          "longitude": -3.1322431,
+          "distance_m": 318.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532642",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Station Road",
+          "latitude": 55.9028822,
+          "longitude": -3.1241745,
+          "distance_m": 348.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532957",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Newtoft Street",
+          "latitude": 55.9053399,
+          "longitude": -3.1346359,
+          "distance_m": 363.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532961",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Crossroads",
+          "latitude": 55.9063704,
+          "longitude": -3.133777,
+          "distance_m": 365.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532631",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Station Road",
+          "latitude": 55.9029333,
+          "longitude": -3.1235042,
+          "distance_m": 383.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532640",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ferniehill Street",
+          "latitude": 55.9081087,
+          "longitude": -3.1296137,
+          "distance_m": 409.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532644",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Crossroads",
+          "latitude": 55.9066367,
+          "longitude": -3.1343195,
+          "distance_m": 410.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1753129121",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ferniehill Street",
+          "latitude": 55.9081402,
+          "longitude": -3.1291187,
+          "distance_m": 411.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532954",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Newtoft Street",
+          "latitude": 55.9046264,
+          "longitude": -3.1360067,
+          "distance_m": 435.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532636",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "O'Donnel Road",
+          "latitude": 55.9004081,
+          "longitude": -3.1268992,
+          "distance_m": 467.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/14170642067",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "O'Donnel Road",
+          "latitude": 55.8999193,
+          "longitude": -3.1277293,
+          "distance_m": 509.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/13175887245",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hyvots Bank",
+          "latitude": 55.9035749,
+          "longitude": -3.1378371,
+          "distance_m": 557.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532962",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hyvot Park",
+          "latitude": 55.9037338,
+          "longitude": -3.1381795,
+          "distance_m": 575.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532635",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Primary School",
+          "latitude": 55.9085526,
+          "longitude": -3.1368321,
+          "distance_m": 667.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532968",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Primary School",
+          "latitude": 55.9087401,
+          "longitude": -3.1368944,
+          "distance_m": 684.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532630",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Burndale Place",
+          "latitude": 55.9036449,
+          "longitude": -3.1401208,
+          "distance_m": 697.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532963",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Burndale Place",
+          "latitude": 55.9038144,
+          "longitude": -3.1410677,
+          "distance_m": 753.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532634",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Guardwell Glen",
+          "latitude": 55.9098046,
+          "longitude": -3.1396073,
+          "distance_m": 889.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532971",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Road",
+          "latitude": 55.9124056,
+          "longitude": -3.1264908,
+          "distance_m": 899.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532952",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Road",
+          "latitude": 55.9124487,
+          "longitude": -3.1266841,
+          "distance_m": 902.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532645",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Avenue",
+          "latitude": 55.9040533,
+          "longitude": -3.1435558,
+          "distance_m": 906.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532964",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Guardwell Glen",
+          "latitude": 55.9104874,
+          "longitude": -3.1405301,
+          "distance_m": 982.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532629",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Avenue",
+          "latitude": 55.9044122,
+          "longitude": -3.1451807,
+          "distance_m": 1006.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/4111910790",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Junction",
+          "latitude": 55.9001426,
+          "longitude": -3.1142821,
+          "distance_m": 1036.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532956",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fernieside Grove",
+          "latitude": 55.9137772,
+          "longitude": -3.1261678,
+          "distance_m": 1053.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532667",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Murrays",
+          "latitude": 55.9003367,
+          "longitude": -3.1443687,
+          "distance_m": 1059.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532606",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Road",
+          "latitude": 55.8981078,
+          "longitude": -3.1418234,
+          "distance_m": 1063.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532607",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Murrays",
+          "latitude": 55.9001391,
+          "longitude": -3.144347,
+          "distance_m": 1067.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532992",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Road",
+          "latitude": 55.8980368,
+          "longitude": -3.1419939,
+          "distance_m": 1077.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532990",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fernieside Grove",
+          "latitude": 55.91409,
+          "longitude": -3.1269017,
+          "distance_m": 1081.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532937",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Junction",
+          "latitude": 55.9000163,
+          "longitude": -3.1132481,
+          "distance_m": 1099.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532641",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Edge Farm",
+          "latitude": 55.8961598,
+          "longitude": -3.1388217,
+          "distance_m": 1104.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/14170644705",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Edge Farm",
+          "latitude": 55.8957478,
+          "longitude": -3.1377117,
+          "distance_m": 1107.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532989",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Crescent",
+          "latitude": 55.9042392,
+          "longitude": -3.1468166,
+          "distance_m": 1108.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532966",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Crescent",
+          "latitude": 55.9042662,
+          "longitude": -3.1471986,
+          "distance_m": 1132.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530017",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Road",
+          "latitude": 55.9116441,
+          "longitude": -3.1422521,
+          "distance_m": 1149.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532628",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Station Road",
+          "latitude": 55.8946925,
+          "longitude": -3.1357853,
+          "distance_m": 1162.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/14170808713",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Station Road",
+          "latitude": 55.8945647,
+          "longitude": -3.1351856,
+          "distance_m": 1163.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/14181609538",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fernieside Drive",
+          "latitude": 55.9150515,
+          "longitude": -3.1283907,
+          "distance_m": 1180.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532666",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Drive",
+          "latitude": 55.9132135,
+          "longitude": -3.1402416,
+          "distance_m": 1200.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532977",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Craigour Grove",
+          "latitude": 55.9143183,
+          "longitude": -3.1373781,
+          "distance_m": 1215.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532974",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fernieside Drive",
+          "latitude": 55.9154599,
+          "longitude": -3.129636,
+          "distance_m": 1225.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532939",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Wisp",
+          "latitude": 55.9132017,
+          "longitude": -3.1168176,
+          "distance_m": 1236.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2700413566",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Wisp",
+          "latitude": 55.9133056,
+          "longitude": -3.1167806,
+          "distance_m": 1246.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2954145533",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Street",
+          "latitude": 55.9043024,
+          "longitude": -3.1490672,
+          "distance_m": 1249.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532605",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Road",
+          "latitude": 55.9122535,
+          "longitude": -3.1444389,
+          "distance_m": 1295.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532978",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gilmerton Dykes Street",
+          "latitude": 55.9045414,
+          "longitude": -3.1498148,
+          "distance_m": 1295.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532993",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lasswade Grove",
+          "latitude": 55.903517,
+          "longitude": -3.1500021,
+          "distance_m": 1311.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532597",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Old Dalkeith Road",
+          "latitude": 55.9104141,
+          "longitude": -3.110099,
+          "distance_m": 1354.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2700413567",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gracemount High School",
+          "latitude": 55.9054049,
+          "longitude": -3.1508738,
+          "distance_m": 1365.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532603",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lasswade Grove",
+          "latitude": 55.9031764,
+          "longitude": -3.1508718,
+          "distance_m": 1368.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533000",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Old Dalkeith Road",
+          "latitude": 55.9105192,
+          "longitude": -3.1098698,
+          "distance_m": 1372.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2954146337",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Smithy Green Avenue",
+          "latitude": 55.9112608,
+          "longitude": -3.1101691,
+          "distance_m": 1399.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12015443881",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Smithy Green Avenue",
+          "latitude": 55.9114245,
+          "longitude": -3.1100483,
+          "distance_m": 1415.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12015443882",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Craigour Avenue",
+          "latitude": 55.9163322,
+          "longitude": -3.137261,
+          "distance_m": 1418.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532973",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gracemount High School",
+          "latitude": 55.9057189,
+          "longitude": -3.1516891,
+          "distance_m": 1419.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532994",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Campview Terrace",
+          "latitude": 55.9110435,
+          "longitude": -3.1094163,
+          "distance_m": 1426.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12015443880",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredun Park Gardens",
+          "latitude": 55.9136148,
+          "longitude": -3.1457242,
+          "distance_m": 1457.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532616",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Moredunvale Road",
+          "latitude": 55.913323,
+          "longitude": -3.1464981,
+          "distance_m": 1470.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532621",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Craigour Drive",
+          "latitude": 55.9172861,
+          "longitude": -3.1363544,
+          "distance_m": 1499.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502532972",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        }
+      ]
+    },
+    {
+      "kind": "tram_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": []
+    },
+    {
+      "kind": "rail_station",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": []
+    },
+    {
+      "kind": "supermarket",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": [
+        {
+          "kind": "supermarket",
+          "name": "Morrisons",
+          "latitude": 55.909009,
+          "longitude": -3.1426711,
+          "distance_m": 990.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/4438060",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Scotmid",
+          "latitude": 55.9135879,
+          "longitude": -3.1357645,
+          "distance_m": 1100.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8702775170",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Aldi",
+          "latitude": 55.9127784,
+          "longitude": -3.1466502,
+          "distance_m": 1437.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/332708740",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        }
+      ]
+    },
+    {
+      "kind": "pharmacy",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": [
+        {
+          "kind": "pharmacy",
+          "name": "Gilmerton Pharmacy",
+          "latitude": 55.9069668,
+          "longitude": -3.1341966,
+          "distance_m": 427.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/4206566412",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Lindsay & Gilmour",
+          "latitude": 55.9133948,
+          "longitude": -3.1400955,
+          "distance_m": 1211.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/315516159",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        }
+      ]
+    },
+    {
+      "kind": "gp_surgery",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API); Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+      "fetched_at": "2026-11-07T20:54:19Z",
+      "places": [
+        {
+          "kind": "gp_surgery",
+          "name": "Ferniehill Surgery",
+          "latitude": 55.907298,
+          "longitude": -3.133917,
+          "distance_m": 440.2,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/70164",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Ferniehill Surgery",
+          "latitude": 55.9074564,
+          "longitude": -3.1336907,
+          "distance_m": 443.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/484579937",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        }
+      ]
+    },
+    {
+      "kind": "school",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-07T21:03:35Z",
+      "places": [
+        {
+          "kind": "school",
+          "name": "Gilmerton Primary School",
+          "latitude": 55.907572,
+          "longitude": -3.1382605,
+          "distance_m": 672.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/30601354",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "school",
+          "name": "Craigour Park Primary School",
+          "latitude": 55.9127522,
+          "longitude": -3.1350492,
+          "distance_m": 997.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/4905432",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "school",
+          "name": "Kaimes School",
+          "latitude": 55.9050474,
+          "longitude": -3.151821,
+          "distance_m": 1422.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/238481489",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        },
+        {
+          "kind": "school",
+          "name": "Gracemount High School",
+          "latitude": 55.9045653,
+          "longitude": -3.1519338,
+          "distance_m": 1427.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/26654202",
+          "fetched_at": "2026-11-07T21:03:35Z"
+        }
+      ]
+    }
+  ],
+  "routes": []
+}
