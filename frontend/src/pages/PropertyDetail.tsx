@@ -1,6 +1,7 @@
 import { BackLink } from "../components/BackLink";
 import { Button } from "../components/Button";
 import { Icon, type IconName } from "../components/Icon";
+import { ReadAloudButton } from "../components/ReadAloudButton";
 import { Status } from "../components/Status";
 import { IMAGES } from "../data/images";
 import { FEATURED_PROPERTY } from "../data/properties";
@@ -29,6 +30,11 @@ const COST_LINES: { label: string; note?: string; amount: number }[] = [
   { label: "Energy estimate", note: "EPC C", amount: 86 },
   { label: "Broadband estimate", amount: 18 },
 ];
+
+// Must match the recording in public/samples/first-impression.wav (played when signed out).
+const FIRST_IMPRESSION =
+  "Bright, calm and comfortably within budget. The lift and direct bus are real strengths. " +
+  "We’d ask to see the building entrance and check the evening noise from The Shore.";
 
 const ESTIMATED_TOTAL = COST_LINES.reduce((sum, line) => sum + line.amount, 0);
 
@@ -69,11 +75,8 @@ export default function PropertyDetail() {
 
           <div className="viewing-journal-note">
             <span>Our first impression</span>
-            <p>
-              Bright, calm and comfortably within budget. The lift and direct bus are real
-              strengths. We’d ask to see the building entrance and check the evening noise from The
-              Shore.
-            </p>
+            <p>{FIRST_IMPRESSION}</p>
+            <ReadAloudButton text={FIRST_IMPRESSION} sampleFile="first-impression.wav" />
             <small>
               Things to notice at a viewing → water pressure · stair lighting · street noise
             </small>

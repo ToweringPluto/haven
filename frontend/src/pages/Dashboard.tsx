@@ -1,7 +1,9 @@
+import { useAuth } from "../auth/AuthProvider";
 import { Button } from "../components/Button";
 import { EdinburghSketch } from "../components/EdinburghSketch";
 import { Icon } from "../components/Icon";
 import { PropertyCard } from "../components/PropertyCard";
+import { SignInPrompt } from "../components/SignInPrompt";
 import { NO_ACCESS_NEEDS } from "../data/onboarding";
 import { getProperty } from "../data/properties";
 import { formatGBP } from "../lib/format";
@@ -23,6 +25,10 @@ export default function Dashboard() {
   const { go } = useNavigation();
   const { profile } = useRenterProfile();
   const { saved } = useShortlist();
+  const { isConfigured, isAuthenticated, user } = useAuth();
+  // Saved comparisons are a signed-in feature; without Auth0 configured the demo shows them.
+  const needsSignIn = isConfigured && !isAuthenticated;
+  const firstName = user?.name?.split(" ")[0];
   const savedProperties = saved.flatMap((id) => getProperty(id) ?? []);
 
   const preferences = [
@@ -36,7 +42,9 @@ export default function Dashboard() {
     <main className="dashboard-page shell">
       <div className="dashboard-head">
         <div>
-          <span className="section-kicker">Good afternoon, Anna</span>
+          <span className="section-kicker">
+            {firstName ? `Good to see you, ${firstName}` : "Your shortlist"}
+          </span>
           <h1>Your home-finding scrapbook</h1>
           <p>
             A quiet corner for the places you liked, the notes you made and the journeys you
@@ -49,7 +57,7 @@ export default function Dashboard() {
       </div>
 
       <div className="scrapbook-note">
-        <span>Anna’s shortlist</span>
+        <span>{firstName ? `${firstName}’s shortlist` : "Your shortlist"}</span>
         <p>
           {savedProperties.length === 0
             ? "Nothing pinned here yet. Save a home and we’ll keep your notes together."
@@ -68,7 +76,9 @@ export default function Dashboard() {
               View all →
             </button>
           </div>
-          {savedProperties.length > 0 ? (
+          {needsSignIn ? (
+            <SignInPrompt message="Sign in to keep your saved homes and comparisons" />
+          ) : savedProperties.length > 0 ? (
             savedProperties.map((p) => <PropertyCard key={p.id} property={p} />)
           ) : (
             <div className="empty-card">
