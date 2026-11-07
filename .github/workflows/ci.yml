@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (lint, test, contract-check)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: "0.13.7"
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+
+      # tests/contracts/test_mock.py runs the pinned Prism mock server via npx.
+      - name: Set up Node
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: "24"
+
+      - name: Install backend dependencies
+        run: uv sync --directory backend --locked
+
+      - name: Lint
+        run: uv run --directory backend poe lint
+
+      - name: Test
+        run: uv run --directory backend poe test
+
+      - name: Contract check
+        run: uv run --directory backend poe contract-check
