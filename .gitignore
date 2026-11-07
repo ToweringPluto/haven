@@ -547,3 +547,6 @@ data/raw/
 # Python virtualenvs and backend runtime data (uploads, sqlite)
 .venv/
 backend/var/
+
+# Docker tool volumes (openrouteservice graphs, OSM extracts)
+/var/
