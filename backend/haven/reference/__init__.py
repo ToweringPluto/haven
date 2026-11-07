@@ -6,6 +6,14 @@ from haven.reference.council_tax import (
     CouncilTaxYear,
     load_council_tax,
 )
+from haven.reference.energy_model import (
+    BandGroup,
+    DetailGroup,
+    Distribution,
+    EnergyModelReference,
+    GroupMatch,
+    load_energy_model,
+)
 from haven.reference.energy_rates import EnergyRatesReference, FuelRates, load_energy_rates
 from haven.reference.loader import (
     ReferenceDataError,
@@ -19,16 +27,22 @@ from haven.reference.loader import (
 
 __all__ = [
     "BandCharges",
+    "BandGroup",
     "CouncilTaxReference",
     "CouncilTaxYear",
+    "DetailGroup",
+    "Distribution",
+    "EnergyModelReference",
     "EnergyRatesReference",
     "FuelRates",
+    "GroupMatch",
     "ReferenceDataError",
     "ReferenceDocument",
     "ReferenceMeta",
     "iter_reference_files",
     "load_all_references",
     "load_council_tax",
+    "load_energy_model",
     "load_energy_rates",
     "load_reference",
     "load_reference_file",
