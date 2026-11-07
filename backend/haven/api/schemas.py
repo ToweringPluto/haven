@@ -1,6 +1,7 @@
 """API envelopes that are not domain objects: request bodies, list wrappers, enum metadata
 and RFC 9457 problem details."""
 
+from datetime import date
 from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
@@ -120,6 +121,25 @@ class EnumCatalog(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     enums: dict[str, list[EnumOption]]
+
+
+class DataSource(BaseModel):
+    """One dataset from the registry (``data/datasets.yml``), for the "Data and limits" page."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str = Field(description="Stable dataset id, e.g. 'private_rents'.")
+    name: str
+    url: str = Field(description="Link to the source; show it as a link.")
+    licence_note: str = Field(description="Licence and attribution. Show it verbatim.")
+    as_of: date = Field(description="Date the figures describe (period, edition or snapshot).")
+    caveats: list[str] = Field(description="Known limits. Show every one.")
+
+
+class DataSourceList(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    items: list[DataSource]
 
 
 class FieldError(BaseModel):

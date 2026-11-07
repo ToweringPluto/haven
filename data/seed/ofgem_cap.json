@@ -1,0 +1,34 @@
+{
+  "as_of": "2026-10-01",
+  "dataset_id": "ofgem_cap",
+  "generated_by": "backend/scripts/build_seeds.py",
+  "licence_note": "Crown copyright, Ofgem. Re-usable (not logos) under the Open Government Licence (https://www.ofgem.gov.uk/copyright).",
+  "records": [
+    {
+      "fuel": "electricity",
+      "is_sample": false,
+      "payment_method": "direct_debit",
+      "prices_include_vat": true,
+      "region": "Southern Scotland",
+      "standing_charge_p_per_day": 61.41,
+      "unit_rate_p_per_kwh": 26.11,
+      "valid_from": "2026-10-01",
+      "valid_to": "2026-12-31",
+      "vat_rate": 0.0
+    },
+    {
+      "fuel": "gas",
+      "is_sample": false,
+      "payment_method": "direct_debit",
+      "prices_include_vat": true,
+      "region": "Southern Scotland",
+      "standing_charge_p_per_day": 29.89,
+      "unit_rate_p_per_kwh": 7.87,
+      "valid_from": "2026-10-01",
+      "valid_to": "2026-12-31",
+      "vat_rate": 0.05
+    }
+  ],
+  "retrieved_at": "2026-11-07",
+  "source_url": "https://www.ofgem.gov.uk/node/176588/"
+}

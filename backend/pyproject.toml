@@ -1,6 +1,6 @@
 [project]
 name = "haven"
-version = "0.1.1"
+version = "0.1.2"
 description = "Haven (Housing And Visibility Edinburgh Network): decision-support API for Edinburgh renters"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
@@ -60,6 +60,8 @@ fmt = { shell = "ruff format . && ruff check --fix .", help = "Format code and a
 test = { cmd = "pytest -q", help = "Run the test suite" }
 export-openapi = { cmd = "python scripts/export_openapi.py", help = "Write contracts/openapi.yaml from the app" }
 mock = { cmd = "python scripts/mock.py", help = "Serve the contract's examples with the Prism mock server on :4010" }
+seeds = { cmd = "python scripts/build_seeds.py", help = "Rebuild the offline seed files in data/seed/ (idempotent)" }
+fetch-cached = { cmd = "python scripts/fetch_cached.py", help = "Fetch Overpass/NaPTAN once for the three demo areas (never refetches)" }
 serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
 
 [tool.poe.tasks.lint]

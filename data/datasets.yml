@@ -1,0 +1,167 @@
+# Dataset registry: one entry per dataset Haven uses.
+# Loaded and validated by backend/haven/datasets/registry.py; served by GET /v1/data-sources
+# for the "Data and limits" page and rendered into the README dataset table.
+#
+# Fields: id, name, url, licence_note, as_of (date the figures describe), retrieved_at (date
+# the source was read), integration (hypertable | seed_table | cached_api | reference_json |
+# sample), feature, priority (P0 | P1 | P2), caveats (shown to users), seed (offline file).
+datasets:
+  - id: private_rents
+    name: Private Sector Rent Statistics, Lothian BRMA (2010 to 2025)
+    url: https://www.gov.scot/publications/private-sector-rent-statistics-scotland-2010-to-2025/
+    licence_note: Crown copyright, Scottish Government. Open Government Licence v3.0.
+    as_of: 2025-09-30
+    retrieved_at: 2026-11-07
+    integration: hypertable
+    feature: Rent benchmark and trend
+    priority: P0
+    caveats:
+      - Mostly advertised rents at tenant turnover, not the rents sitting tenants pay.
+      - Lothian covers three council areas (City of Edinburgh, East Lothian and Midlothian), not Edinburgh alone.
+      - Each year runs to the end of September. Studios and 5+ bedroom homes are not published.
+      - Context for a listing's rent, not a valuation of any property.
+    seed: data/seed/private_rents.json
+
+  - id: lha_rates
+    name: Local Housing Allowance rates, Lothian, 2026 to 2027
+    url: https://www.gov.scot/publications/local-housing-allowance-rates/pages/2026-to-2027/
+    licence_note: Crown copyright, Scottish Government. Open Government Licence v3.0.
+    as_of: 2026-04-01
+    retrieved_at: 2026-11-07
+    integration: seed_table
+    feature: Housing support comparison (LHA vs rent)
+    priority: P0
+    caveats:
+      - Rates are frozen for 2026-27 at the level set on 31 January 2024, so they sit below current market rents.
+      - Monthly figures are calculated as weekly x 52 / 12.
+      - The 30th percentile column has no unit label on the page; it is treated as weekly.
+      - Lothian covers three council areas, not Edinburgh alone. Eligibility and the amount paid depend on personal circumstances.
+    seed: data/seed/lha_rates.json
+
+  - id: council_tax
+    name: City of Edinburgh Council tax charges 2026/27
+    url: https://www.edinburgh.gov.uk/downloads/file/39463/council-tax-charges-2026
+    licence_note: Copyright City of Edinburgh Council; site terms allow personal, non-commercial use and no open licence is stated. Confirm before redistribution.
+    as_of: 2026-04-01
+    retrieved_at: 2026-11-07
+    integration: seed_table
+    feature: True monthly cost (council tax, water and waste water)
+    priority: P0
+    caveats:
+      - Full charges before any discount, exemption or Council Tax Reduction (e.g. students, single-person discount).
+      - The property's band must come from the listing, the renter or the Scottish Assessors.
+    seed: data/seed/council_tax.json
+
+  - id: ofgem_cap
+    name: Ofgem energy price cap, Southern Scotland (editable config)
+    url: https://www.ofgem.gov.uk/node/176588/
+    licence_note: Crown copyright, Ofgem. Re-usable (not logos) under the Open Government Licence.
+    as_of: 2026-10-01
+    retrieved_at: 2026-11-07
+    integration: seed_table
+    feature: Energy bill estimate (unit rates and standing charges)
+    priority: P0
+    caveats:
+      - Caps on default tariffs for Direct Debit customers, not any renter's actual tariff.
+      - Valid 1 October to 31 December 2026; the cap changes every quarter. Edit data/config/ofgem_cap.yml when it does.
+    seed: data/seed/ofgem_cap.json
+
+  - id: epc
+    name: Domestic Energy Performance Certificates, heat demand lookup (Edinburgh)
+    url: https://data.gov.scot/dataset/domestic_energy_performance_certificates___dataset_to_q1_2026
+    licence_note: Open Government Licence v3.0 for non-address fields. Address fields are Royal Mail copyright with restricted use and are never read or stored.
+    as_of: 2026-09-30
+    retrieved_at: 2026-11-07
+    integration: seed_table
+    feature: Energy bill estimate (EPC band x floor area x heating fuel)
+    priority: P0
+    caveats:
+      - Modelled (SAP/RdSAP) heat demand under standard occupancy, not metered use.
+      - Space and water heating only; lighting and appliances are not included.
+      - Only homes with an EPC lodged since October 2016. Address fields have licence limits, so Haven uses aggregates only.
+    seed: data/seed/epc.json
+
+  - id: osm_routes
+    name: OpenStreetMap paths and kerbs (Overpass), three demo areas
+    url: https://overpass-api.de/api/interpreter
+    licence_note: © OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright). Attribution required wherever shown.
+    as_of: 2026-11-07
+    retrieved_at: 2026-11-07
+    integration: cached_api
+    feature: Step-free route and surface check
+    priority: P1
+    caveats:
+      - Route tags may be incomplete. In the demo areas, surface is tagged on 54-76% of ways, smoothness on 2-15% and incline on 3-7%.
+      - Leith, Marchmont and Gorgie only (800 m around each anchor). The Geofabrik Scotland extract is the offline fallback.
+      - A missing tag means unknown, never step-free or smooth.
+    seed: data/cache/overpass/
+
+  - id: naptan
+    name: NaPTAN bus stops, City of Edinburgh (ATCO area 620)
+    url: https://beta-naptan.dft.gov.uk/download
+    licence_note: Crown copyright, Department for Transport. Open Government Licence v3.0.
+    as_of: 2026-11-07
+    retrieved_at: 2026-11-07
+    integration: cached_api
+    feature: Nearby bus stops
+    priority: P1
+    caveats:
+      - Stop locations only, no timetables, frequency or step-free boarding information.
+      - Includes inactive stops (Status column); Haven uses active ones only.
+    seed: data/cache/naptan/
+
+  - id: handbook_4_2
+    name: Building Standards Technical Handbook (Domestic) 4.2, access within buildings
+    url: https://www.gov.scot/publications/building-standards-technical-handbook-domestic-april-2026-pdf/
+    licence_note: Crown copyright, Scottish Government. Open Government Licence v3.0.
+    as_of: 2026-04-06
+    retrieved_at: 2026-11-07
+    integration: reference_json
+    feature: Access yardsticks (door widths, corridors, lifts)
+    priority: P1
+    caveats:
+      - Guidance value for new building work, never a legal test of an existing rented home.
+      - Most Edinburgh flats were built long before this guidance and need not meet it.
+    seed: data/reference_json/handbook_4_2.json
+
+  - id: repairing_standard
+    name: Repairing Standard checklist categories (Housing (Scotland) Act 2006 s.13)
+    url: https://www.legislation.gov.uk/asp/2006/1/section/13
+    licence_note: Contains public sector information licensed under the Open Government Licence v3.0.
+    as_of: 2026-10-06
+    retrieved_at: 2026-11-07
+    integration: reference_json
+    feature: Condition checklist
+    priority: P1
+    caveats:
+      - Reference only, never a legal test. Summaries are paraphrased; the statutory text governs.
+      - Only the Housing and Property Chamber can decide whether a home meets the standard.
+    seed: data/reference_json/repairing_standard.json
+
+  - id: landlord_register
+    name: Landlord registration (sample numbers + official search link)
+    url: https://www.landlordregistrationscotland.gov.uk/search
+    licence_note: Invented sample numbers, same licence as this repository. Nothing is taken from the Scottish Landlord Register.
+    as_of: 2026-11-07
+    retrieved_at: 2026-11-07
+    integration: sample
+    feature: Landlord registration check prompt
+    priority: P1
+    caveats:
+      - The register is never scraped. Numbers in Haven start SAMPLE- and are fake.
+      - Renters should check a real landlord on the official search page.
+    seed: data/seed/landlord_register.json
+
+  - id: sample_flats
+    name: Sample flats (invented), Leith, Marchmont and Gorgie
+    url: https://github.com/ToweringPluto/haven/blob/main/data/seed/sample_flats.json
+    licence_note: Invented sample data, same licence as this repository. Area anchor points © OpenStreetMap contributors, ODbL 1.0.
+    as_of: 2026-11-07
+    retrieved_at: 2026-11-07
+    integration: sample
+    feature: Demo listings (access, rent, EPC and council tax bands)
+    priority: P0
+    caveats:
+      - All 20 flats are invented, with no real addresses, landlords or listings (is_sample=true).
+      - Each flat's coordinates are its area's anchor street point, not a building.
+    seed: data/seed/sample_flats.json

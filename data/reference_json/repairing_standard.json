@@ -1,0 +1,25 @@
+{
+  "dataset_id": "repairing_standard",
+  "title": "Repairing Standard (private rented housing, Scotland): checklist categories",
+  "label": "reference only",
+  "legal_status": "Reference only, never a legal test. Short summaries of the categories in section 13(1) of the Housing (Scotland) Act 2006, for a renter's checklist. Haven can't decide whether a home meets the standard; the statutory text and the First-tier Tribunal (Housing and Property Chamber) do.",
+  "source_url": "https://www.legislation.gov.uk/asp/2006/1/section/13",
+  "edition": "Housing (Scotland) Act 2006 s.13, revised text up to date with changes in force on or before 7 November 2026 (latest amendment 6 October 2026, S.S.I. 2026/173). Outstanding changes listed on legislation.gov.uk don't alter the lettered paragraphs of s.13(1).",
+  "as_of": "2026-10-06",
+  "retrieved_at": "2026-11-07",
+  "licence_note": "Contains public sector information licensed under the Open Government Licence v3.0 (legislation.gov.uk, Crown copyright).",
+  "extraction": "Category names and summaries are Haven's own short paraphrases of each paragraph; read the statutory text at source_url for the exact wording.",
+  "is_sample": false,
+  "items": [
+    {"id": "wind_water_tight", "paragraph": "13(1)(a)", "category": "Wind and water tight, fit to live in", "summary": "The house is wind and water tight and in all other respects reasonably fit for human habitation.", "label": "reference only", "is_sample": false},
+    {"id": "structure_exterior", "paragraph": "13(1)(b)", "category": "Structure and exterior", "summary": "Structure and exterior, including drains, gutters and external pipes, in reasonable repair and proper working order.", "label": "reference only", "is_sample": false},
+    {"id": "installations", "paragraph": "13(1)(c)", "category": "Water, gas, electricity, sanitation and heating", "summary": "Installations for water, gas, electricity (including residual current devices), other fuel, sanitation, space heating by a fixed heating system and heating water in reasonable repair and proper working order.", "label": "reference only", "is_sample": false},
+    {"id": "fixtures_appliances", "paragraph": "13(1)(d)", "category": "Fixtures, fittings and appliances", "summary": "Fixtures, fittings and appliances provided by the landlord in reasonable repair and proper working order.", "label": "reference only", "is_sample": false},
+    {"id": "furnishings", "paragraph": "13(1)(e)", "category": "Furnishings", "summary": "Furnishings provided by the landlord capable of being used safely for their purpose.", "label": "reference only", "is_sample": false},
+    {"id": "tolerable_standard", "paragraph": "13(1)(h)", "category": "Tolerable standard", "summary": "The house meets the tolerable standard.", "label": "reference only", "is_sample": false},
+    {"id": "damp_mould", "paragraph": "13(1)(ha)", "category": "Damp and mould", "summary": "The house is substantially free from damp and mould (in force from 6 October 2026).", "label": "reference only", "is_sample": false},
+    {"id": "common_parts_access", "paragraph": "13(1)(i)", "category": "Safe access to common parts", "summary": "Any common parts pertaining to the house can be safely accessed and used.", "label": "reference only", "is_sample": false},
+    {"id": "kitchen_food", "paragraph": "13(1)(j)", "category": "Food storage and preparation", "summary": "Satisfactory provision for, and safe access to, a food storage area and a food preparation space.", "label": "reference only", "is_sample": false},
+    {"id": "common_doors_secure", "paragraph": "13(1)(k)", "category": "Secure common doors (tenements)", "summary": "Where the house is in a tenement, common doors are secure and fitted with satisfactory emergency exit locks.", "label": "reference only", "is_sample": false}
+  ]
+}

@@ -9,7 +9,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 REPO_ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
-SEED_PATH = REPO_ROOT / "data" / "seed" / "properties.yaml"
+SEED_DIR = REPO_ROOT / "data" / "seed"
+SEED_PATH = SEED_DIR / "properties.yaml"
+DATASETS_REGISTRY_PATH = REPO_ROOT / "data" / "datasets.yml"
+REFERENCE_JSON_DIR = REPO_ROOT / "data" / "reference_json"
+CACHE_DIR = REPO_ROOT / "data" / "cache"
 LOCATION_CACHE_DIR = REPO_ROOT / "data" / "location_cache"
 
 
@@ -37,6 +41,11 @@ class Settings(BaseSettings):
     seed_path: Path = Field(
         default=SEED_PATH,
         description="Seed properties file served by the engine backend (HAVEN_SEED_PATH).",
+    )
+    datasets_registry_path: Path = Field(
+        default=DATASETS_REGISTRY_PATH,
+        description="Dataset registry served by GET /v1/data-sources "
+        "(HAVEN_DATASETS_REGISTRY_PATH).",
     )
     location_cache_dir: Path = Field(
         default=LOCATION_CACHE_DIR,

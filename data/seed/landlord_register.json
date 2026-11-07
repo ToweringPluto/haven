@@ -1,0 +1,66 @@
+{
+  "as_of": "2026-11-07",
+  "dataset_id": "landlord_register",
+  "generated_by": "backend/scripts/build_seeds.py",
+  "licence_note": "Invented sample data, same licence as this repository. No data is taken from the Scottish Landlord Register; check a real landlord at https://www.landlordregistrationscotland.gov.uk/search",
+  "records": [
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord A (invented)",
+      "registration_number": "SAMPLE-LR-0001",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord B (invented)",
+      "registration_number": "SAMPLE-LR-0002",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord C (invented)",
+      "registration_number": "SAMPLE-LR-0003",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord D (invented)",
+      "registration_number": "SAMPLE-LR-0004",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord E (invented)",
+      "registration_number": "SAMPLE-LR-0005",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord F (invented)",
+      "registration_number": "SAMPLE-LR-0006",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord G (invented)",
+      "registration_number": "SAMPLE-LR-0007",
+      "status": "sample"
+    },
+    {
+      "check_url": "https://www.landlordregistrationscotland.gov.uk/search",
+      "is_sample": true,
+      "landlord_name": "Sample Landlord H (invented)",
+      "registration_number": "SAMPLE-LR-0008",
+      "status": "sample"
+    }
+  ],
+  "retrieved_at": "2026-11-07",
+  "source_url": "https://www.landlordregistrationscotland.gov.uk/search"
+}

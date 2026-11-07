@@ -4,6 +4,12 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
+## 0.1.2 (2026-11-07)
+
+Additive, not breaking.
+
+- New public endpoint `GET /v1/data-sources`: returns `DataSourceList` (`items` of `DataSource`: `id`, `name`, `url`, `licence_note`, `as_of`, `caveats`), one item per dataset in the registry `data/datasets.yml`, for a "Data and limits" page.
+
 ## 0.1.1 (2026-11-07)
 
 Additive, not breaking. Existing endpoints are unchanged and stay public.

@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-04-01",
+  "dataset_id": "lha_rates",
+  "generated_by": "backend/scripts/build_seeds.py",
+  "licence_note": "Crown copyright, Scottish Government. Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).",
+  "records": [
+    {
+      "bedrooms": 1,
+      "brma": "Lothian",
+      "category": "shared_accommodation",
+      "frozen": true,
+      "is_sample": false,
+      "monthly_rate_gbp": 473.72,
+      "percentile_30_monthly_gbp": 568.45,
+      "percentile_30_period": "12 months to end September 2025",
+      "percentile_30_weekly_gbp": 131.18,
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "weekly_rate_gbp": 109.32
+    },
+    {
+      "bedrooms": 1,
+      "brma": "Lothian",
+      "category": "1_bed",
+      "frozen": true,
+      "is_sample": false,
+      "monthly_rate_gbp": 747.93,
+      "percentile_30_monthly_gbp": 927.46,
+      "percentile_30_period": "12 months to end September 2025",
+      "percentile_30_weekly_gbp": 214.03,
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "weekly_rate_gbp": 172.6
+    },
+    {
+      "bedrooms": 2,
+      "brma": "Lothian",
+      "category": "2_bed",
+      "frozen": true,
+      "is_sample": false,
+      "monthly_rate_gbp": 967.33,
+      "percentile_30_monthly_gbp": 1196.69,
+      "percentile_30_period": "12 months to end September 2025",
+      "percentile_30_weekly_gbp": 276.16,
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "weekly_rate_gbp": 223.23
+    },
+    {
+      "bedrooms": 3,
+      "brma": "Lothian",
+      "category": "3_bed",
+      "frozen": true,
+      "is_sample": false,
+      "monthly_rate_gbp": 1371.24,
+      "percentile_30_monthly_gbp": 1535.78,
+      "percentile_30_period": "12 months to end September 2025",
+      "percentile_30_weekly_gbp": 354.41,
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "weekly_rate_gbp": 316.44
+    },
+    {
+      "bedrooms": 4,
+      "brma": "Lothian",
+      "category": "4_bed",
+      "frozen": true,
+      "is_sample": false,
+      "monthly_rate_gbp": 2174.03,
+      "percentile_30_monthly_gbp": 2293.72,
+      "percentile_30_period": "12 months to end September 2025",
+      "percentile_30_weekly_gbp": 529.32,
+      "valid_from": "2026-04-01",
+      "valid_to": "2027-03-31",
+      "weekly_rate_gbp": 501.7
+    }
+  ],
+  "retrieved_at": "2026-11-07",
+  "source_url": "https://www.gov.scot/publications/local-housing-allowance-rates/pages/2026-to-2027/"
+}

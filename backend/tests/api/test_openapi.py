@@ -6,7 +6,16 @@ import pytest
 from fastapi.routing import APIRoute
 
 from haven.api.app import create_app
-from haven.api.routes import account, assist, meta, profiles, properties, reports, uploads
+from haven.api.routes import (
+    account,
+    assist,
+    data_sources,
+    meta,
+    profiles,
+    properties,
+    reports,
+    uploads,
+)
 from haven.api.schemas import ProfileInput, PropertyInput
 from haven.domain import Property, RenterProfile
 
@@ -21,6 +30,7 @@ ROUTERS = [
     reports.assessments,
     reports.reports,
     meta.router,
+    data_sources.router,
     account.router,
     assist.router,
 ]
@@ -46,6 +56,7 @@ EXPECTED = {
     ("POST", "/v1/assessments"),
     ("GET", "/v1/reports/{report_id}"),
     ("GET", "/v1/meta/enums"),
+    ("GET", "/v1/data-sources"),
     ("GET", "/v1/me"),
     ("POST", "/v1/photo-screen"),
     ("POST", "/v1/read-aloud"),
