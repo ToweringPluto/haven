@@ -11,8 +11,9 @@ Output:
   quartile, median, mean, upper quartile (GBP per calendar month) and record count. The
   benchmark and trend features read this offline.
 - ``data/sql/rent_stats.sql``: idempotent SQL creating the ``rent_stats`` TimescaleDB
-  hypertable (time column ``period_end``) and upserting the same rows, for when a database is
-  available. Haven has no database today, so the seed is what the app reads.
+  hypertable (time column ``period_end``) and upserting the same rows,
+  applied to Tiger Cloud by ``scripts/load_db.py``. ``haven.datasets.db.rent_series`` reads
+  the database when ``HAVEN_DATABASE_URL`` is set and falls back to the seed otherwise.
 
 The figures are mostly advertised rents at tenant turnover, not rents sitting tenants pay,
 and Lothian BRMA covers three council areas (Edinburgh, East Lothian, Midlothian).

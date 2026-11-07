@@ -63,6 +63,7 @@ export-openapi = { cmd = "python scripts/export_openapi.py", help = "Write contr
 mock = { cmd = "python scripts/mock.py", help = "Serve the contract's examples with the Prism mock server on :4010" }
 seeds = { cmd = "python scripts/build_seeds.py", help = "Rebuild the offline seed files in data/seed/ (idempotent)" }
 fetch-cached = { cmd = "python scripts/fetch_cached.py", help = "Fetch Overpass/NaPTAN once for the three demo areas (never refetches)" }
+load-db = { cmd = "python scripts/load_db.py", help = "Create/upsert the rent_stats hypertable in HAVEN_DATABASE_URL" }
 serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
 
 [tool.poe.tasks.lint]
