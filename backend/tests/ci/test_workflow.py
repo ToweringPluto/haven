@@ -46,3 +46,12 @@ def test_runs_lint_test_and_contract_check() -> None:
     runs = [step["run"] for step in _steps() if "run" in step]
     for task in ("lint", "test", "contract-check"):
         assert f"uv run --directory backend poe {task}" in runs, f"poe {task} missing"
+
+
+def test_frontend_job_typechecks_and_builds() -> None:
+    job = _workflow()["jobs"]["frontend"]
+    assert job["defaults"]["run"]["working-directory"] == "frontend"
+    runs = [step["run"] for step in job["steps"] if "run" in step]
+    assert "npm ci --no-audit --no-fund" in runs
+    assert "npm run typecheck" in runs
+    assert "npm run build" in runs
