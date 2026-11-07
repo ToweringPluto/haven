@@ -7,6 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
+REFERENCE_DIR = REPO_ROOT / "data" / "reference"
 
 
 class Settings(BaseSettings):
@@ -19,6 +20,10 @@ class Settings(BaseSettings):
     fixtures_dir: Path = Field(
         default=CONTRACT_EXAMPLES_DIR,
         description="Directory the fixture backend reads persona examples from.",
+    )
+    reference_dir: Path = Field(
+        default=REFERENCE_DIR,
+        description="Directory holding the reference data YAML files (HAVEN_REFERENCE_DIR).",
     )
 
     @property
