@@ -3,6 +3,8 @@
 from haven.location.geo import EARTH_RADIUS_M, haversine_m
 from haven.location.models import (
     CACHE_SCHEMA_VERSION,
+    AccessTagSummary,
+    KerbCounts,
     LocationCacheFile,
     LocationContext,
     NearbyCacheEntry,
@@ -27,6 +29,8 @@ from haven.location.provider import (
 
 __all__ = [
     "CACHE_SCHEMA_VERSION",
+    "AccessTagSummary",
+    "KerbCounts",
     "EARTH_RADIUS_M",
     "MATCH_TOLERANCE_M",
     "CachedProvider",

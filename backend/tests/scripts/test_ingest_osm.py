@@ -124,3 +124,81 @@ def test_build_cache_merges_gp_sources_and_keeps_routes() -> None:
 def test_check_reports_missing_cache(tmp_path: Path) -> None:
     props = load_seed().list()[:1]
     assert any("no cache file" in p for p in ingest.check(props, tmp_path))
+
+
+# --- access tags (kerbs, inclines, surfaces, crossings) ----------------------------------
+
+ACCESS_RESPONSE: dict[str, Any] = {
+    "elements": [
+        {"type": "way", "id": 1, "tags": {"highway": "footway", "surface": "asphalt"}},
+        {"type": "way", "id": 2, "tags": {"highway": "steps", "incline": "up"}},
+        {"type": "way", "id": 3, "tags": {"highway": "residential", "sidewalk": "both"}},
+        {"type": "node", "id": 10, "tags": {"kerb": "lowered"}},
+        {"type": "node", "id": 11, "tags": {"kerb": "raised", "barrier": "kerb"}},
+        {"type": "node", "id": 12, "tags": {"barrier": "kerb"}},
+        {"type": "node", "id": 13, "tags": {"kerb": "rolled"}},
+        {"type": "node", "id": 14, "tags": {"highway": "crossing", "tactile_paving": "yes"}},
+        {"type": "node", "id": 15, "tags": {"highway": "crossing", "kerb": "flush"}},
+    ]
+}
+
+
+def test_access_query_asks_for_kerbs_crossings_and_pedestrian_ways() -> None:
+    query = ingest.build_access_query(55.97, -3.17)
+    assert "around:500,55.97,-3.17" in query
+    assert '["kerb"]' in query and '["barrier"="kerb"]' in query
+    assert '["highway"="crossing"]' in query and "steps" in query
+
+
+def test_summarise_access_counts_tags() -> None:
+    summary = ingest.summarise_access(ACCESS_RESPONSE, FETCHED)
+    assert summary.ways == 3 and summary.steps_ways == 1
+    assert summary.ways_with_surface == 1 and summary.ways_with_incline == 1
+    assert summary.ways_with_sidewalk == 1 and summary.ways_with_smoothness == 0
+    assert summary.crossings == 2 and summary.crossings_with_tactile_paving == 1
+    k = summary.kerbs
+    assert (k.lowered, k.raised, k.flush, k.other, k.untagged, k.no) == (1, 1, 1, 1, 1, 0)
+    assert summary.coverage("surface") == pytest.approx(1 / 3)
+
+
+def test_summarise_access_rejects_partial_results() -> None:
+    with pytest.raises(ingest.IngestError):
+        ingest.summarise_access({"elements": [], "remark": "runtime error: timeout"}, FETCHED)
+
+
+def test_enrich_adds_access_without_touching_places_or_routes() -> None:
+    cache = LocationCacheFile(
+        property_id="p",
+        origin=ORIGIN,
+        routes=[
+            RouteResult(
+                profile=RouteProfile.wheelchair,
+                origin=ORIGIN,
+                destination=Point(latitude=55.95, longitude=-3.19, name="Waverley"),
+                status="known",
+                distance_m=2400,
+                source="openrouteservice",
+                fetched_at=FETCHED,
+            )
+        ],
+    )
+    access = ingest.summarise_access(ACCESS_RESPONSE, FETCHED)
+    enriched = ingest.enrich(cache, access)
+    assert enriched.access_tags == access
+    assert enriched.routes == cache.routes and enriched.nearby == cache.nearby
+
+
+def test_cache_without_access_tags_is_written_without_the_key(tmp_path: Path) -> None:
+    from haven.location import write_cache
+
+    path = write_cache(LocationCacheFile(property_id="p", origin=ORIGIN), tmp_path)
+    assert "access_tags" not in json.loads(path.read_text("utf-8"))
+
+
+def test_committed_caches_have_access_tags() -> None:
+    from haven.location import read_cache
+
+    for prop in load_seed().list():
+        cache = read_cache(ingest.cache_path(prop.id))
+        assert cache.access_tags is not None, prop.id
+        assert cache.access_tags.radius_m == ingest.ACCESS_RADIUS_M

@@ -2424,15 +2424,17 @@ paths:
                       url: https://data.gov.scot/dataset/domestic_energy_performance_certificates___dataset_to_q1_2026
                     - as_of: '2026-11-07'
                       caveats:
-                      - Route tags may be incomplete. In the demo areas, surface is tagged on 54-76% of
-                        ways, smoothness on 2-15% and incline on 3-7%.
-                      - Leith, Marchmont and Gorgie only (800 m around each anchor). The Geofabrik Scotland
+                      - Route tags may be incomplete. Within 500 m of the seed properties, surface is
+                        tagged on 37-84% of ways, smoothness on 0-29% and incline on 2-16%.
+                      - Counts of tags around each property, not a check of a specific route. Kerb heights
+                        and steps on the actual route still need checking in person.
+                      - A missing tag means unknown, never step-free or smooth. The Geofabrik Scotland
                         extract is the offline fallback.
-                      - A missing tag means unknown, never step-free or smooth.
                       id: osm_routes
                       licence_note: © OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright).
                         Attribution required wherever shown.
-                      name: OpenStreetMap paths and kerbs (Overpass), three demo areas
+                      name: OpenStreetMap kerbs, inclines, surfaces and crossings (Overpass), around each
+                        property
                       url: https://overpass-api.de/api/interpreter
                     - as_of: '2026-11-07'
                       caveats:

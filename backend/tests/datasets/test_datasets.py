@@ -189,13 +189,11 @@ def test_reference_json_is_labelled_never_a_legal_test(dataset_id: str, label: s
 # --- Cached fetcher ----------------------------------------------------------------------
 
 
-def test_fetcher_only_plans_demo_areas_and_one_naptan_request() -> None:
+def test_fetcher_plans_one_edinburgh_naptan_request_only() -> None:
     requests = fetch_cached.planned_requests()
-    overpass = {r.area for r in requests if r.source == "overpass"}
-    naptan = [r for r in requests if r.source == "naptan"]
-    assert overpass == {"leith", "marchmont", "gorgie"}
-    assert len(naptan) == 1 and naptan[0].params["atcoAreaCodes"] == "620"
-    assert all("nominatim" not in r.url for r in requests)
+    assert [(r.source, r.area) for r in requests] == [("naptan", "edinburgh")]
+    assert requests[0].params["atcoAreaCodes"] == "620"
+    assert all("nominatim" not in r.url and "overpass" not in r.url for r in requests)
     assert "haven" in fetch_cached.USER_AGENT and len(fetch_cached.USER_AGENT) > 30
 
 

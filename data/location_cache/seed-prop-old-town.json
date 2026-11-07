@@ -3675,5 +3675,26 @@
       "fetched_at": "2026-11-07T21:13:48Z",
       "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
     }
-  ]
+  ],
+  "access_tags": {
+    "radius_m": 500.0,
+    "source": "OpenStreetMap (Overpass API)",
+    "fetched_at": "2026-11-07T22:59:23Z",
+    "ways": 1658,
+    "ways_with_surface": 1041,
+    "ways_with_smoothness": 165,
+    "ways_with_incline": 266,
+    "ways_with_sidewalk": 172,
+    "steps_ways": 335,
+    "crossings": 46,
+    "crossings_with_tactile_paving": 37,
+    "kerbs": {
+      "lowered": 15,
+      "flush": 15,
+      "raised": 8,
+      "no": 1,
+      "other": 0,
+      "untagged": 1
+    }
+  }
 }

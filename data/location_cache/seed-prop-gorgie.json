@@ -2245,5 +2245,26 @@
       "fetched_at": "2026-11-07T21:13:41Z",
       "note": "routing unavailable (ORS: ORS HTTP 404): straight-line distance x 1.3; no duration or accessibility data."
     }
-  ]
+  ],
+  "access_tags": {
+    "radius_m": 500.0,
+    "source": "OpenStreetMap (Overpass API)",
+    "fetched_at": "2026-11-07T22:58:50Z",
+    "ways": 391,
+    "ways_with_surface": 208,
+    "ways_with_smoothness": 1,
+    "ways_with_incline": 8,
+    "ways_with_sidewalk": 54,
+    "steps_ways": 14,
+    "crossings": 41,
+    "crossings_with_tactile_paving": 36,
+    "kerbs": {
+      "lowered": 28,
+      "flush": 5,
+      "raised": 1,
+      "no": 0,
+      "other": 0,
+      "untagged": 1
+    }
+  }
 }

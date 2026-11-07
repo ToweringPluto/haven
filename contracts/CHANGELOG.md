@@ -8,7 +8,7 @@ Every change to the contract gets an entry here saying what changed and whether 
 
 Additive, not breaking.
 
-- New public endpoint `GET /v1/data-sources`: returns `DataSourceList` (`items` of `DataSource`: `id`, `name`, `url`, `licence_note`, `as_of`, `caveats`), one item per dataset in the registry `data/datasets.yml`, for a "Data and limits" page.
+- New public endpoint `GET /v1/data-sources`: returns `DataSourceList` (`items` of `DataSource`: `id`, `name`, `url`, `licence_note`, `as_of`, `caveats`), one item per dataset in the registry `data/datasets.yml`, for a "Data and limits" page. The documented example mirrors the registry, so it changes when registry entries do; no schema change.
 
 ## 0.1.2 (2026-11-07)
 

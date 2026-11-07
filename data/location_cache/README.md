@@ -1,8 +1,8 @@
 # Location cache
 
 One JSON file per property, `<property_id>.json`, read by `haven.location.CachedProvider`.
-Files are written by the ingest scripts (`backend/scripts/ingest_osm.py` for nearby places,
-`backend/scripts/build_routes.py` for routes) through `haven.location.write_cache`; never
+Files are written by the ingest scripts (`backend/scripts/ingest_osm.py` for nearby places and,
+with `--enrich`, access tags; `backend/scripts/build_routes.py` for routes) through `haven.location.write_cache`; never
 edit them by hand. The schema is `haven.location.LocationCacheFile`:
 
 ```json
@@ -35,6 +35,13 @@ edit them by hand. The schema is `haven.location.LocationCacheFile`:
   ]
 }
 ```
+
+Files may also carry an optional `access_tags` block (from `ingest_osm.py --enrich`):
+counts of OSM tags within `radius_m` (500 m) of the property: pedestrian-relevant `ways`, how
+many of them have `surface`, `smoothness`, `incline` and `sidewalk` tags, `steps_ways`,
+`crossings` (and how many have tactile paving), and `kerbs` by value (`lowered`, `flush`,
+`raised`, `no`, `other`, `untagged`). It's a measure of how well the area is mapped, never a
+verdict that a route is step-free.
 
 Semantics:
 

@@ -1,31 +1,28 @@
-"""Fetch OpenStreetMap (Overpass) and NaPTAN data ONCE for the three Edinburgh demo areas.
+"""Fetch NaPTAN bus stops for City of Edinburgh ONCE and cache the raw response.
+
+Kerb, incline, surface and crossing data from OpenStreetMap now comes from
+``scripts/ingest_osm.py`` (``--enrich``), which stores a per-property summary in
+``data/location_cache/``. This script keeps only NaPTAN until it can be merged into the bus-stop
+entries there; doing that changes which stop is nearest, so it needs the routes rebuilding
+(``scripts/build_routes.py``, which needs an openrouteservice key).
 
 Rules this script enforces:
 
-- Three demo areas only (Leith, Marchmont, Gorgie; anchors in
-  ``haven.datasets.loaders.sample_flats.AREAS``). No other area can be requested.
-- One request at a time, with a pause between requests, and a descriptive User-Agent.
-- Raw responses are cached under ``data/cache/<source>/`` as JSON named
-  ``<area>_<query-hash>_<UTC timestamp>.json``, wrapping the raw body with the query, its
+- One request, for ATCO area 620 (City of Edinburgh) only, with a descriptive User-Agent.
+- The raw response is cached under ``data/cache/naptan/`` as JSON named
+  ``edinburgh_<query-hash>_<UTC timestamp>.json``, wrapping the raw CSV with the query, its
   hash, the URL and the fetch time.
-- **Never refetch**: if a cache file with the same query hash exists, the request is skipped.
+- **Never refetch**: if a cache file with the same query hash exists, nothing is requested.
   Delete the file deliberately to refresh it.
-- No Nominatim calls at all; the demo-area points were geocoded once, offline.
 
-Overpass: footways and streets with their surface, smoothness, incline and sidewalk tags, plus
-kerb nodes, within ``RADIUS_M`` of each anchor. If Overpass is unavailable, use the Geofabrik
-Scotland extract (https://download.geofabrik.de/europe/united-kingdom/scotland.html) offline
-instead; it's the same OSM data. Data © OpenStreetMap contributors, ODbL 1.0.
-
-NaPTAN: one request for ATCO area 620 (City of Edinburgh), cached raw; bus stops (stop types
-BCT/BCS/BCQ) near the demo areas are extracted at read time by :func:`naptan_bus_stops`.
-Contains public sector information licensed under the Open Government Licence v3.0.
+Bus stops (stop types BCT/BCS/BCQ, status active) near the demo areas are extracted at read
+time by :func:`naptan_bus_stops`. Contains public sector information licensed under the Open
+Government Licence v3.0.
 
 Usage (from ``backend/``)::
 
-    uv run python scripts/fetch_cached.py              # fetch whatever isn't cached yet
-    uv run python scripts/fetch_cached.py --dry-run    # print what would be fetched
-    uv run python scripts/fetch_cached.py --only naptan
+    uv run python scripts/fetch_cached.py            # fetch if not cached yet
+    uv run python scripts/fetch_cached.py --dry-run  # print what would be fetched
 """
 
 from __future__ import annotations
@@ -37,7 +34,6 @@ import io
 import json
 import math
 import sys
-import time
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -49,37 +45,25 @@ from haven.config import CACHE_DIR
 from haven.datasets.loaders.sample_flats import AREAS, Area
 
 USER_AGENT = (
-    "haven-prototype/0.1 (Edinburgh renter-check prototype; one-off fetch for three demo "
-    "areas; https://github.com/ToweringPluto/haven)"
+    "haven-prototype/0.1 (Edinburgh renter-check prototype; one-off fetch; "
+    "https://github.com/ToweringPluto/haven)"
 )
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 NAPTAN_URL = "https://naptan.api.dft.gov.uk/v1/access-nodes"
 NAPTAN_PARAMS = {"dataFormat": "csv", "atcoAreaCodes": "620"}  # 620 = City of Edinburgh
-RADIUS_M = 800
-PAUSE_S = 5.0
 TIMEOUT_S = 120.0
 BUS_STOP_TYPES = {"BCT", "BCS", "BCQ"}
-
-PEDESTRIAN_HIGHWAYS = (
-    "footway|pedestrian|path|steps|living_street|residential|service|unclassified|"
-    "tertiary|secondary|primary|cycleway"
-)
 
 
 @dataclass(frozen=True)
 class Request:
-    source: str  # "overpass" or "naptan"
-    area: str  # demo-area slug, or "edinburgh" for the single NaPTAN request
-    method: str
+    source: str
+    area: str
     url: str
     params: dict[str, str]
-    body: str | None
 
     @property
     def query_hash(self) -> str:
-        key = json.dumps(
-            {"url": self.url, "params": self.params, "body": self.body}, sort_keys=True
-        )
+        key = json.dumps({"url": self.url, "params": self.params, "body": None}, sort_keys=True)
         return hashlib.sha256(key.encode()).hexdigest()[:16]
 
     def cached(self) -> Path | None:
@@ -87,41 +71,17 @@ class Request:
         return matches[-1] if matches else None
 
 
-def overpass_query(area: Area) -> str:
-    around = f"around:{RADIUS_M},{area.latitude},{area.longitude}"
-    return (
-        "[out:json][timeout:90];\n"
-        "(\n"
-        f'  way({around})["highway"~"^({PEDESTRIAN_HIGHWAYS})$"];\n'
-        f'  node({around})["kerb"];\n'
-        f'  node({around})["barrier"="kerb"];\n'
-        f'  node({around})["highway"="crossing"];\n'
-        ");\n"
-        "out tags geom;\n"
-    )
+NAPTAN_REQUEST = Request("naptan", "edinburgh", NAPTAN_URL, NAPTAN_PARAMS)
 
 
-def planned_requests(only: set[str] | None = None) -> list[Request]:
-    requests: list[Request] = []
-    if only is None or "overpass" in only:
-        for slug, area in AREAS.items():
-            requests.append(
-                Request("overpass", slug, "POST", OVERPASS_URL, {}, overpass_query(area))
-            )
-    if only is None or "naptan" in only:
-        requests.append(Request("naptan", "edinburgh", "GET", NAPTAN_URL, NAPTAN_PARAMS, None))
-    return requests
+def planned_requests() -> list[Request]:
+    return [NAPTAN_REQUEST]
 
 
 def fetch(client: httpx.Client, request: Request) -> Path:
     fetched_at = datetime.now(UTC)
-    if request.method == "POST":
-        response = client.post(request.url, data={"data": request.body or ""})
-    else:
-        response = client.get(request.url, params=request.params)
+    response = client.get(request.url, params=request.params)
     response.raise_for_status()
-    content_type = response.headers.get("content-type", "")
-    raw: Any = response.json() if "json" in content_type else response.text
     stamp = fetched_at.strftime("%Y%m%dT%H%M%SZ")
     path = CACHE_DIR / request.source / f"{request.area}_{request.query_hash}_{stamp}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -131,17 +91,13 @@ def fetch(client: httpx.Client, request: Request) -> Path:
         "query_hash": request.query_hash,
         "fetched_at": fetched_at.isoformat(timespec="seconds"),
         "url": str(response.url),
-        "method": request.method,
-        "query": request.body,
+        "method": "GET",
+        "query": None,
         "params": request.params,
         "user_agent": USER_AGENT,
-        "content_type": content_type,
-        "licence": (
-            "© OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)"
-            if request.source == "overpass"
-            else "NaPTAN, Department for Transport. Open Government Licence v3.0."
-        ),
-        "raw": raw,
+        "content_type": response.headers.get("content-type", ""),
+        "licence": "NaPTAN, Department for Transport. Open Government Licence v3.0.",
+        "raw": response.text,
     }
     path.write_text(json.dumps(wrapper, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     return path
@@ -183,26 +139,20 @@ def _metres(lat: float, lon: float, area: Area) -> float:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--only", choices=["overpass", "naptan"], action="append")
     parser.add_argument("--dry-run", action="store_true", help="list requests, fetch nothing")
     args = parser.parse_args(argv)
-    todo = planned_requests(set(args.only) if args.only else None)
-    first = True
     with httpx.Client(
         headers={"User-Agent": USER_AGENT}, timeout=TIMEOUT_S, follow_redirects=True
     ) as client:
-        for request in todo:
+        for request in planned_requests():
             existing = request.cached()
             label = f"{request.source}/{request.area} [{request.query_hash}]"
             if existing is not None:
                 print(f"cached {label}: {existing.name} (not refetching)")
                 continue
             if args.dry_run:
-                print(f"would fetch {label}: {request.method} {request.url}")
+                print(f"would fetch {label}: GET {request.url}")
                 continue
-            if not first:
-                time.sleep(PAUSE_S)  # one request at a time, politely spaced
-            first = False
             try:
                 path = fetch(client, request)
             except httpx.HTTPError as exc:

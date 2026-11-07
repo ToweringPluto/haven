@@ -95,7 +95,10 @@ def write_cache(cache: LocationCacheFile, directory: Path | None = None) -> Path
     """Write ``cache`` deterministically (2-space JSON, LF, trailing newline)."""
     path = cache_path(cache.property_id, directory)
     path.parent.mkdir(parents=True, exist_ok=True)
-    text = json.dumps(cache.model_dump(mode="json"), indent=2, ensure_ascii=False) + "\n"
+    data = cache.model_dump(mode="json")
+    if data.get("access_tags") is None:
+        data.pop("access_tags", None)  # files without access data stay byte-identical
+    text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
     path.write_bytes(text.encode("utf-8"))
     return path
 
