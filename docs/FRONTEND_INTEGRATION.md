@@ -38,7 +38,13 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
     therefore differ from the illustrative cost examples in the spec. Lines that lack an input
     (e.g. no council tax band), or dates outside the reference periods on file, come back
     `insufficient`, never £0.
-  - Suitability and assessment are still served by a *fixture backend* and only work for the
+  - Suitability is real: `POST /v1/properties/{id}/suitability` runs the rules engine on any
+    property × profile, using the cached location data (OpenStreetMap places, ORS walking and
+    wheelchair routes) and the cost engine. The seed properties (`seed-prop-*`) have location
+    data; other properties get `unknown` location findings. Findings therefore differ from the
+    illustrative suitability examples in the spec (same schema). Travel times are walking or
+    wheelchair only; public transport isn't modelled.
+  - Assessment (reports) is still served by a *fixture backend* and only works for the
     exact persona pairs listed in [§3](#3-payload-walkthrough-wheelchair-user-persona). Any
     other combination returns **501** (`application/problem+json`) rather than invented data.
   - Created profiles, properties and uploads are kept in memory and are lost on restart.

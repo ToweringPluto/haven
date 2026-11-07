@@ -176,9 +176,11 @@ def test_cost_unknown_profile_is_404(fixture_client: TestClient) -> None:
 
 
 @pytest.mark.parametrize("persona", PERSONAS)
-def test_suitability_for_persona(client: TestClient, example: Example, persona: str) -> None:
+def test_suitability_for_persona(
+    fixture_client: TestClient, example: Example, persona: str
+) -> None:
     profile_id, property_id = PAIRS[persona]
-    response = client.post(
+    response = fixture_client.post(
         f"/v1/properties/{property_id}/suitability", json={"profile_id": profile_id}
     )
     assert response.status_code == 200
