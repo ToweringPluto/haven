@@ -1,12 +1,16 @@
 """Runtime settings, read from ``HAVEN_*`` environment variables."""
 
+import os
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+# Local secrets file (gitignored). HAVEN_ENV_FILE overrides it; tests point it at nothing so
+# a developer's backend/.env never changes test behaviour.
+ENV_FILE = Path(os.environ.get("HAVEN_ENV_FILE") or REPO_ROOT / "backend" / ".env")
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
 SEED_PATH = REPO_ROOT / "data" / "seed" / "properties.yaml"
@@ -38,7 +42,11 @@ class QualityThresholds(BaseModel):
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="HAVEN_", env_nested_delimiter="__", extra="ignore"
+        env_prefix="HAVEN_",
+        env_nested_delimiter="__",
+        env_file=ENV_FILE,
+        env_file_encoding="utf-8",
+        extra="ignore",
     )
 
     cors_origins: str = Field(
@@ -86,6 +94,11 @@ class Settings(BaseSettings):
     )
     upload_max_bytes: int = Field(
         default=UPLOAD_MAX_BYTES, gt=0, description="Largest accepted upload, in bytes."
+    )
+    database_url: SecretStr | None = Field(
+        default=None,
+        description="Postgres connection URL, e.g. the Tiger Cloud service URL "
+        "(HAVEN_DATABASE_URL). Unset means no database.",
     )
 
     # --- Auth0 (signed-in features) -----------------------------------------------------
