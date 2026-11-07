@@ -20,13 +20,12 @@ import yaml
 from haven.config import CONTRACT_EXAMPLES_DIR
 from haven.cost import estimate_monthly_cost
 from haven.domain import Outcome, Property, RenterProfile
-from haven.location import CachedProvider, Point
-from haven.rules import evaluate_rules
+from haven.location import CachedProvider
+from haven.rules import evaluate_rules, location_for
 from haven.store import load_seed
 
 HERE = Path(__file__).resolve().parent
 ON = date(2026, 11, 7)  # inside the price cap and council tax data on file
-RADIUS_M = 1500.0
 
 
 def load_profile(persona: str) -> RenterProfile:
@@ -35,10 +34,7 @@ def load_profile(persona: str) -> RenterProfile:
 
 
 def outcomes(prop: Property, profile: RenterProfile) -> dict[str, Outcome]:
-    destinations = [
-        Point(latitude=d.latitude, longitude=d.longitude, name=d.name) for d in profile.destinations
-    ]
-    location = CachedProvider().context(prop, radius_m=RADIUS_M, destinations=destinations)
+    location = location_for(CachedProvider(), prop, profile)
     cost = estimate_monthly_cost(prop, profile, on=ON)
     return {f.rule_id: f.outcome for f in evaluate_rules(prop, profile, location, cost)}
 

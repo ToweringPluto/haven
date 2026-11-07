@@ -9,39 +9,39 @@ expected:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: concern
   seed-prop-marchmont:
     budget_fit: unknown
     council_tax_band_known: concern
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: meets
   seed-prop-gorgie:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: concern
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: concern
   seed-prop-old-town:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: meets
   seed-prop-craigleith:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: concern
   seed-prop-portobello:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: concern
   seed-prop-gilmerton:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: concern
   seed-prop-bruntsfield:
     budget_fit: concern
     council_tax_band_known: meets
     epc_heating_cost_risk: meets
-    travel_time_to_destinations: unknown
+    travel_time_to_destinations: meets

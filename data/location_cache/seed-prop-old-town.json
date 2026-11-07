@@ -3474,5 +3474,206 @@
       ]
     }
   ],
-  "routes": []
+  "routes": [
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "known",
+      "distance_m": 842.8,
+      "duration_s": 606.8,
+      "data_completeness": 0.795,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:49Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "known",
+      "distance_m": 951.9,
+      "duration_s": 796.5,
+      "data_completeness": 0.519,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:50Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "known",
+      "distance_m": 583.5,
+      "duration_s": 420.1,
+      "data_completeness": 0.496,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:52Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 540.3,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-07T21:10:54Z",
+      "note": "routing unavailable (ORS: ORS HTTP 404): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "known",
+      "distance_m": 5438.6,
+      "duration_s": 3915.7,
+      "data_completeness": 0.36,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:55Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "known",
+      "distance_m": 5846.0,
+      "duration_s": 5062.5,
+      "data_completeness": 0.16,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:57Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9489561,
+        "longitude": -3.1868452,
+        "name": "South Bridge"
+      },
+      "status": "known",
+      "distance_m": 328.6,
+      "duration_s": 236.6,
+      "data_completeness": 0.762,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:43Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9489561,
+        "longitude": -3.1868452,
+        "name": "South Bridge"
+      },
+      "status": "known",
+      "distance_m": 347.0,
+      "duration_s": 312.3,
+      "data_completeness": 0.675,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:45Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9543601,
+        "longitude": -3.192155,
+        "name": "St Andrew Square"
+      },
+      "status": "known",
+      "distance_m": 878.1,
+      "duration_s": 632.2,
+      "data_completeness": 0.832,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:46Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.94927,
+        "longitude": -3.18568,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9543601,
+        "longitude": -3.192155,
+        "name": "St Andrew Square"
+      },
+      "status": "known",
+      "distance_m": 1024.6,
+      "duration_s": 755.2,
+      "data_completeness": 0.736,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:48Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    }
+  ]
 }

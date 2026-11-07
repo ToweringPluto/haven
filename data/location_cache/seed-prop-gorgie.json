@@ -2004,5 +2004,246 @@
       ]
     }
   ],
-  "routes": []
+  "routes": [
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "known",
+      "distance_m": 3448.4,
+      "duration_s": 2482.8,
+      "data_completeness": 0.508,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:28Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "known",
+      "distance_m": 3499.8,
+      "duration_s": 2906.2,
+      "data_completeness": 0.397,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:30Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "known",
+      "distance_m": 3525.9,
+      "duration_s": 2538.6,
+      "data_completeness": 0.743,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:32Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 4040.2,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-07T21:10:34Z",
+      "note": "routing unavailable (ORS: ORS HTTP 404): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "known",
+      "distance_m": 8376.3,
+      "duration_s": 6030.8,
+      "data_completeness": 0.315,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:35Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "known",
+      "distance_m": 8572.1,
+      "duration_s": 7030.9,
+      "data_completeness": 0.175,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:10:37Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9372383,
+        "longitude": -3.2347134,
+        "name": "Stewart Terrace"
+      },
+      "status": "known",
+      "distance_m": 134.0,
+      "duration_s": 96.4,
+      "data_completeness": 0.0,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:33Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9372383,
+        "longitude": -3.2347134,
+        "name": "Stewart Terrace"
+      },
+      "status": "known",
+      "distance_m": 134.0,
+      "duration_s": 110.3,
+      "data_completeness": 0.0,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:35Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9419077,
+        "longitude": -3.2375454,
+        "name": "Murrayfield Stadium"
+      },
+      "status": "known",
+      "distance_m": 1149.6,
+      "duration_s": 827.7,
+      "data_completeness": 0.226,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:36Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9419077,
+        "longitude": -3.2375454,
+        "name": "Murrayfield Stadium"
+      },
+      "status": "estimated",
+      "distance_m": 635.9,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-07T21:13:38Z",
+      "note": "routing unavailable (ORS: ORS HTTP 404): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9451838,
+        "longitude": -3.2193738,
+        "name": "Haymarket"
+      },
+      "status": "known",
+      "distance_m": 1473.2,
+      "duration_s": 1060.7,
+      "data_completeness": 0.361,
+      "source": "openrouteservice (OpenStreetMap data)",
+      "fetched_at": "2026-11-07T21:13:40Z",
+      "note": "Data completeness = share of the route's length with a known surface type (ORS surface data); kerb heights and inclines aren't reported, so check them in person."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.93805,
+        "longitude": -3.23377,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9451838,
+        "longitude": -3.2193738,
+        "name": "Haymarket"
+      },
+      "status": "estimated",
+      "distance_m": 1556.2,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-07T21:13:41Z",
+      "note": "routing unavailable (ORS: ORS HTTP 404): straight-line distance x 1.3; no duration or accessibility data."
+    }
+  ]
 }

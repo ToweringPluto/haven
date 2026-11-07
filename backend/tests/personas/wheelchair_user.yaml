@@ -12,8 +12,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: concern
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-marchmont:
     budget_fit: unknown
     council_tax_band_known: concern
@@ -21,8 +21,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: concern
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-gorgie:
     budget_fit: meets
     council_tax_band_known: meets
@@ -30,8 +30,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: meets
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-old-town:
     budget_fit: concern
     council_tax_band_known: meets
@@ -39,8 +39,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: unknown
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-craigleith:
     budget_fit: concern
     council_tax_band_known: meets
@@ -48,8 +48,8 @@ expected:
     step_free_entrance: meets
     lift_required_for_floor: meets
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-portobello:
     budget_fit: concern
     council_tax_band_known: meets
@@ -57,8 +57,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: concern
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
   seed-prop-gilmerton:
     budget_fit: concern
     council_tax_band_known: meets
@@ -66,8 +66,8 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: meets
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: meets
+    wheelchair_route_data_completeness: concern
   seed-prop-bruntsfield:
     budget_fit: concern
     council_tax_band_known: meets
@@ -75,5 +75,5 @@ expected:
     step_free_entrance: concern
     lift_required_for_floor: meets
     walk_to_stop_within_limit: meets
-    travel_time_to_destinations: unknown
-    wheelchair_route_data_completeness: unknown
+    travel_time_to_destinations: concern
+    wheelchair_route_data_completeness: concern
