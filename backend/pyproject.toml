@@ -56,6 +56,7 @@ addopts = "--import-mode=importlib"
 fmt = { shell = "ruff format . && ruff check --fix .", help = "Format code and apply safe lint fixes" }
 test = { cmd = "pytest -q", help = "Run the test suite" }
 export-openapi = { cmd = "python scripts/export_openapi.py", help = "Write contracts/openapi.yaml from the app" }
+mock = { cmd = "python scripts/mock.py", help = "Serve the contract's examples with the Prism mock server on :4010" }
 serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
 
 [tool.poe.tasks.lint]
