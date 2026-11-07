@@ -165,7 +165,7 @@ def test_unknown_profile_is_404(engine: TestClient) -> None:
 
 def test_other_endpoints_still_serve_fixtures(engine: TestClient, example: Example) -> None:
     profile_id, property_id = PAIRS["student"]
-    response = engine.post(
-        f"/v1/properties/{property_id}/suitability", json={"profile_id": profile_id}
-    )
-    assert response.json() == example("student", "suitability")
+    # Profiles still come from the persona fixtures (suitability is now an engine: P2-08).
+    response = engine.get(f"/v1/profiles/{profile_id}")
+    assert response.json() == example("student", "profile")
+    assert property_id

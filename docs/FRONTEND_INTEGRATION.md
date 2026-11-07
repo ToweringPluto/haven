@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.2**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.3**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,7 +24,7 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.2):** profiles are the illustrative persona data in
+- **Current behaviour (contract 0.1.3):** profiles are the illustrative persona data in
   [`contracts/examples/`](../contracts/examples/) plus anything you create.
   - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
     `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
@@ -38,12 +38,21 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
     therefore differ from the illustrative cost examples in the spec. Lines that lack an input
     (e.g. no council tax band), or dates outside the reference periods on file, come back
     `insufficient`, never £0.
-  - Suitability and assessment are still served by a *fixture backend* and only work for the
+  - Suitability is real: `POST /v1/properties/{id}/suitability` runs the rules engine on any
+    property × profile, using the cached location data (OpenStreetMap places, ORS walking and
+    wheelchair routes) and the cost engine. The seed properties (`seed-prop-*`) have location
+    data; other properties get `unknown` location findings. Findings therefore differ from the
+    illustrative suitability examples in the spec (same schema). Travel times are walking or
+    wheelchair only; public transport isn't modelled.
+  - Assessment (reports) is still served by a *fixture backend* and only works for the
     exact persona pairs listed in [§3](#3-payload-walkthrough-wheelchair-user-persona). Any
     other combination returns **501** (`application/problem+json`) rather than invented data.
-  - Created profiles, properties and uploads are kept in memory and are lost on restart.
-    Uploads are recorded but not stored or screened: they come back with `signals: []` and
+  - Uploads are stored on disk (`backend/var/uploads/`): JPEG, PNG, WebP or PDF only, checked
+    from the file's content (anything else → **415**), max 15 MB (→ **413**). Images are saved
+    with EXIF/GPS metadata removed (`metadata_stripped: true`); PDFs unchanged. `DELETE` removes
+    the file. Screening isn't built yet: uploads come back with `signals: []` and
     `evidence_quality: null`.
+  - Created profiles and properties are kept in memory and are lost on restart.
   - Set `HAVEN_BACKEND=fixtures` to serve **only** the fixtures (cost included, returning the
     illustrative examples), e.g. for demos that must match the spec examples exactly.
 - Real engines will replace the fixtures endpoint by endpoint without changing the contract.

@@ -17,10 +17,15 @@ router = APIRouter(prefix="/uploads", tags=["uploads"])
     response_model=Upload,
     status_code=201,
     summary="Upload a photo, floor plan or document",
-    description="Multipart upload. Screening results are possible signals to inspect, never "
-    "diagnoses; a signal may be 'insufficient_evidence'. The fixture backend does not store "
-    "or screen the file: it returns no signals and `evidence_quality: null`.",
-    responses=ex.json_response(201, ex.per_persona("upload")) | problem_responses(404, 422),
+    description="Multipart upload of a JPEG, PNG, WebP or PDF file (max 15 MB by default). "
+    "The type is checked from the file's content, not its name: anything else is rejected "
+    "with 415, and larger files with 413. Images are stored with EXIF/GPS metadata removed "
+    "(`metadata_stripped: true`); PDFs are stored unchanged. Screening results are possible "
+    "signals to inspect, never diagnoses; a signal may be 'insufficient_evidence'. Screening "
+    "isn't built yet, so uploads currently have no signals and `evidence_quality: null`. The "
+    "fixture backend (`HAVEN_BACKEND=fixtures`) does not store the file at all.",
+    responses=ex.json_response(201, ex.per_persona("upload"))
+    | problem_responses(404, 413, 415, 422),
 )
 async def create_upload(
     backend: BackendDep,
@@ -45,7 +50,7 @@ async def create_upload(
     status_code=204,
     response_class=Response,
     summary="Delete an upload",
-    description="Removes the upload and its derived signals.",
+    description="Removes the stored file, its record and its derived signals.",
     responses=problem_responses(404, 422),
 )
 def delete_upload(backend: BackendDep, upload_id: str) -> Response:

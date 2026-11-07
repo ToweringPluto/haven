@@ -1,0 +1,16 @@
+{
+ "routes": [
+  {
+   "summary": {"distance": 1234.5, "duration": 987.6},
+   "extras": {
+    "surface": {
+     "values": [[0, 10, 3], [10, 14, 0]],
+     "summary": [
+      {"value": 3.0, "distance": 950.0, "amount": 76.95},
+      {"value": 0.0, "distance": 284.5, "amount": 23.05}
+     ]
+    }
+   }
+  }
+ ]
+}

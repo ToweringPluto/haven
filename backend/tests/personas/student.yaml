@@ -1,0 +1,47 @@
+# Persona regression fixture for the rules engine (tests/personas/test_personas.py).
+# Expected rule_id -> outcome per seed property, for the persona profile in
+# contracts/examples/student/profile.json, on 2026-11-07 with the committed location cache.
+# Travel time and wheelchair route completeness stay unknown until P2-05 caches routes.
+# If an outcome changes on purpose, update this file in the same commit and say why.
+persona: student
+expected:
+  seed-prop-leith:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: concern
+  seed-prop-marchmont:
+    budget_fit: unknown
+    council_tax_band_known: concern
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: meets
+  seed-prop-gorgie:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: concern
+    travel_time_to_destinations: concern
+  seed-prop-old-town:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: meets
+  seed-prop-craigleith:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: concern
+  seed-prop-portobello:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: concern
+  seed-prop-gilmerton:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: concern
+  seed-prop-bruntsfield:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    travel_time_to_destinations: meets

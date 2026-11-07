@@ -1,13 +1,16 @@
 """Runtime settings, read from ``HAVEN_*`` environment variables."""
 
+import os
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, SecretStr
+from pydantic import BaseModel, ConfigDict, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ENV_FILE = REPO_ROOT / "backend" / ".env"
+# Local secrets file (gitignored). HAVEN_ENV_FILE overrides it; tests point it at nothing so
+# a developer's backend/.env never changes test behaviour.
+ENV_FILE = Path(os.environ.get("HAVEN_ENV_FILE") or REPO_ROOT / "backend" / ".env")
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
 SEED_DIR = REPO_ROOT / "data" / "seed"
@@ -16,11 +19,38 @@ DATASETS_REGISTRY_PATH = REPO_ROOT / "data" / "datasets.yml"
 REFERENCE_JSON_DIR = REPO_ROOT / "data" / "reference_json"
 CACHE_DIR = REPO_ROOT / "data" / "cache"
 LOCATION_CACHE_DIR = REPO_ROOT / "data" / "location_cache"
+UPLOAD_DIR = REPO_ROOT / "backend" / "var" / "uploads"
+UPLOAD_MAX_BYTES = 15 * 1024 * 1024
+
+
+class QualityThresholds(BaseModel):
+    """Image quality gate thresholds (Haven's own heuristics, not an external standard).
+
+    Each check grades a photo ``good`` / ``limited`` / ``poor``; the worst grade wins.
+    Blur is the variance of a 3x3 Laplacian on the grayscale image after scaling its longest
+    side to ``blur_analysis_side_px``, so it's comparable across photo sizes.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    min_side_px_poor: int = Field(default=224, gt=0, description="Shorter side below = poor.")
+    min_side_px_good: int = Field(default=640, gt=0, description="Shorter side below = limited.")
+    blur_analysis_side_px: int = Field(default=1024, gt=0)
+    blur_variance_poor: float = Field(default=15.0, ge=0, description="Below = poor (blurred).")
+    blur_variance_good: float = Field(default=60.0, ge=0, description="Below = limited.")
+    dark_level: int = Field(default=16, ge=0, le=255, description="Pixels at or below are dark.")
+    bright_level: int = Field(default=240, ge=0, le=255, description="At or above = blown out.")
+    clipped_share_poor: float = Field(default=0.6, gt=0, le=1, description="Above = poor.")
+    clipped_share_good: float = Field(default=0.25, gt=0, le=1, description="Above = limited.")
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="HAVEN_", env_file=ENV_FILE, env_file_encoding="utf-8", extra="ignore"
+        env_prefix="HAVEN_",
+        env_nested_delimiter="__",
+        env_file=ENV_FILE,
+        env_file_encoding="utf-8",
+        extra="ignore",
     )
 
     cors_origins: str = Field(
@@ -53,6 +83,26 @@ class Settings(BaseSettings):
     location_cache_dir: Path = Field(
         default=LOCATION_CACHE_DIR,
         description="Per-property location cache directory (HAVEN_LOCATION_CACHE_DIR).",
+    )
+    upload_dir: Path = Field(
+        default=UPLOAD_DIR,
+        description="Where uploaded evidence is stored (HAVEN_UPLOAD_DIR); gitignored.",
+    )
+    tesseract_cmd: str | None = Field(
+        default=None,
+        description="Path to the tesseract executable for OCR (HAVEN_TESSERACT_CMD); unset = "
+        "look on PATH and in the default Windows install folder.",
+    )
+    vision_provider: str | None = Field(
+        default=None,
+        description="Photo screening model provider (HAVEN_VISION_PROVIDER); unset = no model.",
+    )
+    quality: QualityThresholds = Field(
+        default_factory=QualityThresholds,
+        description="Image quality gate thresholds (HAVEN_QUALITY__<NAME>).",
+    )
+    upload_max_bytes: int = Field(
+        default=UPLOAD_MAX_BYTES, gt=0, description="Largest accepted upload, in bytes."
     )
     database_url: SecretStr | None = Field(
         default=None,

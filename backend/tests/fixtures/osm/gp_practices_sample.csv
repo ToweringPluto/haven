@@ -1,0 +1,5 @@
+PracticeCode,GPPracticeName,PracticeListSize,AddressLine1,AddressLine2,AddressLine3,AddressLine4,Postcode,TelephoneNumber,PracticeType,HB,HSCP,DataZone,GPCluster
+70001,Near Practice,9000,1 Example St,,Edinburgh,,eh66aa,0131 000 0000,GMS,S08000024,S37000012,S01000001,Edinburgh North
+70002,Far Practice,8000,2 Example St,,Edinburgh,,EH10 6QT,0131 000 0001,GMS,S08000024,S37000012,S01000002,Edinburgh South
+70003,Unknown Postcode Practice,7000,3 Example St,,Edinburgh,,EH99 9ZZ,0131 000 0002,GMS,S08000024,S37000012,S01000003,Edinburgh North
+10002,Dundee Practice,8643,Liff Road,,Dundee,,DD2 5NH,01382 580 264,GMS,S08000030,S37000007,S01007129,Dundee 4

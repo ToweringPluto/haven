@@ -176,9 +176,11 @@ def test_cost_unknown_profile_is_404(fixture_client: TestClient) -> None:
 
 
 @pytest.mark.parametrize("persona", PERSONAS)
-def test_suitability_for_persona(client: TestClient, example: Example, persona: str) -> None:
+def test_suitability_for_persona(
+    fixture_client: TestClient, example: Example, persona: str
+) -> None:
     profile_id, property_id = PAIRS[persona]
-    response = client.post(
+    response = fixture_client.post(
         f"/v1/properties/{property_id}/suitability", json={"profile_id": profile_id}
     )
     assert response.status_code == 200
@@ -202,8 +204,8 @@ def test_suitability_unknown_property_is_404(client: TestClient) -> None:
 # --- uploads ---------------------------------------------------------------------------
 
 
-def test_upload_records_file_without_claiming_screening(client: TestClient) -> None:
-    response = client.post(
+def test_upload_records_file_without_claiming_screening(fixture_client: TestClient) -> None:
+    response = fixture_client.post(
         "/v1/uploads",
         files={"file": ("sub/dir/kitchen.jpg", b"\xff\xd8\xff fake jpeg", "image/jpeg")},
         data={"kind": "photo", "property_id": "ill-prop-leith-flat"},
@@ -219,14 +221,14 @@ def test_upload_records_file_without_claiming_screening(client: TestClient) -> N
     assert body["metadata_stripped"] is False
 
 
-def test_upload_requires_kind_and_file(client: TestClient) -> None:
-    assert_problem(client.post("/v1/uploads", data={"kind": "photo"}), 422)
+def test_upload_requires_kind_and_file(fixture_client: TestClient) -> None:
+    assert_problem(fixture_client.post("/v1/uploads", data={"kind": "photo"}), 422)
     files = {"file": ("a.jpg", b"x", "image/jpeg")}
-    assert_problem(client.post("/v1/uploads", files=files, data={"kind": "selfie"}), 422)
+    assert_problem(fixture_client.post("/v1/uploads", files=files, data={"kind": "selfie"}), 422)
 
 
-def test_upload_unknown_property_is_404(client: TestClient) -> None:
-    response = client.post(
+def test_upload_unknown_property_is_404(fixture_client: TestClient) -> None:
+    response = fixture_client.post(
         "/v1/uploads",
         files={"file": ("a.jpg", b"x", "image/jpeg")},
         data={"kind": "photo", "property_id": "nope"},
@@ -234,20 +236,20 @@ def test_upload_unknown_property_is_404(client: TestClient) -> None:
     assert_problem(response, 404)
 
 
-def test_delete_upload(client: TestClient) -> None:
-    created = client.post(
+def test_delete_upload(fixture_client: TestClient) -> None:
+    created = fixture_client.post(
         "/v1/uploads",
         files={"file": ("a.pdf", b"%PDF-1.7", "application/pdf")},
         data={"kind": "document"},
     ).json()
-    response = client.delete(f"/v1/uploads/{created['id']}")
+    response = fixture_client.delete(f"/v1/uploads/{created['id']}")
     assert response.status_code == 204
     assert response.content == b""
-    assert_problem(client.delete(f"/v1/uploads/{created['id']}"), 404)
+    assert_problem(fixture_client.delete(f"/v1/uploads/{created['id']}"), 404)
 
 
-def test_delete_fixture_upload(client: TestClient) -> None:
-    assert client.delete("/v1/uploads/ill-upload-wu-entrance").status_code == 204
+def test_delete_fixture_upload(fixture_client: TestClient) -> None:
+    assert fixture_client.delete("/v1/uploads/ill-upload-wu-entrance").status_code == 204
 
 
 # --- assessments + reports -------------------------------------------------------------

@@ -1,5 +1,6 @@
 """Tests for ``haven.cost.estimate_monthly_cost`` against the committed reference data."""
 
+from dataclasses import replace
 from datetime import date
 from typing import Any
 
@@ -108,12 +109,21 @@ def test_all_inputs_present(refs: CostReferences) -> None:
     standing = gas.standing_charge_p_per_day * 365
     heat = line(cost, HEATING)
     d = match.distribution
-    assert heat.monthly_gbp.value == monthly(60 * d.median * gas.unit_rate_p_per_kwh + standing)
-    assert heat.low_gbp == monthly(60 * d.q1 * gas.unit_rate_p_per_kwh + standing)
-    assert heat.high_gbp == monthly(60 * d.q3 * gas.unit_rate_p_per_kwh + standing)
+    eff = refs.heating_efficiency.fuels[MainFuel.mains_gas]
+    # SAP 10.2 Table 4b: condensing boiler 84% (central and best), floor-mounted pre-1979 56%.
+    assert (eff.central_pct, eff.highest_pct, eff.lowest_pct) == (84, 84, 56)
+    rate = gas.unit_rate_p_per_kwh
+    assert heat.monthly_gbp.value == monthly(60 * d.median / 0.84 * rate + standing)
+    assert heat.low_gbp == monthly(60 * d.q1 / 0.84 * rate + standing)
+    assert heat.high_gbp == monthly(60 * d.q3 / 0.56 * rate + standing)
     assert heat.monthly_gbp.status is Status.estimated
     assert heat.monthly_gbp.origin == "estimate"
-    assert "system losses" in (heat.monthly_gbp.note or "")
+    note = heat.monthly_gbp.note or ""
+    assert "÷ 84% heating efficiency" in note
+    assert "condensing gas boiler" in note
+    assert "isn't known" in note and "56%" in note
+    assert "hot water may be underestimated" in note
+    assert "not a measurement of this home's system" in note
 
     elec = line(cost, ELECTRICITY)
     rates = refs.energy_rates.electricity
@@ -220,9 +230,7 @@ def test_dates_outside_reference_data(refs: CostReferences) -> None:
 
 def test_electricity_figures_not_in_force(refs: CostReferences) -> None:
     later = refs.electricity_use.model_copy(update={"valid_from": date(2026, 12, 1)})
-    patched = CostReferences(
-        refs.council_tax, refs.energy_rates, refs.energy_model, electricity_use=later
-    )
+    patched = replace(refs, electricity_use=later)
     cost = estimate_monthly_cost(make_property(), None, on=ON, references=patched)
     elec = line(cost, ELECTRICITY)
     assert elec.monthly_gbp.value is None
@@ -236,7 +244,7 @@ def test_heat_demand_group_fallback_and_missing_band(refs: CostReferences) -> No
             "band_groups": [g for g in refs.energy_model.band_groups if g.epc_band != "G"],
         }
     )
-    patched = CostReferences(refs.council_tax, refs.energy_rates, model, refs.electricity_use)
+    patched = replace(refs, energy_model=model)
 
     cost = estimate_monthly_cost(make_property(), None, on=ON, references=patched)
     heat = line(cost, HEATING)
@@ -260,9 +268,41 @@ def test_electric_heating(refs: CostReferences) -> None:
     match = refs.energy_model.lookup(EpcBand.D, PropertyType.flat, MainFuel.electricity)
     assert match is not None
     rate = refs.energy_rates.electricity.unit_rate_p_per_kwh
+    d = match.distribution
     # No standing charge on the heating line: it's counted once, on the electricity line.
-    assert heat.monthly_gbp.value == monthly(60 * match.distribution.median * rate)
+    # Central: storage/direct electric heaters at 100%; low: a heat pump at SAP's default 170%.
+    assert heat.monthly_gbp.value == monthly(60 * d.median * rate)
+    assert heat.low_gbp == monthly(60 * d.q1 / 1.70 * rate)
+    assert heat.high_gbp == monthly(60 * d.q3 * rate)
+    note = heat.monthly_gbp.note or ""
+    assert "storage heaters or direct-acting electric heaters" in note
+    assert "heat pump" in note and "170%" in note
+    assert "hot water may be underestimated" not in note
     assert "double-count" in (line(cost, ELECTRICITY).monthly_gbp.note or "")
+
+
+def test_efficiency_raises_heating_above_heat_demand(refs: CostReferences) -> None:
+    # Fuel bought = heat demand / efficiency, so a boiler costs more than raw heat demand.
+    d = refs.energy_model.lookup(EpcBand.D, PropertyType.flat, MainFuel.mains_gas)
+    assert d is not None
+    gas = refs.energy_rates.gas
+    raw = monthly(
+        60 * d.distribution.median * gas.unit_rate_p_per_kwh + gas.standing_charge_p_per_day * 365
+    )
+    heat = line(estimate_monthly_cost(make_property(), None, on=ON, references=refs), HEATING)
+    assert heat.monthly_gbp.value is not None and heat.monthly_gbp.value > raw
+
+
+def test_missing_efficiency_for_fuel_is_insufficient(refs: CostReferences) -> None:
+    fuels = {MainFuel.mains_gas: refs.heating_efficiency.fuels[MainFuel.mains_gas]}
+    no_electric = refs.heating_efficiency.model_copy(update={"fuels": fuels})
+    patched = replace(refs, heating_efficiency=no_electric)
+    cost = estimate_monthly_cost(
+        make_property(main_fuel=ev("electricity")), None, on=ON, references=patched
+    )
+    heat = line(cost, HEATING)
+    assert heat.monthly_gbp.value is None
+    assert heat.monthly_gbp.status is Status.insufficient
 
 
 def test_band_status_carried_onto_council_tax_line(refs: CostReferences) -> None:
@@ -362,6 +402,9 @@ def test_reference_provenance_on_every_line(refs: CostReferences, prop: Property
     heat = line(cost, HEATING).monthly_gbp
     assert refs.energy_model.meta.source_url in heat.source
     assert heat.as_of is not None
+    if prop.epc_rating.value is not None:
+        assert refs.heating_efficiency.source_url in heat.source
+        assert "SAP 10.2" in heat.source
 
     elec = line(cost, ELECTRICITY).monthly_gbp
     assert refs.electricity_use.source_url in elec.source

@@ -4,11 +4,17 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
-## 0.1.2 (2026-11-07)
+## 0.1.3 (2026-11-07)
 
 Additive, not breaking.
 
 - New public endpoint `GET /v1/data-sources`: returns `DataSourceList` (`items` of `DataSource`: `id`, `name`, `url`, `licence_note`, `as_of`, `caveats`), one item per dataset in the registry `data/datasets.yml`, for a "Data and limits" page.
+
+## 0.1.2 (2026-11-07)
+
+Additive, not breaking. No schema changes.
+
+- `POST /v1/uploads` now documents two more problem+json statuses: `413` (file larger than the limit, 15 MB by default) and `415` (not a JPEG, PNG, WebP or PDF, judged from the file's content rather than its name or declared type). The engine backend stores uploads on disk and strips EXIF/GPS metadata from images (`metadata_stripped: true`); PDFs are stored unchanged. Descriptions of `POST /v1/uploads` and `DELETE /v1/uploads/{upload_id}` updated accordingly.
 
 ## 0.1.1 (2026-11-07)
 
