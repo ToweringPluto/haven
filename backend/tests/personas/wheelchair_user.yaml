@@ -1,0 +1,79 @@
+# Persona regression fixture for the rules engine (tests/personas/test_personas.py).
+# Expected rule_id -> outcome per seed property, for the persona profile in
+# contracts/examples/wheelchair_user/profile.json, on 2026-11-07 with the committed location cache.
+# Travel time and wheelchair route completeness stay unknown until P2-05 caches routes.
+# If an outcome changes on purpose, update this file in the same commit and say why.
+persona: wheelchair_user
+expected:
+  seed-prop-leith:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: concern
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-marchmont:
+    budget_fit: unknown
+    council_tax_band_known: concern
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: concern
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-gorgie:
+    budget_fit: meets
+    council_tax_band_known: meets
+    epc_heating_cost_risk: concern
+    step_free_entrance: concern
+    lift_required_for_floor: meets
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-old-town:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: unknown
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-craigleith:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: meets
+    lift_required_for_floor: meets
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-portobello:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: concern
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-gilmerton:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: meets
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
+  seed-prop-bruntsfield:
+    budget_fit: concern
+    council_tax_band_known: meets
+    epc_heating_cost_risk: meets
+    step_free_entrance: concern
+    lift_required_for_floor: meets
+    walk_to_stop_within_limit: meets
+    travel_time_to_destinations: unknown
+    wheelchair_route_data_completeness: unknown
