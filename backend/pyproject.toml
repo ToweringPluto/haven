@@ -18,6 +18,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "mypy>=2.4.1",
+    "openapi-schema-validator>=0.9.0",
+    "openapi-spec-validator>=0.9.0",
     "poethepoet>=0.49.0",
     "pytest>=9.2.0",
     "pytest-cov>=7.1.0",
@@ -53,6 +55,7 @@ addopts = "--import-mode=importlib"
 [tool.poe.tasks]
 fmt = { shell = "ruff format . && ruff check --fix .", help = "Format code and apply safe lint fixes" }
 test = { cmd = "pytest -q", help = "Run the test suite" }
+export-openapi = { cmd = "python scripts/export_openapi.py", help = "Write contracts/openapi.yaml from the app" }
 serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
 
 [tool.poe.tasks.lint]
@@ -61,4 +64,12 @@ sequence = [
   { cmd = "ruff check ." },
   { cmd = "ruff format --check ." },
   { cmd = "mypy" },
+]
+
+[tool.poe.tasks.contract-check]
+help = "Fail if contracts/openapi.yaml is stale or invalid, or if any fixture doesn't validate"
+sequence = [
+  { cmd = "python scripts/export_openapi.py --check" },
+  { cmd = "python scripts/make_examples.py --check" },
+  { cmd = "pytest -q tests/contracts" },
 ]
