@@ -28,9 +28,12 @@ You need to create **one API** and **one Single Page Application** in Auth0, plu
 
 ## 1. Create a tenant
 
-Sign up at <https://auth0.com> and create a tenant. Pick the **EU** region: Haven's users are in
-Edinburgh, and keeping identity data in the EU makes the UK GDPR story simpler. The tenant domain
-looks like `haven-dev.eu.auth0.com`. Use separate tenants for development and production.
+Sign up at <https://auth0.com> and create a tenant. Pick the **UK** region (or EU): Haven's users
+are in Edinburgh, and keeping identity data in the UK keeps the UK GDPR story simple. The tenant
+domain looks like `haven.uk.auth0.com`. Use separate tenants for development and production.
+
+New tenants also start with a short onboarding wizard: choose **Manual setup**, application type
+**Single-Page App**, and skip the generated quickstart code (the integration already exists).
 
 ## 2. Create the API (this defines the token audience)
 
@@ -84,6 +87,12 @@ need for `localStorage`, if you'd rather switch to `cacheLocation="memory"`.
 
 Copy the **Domain** and **Client ID** from this page for step 6.
 
+**Authorise the app for the API.** Newer tenants block an app from requesting tokens for an API
+until you allow it. Without this, sign-in bounces straight back with *"Client … is not authorized
+to access resource server …"*. Under **Applications → Applications → Haven Web → APIs**, turn on
+**User Access** for **Haven API** (or authorise Haven Web under the API's **Application Access**
+tab). Do this after creating the API in step 2.
+
 ## 4. Choose how people sign in
 
 **Authentication → Database → Username-Password-Authentication** is enabled by default. Optionally
@@ -127,7 +136,7 @@ back as `null`.
 **Frontend:** copy `frontend/.env.example` to `frontend/.env.local` (git-ignored):
 
 ```
-VITE_AUTH0_DOMAIN=haven-dev.eu.auth0.com
+VITE_AUTH0_DOMAIN=haven.uk.auth0.com
 VITE_AUTH0_CLIENT_ID=<Client ID from step 3>
 VITE_AUTH0_AUDIENCE=https://api.haven.example
 VITE_API_BASE_URL=
@@ -141,7 +150,7 @@ missing, the app runs in public/sample mode and hides the sign-in button.
 
 | Variable | Example | Notes |
 | --- | --- | --- |
-| `HAVEN_AUTH0_DOMAIN` | `haven-dev.eu.auth0.com` | Must be the same domain the frontend uses (it's checked as the token issuer). |
+| `HAVEN_AUTH0_DOMAIN` | `haven.uk.auth0.com` | Must be the same domain the frontend uses (it's checked as the token issuer). |
 | `HAVEN_AUTH0_AUDIENCE` | `https://api.haven.example` | Exactly the API identifier from step 2. |
 | `HAVEN_AUTH0_EMAIL_CLAIM` | `https://haven.example/email` | Claim added in step 5. |
 | `HAVEN_PHOTO_SCREEN_MAX_BYTES` | `5242880` | Default 5 MB. |
@@ -154,7 +163,7 @@ missing, the app runs in public/sample mode and hides the sign-in button.
 PowerShell:
 
 ```powershell
-$env:HAVEN_AUTH0_DOMAIN = "haven-dev.eu.auth0.com"
+$env:HAVEN_AUTH0_DOMAIN = "haven.uk.auth0.com"
 $env:HAVEN_AUTH0_AUDIENCE = "https://api.haven.example"
 $env:HAVEN_AUTH0_EMAIL_CLAIM = "https://haven.example/email"
 uv run --directory backend poe serve
@@ -163,7 +172,7 @@ uv run --directory backend poe serve
 bash:
 
 ```bash
-HAVEN_AUTH0_DOMAIN=haven-dev.eu.auth0.com \
+HAVEN_AUTH0_DOMAIN=haven.uk.auth0.com \
 HAVEN_AUTH0_AUDIENCE=https://api.haven.example \
 HAVEN_AUTH0_EMAIL_CLAIM=https://haven.example/email \
 uv run --directory backend poe serve
@@ -197,6 +206,7 @@ and every other endpoint is unaffected.
 | Symptom | Likely cause |
 | --- | --- |
 | *Callback URL mismatch* on the Auth0 page | The origin isn't in **Allowed Callback URLs**, or a path or trailing slash was added. |
+| *Client … is not authorized to access resource server …* (shown in the app's sign-in banner) | The app isn't authorised for the API. See "Authorise the app for the API" in step 3. |
 | *Service not found: https://api…* | `VITE_AUTH0_AUDIENCE` doesn't exactly match the API identifier. |
 | Signed in, but every API call says "Sign in to use this feature" | The backend's audience or domain differs from the frontend's (issuer `https://<domain>/` must match exactly, including a custom domain if you use one). Or the token is opaque because no audience was requested. |
 | *Missing Refresh Token* in the console | **Allow Offline Access** is off on the API, or the **Refresh Token** grant is unticked on the app. |
