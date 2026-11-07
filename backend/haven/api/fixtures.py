@@ -13,7 +13,13 @@ from datetime import UTC, datetime
 from pathlib import Path, PurePath
 
 from haven.api.errors import NotAvailable, NotFound
-from haven.api.schemas import AssessmentRequest, ProfileInput, PropertyInput, PropertyList
+from haven.api.schemas import (
+    AssessmentRequest,
+    PhotoScreen,
+    ProfileInput,
+    PropertyInput,
+    PropertyList,
+)
 from haven.domain import (
     BudgetComparison,
     CostBreakdown,
@@ -193,3 +199,13 @@ class FixtureBackend:
             return self._reports[report_id]
         except KeyError:
             raise NotFound("report", report_id) from None
+
+    def screen_photo(self, *, content: bytes, content_type: str) -> PhotoScreen:
+        raise NotAvailable(
+            "Photo screening isn't available yet: no screening model is connected to this server."
+        )
+
+    def read_aloud(self, text: str) -> bytes:
+        raise NotAvailable(
+            "Read-aloud isn't available yet: no speech service is connected to this server."
+        )

@@ -4,6 +4,16 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
+## 0.1.1 (2026-11-07)
+
+Additive, not breaking. Existing endpoints are unchanged and stay public.
+
+- New signed-in endpoints, secured with an Auth0 bearer token (`securitySchemes.Auth0`, HTTP bearer):
+  - `GET /v1/me`: the verified `sub` and `email` (`CurrentUser`).
+  - `POST /v1/photo-screen`: one JPG/PNG/WebP image as the raw request body (max 5 MB by default), processed in memory and never stored. Returns `PhotoScreen` (`evidence_quality`, `signals`). Rate limited per user.
+  - `POST /v1/read-aloud`: `ReadAloudRequest` (`text`, max 5000 characters by default), returns `audio/mpeg`. Rate limited per user.
+- New problem+json statuses on those endpoints: `401` (sign in), `413` (too large), `415` (not an accepted image), `429` (rate limited, with `Retry-After`), `503` (sign-in not configured or Auth0 unreachable). The fixture backend answers photo-screen and read-aloud with `501`.
+
 ## 0.1.0 (2026-11-07)
 
 First published contract. Not breaking (no earlier version).

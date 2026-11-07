@@ -10,10 +10,12 @@ from fastapi.routing import APIRoute
 from pydantic import BaseModel
 
 from haven import __version__
+from haven.api.auth import make_jwks_client
 from haven.api.backend import Backend
 from haven.api.engines import EngineBackend
 from haven.api.errors import install_error_handlers
 from haven.api.fixtures import FixtureBackend
+from haven.api.rate_limit import SlidingWindowRateLimiter
 from haven.api.routes import v1
 from haven.api.schemas import ProblemDetail
 from haven.config import Settings
@@ -86,6 +88,7 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
         description="Decision support for Edinburgh renters. Prototype: assessments are "
         "indicative, not a legal, safety, accessibility or compliance certification.",
     )
+    app.state.settings = settings
     if backend is None:
         backend = (
             FixtureBackend(settings.fixtures_dir)
@@ -93,6 +96,12 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
             else EngineBackend(settings.fixtures_dir, seed=load_seed(settings.seed_path))
         )
     app.state.backend = backend
+    app.state.jwks_client = make_jwks_client(settings)
+    window = settings.rate_limit_window_seconds
+    app.state.rate_limiters = {
+        "photo_screen": SlidingWindowRateLimiter(settings.photo_screen_rate_limit, window),
+        "read_aloud": SlidingWindowRateLimiter(settings.read_aloud_rate_limit, window),
+    }
 
     origins = settings.cors_origin_list
     if origins:
