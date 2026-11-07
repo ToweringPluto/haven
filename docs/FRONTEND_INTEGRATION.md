@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.2**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.3**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,7 +24,7 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.2):** profiles are the illustrative persona data in
+- **Current behaviour (contract 0.1.3):** profiles are the illustrative persona data in
   [`contracts/examples/`](../contracts/examples/) plus anything you create.
   - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
     `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
@@ -83,6 +83,7 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | # | Journey step | Endpoint | Notes |
 | --- | --- | --- | --- |
 | 0 | Load labels for enums | `GET /v1/meta/enums` | Every enum value with a human label. Use these labels and don't hard-code your own wording. |
+| – | "Data and limits" page | `GET /v1/data-sources` | `{items: [{id, name, url, licence_note, as_of, caveats}]}`, one per dataset in `data/datasets.yml`. Link `url`, and show `licence_note`, `as_of` and every caveat verbatim. Where OpenStreetMap data is shown, its attribution must be visible. |
 | 1 | Renter describes their needs | `POST /v1/profiles` | Body `ProfileInput` (budget, priorities, access needs, destinations, other recurring costs). The server assigns `id`. |
 | 1 | List or reopen profiles | `GET /v1/profiles`, `GET /v1/profiles/{profile_id}` | `GET /v1/profiles` returns `{items: [...]}`. |
 | 2 | Browse properties | `GET /v1/properties` | Returns `{items: [...]}`. This wrapper exists so pagination can be added later without breaking you. |
@@ -226,7 +227,11 @@ breaks them misrepresents what the backend actually knows.
 7. **No colour-only meaning.** Outcomes, likelihoods, statuses and budget comparisons must be
    readable without colour: always pair colour with a text label and/or an icon with an accessible
    name. Meet WCAG 2.2 AA contrast.
-8. **Show next steps.** Show `next_step` for every `concern` and `unknown` finding. These are the
+8. **Show data limits.** Link a "Data and limits" page built from `GET /v1/data-sources` from
+   every screen that shows rents, costs, routes or stops. Label handbook values "guidance value"
+   and repairing standard items "reference only", never as a legal test, and mark sample
+   data (`is_sample: true`) as sample.
+9. **Show next steps.** Show `next_step` for every `concern` and `unknown` finding. These are the
    "check before signing" actions.
 
 ## 5. Errors

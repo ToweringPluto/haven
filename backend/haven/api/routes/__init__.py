@@ -2,7 +2,16 @@
 
 from fastapi import APIRouter
 
-from haven.api.routes import account, assist, meta, profiles, properties, reports, uploads
+from haven.api.routes import (
+    account,
+    assist,
+    data_sources,
+    meta,
+    profiles,
+    properties,
+    reports,
+    uploads,
+)
 
 v1 = APIRouter(prefix="/v1")
 v1.include_router(profiles.router)
@@ -11,6 +20,7 @@ v1.include_router(uploads.router)
 v1.include_router(reports.assessments)
 v1.include_router(reports.reports)
 v1.include_router(meta.router)
+v1.include_router(data_sources.router)
 v1.include_router(account.router)
 v1.include_router(assist.router)
 

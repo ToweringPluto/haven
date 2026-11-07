@@ -12,15 +12,23 @@ Two sources:
   coordinates, so each practice is placed at its **postcode centroid** (ONS Postcode Directory
   via postcodes.io). Raw files are in ``data/raw/gp/``.
 
+* **Step-free access tags (OpenStreetMap via Overpass)**: a second query per property for the
+  footways and streets within ``ACCESS_RADIUS_M`` with their surface, smoothness, incline and
+  sidewalk tags, plus kerb and crossing nodes. Summarised into the cache's ``access_tags``
+  (counts and tag coverage, never a verdict). Raw responses are in ``data/raw/osm_access/``.
+
 Every place records its source and when it was fetched. Distances are straight-line from the
 property; ways/relations use their Overpass ``center`` and are kept only if that centre lies
-within the radius.
+within the radius. Raw files are fetched only when missing (one request at a time, with a
+pause), so re-running never refetches unless ``--refresh`` is given.
 
 Usage (from ``backend/``)::
 
     uv run python scripts/ingest_osm.py            # fetch missing raw data, write the cache
     uv run python scripts/ingest_osm.py --refresh  # re-fetch everything, write the cache
     uv run python scripts/ingest_osm.py --offline  # rebuild from raw files only
+    uv run python scripts/ingest_osm.py --enrich   # add access tags to the existing caches
+                                                   # (fetches only the access queries)
     uv run python scripts/ingest_osm.py --check    # validate the cache (no network)
 """
 
@@ -44,6 +52,8 @@ from haven.config import LOCATION_CACHE_DIR, REPO_ROOT, SEED_PATH
 from haven.domain import Property
 from haven.location import (
     MATCH_TOLERANCE_M,
+    AccessTagSummary,
+    KerbCounts,
     LocationCacheError,
     LocationCacheFile,
     NearbyCacheEntry,
@@ -57,8 +67,18 @@ from haven.location import (
 )
 from haven.store import load_seed
 
-USER_AGENT = "haven-prototype"
+USER_AGENT = (
+    "haven-prototype/0.1 (Edinburgh renter-check prototype; one-off fetch; "
+    "https://github.com/ToweringPluto/haven)"
+)
 RADIUS_M = 1500.0
+ACCESS_RADIUS_M = 500.0
+ACCESS_RAW_DIR = REPO_ROOT / "data" / "raw" / "osm_access"
+PEDESTRIAN_HIGHWAYS = (
+    "footway|pedestrian|path|steps|living_street|residential|service|unclassified|"
+    "tertiary|secondary|primary|cycleway"
+)
+WAY_TAGS = ("surface", "smoothness", "incline", "sidewalk")
 
 OSM_RAW_DIR = REPO_ROOT / "data" / "raw" / "osm"
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
@@ -220,6 +240,91 @@ def fetch_overpass(
     }
 
 
+# --- Step-free access tags (Overpass) ----------------------------------------------------
+
+
+def build_access_query(lat: float, lon: float, radius_m: float = ACCESS_RADIUS_M) -> str:
+    around = f"around:{radius_m:g},{lat},{lon}"
+    return (
+        "[out:json][timeout:90];\n"
+        "(\n"
+        f'  way({around})["highway"~"^({PEDESTRIAN_HIGHWAYS})$"];\n'
+        f'  node({around})["kerb"];\n'
+        f'  node({around})["barrier"="kerb"];\n'
+        f'  node({around})["highway"="crossing"];\n'
+        ");\n"
+        "out tags;\n"
+    )
+
+
+def summarise_access(
+    response: Mapping[str, Any], fetched_at: datetime, radius_m: float = ACCESS_RADIUS_M
+) -> AccessTagSummary:
+    """Counts of access-relevant tags in an access-query response."""
+    elements = response.get("elements")
+    if not isinstance(elements, list):
+        raise IngestError("Overpass access response has no 'elements' list")
+    if response.get("remark"):
+        raise IngestError(f"Overpass returned a remark (partial result): {response['remark']}")
+    ways = [e for e in elements if e.get("type") == "way"]
+    nodes = [e for e in elements if e.get("type") == "node"]
+    tagged = {t: sum(1 for w in ways if (w.get("tags") or {}).get(t)) for t in WAY_TAGS}
+    kerbs = {"lowered": 0, "flush": 0, "raised": 0, "no": 0, "other": 0, "untagged": 0}
+    crossings = tactile = 0
+    for node in nodes:
+        tags = node.get("tags") or {}
+        if tags.get("highway") == "crossing":
+            crossings += 1
+            tactile += tags.get("tactile_paving") == "yes"
+        kerb = tags.get("kerb")
+        if kerb is None and tags.get("barrier") == "kerb":
+            kerbs["untagged"] += 1
+        elif kerb is not None:
+            kerbs[kerb if kerb in kerbs and kerb != "untagged" else "other"] += 1
+    return AccessTagSummary(
+        radius_m=radius_m,
+        source=OSM_SOURCE,
+        fetched_at=fetched_at,
+        ways=len(ways),
+        ways_with_surface=tagged["surface"],
+        ways_with_smoothness=tagged["smoothness"],
+        ways_with_incline=tagged["incline"],
+        ways_with_sidewalk=tagged["sidewalk"],
+        steps_ways=sum(1 for w in ways if (w.get("tags") or {}).get("highway") == "steps"),
+        crossings=crossings,
+        crossings_with_tactile_paving=tactile,
+        kerbs=KerbCounts(**kerbs),
+    )
+
+
+def access_raw_path(property_id: str) -> Path:
+    return ACCESS_RAW_DIR / cache_path(property_id, ACCESS_RAW_DIR).name
+
+
+def fetch_access(
+    client: httpx.Client, prop: Property, sleep: Callable[[float], None] = time.sleep
+) -> dict[str, Any]:
+    lat, lon = _coords(prop)
+    query = build_access_query(lat, lon)
+    response = _post_with_retries(client, OVERPASS_URL, sleep, data={"data": query}, timeout=180)
+    return {
+        "url": OVERPASS_URL,
+        "query": query,
+        "query_sha256": hashlib.sha256(query.encode()).hexdigest(),
+        "fetched_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "response": response.json(),
+    }
+
+
+def load_access(prop: Property) -> AccessTagSummary | None:
+    """The access summary from the raw file, or ``None`` if it hasn't been fetched."""
+    path = access_raw_path(prop.id)
+    if not path.is_file():
+        return None
+    raw = _read_json(path)
+    return summarise_access(raw["response"], datetime.fromisoformat(raw["fetched_at"]))
+
+
 # --- GP practices (Public Health Scotland) ----------------------------------------------
 
 
@@ -354,6 +459,7 @@ def build_cache(
     gp: list[Place],
     gp_fetched_at: datetime,
     existing: LocationCacheFile | None = None,
+    access: AccessTagSummary | None = None,
 ) -> LocationCacheFile:
     lat, lon = _coords(prop)
     origin = Point(latitude=lat, longitude=lon)
@@ -375,7 +481,15 @@ def build_cache(
     routes = []
     if existing is not None and _close(existing.origin, origin):
         routes = list(existing.routes)  # keep routes built by build_routes.py
-    return LocationCacheFile(property_id=prop.id, origin=origin, nearby=nearby, routes=routes)
+        access = access or existing.access_tags
+    return LocationCacheFile(
+        property_id=prop.id, origin=origin, nearby=nearby, routes=routes, access_tags=access
+    )
+
+
+def enrich(cache: LocationCacheFile, access: AccessTagSummary) -> LocationCacheFile:
+    """``cache`` with ``access_tags`` set; nearby places and routes are untouched."""
+    return cache.model_copy(update={"access_tags": access})
 
 
 def _close(a: Point, b: Point) -> bool:
@@ -415,8 +529,39 @@ def build_all(
         path = cache_path(prop.id, cache_dir)
         existing = read_cache(path) if path.is_file() else None
         caches[prop.id] = build_cache(
-            prop, _read_json(osm_raw_path(prop.id)), gp, gp_fetched_at, existing
+            prop, _read_json(osm_raw_path(prop.id)), gp, gp_fetched_at, existing, load_access(prop)
         )
+    return caches
+
+
+def fetch_missing_access(props: list[Property], refresh: bool = False) -> None:
+    """Fetch the access query for every property that doesn't have one yet."""
+    with httpx.Client(headers={"User-Agent": USER_AGENT}) as client:
+        first = True
+        for prop in props:
+            path = access_raw_path(prop.id)
+            if path.is_file() and not refresh:
+                continue
+            if not first:
+                time.sleep(PAUSE_S)  # one request at a time
+            first = False
+            _write_json(path, fetch_access(client, prop))
+            print(f"fetched access tags for {prop.id} -> {path}")
+
+
+def enrich_all(
+    props: list[Property], cache_dir: Path = LOCATION_CACHE_DIR
+) -> dict[str, LocationCacheFile]:
+    """Existing cache files with ``access_tags`` added from the raw access files."""
+    caches = {}
+    for prop in props:
+        path = cache_path(prop.id, cache_dir)
+        if not path.is_file():
+            raise IngestError(f"{prop.id}: no cache file to enrich; run without --enrich first")
+        access = load_access(prop)
+        if access is None:
+            raise IngestError(f"{prop.id}: no access raw file (run --enrich without --offline)")
+        caches[prop.id] = enrich(read_cache(path), access)
     return caches
 
 
@@ -438,10 +583,17 @@ def fetch_missing(props: list[Property], refresh: bool) -> None:
             first = False
             _write_json(path, fetch_overpass(client, prop))
             print(f"fetched Overpass for {prop.id} -> {path}")
+    fetch_missing_access(props, refresh=refresh)
 
 
 def summary(cache: LocationCacheFile) -> str:
     counts = ", ".join(f"{e.kind.value} {len(e.places)}" for e in cache.nearby)
+    a = cache.access_tags
+    if a is not None:
+        counts += (
+            f"; access: {a.ways} ways (surface {a.coverage('surface'):.0%}, incline "
+            f"{a.coverage('incline'):.0%}), {a.kerbs.total} kerbs, {a.steps_ways} steps"
+        )
     return f"{cache.property_id}: {counts}"
 
 
@@ -476,6 +628,12 @@ def check(props: list[Property], cache_dir: Path = LOCATION_CACHE_DIR) -> list[s
         gp = kinds.get(PlaceKind.gp_surgery)
         if gp is not None and gp.source != GP_ENTRY_SOURCE:
             problems.append(f"{prop.id}: gp_surgery entry doesn't name both GP sources")
+        if cache.access_tags is None:
+            problems.append(f"{prop.id}: no access_tags (run --enrich)")
+        else:
+            access = load_access(prop)
+            if access is not None and access != cache.access_tags:
+                problems.append(f"{prop.id}: access_tags differ from the raw file; re-run --enrich")
     raw_present = GP_MANIFEST.is_file() and GP_CSV.is_file()
     raw_present = raw_present and all(osm_raw_path(p.id).is_file() for p in props)
     if raw_present and not problems:
@@ -492,6 +650,9 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--check", action="store_true", help="validate the cache (no network)")
     mode.add_argument("--offline", action="store_true", help="build from raw files only")
     mode.add_argument("--refresh", action="store_true", help="re-fetch all raw data")
+    mode.add_argument(
+        "--enrich", action="store_true", help="add access tags to the existing caches"
+    )
     args = parser.parse_args(argv)
     props = load_seed().list()
     try:
@@ -504,9 +665,13 @@ def main(argv: list[str] | None = None) -> int:
                     f"location cache is valid for {len(props)} seed properties ({SEED_PATH.name})"
                 )
             return 1 if problems else 0
-        if not args.offline:
-            fetch_missing(props, refresh=args.refresh)
-        caches = build_all(props)
+        if args.enrich:
+            fetch_missing_access(props)
+            caches = enrich_all(props)
+        else:
+            if not args.offline:
+                fetch_missing(props, refresh=args.refresh)
+            caches = build_all(props)
     except (IngestError, httpx.HTTPError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1

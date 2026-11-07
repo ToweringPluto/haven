@@ -19,6 +19,7 @@ from haven.api.rate_limit import SlidingWindowRateLimiter
 from haven.api.routes import v1
 from haven.api.schemas import ProblemDetail
 from haven.config import Settings
+from haven.datasets import load_registry
 from haven.location import CachedProvider
 from haven.store import UploadStore, load_seed
 
@@ -102,6 +103,7 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
             )
         )
     app.state.backend = backend
+    app.state.registry = load_registry(settings.datasets_registry_path)
     app.state.jwks_client = make_jwks_client(settings)
     window = settings.rate_limit_window_seconds
     app.state.rate_limiters = {

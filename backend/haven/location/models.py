@@ -168,6 +168,56 @@ class NearbyCacheEntry(_Frozen):
         return self
 
 
+class KerbCounts(_Frozen):
+    """OSM kerb nodes (``kerb=*`` / ``barrier=kerb``) by their ``kerb`` value."""
+
+    lowered: int = Field(default=0, ge=0)
+    flush: int = Field(default=0, ge=0)
+    raised: int = Field(default=0, ge=0)
+    no: int = Field(default=0, ge=0, description="kerb=no (no kerb at all).")
+    other: int = Field(default=0, ge=0, description="Any other value, e.g. 'rolled'.")
+    untagged: int = Field(default=0, ge=0, description="barrier=kerb with no kerb=* value.")
+
+    @property
+    def total(self) -> int:
+        return self.lowered + self.flush + self.raised + self.no + self.other + self.untagged
+
+
+class AccessTagSummary(_Frozen):
+    """How well the streets around a property are tagged for step-free access (OSM).
+
+    Counts, not a verdict: a missing tag means unknown, never step-free or smooth. Ways are
+    footways, paths, steps, pedestrian and ordinary streets within ``radius_m``.
+    """
+
+    radius_m: float = Field(gt=0)
+    source: str = Field(min_length=1)
+    fetched_at: AwareDatetime
+    ways: int = Field(ge=0, description="Pedestrian-relevant ways within the radius.")
+    ways_with_surface: int = Field(ge=0)
+    ways_with_smoothness: int = Field(ge=0)
+    ways_with_incline: int = Field(ge=0)
+    ways_with_sidewalk: int = Field(ge=0)
+    steps_ways: int = Field(ge=0, description="highway=steps ways (stairs on the street).")
+    crossings: int = Field(ge=0, description="highway=crossing nodes.")
+    crossings_with_tactile_paving: int = Field(ge=0)
+    kerbs: KerbCounts
+
+    @model_validator(mode="after")
+    def _check(self) -> Self:
+        for name in ("surface", "smoothness", "incline", "sidewalk"):
+            if getattr(self, f"ways_with_{name}") > self.ways:
+                raise ValueError(f"ways_with_{name} can't exceed ways")
+        if self.crossings_with_tactile_paving > self.crossings:
+            raise ValueError("crossings_with_tactile_paving can't exceed crossings")
+        return self
+
+    def coverage(self, tag: Literal["surface", "smoothness", "incline", "sidewalk"]) -> float:
+        """Share of ways (0–1) carrying ``tag``; 0 when there are no ways."""
+        count: int = getattr(self, f"ways_with_{tag}")
+        return count / self.ways if self.ways else 0.0
+
+
 class LocationCacheFile(_Frozen):
     """Schema of ``data/location_cache/<property_id>.json``."""
 
@@ -176,6 +226,11 @@ class LocationCacheFile(_Frozen):
     origin: Point
     nearby: list[NearbyCacheEntry] = Field(default_factory=list)
     routes: list[RouteResult] = Field(default_factory=list)
+    access_tags: AccessTagSummary | None = Field(
+        default=None,
+        description="Kerb, incline, surface and crossing tags around the property (OSM). "
+        "None means not fetched.",
+    )
 
     @model_validator(mode="after")
     def _check(self) -> Self:

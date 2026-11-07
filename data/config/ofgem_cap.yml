@@ -1,0 +1,25 @@
+# Ofgem energy price cap, Southern Scotland (EH postcodes), Direct Debit, default tariff.
+# EDIT BY HAND each quarter when the cap changes (next change: 1 January 2027):
+#   1. update the rates and valid_from / valid_to / as_of / retrieved_at below,
+#   2. run `uv run python scripts/build_seeds.py` from backend/.
+# Initial values match data/reference/energy_rates.yaml (parsed from Ofgem's Direct Debit
+# tables by backend/scripts/ingest_energy_rates.py); tests check the two agree whenever they
+# describe the same cap period.
+source_url: https://www.ofgem.gov.uk/node/176588/
+licence_note: Crown copyright, Ofgem. Re-usable (not logos) under the Open Government Licence
+  (https://www.ofgem.gov.uk/copyright).
+as_of: 2026-10-01
+retrieved_at: 2026-11-07
+region: Southern Scotland
+payment_method: direct_debit
+prices_include_vat: true
+valid_from: 2026-10-01
+valid_to: 2026-12-31
+electricity:
+  unit_rate_p_per_kwh: 26.11
+  standing_charge_p_per_day: 61.41
+  vat_rate: 0.0
+gas:
+  unit_rate_p_per_kwh: 7.87
+  standing_charge_p_per_day: 29.89
+  vat_rate: 0.05
