@@ -118,16 +118,22 @@ def test_create_property_rejects_value_without_insufficient_status(
 # --- cost + suitability ----------------------------------------------------------------
 
 
+# Cost is served by the cost engine by default (tests/api/test_cost.py); these cover the
+# fixtures-only backend (HAVEN_BACKEND=fixtures).
+
+
 @pytest.mark.parametrize("persona", PERSONAS)
-def test_cost_for_persona(client: TestClient, example: Example, persona: str) -> None:
+def test_cost_for_persona(fixture_client: TestClient, example: Example, persona: str) -> None:
     profile_id, property_id = PAIRS[persona]
-    response = client.post(f"/v1/properties/{property_id}/cost", json={"profile_id": profile_id})
+    response = fixture_client.post(
+        f"/v1/properties/{property_id}/cost", json={"profile_id": profile_id}
+    )
     assert response.status_code == 200
     assert response.json() == example(persona, "cost")
 
 
-def test_cost_without_profile_has_no_budget_comparison(client: TestClient) -> None:
-    response = client.post("/v1/properties/ill-prop-leith-flat/cost", json={})
+def test_cost_without_profile_has_no_budget_comparison(fixture_client: TestClient) -> None:
+    response = fixture_client.post("/v1/properties/ill-prop-leith-flat/cost", json={})
     assert response.status_code == 200
     body = response.json()
     assert body["profile_id"] is None
@@ -135,22 +141,26 @@ def test_cost_without_profile_has_no_budget_comparison(client: TestClient) -> No
     assert body["budget_comparison"] == "unknown"
 
 
-def test_cost_for_unmatched_pair_is_not_invented(client: TestClient) -> None:
-    response = client.post(
+def test_cost_for_unmatched_pair_is_not_invented(fixture_client: TestClient) -> None:
+    response = fixture_client.post(
         "/v1/properties/ill-prop-leith-flat/cost", json={"profile_id": "persona-student"}
     )
     body = assert_problem(response, 501)
     assert "fixture" in body["detail"]
 
 
-def test_cost_for_created_property_is_not_invented(client: TestClient, example: Example) -> None:
+def test_cost_for_created_property_is_not_invented(
+    fixture_client: TestClient, example: Example
+) -> None:
     body = {k: v for k, v in example("student", "properties")["items"][0].items() if k != "id"}
-    created = client.post("/v1/properties", json=body).json()
-    assert_problem(client.post(f"/v1/properties/{created['id']}/cost", json={}), 501)
+    created = fixture_client.post("/v1/properties", json=body).json()
+    assert_problem(fixture_client.post(f"/v1/properties/{created['id']}/cost", json={}), 501)
 
 
-def test_cost_unknown_profile_is_404(client: TestClient) -> None:
-    response = client.post("/v1/properties/ill-prop-leith-flat/cost", json={"profile_id": "x"})
+def test_cost_unknown_profile_is_404(fixture_client: TestClient) -> None:
+    response = fixture_client.post(
+        "/v1/properties/ill-prop-leith-flat/cost", json={"profile_id": "x"}
+    )
     assert_problem(response, 404)
 
 

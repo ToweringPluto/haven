@@ -1,6 +1,7 @@
 """Runtime settings, read from ``HAVEN_*`` environment variables."""
 
 from pathlib import Path
+from typing import Literal
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -16,6 +17,12 @@ class Settings(BaseSettings):
     cors_origins: str = Field(
         default="",
         description="Comma-separated list of allowed CORS origins (HAVEN_CORS_ORIGINS).",
+    )
+    backend: Literal["engines", "fixtures"] = Field(
+        default="engines",
+        description="'engines' (default) serves each endpoint from its real engine where one "
+        "exists and from the fixtures otherwise; 'fixtures' serves only the illustrative "
+        "persona fixtures (HAVEN_BACKEND).",
     )
     fixtures_dir: Path = Field(
         default=CONTRACT_EXAMPLES_DIR,

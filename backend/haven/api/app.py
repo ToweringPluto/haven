@@ -11,6 +11,7 @@ from pydantic import BaseModel
 
 from haven import __version__
 from haven.api.backend import Backend
+from haven.api.engines import EngineBackend
 from haven.api.errors import install_error_handlers
 from haven.api.fixtures import FixtureBackend
 from haven.api.routes import v1
@@ -84,7 +85,13 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
         description="Decision support for Edinburgh renters. Prototype: assessments are "
         "indicative, not a legal, safety, accessibility or compliance certification.",
     )
-    app.state.backend = backend if backend is not None else FixtureBackend(settings.fixtures_dir)
+    if backend is None:
+        backend = (
+            FixtureBackend(settings.fixtures_dir)
+            if settings.backend == "fixtures"
+            else EngineBackend(settings.fixtures_dir)
+        )
+    app.state.backend = backend
 
     origins = settings.cors_origin_list
     if origins:
