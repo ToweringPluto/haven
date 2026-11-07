@@ -71,6 +71,10 @@ class Settings(BaseSettings):
         default=UPLOAD_DIR,
         description="Where uploaded evidence is stored (HAVEN_UPLOAD_DIR); gitignored.",
     )
+    vision_provider: str | None = Field(
+        default=None,
+        description="Photo screening model provider (HAVEN_VISION_PROVIDER); unset = no model.",
+    )
     quality: QualityThresholds = Field(
         default_factory=QualityThresholds,
         description="Image quality gate thresholds (HAVEN_QUALITY__<NAME>).",
