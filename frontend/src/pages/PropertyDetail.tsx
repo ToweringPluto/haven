@@ -1,140 +1,165 @@
+import { useState } from "react";
+import { api } from "../api/client";
+import type { Evidence, Property } from "../api/types";
+import { useLoad } from "../api/useLoad";
 import { BackLink } from "../components/BackLink";
 import { Button } from "../components/Button";
-import { Icon, type IconName } from "../components/Icon";
-import { ReadAloudButton } from "../components/ReadAloudButton";
-import { Status } from "../components/Status";
-import { IMAGES } from "../data/images";
-import { FEATURED_PROPERTY } from "../data/properties";
-import { formatGBP } from "../lib/format";
+import { CostSummary } from "../components/CostSummary";
+import { EvidenceValue } from "../components/Evidence";
+import { FindingsList } from "../components/FindingsList";
+import { Icon } from "../components/Icon";
+import { LoadProblem } from "../components/LoadProblem";
+import { ProfileBar } from "../components/ProfileBar";
+import { areaImage, IMAGES } from "../data/images";
+import { PERSONAS } from "../data/onboarding";
+import { displayTitle, factName } from "../lib/format";
 import { useNavigation } from "../state/navigation";
+import { useRenterProfile } from "../state/renterProfile";
 import { useShortlist } from "../state/shortlist";
-import type { StatusType } from "../types";
 
-// Illustrative assessment for the featured property — to be replaced by real API data.
-const ASSESSMENTS: { icon: IconName; title: string; detail: string; type: StatusType }[] = [
-  { icon: "wallet", title: "Affordability", detail: "£91 under your total budget", type: "good" },
-  { icon: "access", title: "Accessibility", detail: "Step-free entrance and lift", type: "good" },
-  { icon: "map", title: "Nearby essentials", detail: "8 essentials within 10 min", type: "good" },
-  {
-    icon: "train",
-    title: "Your daily journey",
-    detail: "22 min · direct bus every 8 min",
-    type: "good",
-  },
-  { icon: "spark", title: "AI screening", detail: "2 questions worth asking", type: "info" },
-];
+type Fact = Evidence<string | number | boolean>;
 
-const COST_LINES: { label: string; note?: string; amount: number }[] = [
-  { label: "Monthly rent", amount: FEATURED_PROPERTY.rent },
-  { label: "Council tax", note: "Band B", amount: 142 },
-  { label: "Energy estimate", note: "EPC C", amount: 86 },
-  { label: "Broadband estimate", amount: 18 },
-];
+const FACTS = [
+  "rent_pcm_gbp",
+  "bedrooms",
+  "property_type",
+  "floor_area_m2",
+  "floor_level",
+  "has_lift",
+  "entrance_steps",
+  "council_tax_band",
+  "epc_rating",
+  "main_fuel",
+] as const satisfies readonly (keyof Property)[];
 
-// Must match the recording in public/samples/first-impression.wav (played when signed out).
-const FIRST_IMPRESSION =
-  "Bright, calm and comfortably within budget. The lift and direct bus are real strengths. " +
-  "We’d ask to see the building entrance and check the evening noise from The Shore.";
-
-const ESTIMATED_TOTAL = COST_LINES.reduce((sum, line) => sum + line.amount, 0);
+const PAIRS_HINT =
+  "Requirement checks currently work for the example renters with their example homes: " +
+  PERSONAS.map((p) => `${p.name} → ${p.propertyId}`).join(", ") +
+  ".";
 
 export default function PropertyDetail() {
-  const { go } = useNavigation();
+  const { go, param: propertyId } = useNavigation();
+  const { saved: profile, draft } = useRenterProfile();
   const { isSaved, toggleSaved, addToCompare } = useShortlist();
-  const property = FEATURED_PROPERTY;
-  const saved = isSaved(property.id);
+  const profileId = profile?.id ?? null;
+  const id = propertyId ?? "";
+
+  const [property, reloadProperty] = useLoad(propertyId, () => api.property(id));
+  const [cost] = useLoad(propertyId && `${propertyId}:${profileId}`, () => api.cost(id, profileId));
+  const [suitability] = useLoad(propertyId && profileId && `${propertyId}:${profileId}`, () =>
+    api.suitability(id, profileId!),
+  );
+  const [reportError, setReportError] = useState<string | null>(null);
+  const [creatingReport, setCreatingReport] = useState(false);
+
+  if (!propertyId) {
+    return (
+      <main className="detail-page shell">
+        <BackLink to="explore">Back to homes</BackLink>
+        <h1>Choose a home</h1>
+        <p>Pick a home from the list to see its details.</p>
+      </main>
+    );
+  }
+  if (property.status === "loading") {
+    return <main className="detail-page shell" aria-busy="true" style={{ minHeight: "60vh" }} />;
+  }
+  if (property.status !== "ok") {
+    return (
+      <main className="detail-page shell">
+        <BackLink to="explore">Back to homes</BackLink>
+        <LoadProblem result={property} onRetry={reloadProperty} />
+      </main>
+    );
+  }
+
+  const p = property.data;
+  const saved = isSaved(p.id);
+
+  const createReport = async () => {
+    if (!profileId) return;
+    setCreatingReport(true);
+    setReportError(null);
+    const res = await api.createAssessment(profileId, p.id);
+    setCreatingReport(false);
+    if (res.status === "ok") go("report", res.data.id);
+    else setReportError(res.status === "unavailable" ? `${res.message} ${PAIRS_HINT}` : res.message);
+  };
 
   return (
     <main className="detail-page shell">
-      <BackLink to="explore">Back to results</BackLink>
+      <BackLink to="explore">Back to homes</BackLink>
       <div className="detail-gallery">
-        <img src={property.image} alt={`${property.area} property`} fetchPriority="high" />
-        <img
-          src={IMAGES.street}
-          alt="Traditional Edinburgh sandstone buildings"
-          decoding="async"
-        />
+        <img src={areaImage(p.area)} alt="" fetchPriority="high" />
+        <img src={IMAGES.street} alt="" decoding="async" />
         <div className="gallery-placeholder">
-          <Icon name="plus" />
-          <span>View 8 photos</span>
+          <Icon name="info" />
+          <span>Area photos for illustration. This listing has no photos.</span>
         </div>
       </div>
+
+      <ProfileBar />
+
       <div className="detail-layout">
         <div className="detail-main">
           <div className="detail-heading">
             <div>
-              <span>{property.area}</span>
-              <h1>{property.name}</h1>
-              <p>1 bedroom · 1 bathroom · Furnished · 52 m²</p>
+              {p.illustrative && (
+                <span className="illustrative-tag">Illustrative — not a real listing</span>
+              )}
+              <span>{p.area ?? "Edinburgh"}</span>
+              <h1>{displayTitle(p.title)}</h1>
             </div>
             <div className="detail-price">
-              <b>{formatGBP(property.rent)}</b>
-              <span>per month</span>
+              <EvidenceValue evidence={p.rent_pcm_gbp} name="rent_pcm_gbp" />
+              <span>rent per month</span>
             </div>
           </div>
 
-          <div className="viewing-journal-note">
-            <span>Our first impression</span>
-            <p>{FIRST_IMPRESSION}</p>
-            <ReadAloudButton text={FIRST_IMPRESSION} sampleFile="first-impression.wav" />
-            <small>
-              Things to notice at a viewing → water pressure · stair lighting · street noise
-            </small>
-          </div>
-
-          <section className="assessment-card">
-            <div className="assessment-head">
-              <div className="big-score">
-                {property.score}
-                <span>%</span>
-              </div>
-              <div>
-                <span className="section-kicker">A friendly second opinion</span>
-                <h2>There’s a lot here that could work well.</h2>
-                <p>Here’s how it lines up with the things you told us matter most.</p>
-              </div>
-            </div>
-            <div className="assessment-grid">
-              {ASSESSMENTS.map((a) => (
-                <div className="assessment-item" key={a.title}>
-                  <div className="feature-icon small">
-                    <Icon name={a.icon} />
-                  </div>
-                  <div>
-                    <b>{a.title}</b>
-                    <Status type={a.type} />
-                    <small>{a.detail}</small>
-                  </div>
+          <section className="facts-card">
+            <span className="section-kicker">What we know about this home</span>
+            <dl className="facts-grid">
+              {FACTS.map((name) => (
+                <div key={name}>
+                  <dt>{factName(name)}</dt>
+                  <dd>
+                    <EvidenceValue evidence={p[name] as Fact} name={name} />
+                  </dd>
                 </div>
               ))}
-            </div>
+              {p.other_recurring_costs.map((c) => (
+                <div key={c.label}>
+                  <dt>{c.label}</dt>
+                  <dd>
+                    <EvidenceValue evidence={c.monthly_gbp} name="monthly_gbp" />
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </section>
 
-          <section className="cost-card">
-            <div className="section-title">
-              <div>
-                <span className="section-kicker">True monthly cost</span>
-                <h2>What you could pay each month</h2>
-              </div>
-              <b>
-                {formatGBP(ESTIMATED_TOTAL)}
-                <small>estimated total</small>
-              </b>
-            </div>
-            <div className="cost-lines">
-              {COST_LINES.map((line) => (
-                <div key={line.label}>
-                  <span>
-                    {line.label} {line.note && <small>{line.note}</small>}
-                  </span>
-                  <b>{formatGBP(line.amount)}</b>
-                </div>
+          {cost.status === "ok" && <CostSummary cost={cost.data} />}
+          {cost.status !== "ok" && cost.status !== "loading" && <LoadProblem result={cost} />}
+
+          <section className="assessment-card">
+            <span className="section-kicker">Checks against your requirements</span>
+            <h2>What works, what may not, and what to check</h2>
+            {!profileId && (
+              <p>
+                Create your renter profile, or pick an example renter above, to check this home
+                against specific requirements.
+              </p>
+            )}
+            {profileId && suitability.status === "loading" && <p>Checking…</p>}
+            {suitability.status === "ok" &&
+              (suitability.data.findings.length ? (
+                <FindingsList findings={suitability.data.findings} priorities={draft.priorities} />
+              ) : (
+                <p>No requirement checks apply to this profile.</p>
               ))}
-            </div>
-            <p>
-              <Icon name="info" size={17} /> Estimates are based on public data and typical usage.
-              Your actual costs may vary.
-            </p>
+            {profileId && suitability.status !== "ok" && suitability.status !== "loading" && (
+              <LoadProblem result={suitability} unavailableHint={PAIRS_HINT} />
+            )}
           </section>
 
           <section className="screening-teaser">
@@ -145,8 +170,8 @@ export default function PropertyDetail() {
               <span className="section-kicker">AI property screening</span>
               <h2>Look closer before you view</h2>
               <p>
-                Upload the listing documents or your viewing photos and Haven will help flag visible
-                concerns and missing details.
+                Screen a listing photo for possible issues worth asking about, such as entrance
+                steps or signs of damp.
               </p>
             </div>
             <Button secondary onClick={() => go("screening")}>
@@ -157,20 +182,28 @@ export default function PropertyDetail() {
 
         <aside className="sticky-card">
           <span>Interested in this home?</span>
-          <Button onClick={() => toggleSaved(property.id)} aria-pressed={saved}>
+          <Button onClick={() => toggleSaved(p.id)} aria-pressed={saved}>
             <Icon name={saved ? "check" : "heart"} size={18} />
-            {saved ? "Saved to dashboard" : "Save property"}
+            {saved ? "Saved" : "Save home"}
           </Button>
           <Button
             secondary
             onClick={() => {
-              addToCompare(property.id);
+              addToCompare(p.id);
               go("compare");
             }}
           >
             Add to comparison
           </Button>
-          <small>Listed 2 days ago · Ref. HVN-2841</small>
+          <Button secondary onClick={createReport} disabled={!profileId || creatingReport}>
+            {creatingReport ? "Preparing report…" : "Get the full report"}
+          </Button>
+          {!profileId && <small>Reports need a renter profile.</small>}
+          {reportError && (
+            <small className="screen-notice" role="alert">
+              {reportError}
+            </small>
+          )}
           <div className="safe-note">
             <Icon name="shield" />
             <p>

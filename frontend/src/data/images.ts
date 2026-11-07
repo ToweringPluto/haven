@@ -9,3 +9,19 @@ export const IMAGES = {
   stockbridge: unsplash("photo-1679043465592-7f9a331906f6", 1000),
   street: unsplash("photo-1707048736052-ba0dbf47637e", 1000),
 } as const;
+
+const AREA_IMAGES: Record<string, string> = {
+  leith: IMAGES.leith,
+  marchmont: IMAGES.marchmont,
+  bruntsfield: IMAGES.marchmont,
+  "old town": IMAGES.street,
+  craigleith: IMAGES.stockbridge,
+  stockbridge: IMAGES.stockbridge,
+};
+
+/**
+ * Listings carry no photos yet, so cards show a photo of the *area*, captioned as such, never
+ * passed off as the property itself.
+ */
+export const areaImage = (area: string | null) =>
+  AREA_IMAGES[(area ?? "").toLowerCase()] ?? IMAGES.street;

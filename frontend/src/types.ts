@@ -3,6 +3,7 @@ export const PAGES = [
   "onboarding",
   "explore",
   "property",
+  "report",
   "screening",
   "compare",
   "dashboard",

@@ -94,9 +94,9 @@ export default function HomePage() {
             <figcaption>A quiet corner to think things through</figcaption>
           </figure>
           <div className="wax-note">
-            <Icon name="heart" size={17} />
-            <b>92% match</b>
-            <span>Worth a viewing</span>
+            <Icon name="wallet" size={17} />
+            <b>True cost</b>
+            <span>not just the rent</span>
           </div>
           <EdinburghSketch />
         </div>

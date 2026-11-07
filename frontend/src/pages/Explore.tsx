@@ -1,96 +1,90 @@
+import { useMemo, useState } from "react";
+import { api } from "../api/client";
+import { useLoad } from "../api/useLoad";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
+import { LoadProblem } from "../components/LoadProblem";
+import { ProfileBar } from "../components/ProfileBar";
 import { PropertyCard } from "../components/PropertyCard";
-import { IMAGES } from "../data/images";
-import { PROPERTIES } from "../data/properties";
-import { formatGBP } from "../lib/format";
+import { displayTitle } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
 import { useShortlist } from "../state/shortlist";
 
 export default function Explore() {
   const { go } = useNavigation();
-  const { profile } = useRenterProfile();
+  const { draft } = useRenterProfile();
   const { compare, clearCompare } = useShortlist();
+  const [query, setQuery] = useState("");
+  const [properties, reload] = useLoad("all", api.properties);
+
+  const shown = useMemo(() => {
+    if (properties.status !== "ok") return [];
+    const q = query.trim().toLowerCase();
+    const matches = properties.data.items.filter(
+      (p) =>
+        !q ||
+        displayTitle(p.title).toLowerCase().includes(q) ||
+        (p.area ?? "").toLowerCase().includes(q),
+    );
+    // Preferred areas first; otherwise keep the server's order. No ranking by "fit".
+    const preferred = (area: string | null) => draft.areas.includes(area ?? "");
+    return [...matches].sort((a, b) => Number(preferred(b.area)) - Number(preferred(a.area)));
+  }, [properties, query, draft.areas]);
 
   return (
     <main className="explore-page shell">
       <div className="explore-title">
         <div>
-          <span className="section-kicker">Personalised for you</span>
-          <h1>Homes that fit your life</h1>
-          <p>Here are 18 places that look promising. Kettle on—let’s take a proper look.</p>
+          <span className="section-kicker">Edinburgh rentals</span>
+          <h1>Homes to look into</h1>
+          <p>
+            Every figure shows where it comes from. Open a home for its true monthly cost and the
+            checks against your requirements.
+          </p>
         </div>
-        <button type="button" className="profile-chip" onClick={() => go("onboarding")}>
-          <Icon name="user" size={17} /> Edit renter profile
-        </button>
       </div>
 
-      <section className="neighbourhood-opening">
-        <div className="neighbourhood-opening-photo">
-          <img src={IMAGES.leith} alt="Traditional homes in Leith" decoding="async" />
-          <span>Today’s neighbourhood note</span>
-        </div>
-        <div>
-          <span className="section-kicker">A closer look at Leith</span>
-          <h2>Creative, well connected, and never short of a good coffee.</h2>
-          <p>
-            The Shore is lively at weekends, while the streets towards Pilrig feel calmer. The tram
-            makes town easy, and the Water of Leith gives you a proper Sunday walk.
-          </p>
-          <div className="local-details">
-            <span>
-              <Icon name="train" size={16} /> 14 min by tram to Princes Street
-            </span>
-            <span>
-              <Icon name="leaf" size={16} /> 6 green spaces nearby
-            </span>
-          </div>
-        </div>
-        <div className="map-doodle" aria-hidden="true">
-          <Icon name="map" size={26} />
-          <span className="map-route" />
-          <b>The Shore</b>
-          <small>Leith Walk</small>
-        </div>
-      </section>
+      <ProfileBar />
 
       <div className="search-row">
-        <form className="search-box" role="search" onSubmit={(e) => e.preventDefault()}>
+        <div className="search-box" role="search">
           <Icon name="search" />
-          <input aria-label="Search areas" placeholder="Search area or postcode" />
-          <button type="submit">Search</button>
-        </form>
-        <button type="button" className="filter-button">
-          Filters <span>3</span>
-        </button>
-        <div className="view-toggle">
-          <button type="button" className="active" aria-pressed="true">
-            ☷ List
-          </button>
-          <button type="button" aria-pressed="false">
-            <Icon name="map" size={16} /> Map
-          </button>
+          <input
+            aria-label="Filter by area or description"
+            placeholder="Filter by area, e.g. Leith"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </div>
       </div>
 
-      <div className="active-filters">
-        <span>Up to {formatGBP(profile.budget)} ×</span>
-        <span>Step-free preferred ×</span>
-        <span>≤ 35 min commute ×</span>
-        <button type="button">Clear all</button>
-      </div>
+      {draft.areas.length > 0 && (
+        <p className="list-note">Showing {draft.areas.join(", ")} first.</p>
+      )}
 
-      <div className="property-grid">
-        {PROPERTIES.map((p) => (
-          <PropertyCard key={p.id} property={p} />
-        ))}
-      </div>
+      {properties.status === "loading" && <p className="list-note">Loading homes…</p>}
+      {properties.status !== "loading" && properties.status !== "ok" && (
+        <LoadProblem result={properties} onRetry={reload} />
+      )}
+      {properties.status === "ok" && (
+        <>
+          <p className="list-note">
+            {shown.length} {shown.length === 1 ? "home" : "homes"}. All are illustrative examples,
+            not real listings.
+          </p>
+          <div className="property-grid">
+            {shown.map((p) => (
+              <PropertyCard key={p.id} property={p} />
+            ))}
+          </div>
+        </>
+      )}
 
       {compare.length > 0 && (
         <div className="compare-bar">
           <span>
-            <b>{compare.length}</b> {compare.length === 1 ? "property" : "properties"} selected
+            <b>{compare.length}</b> {compare.length === 1 ? "home" : "homes"} selected
           </span>
           <div>
             <button type="button" onClick={clearCompare}>
@@ -101,7 +95,7 @@ export default function Explore() {
               className={compare.length < 2 ? "disabled" : ""}
               disabled={compare.length < 2}
             >
-              Compare properties <Icon name="arrow" />
+              Compare side by side <Icon name="arrow" />
             </Button>
           </div>
         </div>
