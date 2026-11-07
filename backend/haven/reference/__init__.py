@@ -6,6 +6,11 @@ from haven.reference.council_tax import (
     CouncilTaxYear,
     load_council_tax,
 )
+from haven.reference.electricity_use import (
+    ElectricityUseReference,
+    UsageLevels,
+    load_electricity_use,
+)
 from haven.reference.energy_model import (
     BandGroup,
     DetailGroup,
@@ -32,6 +37,7 @@ __all__ = [
     "CouncilTaxYear",
     "DetailGroup",
     "Distribution",
+    "ElectricityUseReference",
     "EnergyModelReference",
     "EnergyRatesReference",
     "FuelRates",
@@ -39,9 +45,11 @@ __all__ = [
     "ReferenceDataError",
     "ReferenceDocument",
     "ReferenceMeta",
+    "UsageLevels",
     "iter_reference_files",
     "load_all_references",
     "load_council_tax",
+    "load_electricity_use",
     "load_energy_model",
     "load_energy_rates",
     "load_reference",
