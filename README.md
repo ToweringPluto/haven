@@ -1,6 +1,6 @@
 # Haven — Housing And Visibility Edinburgh Network
 
-Haven helps Edinburgh renters understand whether a property is affordable, accessible, practical and worth investigating before they commit to living there.
+Rental listings show what is available. Haven helps Edinburgh renters find the evidence they need to judge whether a property is affordable, accessible, practical and worth investigating before they commit to living there.
 
 > **Project scope:** Haven is a prototype and decision-support tool. It is not a legal, safety, accessibility or compliance certification system. Its assessments are indicative and should be checked against the property in person and with appropriate professional advice.
 
@@ -21,22 +21,22 @@ Haven makes these factors more visible by bringing together structured property 
 
 Haven uses different methods for different kinds of decisions. The method is chosen to keep results explainable and to avoid asking a machine-learning model to make a judgement that can be calculated directly.
 
-| Question | Data and method | Result |
+| Question | Evidence source | Method and result |
 | --- | --- | --- |
-| What will the property cost each month? | Rent, council tax, estimated energy and recurring costs processed with deterministic calculations | Estimated monthly expenditure and comparison with the renter's budget |
-| Can the property meet stated requirements? | Property facts, location data and explicit rules | Checks for barriers such as steps, lift availability, route distance and transport access |
-| What may be difficult to observe? | Images, floor plans and documents analysed with carefully scoped ML classifiers and extraction tools | Potential concerns, missing evidence and confidence levels |
-| What does the evidence mean for this renter? | Structured outputs combined with the renter's priorities | A plain-language explanation with reasons and suggested next steps |
+| What will the property cost each month? | Listing or user-provided rent; council tax data; estimated energy and recurring costs | Deterministic calculations produce estimated monthly expenditure and compare it with the renter's budget |
+| Can the property meet stated requirements? | Property facts, user requirements and location or transport data | Transparent rules check barriers such as steps, lift availability, route distance and transport access |
+| What may be difficult to observe? | User-uploaded images, floor plans and property documents | Separate computer-vision and document-processing models surface potential concerns, missing evidence and uncertainty |
+| What does the evidence mean for this renter? | Structured outputs, source metadata and the renter's priorities | A grounded plain-language explanation gives reasons and suggested next steps |
 
-Machine learning is useful where the evidence is difficult to observe directly. Possible classifiers could identify visual signals such as possible damp or mould, an entrance step or an apparent access barrier. A model output is a signal, not a fact:
+Machine learning is useful where the evidence is difficult to observe directly. An initial experiment could use labelled property images to classify visual signals such as possible damp or mould, or detect features such as an entrance step. Labels should be based on explicit annotation guidelines and reviewed examples; performance should be measured on held-out data using class-specific precision, recall and false-positive and false-negative analysis.
 
 ```text
-Possible damp or mould: 0.78 confidence
-Possible entrance step: 0.94 confidence
-Insufficient image evidence: true
+Possible damp or mould: possible
+Possible entrance step: likely
+Evidence quality: insufficient for a reliable conclusion
 ```
 
-Haven should report this as **“possible damp detected; inspect before signing”**, not **“this property has damp.”** A model must be able to return *insufficient evidence*, and its output should retain the source, confidence and uncertainty. An LLM may explain structured results in plain language, but it must not invent a property score or unsupported conclusion from a description.
+These are mock outputs, not measured model probabilities. Haven should report a result as **“possible damp detected; inspect before signing”**, not **“this property has damp.”** A model must be able to return *insufficient evidence*, and its output should retain the source, evidence quality, calibrated confidence where available and uncertainty. An LLM may explain structured results in plain language, but it must not invent a property score or unsupported conclusion from a description.
 
 The final recommendation supports the renter's judgement. It does not reject applicants, make decisions about people, or certify that a property is safe, accessible or compliant.
 
@@ -46,15 +46,18 @@ Haven's central question is:
 
 > What does a renter need to know that a listing does not normally reveal, and what evidence can help reveal it?
 
-The system investigates this gap by:
+The primary investigation is the gap between a property's advertised asking price and the evidence a renter needs to judge its real monthly cost and practical suitability. Property-condition screening and wider public-data enrichment are extensions of this investigation.
 
-1. **Collecting structured property information** such as rent, council tax band, EPC rating, floor, lift availability and entrance details.
-2. **Combining it with context** such as transport links, routes to essential destinations and the renter's budget, priorities and accessibility requirements.
-3. **Gathering additional evidence** from uploaded photographs, floor plans and property documents.
-4. **Applying calculations, rules and scoped ML models** to expose costs, barriers, potential concerns and missing information.
-5. **Presenting the evidence and uncertainty** in an actionable report rather than hiding it behind an unexplained score.
+The system investigates the gap by:
 
-This approach can also incorporate relevant public data, provided the source, date and limitations are clear. The goal is not to claim that data can reveal everything about a property. The goal is to show what is known, what has been inferred, what remains uncertain and what the renter should check.
+1. **Collecting listing and user-provided information** such as rent, council tax band, EPC rating, floor, lift availability and entrance details.
+2. **Adding attributable context** from public datasets, transport services and location data, with the source and date recorded.
+3. **Combining it with the renter's context** such as budget, priorities and accessibility requirements.
+4. **Gathering additional evidence** from uploaded photographs, floor plans and property documents.
+5. **Applying calculations, rules and scoped ML models** to expose costs, barriers, potential concerns and missing information.
+6. **Presenting the evidence and uncertainty** in an actionable report rather than hiding it behind an unexplained score.
+
+The goal is not to claim that data can reveal everything about a property. The goal is to distinguish what is known from listing or public data, what is supplied by the renter, what has been inferred by a model, what is estimated, what remains uncertain and what should be checked.
 
 ## Core capabilities
 
@@ -88,7 +91,7 @@ Haven evaluates:
 - Location and transport suitability
 - Potential barriers in relation to the renter's requirements
 
-It explains why a property may or may not suit this particular renter. A property is not simply “good” or “bad”: it may be suitable for one person and unsuitable for another.
+It explains which available evidence may or may not meet this particular renter's stated requirements. The result is a set of suitability indicators, not a definitive judgement that a property is “good” or “bad.”
 
 For example:
 
@@ -99,14 +102,13 @@ For example:
 
 ### 4. AI property screening
 
-The user can upload a photograph, floor plan or property document. Screening may flag:
+The user can upload a photograph, floor plan or property document. Different processing tasks may flag:
 
-- Possible damp or mould
-- Possible access barriers
-- Missing safety or property information
-- Features that require further inspection
+- **Image analysis:** possible damp or mould, visible entrance steps or other apparent access barriers.
+- **Floor-plan analysis:** possible layout constraints or missing access information.
+- **Document processing:** extracted facts, missing evidence or features that require further inspection.
 
-These are potential signals for investigation, not diagnoses or certifications.
+These are potential signals for investigation, not diagnoses or certifications. Accessibility is particularly contextual: a photograph or generic property field cannot establish whether a home works for a specific person without that person's requirements and further verification.
 
 ## Example user journey
 
@@ -131,6 +133,17 @@ These are potential signals for investigation, not diagnoses or certifications.
 
 **Recommendation:** investigate the entrance and property condition before committing. The estimated cost is within the stated budget, but suitability is not yet established.
 
+## Current and planned scope
+
+| Area | Current concept | Planned validation or extension |
+| --- | --- | --- |
+| Cost calculation | Structured inputs and deterministic monthly estimates | Compare estimates with verified property bills and assumptions |
+| Property and location data | Listing, user-provided and attributable public data | Record source, date, coverage and known gaps |
+| Requirement checks | Rules grounded in renter-provided priorities | Test edge cases and review accessibility assumptions with users |
+| Image analysis | Proposed classifier for visual property signals | Build an annotated dataset, evaluate precision and recall, and test false-positive and false-negative rates |
+| Floor plans and documents | Proposed extraction and screening | Evaluate OCR, extraction accuracy and insufficient-evidence handling |
+| Personalised report | Explanation grounded in structured results | Check that generated text preserves evidence, uncertainty and source context |
+
 ## Proposed technical approach
 
 Haven is designed as a hybrid decision-support system:
@@ -139,7 +152,8 @@ Haven is designed as a hybrid decision-support system:
 | --- | --- | --- |
 | True cost | Deterministic calculations | Estimated monthly expenditure |
 | Explicit requirements | Rules and structured data | Transparent checks and reasons |
-| Property screening | Computer vision and document extraction/classification | Potential concerns, missing evidence and confidence |
+| Image screening | Computer vision classification or detection | Potential visual concerns, evidence quality and calibrated confidence |
+| Floor plans and documents | OCR, document extraction and task-specific rules or classifiers | Extracted facts, missing evidence and features requiring inspection |
 | Explanation | AI-generated natural-language summary grounded in structured results | Personalised report and next steps |
 
 The important principle is **evidence before prediction**. Where a result can be calculated or checked with a clear rule, Haven should do that directly. ML is reserved for patterns that are hard to observe, and every prediction should be presented with its evidence, confidence and limitations.
