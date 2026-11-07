@@ -550,3 +550,6 @@ backend/var/
 
 # Docker tool volumes (openrouteservice graphs, OSM extracts)
 /var/
+
+# Synthetic documents (P3-04): generated, never committed
+ml/datasets/docs_synthetic/out/
