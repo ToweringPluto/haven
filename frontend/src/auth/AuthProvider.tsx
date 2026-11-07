@@ -1,5 +1,5 @@
 import { Auth0Provider, useAuth0, type AppState } from "@auth0/auth0-react";
-import { createContext, use, useMemo, type ReactNode } from "react";
+import { createContext, use, useMemo, useState, type ReactNode } from "react";
 import { auth0Config, isAuthConfigured } from "./config";
 
 export interface AuthUser {
@@ -17,6 +17,9 @@ export interface AuthValue {
   logout: () => void;
   /** Resolves to an API access token, or null if the user isn't (or can't silently be) signed in. */
   getAccessToken: () => Promise<string | null>;
+  /** Why the last sign-in attempt failed (e.g. Auth0 returned `?error=`), until dismissed. */
+  error: string | null;
+  dismissError: () => void;
 }
 
 const SIGNED_OUT: AuthValue = {
@@ -27,6 +30,8 @@ const SIGNED_OUT: AuthValue = {
   login: () => {},
   logout: () => {},
   getAccessToken: async () => null,
+  error: null,
+  dismissError: () => {},
 };
 
 const AuthContext = createContext<AuthValue>(SIGNED_OUT);
@@ -46,7 +51,10 @@ function Auth0Bridge({ children }: { children: ReactNode }) {
     loginWithRedirect,
     logout,
     getAccessTokenSilently,
+    error: auth0Error,
   } = useAuth0();
+  const [dismissed, setDismissed] = useState<Error | undefined>();
+  const error = auth0Error && auth0Error !== dismissed ? auth0Error.message : null;
 
   const value = useMemo<AuthValue>(
     () => ({
@@ -66,8 +74,23 @@ function Auth0Bridge({ children }: { children: ReactNode }) {
           return null;
         }
       },
+      error,
+      dismissError: () => {
+        setDismissed(auth0Error);
+        // Drop Auth0's ?error=…&state=… from the address bar, keeping the hash route.
+        window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+      },
     }),
-    [isLoading, isAuthenticated, user, loginWithRedirect, logout, getAccessTokenSilently],
+    [
+      isLoading,
+      isAuthenticated,
+      user,
+      loginWithRedirect,
+      logout,
+      getAccessTokenSilently,
+      error,
+      auth0Error,
+    ],
   );
 
   return <AuthContext value={value}>{children}</AuthContext>;

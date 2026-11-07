@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent } from "react";
+import { AuthErrorBanner } from "./components/AuthErrorBanner";
 import { Footer } from "./components/Footer";
 import { Nav } from "./components/Nav";
 import HomePage from "./pages/HomePage";
@@ -58,6 +59,7 @@ export default function App() {
   return (
     <AppProviders>
       <Nav />
+      <AuthErrorBanner />
       <CurrentPage />
       <Footer />
     </AppProviders>

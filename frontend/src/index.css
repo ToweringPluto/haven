@@ -3697,3 +3697,24 @@ footer .logo > span:last-child {
 .footer-inner > div > button:not(.button):hover {
   color: var(--cream);
 }
+.auth-error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--terracotta-ink);
+  background: color-mix(in srgb, var(--terracotta) 14%, var(--surface));
+  color: var(--charcoal);
+}
+.auth-error > svg {
+  color: var(--terracotta-ink);
+}
+.auth-error > p {
+  flex: 1 1 300px;
+}
+.auth-error .text-button {
+  color: var(--teal);
+  font-weight: 700;
+}
