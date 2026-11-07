@@ -538,9 +538,8 @@ FodyWeavers.xsd
 CLAUDE.md
 
 
-# Ralph loop runtime files
-ralph/logs/
-ralph/STOP
+# Ralph loop harness (local only, never committed)
+ralph/
 
 # Large raw data downloads
 data/raw/
