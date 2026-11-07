@@ -8,12 +8,11 @@ import { Icon } from "../components/Icon";
 import { SampleLabel } from "../components/SampleLabel";
 import { SignInPrompt } from "../components/SignInPrompt";
 import { Status } from "../components/Status";
+import { useEnumLabel } from "../api/enums";
 import {
   ACCEPTED_IMAGE_TYPES,
   MAX_IMAGE_BYTES,
-  likelihoodInfo,
-  qualityLabel,
-  signalLabel,
+  likelihoodStatus,
   type PhotoScreen,
 } from "../data/screening";
 
@@ -39,6 +38,7 @@ function validateImage(file: File): string | null {
 
 export default function Screening() {
   const { isAuthenticated } = useAuth();
+  const label = useEnumLabel();
   const authFetch = useAuthFetch();
   const fileInput = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<ScreenState>({ phase: "idle" });
@@ -154,7 +154,11 @@ export default function Screening() {
             <span>
               <b>{state.isSample ? "Sample screening" : "Screening complete"}</b>
               <small>
-                {qualityLabel(state.result.evidence_quality)} · {state.result.signals.length}{" "}
+                Photo quality:{" "}
+                {state.result.evidence_quality
+                  ? label("evidence_quality", state.result.evidence_quality)
+                  : "not assessed"}{" "}
+                · {state.result.signals.length}{" "}
                 {state.result.signals.length === 1 ? "possible issue" : "possible issues"} to check
               </small>
             </span>
@@ -170,12 +174,13 @@ export default function Screening() {
             </p>
           )}
           {state.result.signals.map((signal) => {
-            const likelihood = likelihoodInfo(signal.likelihood);
             return (
               <div className="result-row" key={signal.id}>
-                <Status type={likelihood.status}>{likelihood.label}</Status>
+                <Status type={likelihoodStatus(signal.likelihood)}>
+                  {label("likelihood", signal.likelihood)}
+                </Status>
                 <div>
-                  <h3>{signalLabel(signal.kind)}</h3>
+                  <h3>{label("signal_kind", signal.kind)}</h3>
                   {signal.note && <p>{signal.note}</p>}
                   {signal.confidence !== null && (
                     <small>Confidence: {Math.round(signal.confidence * 100)}%</small>
