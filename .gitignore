@@ -533,3 +533,7 @@ FodyWeavers.xsd
 # IDEA
 .idea
 
+# CLAUDE
+.claude
+CLAUDE.md
+
