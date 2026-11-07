@@ -1,0 +1,17 @@
+{
+  "type": "about:blank",
+  "title": "Unprocessable Content",
+  "status": 422,
+  "detail": "The request body failed validation.",
+  "instance": "/v1/profiles",
+  "errors": [
+    {
+      "loc": [
+        "body",
+        "monthly_budget_gbp"
+      ],
+      "msg": "Input should be greater than 0",
+      "type": "greater_than"
+    }
+  ]
+}

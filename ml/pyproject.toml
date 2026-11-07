@@ -1,0 +1,14 @@
+[project]
+name = "haven-ml"
+version = "0.1.0"
+description = "Haven ML: datasets, screening baselines and the evaluation harness"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.5.4",
+    "pillow>=13.0.0",
+    "scikit-learn>=1.9.1",
+]
+
+[tool.uv]
+package = false

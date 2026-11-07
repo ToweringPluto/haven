@@ -1,0 +1,75 @@
+{
+  "property_id": "ill-prop-marchmont-flat",
+  "profile_id": "persona-student",
+  "findings": [
+    {
+      "id": "st-budget-fit",
+      "rule_id": "budget_fit",
+      "category": "cost",
+      "outcome": "unknown",
+      "title": "Can't compare the cost with your budget yet",
+      "reason": "The council tax band is missing, so the monthly total is incomplete.",
+      "facts": [
+        {
+          "name": "total_monthly_gbp",
+          "evidence": {
+            "value": null,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "insufficient",
+            "note": "Total incomplete: council tax unknown."
+          }
+        }
+      ],
+      "next_step": "Ask the agent for the council tax band, or look the address up on the Scottish Assessors Association website."
+    },
+    {
+      "id": "st-council-tax-band",
+      "rule_id": "council_tax_band_known",
+      "category": "missing_info",
+      "outcome": "unknown",
+      "title": "Council tax band not stated",
+      "reason": "The listing does not include a council tax band.",
+      "facts": [
+        {
+          "name": "council_tax_band",
+          "evidence": {
+            "value": null,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "insufficient",
+            "note": "Not stated in the listing."
+          }
+        }
+      ],
+      "next_step": "Ask the agent for the council tax band before signing."
+    },
+    {
+      "id": "st-travel-time",
+      "rule_id": "travel_time_to_destinations",
+      "category": "location",
+      "outcome": "meets",
+      "title": "Estimated travel time to the university is within your limit",
+      "reason": "The estimated walking time to University of Edinburgh Central Area is within the stated limit.",
+      "facts": [
+        {
+          "name": "walk_minutes",
+          "evidence": {
+            "value": 18,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    }
+  ]
+}

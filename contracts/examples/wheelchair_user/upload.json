@@ -1,0 +1,24 @@
+{
+  "id": "ill-upload-wu-entrance",
+  "kind": "photo",
+  "filename": "entrance.jpg",
+  "content_type": "image/jpeg",
+  "size_bytes": 482133,
+  "uploaded_at": "2026-11-01T10:00:00Z",
+  "property_id": "ill-prop-leith-flat",
+  "metadata_stripped": true,
+  "evidence_quality": "good",
+  "signals": [
+    {
+      "id": "wu-sig-entrance-step",
+      "kind": "entrance_step",
+      "likelihood": "likely",
+      "evidence_quality": "good",
+      "confidence": null,
+      "upload_id": "ill-upload-wu-entrance",
+      "source": "illustrative fixture",
+      "note": "Illustrative output, not a measured model probability."
+    }
+  ],
+  "extracted_facts": []
+}
