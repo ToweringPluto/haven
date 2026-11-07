@@ -1,0 +1,87 @@
+{
+  "property_id": "ill-prop-gorgie-flat",
+  "profile_id": "persona-tight-budget",
+  "findings": [
+    {
+      "id": "tb-budget-fit",
+      "rule_id": "budget_fit",
+      "category": "cost",
+      "outcome": "concern",
+      "title": "Estimated monthly cost is over budget",
+      "reason": "Even the low end of the estimated total is above the stated budget.",
+      "facts": [
+        {
+          "name": "total_monthly_gbp",
+          "evidence": {
+            "value": 1135,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask for recent energy bills and check whether the rent is negotiable."
+    },
+    {
+      "id": "tb-epc-heating-cost",
+      "rule_id": "epc_heating_cost_risk",
+      "category": "cost",
+      "outcome": "concern",
+      "title": "Heating costs could be high",
+      "reason": "EPC band F with electric heating suggests higher than average energy costs.",
+      "facts": [
+        {
+          "name": "epc_rating",
+          "evidence": {
+            "value": "F",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        },
+        {
+          "name": "main_fuel",
+          "evidence": {
+            "value": "electricity",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask what the heating system is and for the last year's energy bills."
+    },
+    {
+      "id": "tb-council-tax-band",
+      "rule_id": "council_tax_band_known",
+      "category": "missing_info",
+      "outcome": "meets",
+      "title": "Council tax band known",
+      "reason": "The council tax band is available from public data.",
+      "facts": [
+        {
+          "name": "council_tax_band",
+          "evidence": {
+            "value": "B",
+            "origin": "public_data",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    }
+  ]
+}

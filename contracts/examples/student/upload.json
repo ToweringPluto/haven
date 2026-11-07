@@ -1,0 +1,38 @@
+{
+  "id": "ill-upload-st-tenancy",
+  "kind": "document",
+  "filename": "draft_tenancy.pdf",
+  "content_type": "application/pdf",
+  "size_bytes": 213870,
+  "uploaded_at": "2026-11-01T10:00:00Z",
+  "property_id": "ill-prop-marchmont-flat",
+  "metadata_stripped": false,
+  "evidence_quality": null,
+  "signals": [],
+  "extracted_facts": [
+    {
+      "name": "rent_pcm_gbp",
+      "evidence": {
+        "value": 825,
+        "origin": "user",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value read from draft_tenancy.pdf."
+      }
+    },
+    {
+      "name": "deposit_gbp",
+      "evidence": {
+        "value": 950,
+        "origin": "user",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value read from draft_tenancy.pdf."
+      }
+    }
+  ]
+}

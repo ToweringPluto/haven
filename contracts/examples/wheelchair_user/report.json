@@ -1,0 +1,364 @@
+{
+  "id": "ill-report-wu",
+  "created_at": "2026-11-01T10:00:00Z",
+  "illustrative": true,
+  "profile": {
+    "id": "persona-wheelchair-user",
+    "label": "Wheelchair user (illustrative persona)",
+    "monthly_budget_gbp": 1250.0,
+    "priorities": [
+      "step_free_access",
+      "lift_access",
+      "transport_access"
+    ],
+    "access": {
+      "wheelchair_user": true,
+      "step_free_entrance_required": true,
+      "lift_required_above_floor": 0,
+      "max_walk_to_stop_m": 400
+    },
+    "destinations": [
+      {
+        "name": "Royal Infirmary of Edinburgh",
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "max_travel_minutes": 45
+      }
+    ],
+    "other_recurring_costs": []
+  },
+  "property": {
+    "id": "ill-prop-leith-flat",
+    "title": "Illustrative property — not a real listing: 2-bed flat, Leith",
+    "illustrative": true,
+    "area": "Leith",
+    "latitude": 55.97,
+    "longitude": -3.172,
+    "rent_pcm_gbp": {
+      "value": 950.0,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "bedrooms": {
+      "value": 2,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "property_type": {
+      "value": "flat",
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "floor_area_m2": {
+      "value": 68.0,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "council_tax_band": {
+      "value": "C",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "epc_rating": {
+      "value": "C",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "main_fuel": {
+      "value": "mains_gas",
+      "origin": "public_data",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "floor_level": {
+      "value": 2,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "has_lift": {
+      "value": null,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "insufficient",
+      "note": "The listing does not say whether there is a lift."
+    },
+    "entrance_steps": {
+      "value": 3,
+      "origin": "listing",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "known",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "other_recurring_costs": []
+  },
+  "cost": {
+    "property_id": "ill-prop-leith-flat",
+    "profile_id": "persona-wheelchair-user",
+    "lines": [
+      {
+        "kind": "rent",
+        "label": "Rent",
+        "monthly_gbp": {
+          "value": 950.0,
+          "origin": "listing",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": null,
+        "high_gbp": null
+      },
+      {
+        "kind": "council_tax",
+        "label": "Council tax (band C)",
+        "monthly_gbp": {
+          "value": 140.0,
+          "origin": "public_data",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "known",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": null,
+        "high_gbp": null
+      },
+      {
+        "kind": "energy",
+        "label": "Estimated energy",
+        "monthly_gbp": {
+          "value": 90.0,
+          "origin": "estimate",
+          "source": "illustrative fixture",
+          "as_of": "2026-11-01",
+          "confidence": null,
+          "status": "estimated",
+          "note": "Illustrative value for the API contract; not real data."
+        },
+        "low_gbp": 70.0,
+        "high_gbp": 115.0
+      }
+    ],
+    "total_monthly_gbp": {
+      "value": 1180.0,
+      "origin": "estimate",
+      "source": "illustrative fixture",
+      "as_of": "2026-11-01",
+      "confidence": null,
+      "status": "estimated",
+      "note": "Illustrative value for the API contract; not real data."
+    },
+    "total_low_gbp": 1160.0,
+    "total_high_gbp": 1205.0,
+    "budget_monthly_gbp": 1250.0,
+    "budget_comparison": "within"
+  },
+  "findings": [
+    {
+      "id": "wu-budget-fit",
+      "rule_id": "budget_fit",
+      "category": "cost",
+      "outcome": "meets",
+      "title": "Estimated monthly cost is within budget",
+      "reason": "The estimated total, including its upper range, is below the stated budget.",
+      "facts": [
+        {
+          "name": "total_monthly_gbp",
+          "evidence": {
+            "value": 1180,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    },
+    {
+      "id": "wu-step-free-entrance",
+      "rule_id": "step_free_entrance",
+      "category": "access",
+      "outcome": "concern",
+      "title": "Possible entrance steps",
+      "reason": "The listing mentions steps at the entrance and a step-free entrance is required.",
+      "facts": [
+        {
+          "name": "entrance_steps",
+          "evidence": {
+            "value": 3,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask the agent for photos of the entrance and whether a ramp or step-free route is available, and check it in person."
+    },
+    {
+      "id": "wu-lift-required",
+      "rule_id": "lift_required_for_floor",
+      "category": "access",
+      "outcome": "unknown",
+      "title": "Lift availability not stated",
+      "reason": "The flat is above the ground floor and the listing does not say whether there is a lift.",
+      "facts": [
+        {
+          "name": "floor_level",
+          "evidence": {
+            "value": 2,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        },
+        {
+          "name": "has_lift",
+          "evidence": {
+            "value": null,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "insufficient",
+            "note": "Not stated in the listing."
+          }
+        }
+      ],
+      "next_step": "Ask whether the building has a lift, its door width and its maintenance history."
+    },
+    {
+      "id": "wu-walk-to-stop",
+      "rule_id": "walk_to_stop_within_limit",
+      "category": "location",
+      "outcome": "meets",
+      "title": "Bus stop within the stated walking limit",
+      "reason": "The nearest bus stop is estimated to be within the stated limit.",
+      "facts": [
+        {
+          "name": "walk_to_stop_m",
+          "evidence": {
+            "value": 180,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    }
+  ],
+  "signals": [
+    {
+      "id": "wu-sig-entrance-step",
+      "kind": "entrance_step",
+      "likelihood": "likely",
+      "evidence_quality": "good",
+      "confidence": null,
+      "upload_id": "ill-upload-wu-entrance",
+      "source": "illustrative fixture",
+      "note": "Illustrative output, not a measured model probability."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What works",
+      "sentences": [
+        {
+          "text": "The estimated monthly cost is within your stated budget.",
+          "cites": [
+            "wu-budget-fit"
+          ]
+        },
+        {
+          "text": "A bus stop appears to be within your stated walking limit.",
+          "cites": [
+            "wu-walk-to-stop"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "What may be unsuitable",
+      "sentences": [
+        {
+          "text": "The listing and an uploaded photo suggest possible steps at the entrance.",
+          "cites": [
+            "wu-step-free-entrance",
+            "wu-sig-entrance-step"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "What could be expensive",
+      "sentences": []
+    },
+    {
+      "heading": "Check before signing",
+      "sentences": [
+        {
+          "text": "Ask whether there is a step-free route into the building.",
+          "cites": [
+            "wu-step-free-entrance"
+          ]
+        },
+        {
+          "text": "Ask whether the building has a lift and how it is maintained.",
+          "cites": [
+            "wu-lift-required"
+          ]
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Haven is a prototype and decision-support tool. It is not a legal, safety, accessibility or compliance certification system. Its assessments are indicative and should be checked against the property in person and with appropriate professional advice."
+}

@@ -1,0 +1,68 @@
+# Haven local stack. Written ahead of time: Docker isn't installed on the dev machine yet
+# (task P2-00), so this file is checked with tests only, not run (task P6-02 runs it).
+#
+#   docker compose --profile app up --build       # the API on http://localhost:8000
+#   docker compose --profile tools up             # openrouteservice + Label Studio
+#
+# Images are pinned to release tags. Bump them deliberately.
+
+services:
+  api:
+    profiles: ["app"]
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: haven-api:dev
+    ports:
+      - "8000:8000"
+    environment:
+      HAVEN_CORS_ORIGINS: "${HAVEN_CORS_ORIGINS:-http://localhost:3000}"
+    volumes:
+      # The API resolves contracts/ and data/ relative to the repo root (/repo in the image).
+      - ./contracts:/repo/contracts:ro
+      - ./data:/repo/data:ro
+      - api-var:/repo/backend/var
+    restart: unless-stopped
+
+  # Self-hosted routing for foot-walking and wheelchair profiles (task P2-05).
+  # Put an OSM extract covering Edinburgh (e.g. a Geofabrik Scotland .osm.pbf) at
+  # ./var/ors/files/scotland-latest.osm.pbf before the first start. The first graph build
+  # takes a while and needs several GB of RAM (see the XMX rule of thumb in ORS docs).
+  openrouteservice:
+    profiles: ["tools"]
+    image: openrouteservice/openrouteservice:v10.1.0
+    ports:
+      - "8080:8082"
+    volumes:
+      - ./var/ors:/home/ors
+    environment:
+      REBUILD_GRAPHS: "False"
+      CONTAINER_LOG_LEVEL: INFO
+      XMS: 1g
+      XMX: 4g
+      ors.engine.profile_default.build.source_file: /home/ors/files/scotland-latest.osm.pbf
+      ors.engine.profile_default.graph_path: /home/ors/graphs
+      ors.engine.elevation.cache_path: /home/ors/elevation_cache
+      ors.engine.profiles.driving-car.enabled: "false"
+      ors.engine.profiles.foot-walking.enabled: "true"
+      ors.engine.profiles.wheelchair.enabled: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8082/ors/v2/health || exit 1"]
+      start_period: 10m
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Annotation tool for the condition / entrance datasets (tasks P3b-02, P3b-05).
+  label-studio:
+    profiles: ["tools"]
+    image: heartexlabs/label-studio:1.23.2
+    ports:
+      - "8081:8080"
+    volumes:
+      - label-studio-data:/label-studio/data
+      - ./ml/labelstudio:/label-studio/configs:ro
+
+volumes:
+  api-var:
+  label-studio-data:

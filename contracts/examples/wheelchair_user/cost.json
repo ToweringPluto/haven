@@ -1,0 +1,64 @@
+{
+  "property_id": "ill-prop-leith-flat",
+  "profile_id": "persona-wheelchair-user",
+  "lines": [
+    {
+      "kind": "rent",
+      "label": "Rent",
+      "monthly_gbp": {
+        "value": 950.0,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "council_tax",
+      "label": "Council tax (band C)",
+      "monthly_gbp": {
+        "value": 140.0,
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "energy",
+      "label": "Estimated energy",
+      "monthly_gbp": {
+        "value": 90.0,
+        "origin": "estimate",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "estimated",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": 70.0,
+      "high_gbp": 115.0
+    }
+  ],
+  "total_monthly_gbp": {
+    "value": 1180.0,
+    "origin": "estimate",
+    "source": "illustrative fixture",
+    "as_of": "2026-11-01",
+    "confidence": null,
+    "status": "estimated",
+    "note": "Illustrative value for the API contract; not real data."
+  },
+  "total_low_gbp": 1160.0,
+  "total_high_gbp": 1205.0,
+  "budget_monthly_gbp": 1250.0,
+  "budget_comparison": "within"
+}

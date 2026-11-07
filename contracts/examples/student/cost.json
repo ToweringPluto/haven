@@ -1,0 +1,64 @@
+{
+  "property_id": "ill-prop-marchmont-flat",
+  "profile_id": "persona-student",
+  "lines": [
+    {
+      "kind": "rent",
+      "label": "Rent",
+      "monthly_gbp": {
+        "value": 825.0,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "council_tax",
+      "label": "Council tax (band unknown)",
+      "monthly_gbp": {
+        "value": null,
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "insufficient",
+        "note": "Council tax band unknown, so this line can't be calculated. The cost depends on the band (A-H)."
+      },
+      "low_gbp": null,
+      "high_gbp": null
+    },
+    {
+      "kind": "energy",
+      "label": "Estimated energy",
+      "monthly_gbp": {
+        "value": 70.0,
+        "origin": "estimate",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "estimated",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "low_gbp": 55.0,
+      "high_gbp": 90.0
+    }
+  ],
+  "total_monthly_gbp": {
+    "value": null,
+    "origin": "estimate",
+    "source": "illustrative fixture",
+    "as_of": "2026-11-01",
+    "confidence": null,
+    "status": "insufficient",
+    "note": "The total can't be calculated while the council tax line is missing."
+  },
+  "total_low_gbp": null,
+  "total_high_gbp": null,
+  "budget_monthly_gbp": 900.0,
+  "budget_comparison": "unknown"
+}

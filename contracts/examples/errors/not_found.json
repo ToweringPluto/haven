@@ -1,0 +1,8 @@
+{
+  "type": "about:blank",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No property with id 'ill-prop-does-not-exist'.",
+  "instance": "/v1/properties/ill-prop-does-not-exist",
+  "errors": null
+}

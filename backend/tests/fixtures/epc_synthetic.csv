@@ -1,0 +1,20 @@
+BUILDING_REFERENCE_NUMBER,ADDRESS1,LODGEMENT_DATE,CURRENT_ENERGY_RATING,TOTAL_FLOOR_AREA,MAINHEAT_DESCRIPTION,SPACE_HEATING_DEMAND,WATER_HEATING_DEMAND,LOCAL_AUTHORITY_LABEL,MAIN_FUEL,PROPERTY_TYPE,CREATED_AT
+Property_UPRN,ADDRESS1,Date of Certificate,Current Energy Efficiency Band,Total floor area (m²),Main heating description,Space heating demand (kWh/yr),Water heating demand (kWh/yr),Local Authority,Main heating fuel type,Property Type,Created At
+1001,Synthetic 1,2024-01-10,D,100,"Boiler and radiators, mains gas",8000,2000,Edinburgh City,mains gas (not community),Flat,2024-01-10 09:00:00
+1002,Synthetic 2,2024-02-10,D,50,"Boiler and radiators, mains gas",4500,1000,Edinburgh City,Gas: mains gas,Flat,2024-02-10 09:00:00
+1003,Synthetic 3,2024-03-10,D,80,"Boiler and radiators, mains gas",8000,1600,Edinburgh City,mains gas (not community),Flat,2024-03-10 09:00:00
+1004,Synthetic 4,2026-04-10,D,100,"Boiler and radiators, mains gas | Room heaters, electric ",11000,2000,Edinburgh City,,Flat,2026-04-10 09:00:00
+1005,Synthetic 5,2024-05-10,D,200,"Boiler and radiators, mains gas",24000,4000,Edinburgh City,mains gas (not community),Flat,2024-05-10 09:00:00
+1005,Synthetic 5,2019-05-01,D,100,"Boiler and radiators, mains gas",90000,9900,Edinburgh City,mains gas (not community),Flat,2019-05-01 09:00:00
+1006,Synthetic 6,2026-06-10,D,40,Electric storage heaters ,7000,1000,Edinburgh City,,Flat,2026-06-10 09:00:00
+1007,Synthetic 7,2023-07-10,D,50,"Room heaters, electric",9000,2000,Edinburgh City,electricity (not community),Flat,2023-07-10 09:00:00
+1008,Synthetic 8,2023-08-10,C,100,"Boiler and radiators, mains gas",7000,1000,Edinburgh City,Gas: mains gas,House,2023-08-10 09:00:00
+1009,Synthetic 9,2023-09-10,C,100,"Boiler and radiators, mains gas",8000,1000,Edinburgh City,mains gas (not community),House,2023-09-10 09:00:00
+1010,Synthetic 10,2023-10-10,C,100,"Boiler and radiators, mains gas",9000,1000,Edinburgh City,mains gas (not community),House,2023-10-10 09:00:00
+1011,Synthetic 11,2023-11-10,C,100,Community scheme,5000,1000,Edinburgh City,mains gas (community),Flat,2023-11-10 09:00:00
+1012,Synthetic 12,2023-12-10,C,100,"Boiler and radiators, mains gas",5000,1000,Glasgow City,mains gas (not community),Flat,2023-12-10 09:00:00
+1013,Synthetic 13,2022-01-10,,100,"Boiler and radiators, mains gas",5000,1000,Edinburgh City,mains gas (not community),Flat,2022-01-10 09:00:00
+1014,Synthetic 14,2022-02-10,C,,"Boiler and radiators, mains gas",5000,1000,Edinburgh City,mains gas (not community),Flat,2022-02-10 09:00:00
+1015,Synthetic 15,2022-03-10,C,10,"Boiler and radiators, mains gas",5000,1000,Edinburgh City,mains gas (not community),Flat,2022-03-10 09:00:00
+1016,Synthetic 16,2022-04-10,C,100,"Boiler and radiators, mains gas",,1000,Edinburgh City,mains gas (not community),Flat,2022-04-10 09:00:00
+1017,Synthetic 17,2022-05-10,B,100,No system present: electric heaters assumed,3000,1000, Edinburgh City ,no heating/hot-water system or data is from a community network,Park home,2022-05-10 09:00:00
