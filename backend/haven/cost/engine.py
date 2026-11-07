@@ -8,10 +8,11 @@
 * **energy**, as two lines:
 
   - *heating and hot water*: floor area × the Edinburgh EPC median heat demand (kWh/m²/year)
-    for the property's group, priced at the Ofgem price cap unit rate for its heating fuel
-    (plus the gas standing charge for gas-heated homes). The interquartile range gives
-    low/high. This is **heat demand, not fuel bought**: boiler/system losses aren't included,
-    so for most systems it is an underestimate;
+    for the property's group, divided by a SAP 10.2 default heating efficiency to get the fuel
+    bought, priced at the Ofgem price cap unit rate for its heating fuel (plus the gas standing
+    charge for gas-heated homes). The heating system itself isn't known, so the central figure
+    assumes a typical system for the fuel and low/high combine the interquartile range of heat
+    demand with the most/least efficient system SAP lists for that fuel;
   - *electricity*: Ofgem's typical domestic consumption values (median, with lower/upper
     quartile as low/high) priced at the electricity cap unit rate plus standing charge;
 
@@ -209,7 +210,14 @@ def _heating_line(prop: Property, refs: CostReferences, on: date) -> CostLine:
         f"Scottish domestic EPC register, {model.local_authority}, {model.dataset_release} "
         f"({model.meta.source_url})"
     )
-    as_of = min(model.meta.retrieved, refs.energy_rates.meta.retrieved)
+    efficiency_ref = refs.heating_efficiency
+    efficiency_source = (
+        f"{efficiency_ref.document}, Tables 4a/4b default heating efficiencies "
+        f"({efficiency_ref.source_url})"
+    )
+    as_of = min(
+        model.meta.retrieved, refs.energy_rates.meta.retrieved, efficiency_ref.meta.retrieved
+    )
 
     def insufficient(note: str) -> CostLine:
         return _line(
@@ -243,7 +251,8 @@ def _heating_line(prop: Property, refs: CostReferences, on: date) -> CostLine:
     assert epc is not None and area is not None and fuel is not None
     if area <= 0:
         return insufficient("The stated floor area isn't usable, so this line can't be estimated.")
-    if fuel is MainFuel.other:
+    efficiency = efficiency_ref.for_fuel(fuel)
+    if fuel is MainFuel.other or efficiency is None:
         return insufficient(
             "There is no reference price for this heating fuel (e.g. community heating, oil, "
             "LPG), so heating and hot water can't be estimated. Ask the landlord for recent bills."
@@ -258,9 +267,13 @@ def _heating_line(prop: Property, refs: CostReferences, on: date) -> CostLine:
     rates = refs.energy_rates.gas if is_gas else refs.energy_rates.electricity
     standing_pence = rates.standing_charge_p_per_day * DAYS_PER_YEAR if is_gas else 0.0
 
-    def monthly(kwh_per_m2: float) -> float:
-        pence = area * kwh_per_m2 * rates.unit_rate_p_per_kwh + standing_pence
+    def monthly(kwh_per_m2: float, efficiency_pct: int) -> float:
+        fuel_kwh = area * kwh_per_m2 / (efficiency_pct / 100)
+        pence = fuel_kwh * rates.unit_rate_p_per_kwh + standing_pence
         return _annual_pence_to_monthly_gbp(pence)
+
+    best = efficiency.highest_system()
+    worst = efficiency.lowest_system()
 
     group = (
         f"band {epc.value}, {prop.property_type.value}, {fuel.value}"
@@ -270,8 +283,9 @@ def _heating_line(prop: Property, refs: CostReferences, on: date) -> CostLine:
     fuel_name = "gas" if is_gas else "electricity"
     note = (
         f"Estimate: {area:g} m² × {dist.median:g} kWh/m²/year (median calculated heat demand of "
-        f"{dist.n:,} Edinburgh EPC certificates in {group}; interquartile range {dist.q1:g}-"
-        f"{dist.q3:g} gives low/high) at {rates.unit_rate_p_per_kwh:g}p/kWh {fuel_name}"
+        f"{dist.n:,} Edinburgh EPC certificates in {group}) ÷ {efficiency.central_pct}% heating "
+        f"efficiency (SAP 10.2 default for {efficiency.central_label}) at "
+        f"{rates.unit_rate_p_per_kwh:g}p/kWh {fuel_name}"
     )
     note += (
         f" plus the gas standing charge ({rates.standing_charge_p_per_day:g}p/day)."
@@ -279,17 +293,29 @@ def _heating_line(prop: Property, refs: CostReferences, on: date) -> CostLine:
         else " (the electricity standing charge is on the electricity line)."
     )
     note += (
-        " Based on modelled heat demand, not fuel bought: heating system losses aren't "
-        "included, so actual use is likely higher. " + _rates_period_note(refs)
+        " The heating system isn't known, so the range is wide: low uses the lower-quartile heat "
+        f"demand ({dist.q1:g} kWh/m²) with the most efficient system SAP lists for this fuel "
+        f"({best.space_efficiency_pct}%, {best.description.lower()}), high uses the upper-quartile "
+        f"demand ({dist.q3:g} kWh/m²) with the least efficient ({worst.space_efficiency_pct}%, "
+        f"{worst.description.lower()}). Ask the landlord what heating system the home has."
+    )
+    if any(s.table == "4b" for s in efficiency.systems):
+        note += (
+            " SAP gives boilers a lower efficiency for hot water than for space heating; the "
+            "space heating figure is used for both, so hot water may be underestimated."
+        )
+    note += (
+        " These are SAP default efficiencies, not a measurement of this home's system. "
+        + _rates_period_note(refs)
     )
     return _line(
         CostKind.energy,
         label,
-        value=monthly(dist.median),
-        low=monthly(dist.q1),
-        high=monthly(dist.q3),
+        value=monthly(dist.median, efficiency.central_pct),
+        low=monthly(dist.q1, best.space_efficiency_pct),
+        high=monthly(dist.q3, worst.space_efficiency_pct),
         origin=Origin.estimate,
-        source=f"{model_source}; {_rates_source(refs, fuel_name, rates)}",
+        source=f"{model_source}; {efficiency_source}; {_rates_source(refs, fuel_name, rates)}",
         as_of=as_of,
         status=Status.estimated,
         note=note,

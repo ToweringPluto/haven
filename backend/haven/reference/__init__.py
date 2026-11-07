@@ -20,6 +20,12 @@ from haven.reference.energy_model import (
     load_energy_model,
 )
 from haven.reference.energy_rates import EnergyRatesReference, FuelRates, load_energy_rates
+from haven.reference.heating_efficiency import (
+    FuelEfficiency,
+    HeatingEfficiencyReference,
+    HeatingSystem,
+    load_heating_efficiency,
+)
 from haven.reference.loader import (
     ReferenceDataError,
     ReferenceDocument,
@@ -41,8 +47,11 @@ __all__ = [
     "ElectricityUseReference",
     "EnergyModelReference",
     "EnergyRatesReference",
+    "FuelEfficiency",
     "FuelRates",
     "GroupMatch",
+    "HeatingEfficiencyReference",
+    "HeatingSystem",
     "ReferenceDataError",
     "ReferenceDocument",
     "ReferenceMeta",
@@ -56,6 +65,7 @@ __all__ = [
     "load_electricity_use",
     "load_energy_model",
     "load_energy_rates",
+    "load_heating_efficiency",
     "load_reference",
     "load_reference_file",
     "load_rents",
