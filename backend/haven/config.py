@@ -3,10 +3,11 @@
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+ENV_FILE = REPO_ROOT / "backend" / ".env"
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
 SEED_PATH = REPO_ROOT / "data" / "seed" / "properties.yaml"
@@ -14,7 +15,9 @@ LOCATION_CACHE_DIR = REPO_ROOT / "data" / "location_cache"
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix="HAVEN_", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_prefix="HAVEN_", env_file=ENV_FILE, env_file_encoding="utf-8", extra="ignore"
+    )
 
     cors_origins: str = Field(
         default="",
@@ -41,6 +44,11 @@ class Settings(BaseSettings):
     location_cache_dir: Path = Field(
         default=LOCATION_CACHE_DIR,
         description="Per-property location cache directory (HAVEN_LOCATION_CACHE_DIR).",
+    )
+    database_url: SecretStr | None = Field(
+        default=None,
+        description="Postgres connection URL, e.g. the Tiger Cloud service URL "
+        "(HAVEN_DATABASE_URL). Unset means no database.",
     )
 
     @property
