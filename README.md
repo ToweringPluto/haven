@@ -161,3 +161,14 @@ The important principle is **evidence before prediction**. Where a result can be
 ## Status and limitations
 
 Haven is a prototype / demonstration of this concept. Data sources, model performance, estimated costs and property evidence may be incomplete or inaccurate. Image and document analysis can miss issues or produce false positives. Users should verify important information with the landlord or agent, inspect the property, and seek professional advice where necessary.
+
+## Running the frontend
+
+The prototype UI lives in [`frontend/`](frontend/) (React 19, Vite, Tailwind CSS v4), generated from the Figma design and adapted to run standalone. It requires Node.js 22 or later.
+
+```bash
+cd frontend
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # type-check and production build to frontend/dist
+```
