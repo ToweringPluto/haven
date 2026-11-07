@@ -1,0 +1,110 @@
+{
+  "property_id": "ill-prop-leith-flat",
+  "profile_id": "persona-wheelchair-user",
+  "findings": [
+    {
+      "id": "wu-budget-fit",
+      "rule_id": "budget_fit",
+      "category": "cost",
+      "outcome": "meets",
+      "title": "Estimated monthly cost is within budget",
+      "reason": "The estimated total, including its upper range, is below the stated budget.",
+      "facts": [
+        {
+          "name": "total_monthly_gbp",
+          "evidence": {
+            "value": 1180,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    },
+    {
+      "id": "wu-step-free-entrance",
+      "rule_id": "step_free_entrance",
+      "category": "access",
+      "outcome": "concern",
+      "title": "Possible entrance steps",
+      "reason": "The listing mentions steps at the entrance and a step-free entrance is required.",
+      "facts": [
+        {
+          "name": "entrance_steps",
+          "evidence": {
+            "value": 3,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": "Ask the agent for photos of the entrance and whether a ramp or step-free route is available, and check it in person."
+    },
+    {
+      "id": "wu-lift-required",
+      "rule_id": "lift_required_for_floor",
+      "category": "access",
+      "outcome": "unknown",
+      "title": "Lift availability not stated",
+      "reason": "The flat is above the ground floor and the listing does not say whether there is a lift.",
+      "facts": [
+        {
+          "name": "floor_level",
+          "evidence": {
+            "value": 2,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "known",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        },
+        {
+          "name": "has_lift",
+          "evidence": {
+            "value": null,
+            "origin": "listing",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "insufficient",
+            "note": "Not stated in the listing."
+          }
+        }
+      ],
+      "next_step": "Ask whether the building has a lift, its door width and its maintenance history."
+    },
+    {
+      "id": "wu-walk-to-stop",
+      "rule_id": "walk_to_stop_within_limit",
+      "category": "location",
+      "outcome": "meets",
+      "title": "Bus stop within the stated walking limit",
+      "reason": "The nearest bus stop is estimated to be within the stated limit.",
+      "facts": [
+        {
+          "name": "walk_to_stop_m",
+          "evidence": {
+            "value": 180,
+            "origin": "estimate",
+            "source": "illustrative fixture",
+            "as_of": "2026-11-01",
+            "confidence": null,
+            "status": "estimated",
+            "note": "Illustrative value for the API contract; not real data."
+          }
+        }
+      ],
+      "next_step": null
+    }
+  ]
+}

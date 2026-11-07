@@ -16,12 +16,15 @@ from haven.domain.enums import (
     PropertyType,
     SignalKind,
     Status,
+    UploadKind,
 )
 from haven.domain.evidence import Evidence
 from haven.domain.findings import CitedFact, FactValue, Finding, Signal
 from haven.domain.profile import AccessRequirements, Destination, RenterProfile
 from haven.domain.property import Property, RecurringCost
 from haven.domain.report import PROJECT_SCOPE_DISCLAIMER, Report, ReportSection, ReportSentence
+from haven.domain.suitability import SuitabilityAssessment
+from haven.domain.upload import Upload
 
 __all__ = [
     "PROJECT_SCOPE_DISCLAIMER",
@@ -54,4 +57,7 @@ __all__ = [
     "Signal",
     "SignalKind",
     "Status",
+    "SuitabilityAssessment",
+    "Upload",
+    "UploadKind",
 ]

@@ -1,0 +1,25 @@
+{
+  "id": "persona-wheelchair-user",
+  "label": "Wheelchair user (illustrative persona)",
+  "monthly_budget_gbp": 1250.0,
+  "priorities": [
+    "step_free_access",
+    "lift_access",
+    "transport_access"
+  ],
+  "access": {
+    "wheelchair_user": true,
+    "step_free_entrance_required": true,
+    "lift_required_above_floor": 0,
+    "max_walk_to_stop_m": 400
+  },
+  "destinations": [
+    {
+      "name": "Royal Infirmary of Edinburgh",
+      "latitude": 55.9216,
+      "longitude": -3.1347,
+      "max_travel_minutes": 45
+    }
+  ],
+  "other_recurring_costs": []
+}

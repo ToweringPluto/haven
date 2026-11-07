@@ -5,7 +5,16 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from haven.domain import CostBreakdown, Finding, Property, RenterProfile, Report, Signal
+from haven.domain import (
+    CostBreakdown,
+    Finding,
+    Property,
+    RenterProfile,
+    Report,
+    Signal,
+    SuitabilityAssessment,
+    Upload,
+)
 
 SCORE_LIKE = re.compile(r"score|rating|grade|rank", re.IGNORECASE)
 ALLOWED = {"epc_rating"}
@@ -34,7 +43,15 @@ def test_report_schema_has_no_score_fields() -> None:
 
 
 def test_other_top_level_models_have_no_score_fields() -> None:
-    models: list[type[BaseModel]] = [CostBreakdown, Finding, Signal, Property, RenterProfile]
+    models: list[type[BaseModel]] = [
+        CostBreakdown,
+        Finding,
+        Signal,
+        Property,
+        RenterProfile,
+        SuitabilityAssessment,
+        Upload,
+    ]
     for model in models:
         names = walk_schema(model.model_json_schema())
         offending = {n for n in names if SCORE_LIKE.search(n) and n not in ALLOWED}

@@ -1,0 +1,30 @@
+{
+  "id": "persona-tight-budget",
+  "label": "Renter on a tight budget (illustrative persona)",
+  "monthly_budget_gbp": 1000.0,
+  "priorities": [
+    "total_cost",
+    "heating_cost"
+  ],
+  "access": {
+    "wheelchair_user": false,
+    "step_free_entrance_required": false,
+    "lift_required_above_floor": null,
+    "max_walk_to_stop_m": null
+  },
+  "destinations": [],
+  "other_recurring_costs": [
+    {
+      "label": "Broadband",
+      "monthly_gbp": {
+        "value": 30.0,
+        "origin": "user",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      }
+    }
+  ]
+}

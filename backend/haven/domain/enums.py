@@ -118,6 +118,12 @@ class SignalKind(StrEnum):
     entrance_step = "entrance_step"
 
 
+class UploadKind(StrEnum):
+    photo = "photo"
+    floor_plan = "floor_plan"
+    document = "document"
+
+
 class Priority(StrEnum):
     """Renter priorities used to decide which checks apply and how they are ordered."""
 

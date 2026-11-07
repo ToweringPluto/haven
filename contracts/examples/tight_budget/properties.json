@@ -1,0 +1,103 @@
+{
+  "items": [
+    {
+      "id": "ill-prop-gorgie-flat",
+      "title": "Illustrative property — not a real listing: 2-bed flat, Gorgie",
+      "illustrative": true,
+      "area": "Gorgie",
+      "latitude": 55.938,
+      "longitude": -3.235,
+      "rent_pcm_gbp": {
+        "value": 795.0,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "bedrooms": {
+        "value": 2,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "property_type": {
+        "value": "flat",
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "floor_area_m2": {
+        "value": 60.0,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "council_tax_band": {
+        "value": "B",
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "epc_rating": {
+        "value": "F",
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "main_fuel": {
+        "value": "electricity",
+        "origin": "public_data",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "floor_level": {
+        "value": 1,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "has_lift": {
+        "value": false,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "entrance_steps": {
+        "value": 2,
+        "origin": "listing",
+        "source": "illustrative fixture",
+        "as_of": "2026-11-01",
+        "confidence": null,
+        "status": "known",
+        "note": "Illustrative value for the API contract; not real data."
+      },
+      "other_recurring_costs": []
+    }
+  ]
+}
