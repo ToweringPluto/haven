@@ -6,7 +6,7 @@ import pytest
 from fastapi.routing import APIRoute
 
 from haven.api.app import create_app
-from haven.api.routes import meta, profiles, properties, reports, uploads
+from haven.api.routes import account, assist, meta, profiles, properties, reports, uploads
 from haven.api.schemas import ProfileInput, PropertyInput
 from haven.domain import Property, RenterProfile
 
@@ -21,6 +21,8 @@ ROUTERS = [
     reports.assessments,
     reports.reports,
     meta.router,
+    account.router,
+    assist.router,
 ]
 V1_ROUTES = [r for router in ROUTERS for r in router.routes if isinstance(r, APIRoute)]
 OPERATIONS = [
@@ -44,7 +46,12 @@ EXPECTED = {
     ("POST", "/v1/assessments"),
     ("GET", "/v1/reports/{report_id}"),
     ("GET", "/v1/meta/enums"),
+    ("GET", "/v1/me"),
+    ("POST", "/v1/photo-screen"),
+    ("POST", "/v1/read-aloud"),
 }
+# Operations whose success response is a documented binary body rather than JSON.
+BINARY_RESPONSES = {("POST", "/v1/read-aloud"): "audio/mpeg"}
 
 
 def test_all_expected_routes_exist() -> None:
@@ -56,6 +63,8 @@ def test_all_expected_routes_exist() -> None:
 @pytest.mark.parametrize("route", V1_ROUTES, ids=lambda r: f"{sorted(r.methods)[0]} {r.path}")
 def test_route_has_summary_and_response_model(route: APIRoute) -> None:
     assert route.summary
+    if (sorted(route.methods)[0], "/v1" + route.path) in BINARY_RESPONSES:
+        return
     if route.status_code != 204:
         assert route.response_model is not None
 
@@ -65,7 +74,10 @@ def test_operation_documents_examples(path: str, method: str, op: dict[str, Any]
     success = [code for code in op["responses"] if code.startswith("2")]
     assert len(success) == 1
     code = success[0]
-    if code != "204":
+    binary = BINARY_RESPONSES.get((method.upper(), path))
+    if binary:
+        assert list(op["responses"][code]["content"]) == [binary]
+    elif code != "204":
         media = op["responses"][code]["content"]["application/json"]
         assert media.get("examples"), f"{method} {path}: no response examples"
     body = op.get("requestBody", {}).get("content", {})

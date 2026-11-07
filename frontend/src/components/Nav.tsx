@@ -3,7 +3,10 @@ import { useNavigation } from "../state/navigation";
 import type { Page } from "../types";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
+import { LoginButton } from "./LoginButton";
+import { LogoutButton } from "./LogoutButton";
 import { Logo } from "./Logo";
+import { UserBadge } from "./UserBadge";
 
 // `highlight: false` links point at a page without marking it active (matches the design).
 const NAV_LINKS: { label: string; page: Page; highlight: boolean }[] = [
@@ -42,16 +45,16 @@ export function Nav() {
             );
           })}
           <div className="mobile-actions">
-            <button type="button" onClick={() => navigate("dashboard")}>
-              Sign in
-            </button>
+            <UserBadge onClick={() => navigate("dashboard")} />
+            <LoginButton variant="text" />
+            <LogoutButton />
             <Button onClick={() => navigate("onboarding")}>Get started</Button>
           </div>
         </div>
         <div className="nav-actions">
-          <button type="button" className="text-button" onClick={() => go("dashboard")}>
-            Sign in
-          </button>
+          <UserBadge onClick={() => go("dashboard")} />
+          <LoginButton variant="text" />
+          <LogoutButton />
           <Button onClick={() => go("onboarding")}>Get started</Button>
         </div>
         <button

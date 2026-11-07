@@ -194,6 +194,25 @@ components:
       - H
       title: CouncilTaxBand
       type: string
+    CurrentUser:
+      additionalProperties: false
+      description: The signed-in user, from verified access-token claims. Never includes the token.
+      properties:
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Email, when the token carries the configured email claim.
+          title: Email
+        sub:
+          description: Auth0 user id (the token's `sub` claim).
+          minLength: 1
+          title: Sub
+          type: string
+      required:
+      - sub
+      title: CurrentUser
+      type: object
     Destination:
       additionalProperties: false
       properties:
@@ -757,6 +776,29 @@ components:
       - unknown
       title: Outcome
       type: string
+    PhotoScreen:
+      additionalProperties: false
+      description: 'Screening of one photo. The image is processed in memory and never stored, so there
+        is
+
+        no upload id and nothing to delete.'
+      properties:
+        evidence_quality:
+          anyOf:
+          - $ref: '#/components/schemas/EvidenceQuality'
+          - type: 'null'
+          description: Image quality gate result; null when the screener couldn't assess it.
+        signals:
+          description: Possible issues to inspect, never diagnoses. May be empty.
+          items:
+            $ref: '#/components/schemas/Signal'
+          title: Signals
+          type: array
+      required:
+      - evidence_quality
+      - signals
+      title: PhotoScreen
+      type: object
     Priority:
       description: Renter priorities used to decide which checks apply and how they are ordered.
       enum:
@@ -1039,6 +1081,19 @@ components:
       - other
       title: PropertyType
       type: string
+    ReadAloudRequest:
+      additionalProperties: false
+      description: Text to turn into speech. The maximum length is set by HAVEN_READ_ALOUD_MAX_CHARS.
+      properties:
+        text:
+          description: Plain text to read aloud.
+          minLength: 1
+          title: Text
+          type: string
+      required:
+      - text
+      title: ReadAloudRequest
+      type: object
     RecurringCost:
       additionalProperties: false
       description: A named recurring monthly cost (e.g. broadband, factor fee) in GBP.
@@ -1340,11 +1395,16 @@ components:
       - document
       title: UploadKind
       type: string
+  securitySchemes:
+    Auth0:
+      description: 'Auth0 access token for the Haven API (`Authorization: Bearer <token>`).'
+      scheme: bearer
+      type: http
 info:
   description: 'Decision support for Edinburgh renters. Prototype: assessments are indicative, not a legal,
     safety, accessibility or compliance certification.'
   title: Haven API
-  version: 0.1.0
+  version: 0.1.1
 openapi: 3.1.0
 paths:
   /healthz:
@@ -2239,10 +2299,45 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-          description: The current backend has no data for this request (fixture backend).
+          description: The current backend can't answer this request yet (fixture backend).
       summary: Assess a property for a renter profile and create a report
       tags:
       - reports
+  /v1/me:
+    get:
+      description: Returns the verified `sub` and, when the token carries it, the email. Requires an Auth0
+        access token for this API.
+      operationId: get_me_v1_me_get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                signed_in:
+                  summary: Illustrative signed-in user
+                  value:
+                    email: renter@example.com
+                    sub: auth0|illustrative-user-0001
+              schema:
+                $ref: '#/components/schemas/CurrentUser'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Who am I (signed in)
+      tags:
+      - account
   /v1/meta/enums:
     get:
       description: Use these labels instead of showing raw enum values.
@@ -2417,6 +2512,111 @@ paths:
       summary: Enum values with human-readable labels
       tags:
       - meta
+  /v1/photo-screen:
+    post:
+      description: Send one JPG, PNG or WebP image as the raw request body with a matching `Content-Type`
+        (max `HAVEN_PHOTO_SCREEN_MAX_BYTES`, default 5 MB). The image is processed in memory and never
+        stored. Signals are possibilities to inspect, never diagnoses. Rate limited per user (`HAVEN_PHOTO_SCREEN_RATE_LIMIT`
+        per `HAVEN_RATE_LIMIT_WINDOW_SECONDS`). The fixture backend returns 501.
+      operationId: photo_screen_v1_photo_screen_post
+      requestBody:
+        content:
+          image/jpeg:
+            schema:
+              format: binary
+              type: string
+          image/png:
+            schema:
+              format: binary
+              type: string
+          image/webp:
+            schema:
+              format: binary
+              type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                tight_budget:
+                  summary: Renter on a tight budget (illustrative persona)
+                  value:
+                    evidence_quality: limited
+                    signals:
+                    - confidence: null
+                      evidence_quality: limited
+                      id: tb-sig-damp
+                      kind: possible_damp
+                      likelihood: possible
+                      note: Illustrative output, not a measured model probability.
+                      source: illustrative fixture
+                      upload_id: null
+                    - confidence: null
+                      evidence_quality: limited
+                      id: tb-sig-mould
+                      kind: possible_mould
+                      likelihood: insufficient_evidence
+                      note: 'Illustrative output: the photo is too dark to judge.'
+                      source: illustrative fixture
+                      upload_id: null
+                wheelchair_user:
+                  summary: Wheelchair user (illustrative persona)
+                  value:
+                    evidence_quality: good
+                    signals:
+                    - confidence: null
+                      evidence_quality: good
+                      id: wu-sig-entrance-step
+                      kind: entrance_step
+                      likelihood: likely
+                      note: Illustrative output, not a measured model probability.
+                      source: illustrative fixture
+                      upload_id: null
+              schema:
+                $ref: '#/components/schemas/PhotoScreen'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '413':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request body is larger than the configured limit.
+        '415':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request body's media type isn't accepted.
+        '429':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Per-user rate limit reached. `Retry-After` gives the wait in seconds.
+        '501':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The current backend can't answer this request yet (fixture backend).
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Screen a photo for possible issues (signed in)
+      tags:
+      - assist
   /v1/profiles:
     get:
       operationId: list_profiles_v1_profiles_get
@@ -4204,7 +4404,7 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-          description: The current backend has no data for this request (fixture backend).
+          description: The current backend can't answer this request yet (fixture backend).
       summary: Estimate the true monthly cost of a property
       tags:
       - properties
@@ -4485,10 +4685,89 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-          description: The current backend has no data for this request (fixture backend).
+          description: The current backend can't answer this request yet (fixture backend).
       summary: Check a property against a renter's requirements
       tags:
       - properties
+  /v1/read-aloud:
+    post:
+      description: Returns MP3 audio of the text (max `HAVEN_READ_ALOUD_MAX_CHARS` characters, default
+        5000). Rate limited per user (`HAVEN_READ_ALOUD_RATE_LIMIT` per `HAVEN_RATE_LIMIT_WINDOW_SECONDS`).
+        The fixture backend returns 501.
+      operationId: read_aloud_v1_read_aloud_post
+      requestBody:
+        content:
+          application/json:
+            examples:
+              report_sentence:
+                summary: A report sentence
+                value:
+                  text: The estimated monthly cost is within your stated budget, but check the entrance
+                    before signing.
+            schema:
+              $ref: '#/components/schemas/ReadAloudRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            audio/mpeg:
+              schema:
+                format: binary
+                type: string
+          description: MP3 audio.
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '413':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request body is larger than the configured limit.
+        '422':
+          content:
+            application/problem+json:
+              example:
+                detail: The request body failed validation.
+                errors:
+                - loc:
+                  - body
+                  - monthly_budget_gbp
+                  msg: Input should be greater than 0
+                  type: greater_than
+                instance: /v1/profiles
+                status: 422
+                title: Unprocessable Content
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request failed validation.
+        '429':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Per-user rate limit reached. `Retry-After` gives the wait in seconds.
+        '501':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The current backend can't answer this request yet (fixture backend).
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Read text aloud (signed in)
+      tags:
+      - assist
   /v1/reports/{report_id}:
     get:
       description: A report combines cost, rule findings and screening signals with a plain-language explanation
