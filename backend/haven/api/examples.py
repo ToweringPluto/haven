@@ -75,3 +75,43 @@ def single(value: Json, summary: str = "Illustrative example") -> dict[str, Json
 def json_response(status: int, examples: dict[str, Json]) -> dict[int | str, Json]:
     """``responses=`` entry adding named examples to a JSON success response."""
     return {status: {"content": {"application/json": {"examples": examples}}}}
+
+
+# --- Signed-in features -------------------------------------------------------------------
+
+
+def current_user_examples() -> dict[str, Json]:
+    return {
+        "signed_in": {
+            "summary": "Illustrative signed-in user",
+            "value": {"sub": "auth0|illustrative-user-0001", "email": "renter@example.com"},
+        }
+    }
+
+
+def photo_screen_examples() -> dict[str, Json]:
+    """The persona upload fixtures' screening output, reshaped: a screened photo is never
+    stored, so it has no upload id."""
+    out: dict[str, Json] = {}
+    for p in PERSONAS:
+        upload = load(p, "upload")
+        if upload["kind"] != "photo":
+            continue
+        signals = [{**s, "upload_id": None} for s in upload["signals"]]
+        out[p] = {
+            "summary": SUMMARIES[p],
+            "value": {"evidence_quality": upload["evidence_quality"], "signals": signals},
+        }
+    return out
+
+
+def read_aloud_examples() -> dict[str, Json]:
+    return {
+        "report_sentence": {
+            "summary": "A report sentence",
+            "value": {
+                "text": "The estimated monthly cost is within your stated budget, but check "
+                "the entrance before signing."
+            },
+        }
+    }

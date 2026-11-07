@@ -10,6 +10,7 @@ from typing import Protocol
 
 from haven.api.schemas import (
     AssessmentRequest,
+    PhotoScreen,
     ProfileInput,
     PropertyInput,
 )
@@ -56,3 +57,11 @@ class Backend(Protocol):
     def create_assessment(self, data: AssessmentRequest) -> Report: ...
 
     def get_report(self, report_id: str) -> Report: ...
+
+    def screen_photo(self, *, content: bytes, content_type: str) -> PhotoScreen:
+        """Screen one image held in memory. Must not persist ``content`` anywhere."""
+        ...
+
+    def read_aloud(self, text: str) -> bytes:
+        """Synthesise ``text`` as MP3 audio."""
+        ...

@@ -1,0 +1,35 @@
+{
+  "evidence_quality": "limited",
+  "signals": [
+    {
+      "id": "sample-sig-entrance-step",
+      "kind": "entrance_step",
+      "likelihood": "likely",
+      "evidence_quality": "good",
+      "confidence": null,
+      "upload_id": null,
+      "source": "pre-processed sample",
+      "note": "Sample result: a raised step appears at the main entrance. Ask whether there is a ramp or another step-free way in."
+    },
+    {
+      "id": "sample-sig-damp",
+      "kind": "possible_damp",
+      "likelihood": "possible",
+      "evidence_quality": "limited",
+      "confidence": null,
+      "upload_id": null,
+      "source": "pre-processed sample",
+      "note": "Sample result: dark patches near the window frame could be damp or just shadow. Inspect the wall in daylight before signing."
+    },
+    {
+      "id": "sample-sig-mould",
+      "kind": "possible_mould",
+      "likelihood": "insufficient_evidence",
+      "evidence_quality": "poor",
+      "confidence": null,
+      "upload_id": null,
+      "source": "pre-processed sample",
+      "note": "Sample result: the bathroom corner is too dark in this photo to judge. Ask for a clearer photo or check at the viewing."
+    }
+  ]
+}

@@ -43,6 +43,45 @@ class Settings(BaseSettings):
         description="Per-property location cache directory (HAVEN_LOCATION_CACHE_DIR).",
     )
 
+    # --- Auth0 (signed-in features) -----------------------------------------------------
+    auth0_domain: str = Field(
+        default="",
+        description="Auth0 tenant domain, e.g. haven.eu.auth0.com (HAVEN_AUTH0_DOMAIN). When "
+        "empty, signed-in endpoints return 503 and the rest of the API is unaffected.",
+    )
+    auth0_audience: str = Field(
+        default="",
+        description="Identifier of the Auth0 API the access tokens are issued for "
+        "(HAVEN_AUTH0_AUDIENCE).",
+    )
+    auth0_email_claim: str = Field(
+        default="email",
+        description="Access-token claim holding the user's email. Auth0 access tokens only "
+        "carry email via a namespaced custom claim added by an Action, e.g. "
+        "https://haven.example/email (HAVEN_AUTH0_EMAIL_CLAIM).",
+    )
+
+    # --- Limits for signed-in features --------------------------------------------------
+    photo_screen_max_bytes: int = Field(
+        default=5 * 1024 * 1024, gt=0, description="Largest accepted photo, in bytes."
+    )
+    photo_screen_rate_limit: int = Field(
+        default=10, gt=0, description="Photo screenings allowed per user per window."
+    )
+    read_aloud_max_chars: int = Field(
+        default=5000, gt=0, description="Longest text accepted for read-aloud, in characters."
+    )
+    read_aloud_rate_limit: int = Field(
+        default=30, gt=0, description="Read-aloud requests allowed per user per window."
+    )
+    rate_limit_window_seconds: int = Field(
+        default=3600, gt=0, description="Length of the per-user rate-limit window."
+    )
+
+    @property
+    def auth_configured(self) -> bool:
+        return bool(self.auth0_domain and self.auth0_audience)
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

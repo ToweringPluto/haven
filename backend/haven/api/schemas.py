@@ -1,7 +1,9 @@
 """API envelopes that are not domain objects: request bodies, list wrappers, enum metadata
 and RFC 9457 problem details."""
 
-from pydantic import BaseModel, ConfigDict, Field
+from typing import Annotated
+
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 from haven.domain import (
     AccessRequirements,
@@ -9,12 +11,14 @@ from haven.domain import (
     Destination,
     EpcBand,
     Evidence,
+    EvidenceQuality,
     MainFuel,
     Priority,
     Property,
     PropertyType,
     RecurringCost,
     RenterProfile,
+    Signal,
 )
 
 
@@ -138,4 +142,42 @@ class ProblemDetail(BaseModel):
     instance: str | None = None
     errors: list[FieldError] | None = Field(
         default=None, description="Field-level validation errors (422 only)."
+    )
+
+
+# --- Signed-in features -------------------------------------------------------------------
+
+
+class CurrentUser(BaseModel):
+    """The signed-in user, from verified access-token claims. Never includes the token."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    sub: str = Field(min_length=1, description="Auth0 user id (the token's `sub` claim).")
+    email: str | None = Field(
+        default=None, description="Email, when the token carries the configured email claim."
+    )
+
+
+class PhotoScreen(BaseModel):
+    """Screening of one photo. The image is processed in memory and never stored, so there is
+    no upload id and nothing to delete."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    evidence_quality: EvidenceQuality | None = Field(
+        description="Image quality gate result; null when the screener couldn't assess it."
+    )
+    signals: list[Signal] = Field(
+        description="Possible issues to inspect, never diagnoses. May be empty."
+    )
+
+
+class ReadAloudRequest(BaseModel):
+    """Text to turn into speech. The maximum length is set by HAVEN_READ_ALOUD_MAX_CHARS."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    text: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)] = Field(
+        description="Plain text to read aloud."
     )
