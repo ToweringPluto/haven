@@ -29,6 +29,7 @@ from haven.reference.loader import (
     load_reference,
     load_reference_file,
 )
+from haven.reference.rents import RentReference, RentsByBedrooms, RentStatistics, load_rents
 
 __all__ = [
     "BandCharges",
@@ -45,6 +46,9 @@ __all__ = [
     "ReferenceDataError",
     "ReferenceDocument",
     "ReferenceMeta",
+    "RentReference",
+    "RentStatistics",
+    "RentsByBedrooms",
     "UsageLevels",
     "iter_reference_files",
     "load_all_references",
@@ -54,4 +58,5 @@ __all__ = [
     "load_energy_rates",
     "load_reference",
     "load_reference_file",
+    "load_rents",
 ]
