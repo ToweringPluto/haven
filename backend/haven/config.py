@@ -9,6 +9,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 REPO_ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
+SEED_PATH = REPO_ROOT / "data" / "seed" / "properties.yaml"
 
 
 class Settings(BaseSettings):
@@ -31,6 +32,10 @@ class Settings(BaseSettings):
     reference_dir: Path = Field(
         default=REFERENCE_DIR,
         description="Directory holding the reference data YAML files (HAVEN_REFERENCE_DIR).",
+    )
+    seed_path: Path = Field(
+        default=SEED_PATH,
+        description="Seed properties file served by the engine backend (HAVEN_SEED_PATH).",
     )
 
     @property

@@ -79,11 +79,22 @@ def test_unknown_profile_is_404(client: TestClient) -> None:
 # --- properties ------------------------------------------------------------------------
 
 
-def test_list_properties_unions_persona_properties(client: TestClient, example: Example) -> None:
-    response = client.get("/v1/properties")
+def test_list_properties_unions_persona_properties(
+    fixture_client: TestClient, example: Example
+) -> None:
+    response = fixture_client.get("/v1/properties")
     assert response.status_code == 200
     expected = [item for p in PERSONAS for item in example(p, "properties")["items"]]
     assert response.json() == {"items": expected}
+
+
+def test_engine_list_properties_adds_persona_properties_after_seed(
+    client: TestClient, example: Example
+) -> None:
+    # The engine backend lists the seed first (tests/seed covers that), then the personas.
+    items = client.get("/v1/properties").json()["items"]
+    expected = [item for p in PERSONAS for item in example(p, "properties")["items"]]
+    assert items[-len(expected) :] == expected
 
 
 @pytest.mark.parametrize("persona", PERSONAS)

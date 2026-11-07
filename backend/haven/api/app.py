@@ -17,6 +17,7 @@ from haven.api.fixtures import FixtureBackend
 from haven.api.routes import v1
 from haven.api.schemas import ProblemDetail
 from haven.config import Settings
+from haven.store import load_seed
 
 
 class Health(BaseModel):
@@ -89,7 +90,7 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
         backend = (
             FixtureBackend(settings.fixtures_dir)
             if settings.backend == "fixtures"
-            else EngineBackend(settings.fixtures_dir)
+            else EngineBackend(settings.fixtures_dir, seed=load_seed(settings.seed_path))
         )
     app.state.backend = backend
 

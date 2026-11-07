@@ -24,8 +24,14 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.0):** profiles and properties are the illustrative persona
-  data in [`contracts/examples/`](../contracts/examples/) plus anything you create.
+- **Current behaviour (contract 0.1.0):** profiles are the illustrative persona data in
+  [`contracts/examples/`](../contracts/examples/) plus anything you create.
+  - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
+    `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
+    not a real listing"), then the 3 persona properties, then anything you create. The seed
+    deliberately includes edge cases: a missing council tax band and missing lift information
+    (both `insufficient`), steps plus a 3rd floor with no lift, a cheap EPC F flat, and a
+    step-free new build.
   - `POST /v1/properties/{property_id}/cost` runs the **real cost engine** for any property and
     any (or no) profile, using the reference data in `data/reference/` (Edinburgh council tax,
     Ofgem price cap, Edinburgh EPC heat demand, Ofgem typical electricity use). Its figures
