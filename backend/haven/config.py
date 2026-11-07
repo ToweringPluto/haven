@@ -71,6 +71,11 @@ class Settings(BaseSettings):
         default=UPLOAD_DIR,
         description="Where uploaded evidence is stored (HAVEN_UPLOAD_DIR); gitignored.",
     )
+    tesseract_cmd: str | None = Field(
+        default=None,
+        description="Path to the tesseract executable for OCR (HAVEN_TESSERACT_CMD); unset = "
+        "look on PATH and in the default Windows install folder.",
+    )
     vision_provider: str | None = Field(
         default=None,
         description="Photo screening model provider (HAVEN_VISION_PROVIDER); unset = no model.",
