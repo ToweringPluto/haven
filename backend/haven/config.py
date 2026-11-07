@@ -10,6 +10,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_EXAMPLES_DIR = REPO_ROOT / "contracts" / "examples"
 REFERENCE_DIR = REPO_ROOT / "data" / "reference"
 SEED_PATH = REPO_ROOT / "data" / "seed" / "properties.yaml"
+LOCATION_CACHE_DIR = REPO_ROOT / "data" / "location_cache"
 
 
 class Settings(BaseSettings):
@@ -36,6 +37,10 @@ class Settings(BaseSettings):
     seed_path: Path = Field(
         default=SEED_PATH,
         description="Seed properties file served by the engine backend (HAVEN_SEED_PATH).",
+    )
+    location_cache_dir: Path = Field(
+        default=LOCATION_CACHE_DIR,
+        description="Per-property location cache directory (HAVEN_LOCATION_CACHE_DIR).",
     )
 
     @property
