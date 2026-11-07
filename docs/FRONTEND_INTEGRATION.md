@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.0**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.1**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,7 +24,7 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.0):** profiles are the illustrative persona data in
+- **Current behaviour (contract 0.1.1):** profiles are the illustrative persona data in
   [`contracts/examples/`](../contracts/examples/) plus anything you create.
   - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
     `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
@@ -85,6 +85,9 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | 5 | Delete evidence | `DELETE /v1/uploads/{upload_id}` | `204`. Removes the file and its derived signals. |
 | 6 | Generate the report | `POST /v1/assessments` | Body `{"profile_id", "property_id", "upload_ids": [...]}`. Returns the full `Report`. |
 | 6 | Reopen a report | `GET /v1/reports/{report_id}` | |
+| – | Who is signed in | `GET /v1/me` | **Signed in.** Returns `{sub, email}`. See [§8](#8-signed-in-features-auth0). |
+| – | Screen a photo | `POST /v1/photo-screen` | **Signed in.** Raw image body (`Content-Type: image/jpeg`, `image/png` or `image/webp`, max 5 MB). Never stored. Returns `PhotoScreen`. |
+| – | Read text aloud | `POST /v1/read-aloud` | **Signed in.** Body `{"text": "..."}` (max 5000 characters). Returns `audio/mpeg`. |
 
 ## 3. Payload walkthrough: wheelchair user persona
 
@@ -256,3 +259,31 @@ $env:HAVEN_CORS_ORIGINS = "http://localhost:5173"; uv run --directory backend po
 
 When the variable is set, all methods and headers are allowed for the listed origins.
 Wildcards aren't recommended. Prism (`poe mock`) sends permissive CORS headers by default.
+
+## 8. Signed-in features (Auth0)
+
+The renter journey above is public and needs no login. Three endpoints need a signed-in user:
+`GET /v1/me`, `POST /v1/photo-screen` and `POST /v1/read-aloud`. Send an Auth0 access token
+issued for the Haven API audience:
+
+```
+Authorization: Bearer <access token>
+```
+
+- **Server configuration:** `HAVEN_AUTH0_DOMAIN` (e.g. `haven.eu.auth0.com`) and
+  `HAVEN_AUTH0_AUDIENCE` (the Auth0 API identifier). Optional: `HAVEN_AUTH0_EMAIL_CLAIM` (the
+  namespaced claim an Auth0 Action adds; access tokens don't carry `email` by default),
+  `HAVEN_PHOTO_SCREEN_MAX_BYTES`, `HAVEN_PHOTO_SCREEN_RATE_LIMIT`, `HAVEN_READ_ALOUD_MAX_CHARS`,
+  `HAVEN_READ_ALOUD_RATE_LIMIT` and `HAVEN_RATE_LIMIT_WINDOW_SECONDS`. Step-by-step tenant setup is
+  in [`docs/AUTH0_SETUP.md`](AUTH0_SETUP.md).
+- Tokens are verified as RS256 against the tenant's JWKS, with issuer `https://<domain>/` and the
+  configured audience. Tokens and claims are never logged.
+- **`401`**: show "Sign in to use this feature" and a sign-in button. Never treat it as a crash.
+  **`429`**: the per-user limit was reached. Show the `detail` text (`Retry-After` gives the
+  seconds). **`501`/`503`**: the feature isn't available on this server right now. Fall back to
+  the labelled sample result.
+- **Sample mode:** when the renter is signed out, or the service is unavailable, the frontend
+  shows pre-processed results from `frontend/public/samples/`, visibly labelled "Sample result"
+  or "Sample audio". The demo must never depend on sign-in working.
+- Photos are sent as the raw request body, not multipart, so the server can keep them in memory.
+  Screening signals follow the same rules as upload signals (see [UI obligations](#4-ui-obligations)).

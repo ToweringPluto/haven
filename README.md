@@ -161,3 +161,20 @@ The important principle is **evidence before prediction**. Where a result can be
 ## Status and limitations
 
 Haven is a prototype / demonstration of this concept. Data sources, model performance, estimated costs and property evidence may be incomplete or inaccurate. Image and document analysis can miss issues or produce false positives. Users should verify important information with the landlord or agent, inspect the property, and seek professional advice where necessary.
+
+## Running the frontend
+
+The prototype UI lives in [`frontend/`](frontend/) (React 19, Vite, Tailwind CSS v4), generated from the Figma design and adapted to run standalone. It requires Node.js 22 or later.
+
+```bash
+cd frontend
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # type-check and production build to frontend/dist
+```
+
+The dev server proxies `/v1` to the FastAPI backend on port 8000 (`uv run --directory backend poe serve`, see [`docs/FRONTEND_INTEGRATION.md`](docs/FRONTEND_INTEGRATION.md)).
+
+## Sign-in (Auth0)
+
+The renter journey is public. Photo screening, read-aloud and saved comparisons need a signed-in user, and fall back to clearly labelled sample results when signed out or when a service is unavailable, so the demo never depends on sign-in. Auth0 is optional: with no `VITE_AUTH0_*` variables set, the app runs in public/sample mode. Tenant setup and environment variables are in [`docs/AUTH0_SETUP.md`](docs/AUTH0_SETUP.md).
