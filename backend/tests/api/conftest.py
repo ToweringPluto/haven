@@ -6,6 +6,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from haven.api.app import create_app
+from haven.api.fixtures import FixtureBackend
 from haven.config import CONTRACT_EXAMPLES_DIR
 
 type Example = Callable[[str, str], Any]
@@ -14,6 +15,12 @@ type Example = Callable[[str, str], Any]
 @pytest.fixture
 def client() -> TestClient:
     return TestClient(create_app())
+
+
+@pytest.fixture
+def fixture_client() -> TestClient:
+    """The fixtures-only backend (``HAVEN_BACKEND=fixtures``)."""
+    return TestClient(create_app(backend=FixtureBackend(CONTRACT_EXAMPLES_DIR)))
 
 
 @pytest.fixture

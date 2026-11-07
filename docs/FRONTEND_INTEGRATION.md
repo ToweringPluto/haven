@@ -24,13 +24,28 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.1):** every endpoint is served by a *fixture backend* that
-  returns the illustrative persona data in [`contracts/examples/`](../contracts/examples/).
-  Cost, suitability and assessment requests only work for the exact persona pairs listed in
-  [§3](#3-payload-walkthrough-wheelchair-user-persona). Any other combination returns **501**
-  (`application/problem+json`) rather than invented data. Created profiles, properties and
-  uploads are kept in memory and are lost on restart. Uploads are recorded but not stored or
-  screened: they come back with `signals: []` and `evidence_quality: null`.
+- **Current behaviour (contract 0.1.1):** profiles are the illustrative persona data in
+  [`contracts/examples/`](../contracts/examples/) plus anything you create.
+  - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
+    `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
+    not a real listing"), then the 3 persona properties, then anything you create. The seed
+    deliberately includes edge cases: a missing council tax band and missing lift information
+    (both `insufficient`), steps plus a 3rd floor with no lift, a cheap EPC F flat, and a
+    step-free new build.
+  - `POST /v1/properties/{property_id}/cost` runs the **real cost engine** for any property and
+    any (or no) profile, using the reference data in `data/reference/` (Edinburgh council tax,
+    Ofgem price cap, Edinburgh EPC heat demand, Ofgem typical electricity use). Its figures
+    therefore differ from the illustrative cost examples in the spec. Lines that lack an input
+    (e.g. no council tax band), or dates outside the reference periods on file, come back
+    `insufficient`, never £0.
+  - Suitability and assessment are still served by a *fixture backend* and only work for the
+    exact persona pairs listed in [§3](#3-payload-walkthrough-wheelchair-user-persona). Any
+    other combination returns **501** (`application/problem+json`) rather than invented data.
+  - Created profiles, properties and uploads are kept in memory and are lost on restart.
+    Uploads are recorded but not stored or screened: they come back with `signals: []` and
+    `evidence_quality: null`.
+  - Set `HAVEN_BACKEND=fixtures` to serve **only** the fixtures (cost included, returning the
+    illustrative examples), e.g. for demos that must match the spec examples exactly.
 - Real engines will replace the fixtures endpoint by endpoint without changing the contract.
 
 ### Option B: the Prism mock server
