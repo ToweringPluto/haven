@@ -149,6 +149,11 @@ export function EvidenceUploads({
             const flagged = u.signals.filter(
               (s) => s.likelihood === "possible" || s.likelihood === "likely",
             );
+            // "Nothing flagged" only means something if the photo was actually assessed. When
+            // every signal is insufficient_evidence (no model connected, photo too poor), say
+            // so instead of implying the photo looked fine.
+            const assessed = u.signals.some((s) => s.likelihood !== "insufficient_evidence");
+            const notAssessedReason = u.signals.find((s) => s.note)?.note;
             const facts = u.extracted_facts.filter((f) => f.evidence.value !== null);
             return (
               <li key={u.id}>
@@ -162,8 +167,16 @@ export function EvidenceUploads({
                   </small>
                   {u.kind === "photo" && u.signals.length > 0 && (
                     <div className="evidence-signals">
-                      {flagged.length === 0 ? (
-                        <small>No possible issues flagged in this photo.</small>
+                      {flagged.length === 0 && !assessed ? (
+                        <Status type="info">
+                          This photo couldn’t be checked.
+                          {notAssessedReason ? ` ${notAssessedReason}` : ""}
+                        </Status>
+                      ) : flagged.length === 0 ? (
+                        <small>
+                          No possible issues spotted. This isn’t a guarantee: still look closely at a
+                          viewing.
+                        </small>
                       ) : (
                         flagged.map((s) => (
                           <Status key={s.id} type={likelihoodStatus(s.likelihood)}>
