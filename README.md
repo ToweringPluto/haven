@@ -4,6 +4,14 @@ Rental listings show what is available. Haven helps Edinburgh renters find the e
 
 > **Project scope:** Haven is a prototype and decision-support tool. It is not a legal, safety, accessibility or compliance certification system. Its assessments are indicative and should be checked against the property in person and with appropriate professional advice.
 
+## Demo
+
+[![Watch the Haven demo (5 min)](docs/media/haven-demo-poster.jpg)](docs/media/haven-demo.mp4)
+
+**[▶ Watch the demo video](docs/media/haven-demo.mp4)** (5 min 26 s, MP4): setting up a renter profile, exploring Edinburgh homes on the map with filters from the profile, true cost and suitability checks, comparing homes side by side, and screening a listing photo for possible damp or mould with Google Gemini. Every home shown is an illustrative example, not a real listing.
+
+How the project fits each HackTheBurgh challenge track, and how we used Auth0, the Google Gemini API and Tiger Cloud, is in [`demo/`](demo/README.md).
+
 ## The problem: important housing information is invisible
 
 A rental listing usually shows the asking rent, number of bedrooms and a location. It rarely shows what a property will actually cost to live in, whether the building and surrounding routes work for a particular renter, or whether the available photographs and documents contain warning signs.
