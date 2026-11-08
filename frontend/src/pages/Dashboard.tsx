@@ -31,9 +31,12 @@ export default function Dashboard() {
   // `#/dashboard/accessibility` (the nav button) jumps straight to the settings.
   useEffect(() => {
     if (param !== "accessibility") return;
-    const section = document.getElementById("accessibility");
-    section?.scrollIntoView({ block: "start" });
-    section?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+    const jump = () => document.getElementById("accessibility")?.scrollIntoView({ block: "start" });
+    jump();
+    document.querySelector<HTMLElement>("#accessibility h2")?.focus({ preventScroll: true });
+    // Saved homes and reports load in above the settings and push them down: jump again.
+    const timer = setTimeout(jump, 700);
+    return () => clearTimeout(timer);
   }, [param]);
 
   const removeProfile = async () => {
