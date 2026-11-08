@@ -7,6 +7,7 @@ Haven's core renter journey is **public**: anyone can build a profile, browse ho
 | Needs sign-in | Why |
 | --- | --- |
 | **Photo screening** (`POST /v1/photo-screen`) | Each call is a paid Google Gemini request, so it needs a per-user rate limit |
+| **Read-aloud** (`POST /v1/read-aloud`) | Each call is a paid Gemini text-to-speech request (30 per user per hour by default) |
 | **Evidence uploads** (`/v1/uploads`) | Photos and documents are personal data and must belong to someone |
 | **Saving reports** (`POST /v1/reports`, `GET /v1/reports`) | A saved report is tied to its owner |
 | **Saved homes and account** (`/v1/me`, `/v1/me/saved-homes`) | The user's shortlist across devices |

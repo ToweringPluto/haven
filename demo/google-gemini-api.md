@@ -2,10 +2,11 @@
 
 ## What we used it for
 
-Some of what matters about a home can't be calculated from public data. It's only visible in a photo. We use the **Google Gemini API** (through the `google-genai` Python SDK) for two jobs:
+Some of what matters about a home can't be calculated from public data. It's only visible in a photo. We use the **Google Gemini API** (through the `google-genai` Python SDK) for three jobs:
 
 1. **Photo screening (mould detection).** Gemini looks at a renter's photo and rates three signals: **possible damp**, **possible mould** and **entrance step**.
-2. **Report wording (optional).** Gemini rewords the report's template sentences into plainer language, under strict checks.
+2. **Read-aloud.** A Gemini text-to-speech model reads reports aloud for renters who prefer listening, or who have low vision or find reading hard.
+3. **Report wording (optional).** Gemini rewords the report's template sentences into plainer language, under strict checks.
 
 Everything else (cost, rules, routes) stays deterministic. Gemini is only used where nothing else can do the job.
 
@@ -36,11 +37,13 @@ Signal → "Rated possible from the photo: dark patches near the window frame.
 - `backend/haven/screening/gemini.py`: `GeminiScreener`, with the prompt, response schema and guardrails.
 - `backend/haven/screening/screeners.py`: chooses the screener from config. With no key, `NullScreener` answers "insufficient evidence" for everything.
 - `backend/haven/explain/gemini_wording.py`: the optional report rewording.
+- `backend/haven/speech.py`: read-aloud with a Gemini text-to-speech model; the raw audio is wrapped as WAV so browsers play it directly.
 - `backend/scripts/check_gemini.py`: `uv run poe check-gemini [photo]` checks the key and model, and can screen a real photo.
 
 **Where it runs in the app**
 - **Screening page** (`POST /v1/photo-screen`, signed in): the photo is screened and discarded, never stored.
 - **Evidence uploads** (`POST /v1/uploads`): uploaded photos are screened when stored, and the signals feed into the property's report.
+- **Read aloud button** on reports (`POST /v1/read-aloud`, signed in): returns WAV audio. If Gemini isn't configured or fails, the app uses the browser's built-in voice (which stays on the device), and failing that a clearly labelled sample.
 
 **Configuration** (`backend/.env`)
 
@@ -49,6 +52,9 @@ HAVEN_VISION_PROVIDER="gemini"
 HAVEN_GEMINI_API_KEY="..."            # from https://aistudio.google.com/apikey
 HAVEN_GEMINI_MODEL="gemini-3.6-flash" # optional; default gemini-3.8-flash
 HAVEN_REPORT_WORDING="gemini"         # optional; default "template"
+HAVEN_READ_ALOUD_PROVIDER="gemini"    # read-aloud with Gemini text-to-speech
+# HAVEN_GEMINI_TTS_MODEL="gemini-3.8-flash-lite-tts"
+# HAVEN_GEMINI_TTS_VOICE="Kore"
 ```
 
 ## The guardrails, and why
@@ -61,9 +67,9 @@ HAVEN_REPORT_WORDING="gemini"         # optional; default "template"
 | **No confidence score** | Gemini's ratings aren't calibrated probabilities. Showing "87%" would be false precision |
 | **Certainty wording discarded** | A description like "the flat has mould" is replaced with neutral text. Haven describes what's visible, never a diagnosis |
 | **Rewording rejected if it drifts** | If Gemini's rewording changes what's cited or sounds more certain than the evidence, the template sentence is kept |
-| **Privacy** | Photos are resized and re-encoded (no EXIF/GPS), processed in memory and never stored by `/photo-screen`. Report rewording sends only Haven's own sentences, with no photos or personal details |
+| **Privacy** | Photos are resized and re-encoded (no EXIF/GPS), processed in memory and never stored by `/photo-screen`. Report rewording and read-aloud send only report text, with no photos |
 | **Fails safe** | A Gemini outage means "can't tell" for uploads and a labelled sample result on the Screening page, never a crash |
-| **Costs controlled** | Sign-in required, with a per-user rate limit (10 per hour by default) |
+| **Costs controlled** | Sign-in required, with per-user rate limits (10 photo screenings and 30 read-aloud requests per hour by default) |
 
 ## Impact on the project
 
@@ -72,6 +78,7 @@ HAVEN_REPORT_WORDING="gemini"         # optional; default "template"
 - **It kept the system honest.** Building around an uncalibrated model pushed us to design the guardrails above, and they now apply to *every* screener: no fake confidence, abstain when unsure, never diagnose.
 - **It's swappable.** Because everything goes through `JsonModel` and `Screener`, the tests use fakes (no network, no key), and a better or cheaper model, or our own once evaluated, drops in without touching the API or frontend.
 - **Accessibility.** The same photo pass rates **entrance steps**, which feeds the step-free checks for wheelchair users.
+- **Reports you can listen to.** Gemini text-to-speech gives every report a natural-sounding read-aloud, with the browser's own voice as a fallback, so the app works for renters with low vision or reading difficulties.
 - **Plainer reports** (optional), without risking invented facts.
 
 ## Lessons from integration

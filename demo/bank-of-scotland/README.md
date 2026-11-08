@@ -46,7 +46,7 @@ The renter profile sets the budget, priorities and access needs. Every rule uses
 | **Behavioural nudges** | "What to check before signing" next steps on every concern; asking about anything marked unknown |
 | **Personalised recommendations** | Every check is personalised to the renter's budget, priorities and needs |
 | **Data visualisation** | An interactive map of Edinburgh with views for budget, heating, step-free, lift, transport and travel time |
-| **Accessibility** | Step-free entrance, lift and wheelchair route checks, personalised to the renter |
+| **Accessibility** | Step-free entrance, lift and wheelchair route checks, personalised to the renter; reports read aloud with Gemini text-to-speech |
 
 ## Helping people **spend less** and **avoid costly mistakes**
 

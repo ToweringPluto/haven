@@ -19,7 +19,7 @@ This folder explains how Haven fits each HackTheBurgh 2026 challenge track we're
 | Technology | What it does in Haven | Doc |
 | --- | --- | --- |
 | **Auth0** | Sign-in for features that store data or cost money to run: photo screening, uploads, saved reports and homes | [auth0.md](auth0.md) |
-| **Google Gemini API** | Screens photos for possible damp, mould and entrance steps; optionally rewords report sentences | [google-gemini-api.md](google-gemini-api.md) |
+| **Google Gemini API** | Screens photos for possible damp, mould and entrance steps; reads reports aloud (text-to-speech); optionally rewords report sentences | [google-gemini-api.md](google-gemini-api.md) |
 | **Tiger Cloud** (Postgres + TimescaleDB) | Stores profiles, reports, upload records and saved homes; holds Lothian rent statistics (2010 to 2025) as a hypertable | [tiger-cloud.md](tiger-cloud.md) |
 
 ## The demo in three minutes
