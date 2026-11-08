@@ -186,10 +186,13 @@ and every other endpoint is unaffected.
 1. Start the backend (step 6) and `npm run dev` in `frontend/`, then open
    <http://localhost:5173>.
 2. Click **Sign in**, then sign up or log in. Your name appears in the nav.
-3. Open **AI screening**, choose a photo, and watch for the notice. The stub backend has no
-   screening model yet, so a valid token gets a `501`. The page shows *"Live screening isn't
-   available right now"* with the labelled sample. That proves the token was accepted. A token
-   problem shows *"Sign in to use this feature"* instead.
+3. Open **AI screening** and choose a photo. With `HAVEN_VISION_PROVIDER=gemini` and
+   `HAVEN_GEMINI_API_KEY` set in `backend/.env`, you get Gemini's ratings for possible damp,
+   mould and an entrance step. Without them the photo still gets a quality grade, but every
+   rating says it couldn't be checked. Either way, a result proves the token was accepted. A
+   token problem shows *"Sign in to use this feature"* instead.
+   Read-aloud on a report works the same way: Gemini's voice with
+   `HAVEN_READ_ALOUD_PROVIDER=gemini`, otherwise the browser's own voice.
 4. **Check the backend directly:** on the API's **Test** tab in Auth0, copy the test access
    token, then:
 

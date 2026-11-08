@@ -101,7 +101,22 @@ class Settings(BaseSettings):
     gemini_api_key: SecretStr | None = Field(
         default=None,
         description="Google Gemini API key (HAVEN_GEMINI_API_KEY), from Google AI Studio. "
-        "Needed for HAVEN_VISION_PROVIDER=gemini and HAVEN_REPORT_WORDING=gemini.",
+        "Needed for HAVEN_VISION_PROVIDER=gemini, HAVEN_REPORT_WORDING=gemini and "
+        "HAVEN_READ_ALOUD_PROVIDER=gemini.",
+    )
+    read_aloud_provider: str | None = Field(
+        default=None,
+        description="Read-aloud speech provider (HAVEN_READ_ALOUD_PROVIDER): 'gemini', or "
+        "unset for none (POST /v1/read-aloud returns 501 and the app uses the browser's own "
+        "voice instead).",
+    )
+    gemini_tts_model: str = Field(
+        default="gemini-3.8-flash-lite-tts",
+        description="Gemini text-to-speech model used for read-aloud (HAVEN_GEMINI_TTS_MODEL).",
+    )
+    gemini_tts_voice: str = Field(
+        default="Kore",
+        description="Prebuilt Gemini voice used for read-aloud (HAVEN_GEMINI_TTS_VOICE).",
     )
     gemini_model: str = Field(
         default="gemini-3.8-flash",
@@ -165,7 +180,9 @@ class Settings(BaseSettings):
         default=3600, gt=0, description="Length of the per-user rate-limit window."
     )
 
-    @field_validator("database_url", "gemini_api_key", "vision_provider", mode="before")
+    @field_validator(
+        "database_url", "gemini_api_key", "vision_provider", "read_aloud_provider", mode="before"
+    )
     @classmethod
     def _blank_is_unset(cls, value: object) -> object:
         """``KEY=""`` (as in .env.example) means "not set", never an empty URL or key."""

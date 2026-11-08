@@ -128,7 +128,6 @@ class SignalKind(StrEnum):
 
 class UploadKind(StrEnum):
     photo = "photo"
-    floor_plan = "floor_plan"
     document = "document"
 
 

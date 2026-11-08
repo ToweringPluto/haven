@@ -1,5 +1,6 @@
 import { createContext, use, useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
+import { prefersReducedMotion } from "../map/motion";
 import { PAGES, type Page } from "../types";
 
 interface Route {
@@ -26,7 +27,8 @@ function routeFromHash(): Route {
 const hashFor = (page: Page, param?: string) =>
   page === "home" ? "#/" : `#/${page}${param ? `/${encodeURIComponent(param)}` : ""}`;
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+const scrollToTop = () =>
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [route, setRoute] = useState<Route>(routeFromHash);

@@ -29,7 +29,7 @@ def test_render_is_deterministic(spec: dict[str, Any]) -> None:
 
 def test_version_and_changelog(spec: dict[str, Any]) -> None:
     version = spec["info"]["version"]
-    assert version == "0.2.0"
+    assert version == "0.3.0"
     assert f"## {version}" in CHANGELOG.read_text(encoding="utf-8")
 
 

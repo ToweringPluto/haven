@@ -56,7 +56,7 @@ class FakeBackend(FixtureBackend):
         return PhotoScreen(evidence_quality=EvidenceQuality.good, signals=[])
 
     def read_aloud(self, text: str) -> bytes:
-        return b"ID3fake-mp3"
+        return b"RIFFfake-wav"
 
 
 def token(key: rsa.RSAPrivateKey = PRIVATE_KEY, algorithm: str = "RS256", **overrides: Any) -> str:
@@ -227,8 +227,8 @@ def test_photo_screen_is_rate_limited_per_user() -> None:
 def test_read_aloud_returns_audio(client: TestClient) -> None:
     res = client.post("/v1/read-aloud", json={"text": "Hello"}, headers=auth(token()))
     assert res.status_code == 200
-    assert res.headers["content-type"] == "audio/mpeg"
-    assert res.content == b"ID3fake-mp3"
+    assert res.headers["content-type"] == "audio/wav"
+    assert res.content == b"RIFFfake-wav"
 
 
 def test_read_aloud_rejects_long_and_blank_text() -> None:
