@@ -987,7 +987,7 @@
   "access_tags": {
     "radius_m": 500.0,
     "source": "OpenStreetMap (Overpass API)",
-    "fetched_at": "2026-11-07T23:01:14Z",
+    "fetched_at": "2026-11-08T09:43:21Z",
     "ways": 294,
     "ways_with_surface": 202,
     "ways_with_smoothness": 3,
