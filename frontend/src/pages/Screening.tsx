@@ -6,7 +6,6 @@ import { BackLink } from "../components/BackLink";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { SampleLabel } from "../components/SampleLabel";
-import { SignInPrompt } from "../components/SignInPrompt";
 import { Status } from "../components/Status";
 import { useEnumLabel } from "../api/enums";
 import {
@@ -37,7 +36,7 @@ function validateImage(file: File): string | null {
 }
 
 export default function Screening() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isConfigured, isLoading, login } = useAuth();
   const label = useEnumLabel();
   const authFetch = useAuthFetch();
   const fileInput = useRef<HTMLInputElement>(null);
@@ -126,11 +125,26 @@ export default function Screening() {
             </>
           ) : (
             <>
-              <h2>See how screening works</h2>
-              <p>Explore a pre-processed example, or sign in to screen your own photos.</p>
-              <Button onClick={() => showSample()} disabled={state.phase === "loading"}>
-                {state.phase === "loading" ? "Loading…" : "View sample result"}
-              </Button>
+              <h2>Check a property photo</h2>
+              <p>
+                {isConfigured
+                  ? "Sign in to upload your own photo, or explore a pre-processed example."
+                  : "Explore a pre-processed example of what the check finds."}
+              </p>
+              <div className="upload-actions">
+                {isConfigured && (
+                  <Button onClick={login} disabled={isLoading}>
+                    <Icon name="upload" size={18} /> Sign in to upload a photo
+                  </Button>
+                )}
+                <Button
+                  secondary={isConfigured}
+                  onClick={() => showSample()}
+                  disabled={state.phase === "loading"}
+                >
+                  {state.phase === "loading" ? "Loading…" : "View sample result"}
+                </Button>
+              </div>
             </>
           )}
           {state.phase === "idle" && state.notice && (
@@ -195,7 +209,6 @@ export default function Screening() {
         </div>
       )}
 
-      {!isAuthenticated && <SignInPrompt message="Sign in to screen your own photos" />}
 
       <div className="disclaimer">
         <Icon name="info" />

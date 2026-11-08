@@ -1,25 +1,21 @@
 """API envelopes that are not domain objects: request bodies, list wrappers, enum metadata
 and RFC 9457 problem details."""
 
-from datetime import date
+from datetime import date, datetime
 from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 from haven.domain import (
     AccessRequirements,
-    CouncilTaxBand,
     Destination,
-    EpcBand,
-    Evidence,
     EvidenceQuality,
-    MainFuel,
     Priority,
     Property,
-    PropertyType,
     RecurringCost,
     RenterProfile,
     Signal,
+    Upload,
 )
 
 
@@ -50,36 +46,11 @@ class ProfileInput(BaseModel):
     access: AccessRequirements = Field(default_factory=AccessRequirements)
     destinations: list[Destination] = Field(default_factory=list)
     other_recurring_costs: list[RecurringCost] = Field(default_factory=list)
-
-
-class PropertyInput(BaseModel):
-    """A property as submitted by a client. The server assigns the id.
-
-    Every fact carries its own provenance; a value the client doesn't have is sent as
-    ``{"value": null, "status": "insufficient", ...}``, never left out or defaulted.
-    """
-
-    model_config = ConfigDict(extra="forbid")
-
-    title: str
-    illustrative: bool = Field(
-        default=False, description="True when this is a fictional example, not a real listing."
+    preferred_areas: list[str] = Field(
+        default_factory=list,
+        description="Neighbourhoods the renter would like to live in (listed first); empty = "
+        "anywhere.",
     )
-    area: str | None = Field(default=None, description="Neighbourhood, never a house number.")
-    latitude: float | None = Field(default=None, ge=-90, le=90)
-    longitude: float | None = Field(default=None, ge=-180, le=180)
-
-    rent_pcm_gbp: Evidence[float]
-    bedrooms: Evidence[int]
-    property_type: Evidence[PropertyType]
-    floor_area_m2: Evidence[float]
-    council_tax_band: Evidence[CouncilTaxBand]
-    epc_rating: Evidence[EpcBand]
-    main_fuel: Evidence[MainFuel]
-    floor_level: Evidence[int] = Field(description="0 = ground floor.")
-    has_lift: Evidence[bool]
-    entrance_steps: Evidence[int] = Field(description="Number of steps at the entrance.")
-    other_recurring_costs: list[RecurringCost] = Field(default_factory=list)
 
 
 class CostRequest(BaseModel):
@@ -201,3 +172,49 @@ class ReadAloudRequest(BaseModel):
     text: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)] = Field(
         description="Plain text to read aloud."
     )
+
+
+class UploadList(BaseModel):
+    """The signed-in user's uploads."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    items: list[Upload]
+
+
+class ReportSummary(BaseModel):
+    """One of the signed-in user's saved reports, for a list."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str
+    created_at: datetime
+    property_id: str
+    property_title: str
+    property_area: str | None
+    profile_label: str
+
+
+class ReportList(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    items: list[ReportSummary] = Field(description="Newest first.")
+
+
+class SavedHomes(BaseModel):
+    """The homes the signed-in user has saved (their shortlist), in the order saved."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    property_ids: list[str] = Field(default_factory=list, max_length=200)
+
+
+class DeletedData(BaseModel):
+    """What ``DELETE /v1/me`` removed."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    profiles: int = Field(ge=0)
+    reports: int = Field(ge=0)
+    uploads: int = Field(ge=0)
+    saved_homes: bool = Field(description="True when a saved-homes list was removed.")

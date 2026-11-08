@@ -4168,3 +4168,112 @@ footer .logo > span:last-child {
   flex-wrap: wrap;
   gap: 6px;
 }
+
+/* One photo per listing: the gallery is a single image. */
+.detail-gallery.single {
+  display: block;
+}
+.detail-gallery.single img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Property page: AI photo check + evidence uploads */
+.evidence-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.evidence-head h2 {
+  margin: 2px 0 0;
+}
+.evidence-controls {
+  align-items: center;
+}
+.evidence-or {
+  font-size: 13px;
+  color: var(--charcoal);
+}
+.evidence-signin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px dashed var(--sage);
+  border-radius: 10px;
+  background: var(--paper);
+}
+.evidence-signin > span {
+  flex: 1 1 220px;
+}
+.evidence-thumb {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.evidence-list li > div {
+  flex: 1;
+}
+
+/* Profile builder: back controls at the top and next to Continue */
+.onboarding-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.progress-top .onboarding-back {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--teal);
+  padding: 6px 0;
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .onboarding-buttons {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Dashboard: saved reports and data controls */
+.account-grid {
+  margin-top: 28px;
+}
+.report-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.report-list button {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.report-list small {
+  color: var(--charcoal);
+}
+.privacy-card p {
+  line-height: 1.5;
+}
+
+.upload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}

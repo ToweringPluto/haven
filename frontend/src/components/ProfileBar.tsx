@@ -17,16 +17,11 @@ export function ProfileBar() {
   return (
     <div className="profile-bar">
       <Icon name="user" size={18} />
-      <span>
-        {saved ? (
-          <>
-            Assessing for <b>{saved.label}</b>
-            {saved.personaId && " (illustrative example)"}
-          </>
-        ) : (
-          <>No renter profile yet: costs aren’t compared with a budget and requirement checks are off.</>
-        )}
-      </span>
+      {!saved && (
+        <span>
+          No renter profile yet: costs aren’t compared with a budget and requirement checks are off.
+        </span>
+      )}
       <label>
         <span className="visually-hidden">Example renter</span>
         <select value={saved?.personaId ?? ""} onChange={(e) => pick(e.target.value)}>
@@ -39,7 +34,7 @@ export function ProfileBar() {
         </select>
       </label>
       <button type="button" className="text-button" onClick={() => go("onboarding")}>
-        {saved && !saved.personaId ? "Edit profile" : "Create your profile"}
+        {saved && !saved.personaId ? "Edit your profile" : "Create your profile"}
       </button>
       {error && <small role="alert">{error}</small>}
     </div>

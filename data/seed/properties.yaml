@@ -4,25 +4,30 @@ meta:
   generated_by: backend/scripts/make_seed.py
   generated_on: '2026-11-07'
   random_seed: 2026
-  notes: All 8 properties are FICTIONAL ('Illustrative property — not a real listing'). Rents, bedrooms,
+  notes: All 11 properties are FICTIONAL ('Illustrative property — not a real listing'). Rents, bedrooms,
     floor areas, floors, lifts, steps, council tax bands and other costs are hand-chosen illustrative
     values, not statistics. EPC band, main fuel and (where no edge case fixes it) property type are drawn
     with the fixed random seed, weighted by Edinburgh EPC certificate counts. Coordinates are points on
-    real public streets (no house numbers).
+    real public streets (no house numbers); the Dalry, Sighthill and Wester Hailes points were looked
+    up on 2026-11-08.
   epc_distribution_source: data/reference/energy_kwh_per_m2_edinburgh.yaml (https://data.gov.scot/dataset/domestic_energy_performance_certificates___dataset_to_q1_2026,
     release Q4 2016 to Q3 2026 (extracted 21 October 2026))
   coordinates_source: 'OpenStreetMap street ways, point returned by Nominatim search (https://nominatim.openstreetmap.org/),
     rounded to 5 decimal places; OSM way ids: Great Junction Street (way 872066201), Marchmont Crescent
     (way 93760508), Wheatfield Street (way 5197312), Blackfriars Street (way 4827445), Craigleith Road
-    (way 481282493), Bath Street (way 4391658), Drum Street (way 53770836), Leamington Terrace (way 276992921)'
+    (way 481282493), Bath Street (way 4391658), Drum Street (way 53770836), Leamington Terrace (way 276992921),
+    Dalry Road (way 362445600), Calder Road (way 41421727), Wester Hailes Road (way 4435839)'
   coordinates_licence: © OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)
   coordinates_retrieved: '2026-11-07'
   edge_cases:
     seed-prop-leith: entrance steps and a 3rd-floor flat with no lift
     seed-prop-marchmont: council tax band not stated
-    seed-prop-gorgie: cheapest rent in the seed but EPC F (heating cost risk)
+    seed-prop-gorgie: cheap rent but EPC F (heating cost risk)
     seed-prop-old-town: 2nd-floor flat; the listing doesn't say whether there is a lift
     seed-prop-craigleith: step-free new build (no entrance steps, lift to every floor)
+    seed-prop-dalry: low rent (lower-budget demo) but up two flights with no lift
+    seed-prop-sighthill: cheapest rent in the seed and step-free (lower-budget access demo)
+    seed-prop-wester-hailes: low-rent 2-bed (lower-budget demo) on the 5th floor with a lift
 properties:
 - id: seed-prop-leith
   title: 'Illustrative property — not a real listing: 2-bed top-floor tenement flat, Leith'
@@ -218,8 +223,7 @@ properties:
     as_of: '2026-11-07'
     confidence: null
     status: known
-    note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed but EPC F (heating
-      cost risk)'
+    note: 'Fictional value fixed for a deliberate edge case: cheap rent but EPC F (heating cost risk)'
   bedrooms:
     value: 1
     origin: listing
@@ -259,8 +263,7 @@ properties:
     as_of: '2026-11-07'
     confidence: null
     status: known
-    note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed but EPC F (heating
-      cost risk)'
+    note: 'Fictional value fixed for a deliberate edge case: cheap rent but EPC F (heating cost risk)'
   main_fuel:
     value: electricity
     origin: listing
@@ -755,4 +758,281 @@ properties:
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-dalry
+  title: 'Illustrative property — not a real listing: 1-bed tenement flat, Dalry'
+  illustrative: true
+  area: Dalry
+  latitude: 55.94089
+  longitude: -3.2239
+  rent_pcm_gbp:
+    value: 625.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
+      with no lift'
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 38.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: A
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
+      with no lift'
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
+      with no lift'
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-sighthill
+  title: 'Illustrative property — not a real listing: 1-bed step-free ground-floor flat, Sighthill'
+  illustrative: true
+  area: Sighthill
+  latitude: 55.92045
+  longitude: -3.30188
+  rent_pcm_gbp:
+    value: 595.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
+      access demo)'
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 45.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: A
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
+      access demo)'
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
+      access demo)'
+  other_recurring_costs: []
+- id: seed-prop-wester-hailes
+  title: 'Illustrative property — not a real listing: 2-bed high-rise flat, Wester Hailes'
+  illustrative: true
+  area: Wester Hailes
+  latitude: 55.90977
+  longitude: -3.27575
+  rent_pcm_gbp:
+    value: 695.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
+      5th floor with a lift'
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 62.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 5
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
+      5th floor with a lift'
+  has_lift:
+    value: true
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
+      5th floor with a lift'
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-07'
+    confidence: null
+    status: known
+    note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
+      5th floor with a lift'
   other_recurring_costs: []

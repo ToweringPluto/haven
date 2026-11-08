@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.4**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.2.0**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,14 +24,15 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.4):** profiles are the illustrative persona data in
-  [`contracts/examples/`](../contracts/examples/) plus anything you create.
-  - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
+- **Current behaviour (contract 0.2.0):** profiles are the illustrative persona data in
+  [`contracts/examples/`](../contracts/examples/) plus anything you create. Listings are
+  read-only: renters can't add them.
+  - `GET /v1/properties` lists 11 **fictional seed properties** first (`seed-prop-*`, from
     `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
-    not a real listing"), then the 3 persona properties, then anything you create. The seed
-    deliberately includes edge cases: a missing council tax band and missing lift information
-    (both `insufficient`), steps plus a 3rd floor with no lift, a cheap EPC F flat, and a
-    step-free new build.
+    not a real listing"), then the 3 persona properties. The seed deliberately includes edge
+    cases: a missing council tax band and missing lift information (both `insufficient`),
+    steps plus a 3rd floor with no lift, a cheap EPC F flat, a step-free new build, and three
+    low-rent homes (£595–£695 a month) for lower-budget demos.
   - `POST /v1/properties/{property_id}/cost` runs the **real cost engine** for any property and
     any (or no) profile, using the reference data in `data/reference/` (Edinburgh council tax,
     Ofgem price cap, Edinburgh EPC heat demand, Ofgem typical electricity use). Its figures
@@ -63,8 +64,9 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
     kind (Google Gemini when the server has `HAVEN_VISION_PROVIDER=gemini`, otherwise every
     signal is `insufficient_evidence`); floor plans get `evidence_quality` only; documents get
     `extracted_facts`. Pass the upload ids to `POST /v1/assessments` to include them.
-  - Created profiles, properties and reports are saved in the database when the server has
-    `HAVEN_DATABASE_URL` set; without it they're kept in memory and lost on restart.
+  - Profiles, reports, upload records and saved homes are saved in the database when the
+    server has `HAVEN_DATABASE_URL` set; without it they're kept in memory and lost on restart.
+    Each belongs to the signed-in user who created it; anyone else gets `404`.
   - Profiles: send the Auth0 token (optional) on `POST /v1/profiles` so the profile belongs to
     the signed-in user and shows in their `GET /v1/profiles`. Profiles created without a token
     aren't listed; keep their id to reopen them.
@@ -100,17 +102,21 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | 0 | Load labels for enums | `GET /v1/meta/enums` | Every enum value with a human label. Use these labels and don't hard-code your own wording. |
 | – | "Data and limits" page | `GET /v1/data-sources` | `{items: [{id, name, url, licence_note, as_of, caveats}]}`, one per dataset in `data/datasets.yml`. Link `url`, and show `licence_note`, `as_of` and every caveat verbatim. Where OpenStreetMap data is shown, its attribution must be visible. |
 | 1 | Renter describes their needs | `POST /v1/profiles` | Body `ProfileInput` (budget, priorities, access needs, destinations, other recurring costs). The server assigns `id`. |
-| 1 | List or reopen profiles | `GET /v1/profiles`, `GET /v1/profiles/{profile_id}` | `GET /v1/profiles` returns `{items: [...]}`. |
+| 1 | List or reopen profiles | `GET /v1/profiles`, `GET /v1/profiles/{profile_id}` | `GET /v1/profiles` returns `{items: [...]}`: the samples plus, with a token, the caller's own. |
+| 1 | Edit or delete your profile | `PUT /v1/profiles/{profile_id}`, `DELETE /v1/profiles/{profile_id}` | **Signed in.** Only your own profiles; anything else is `404`. `PUT` takes a full `ProfileInput` and keeps the id. |
 | 2 | Browse properties | `GET /v1/properties` | Returns `{items: [...]}`. This wrapper exists so pagination can be added later without breaking you. |
-| 2 | Add a property from a listing | `POST /v1/properties` | Body `PropertyInput`. Every fact is an `Evidence` object. Send unknown facts as `{"value": null, "status": "insufficient", ...}`; don't leave them out. |
 | 2 | Property detail | `GET /v1/properties/{property_id}` | |
 | 3 | True monthly cost | `POST /v1/properties/{property_id}/cost` | Body `{"profile_id": "..."}` (optional). Without a profile, `budget_comparison` is `unknown`. |
 | 4 | Requirement checks | `POST /v1/properties/{property_id}/suitability` | Body `{"profile_id": "..."}`. Returns one `Finding` per applicable rule: `meets` / `concern` / `unknown`. |
-| 5 | Upload evidence | `POST /v1/uploads` | **multipart/form-data**: `file`, `kind` (`photo` \| `floor_plan` \| `document`), optional `property_id`. Returns `201` with an `Upload`. |
-| 5 | Delete evidence | `DELETE /v1/uploads/{upload_id}` | `204`. Removes the file and its derived signals. |
-| 6 | Generate the report | `POST /v1/assessments` | Body `{"profile_id", "property_id", "upload_ids": [...]}`. Returns the full `Report`. |
-| 6 | Reopen a report | `GET /v1/reports/{report_id}` | |
+| 5 | Upload evidence | `POST /v1/uploads` | **Signed in.** **multipart/form-data**: `file`, `kind` (`photo` \| `floor_plan` \| `document`), optional `property_id`. Returns `201` with an `Upload`. |
+| 5 | Your uploads | `GET /v1/uploads` | **Signed in.** `{items: [...]}`; add `?property_id=` for one home. Use it to show a renter's files again after a reload. |
+| 5 | Delete evidence | `DELETE /v1/uploads/{upload_id}` | **Signed in.** `204`. Removes the file and its derived signals. Only your own uploads. |
+| 6 | Generate the report | `POST /v1/assessments` | **Signed in.** The report is saved to the account. Body `{"profile_id", "property_id", "upload_ids": [...]}`. Returns the full `Report`. |
+| 6 | Your reports | `GET /v1/reports` | **Signed in.** `{items: [ReportSummary]}`, newest first. |
+| 6 | Reopen a report | `GET /v1/reports/{report_id}` | Example reports are public; a saved report needs the owner's token. |
 | – | Who is signed in | `GET /v1/me` | **Signed in.** Returns `{sub, email}`. See [§8](#8-signed-in-features-auth0). |
+| – | Saved homes | `GET /v1/me/saved-homes`, `PUT /v1/me/saved-homes` | **Signed in.** `{property_ids: [...]}`. `PUT` replaces the whole list. |
+| – | Delete all my data | `DELETE /v1/me` | **Signed in.** Deletes every profile, report, upload (with its file) and saved home of the user; returns the counts. |
 | – | Screen a photo | `POST /v1/photo-screen` | **Signed in.** Raw image body (`Content-Type: image/jpeg`, `image/png` or `image/webp`, max 5 MB). Sent to Google Gemini for screening when configured; never stored by Haven. Returns `PhotoScreen`. |
 | – | Read text aloud | `POST /v1/read-aloud` | **Signed in.** Body `{"text": "..."}` (max 5000 characters). Returns `audio/mpeg`. |
 
@@ -291,9 +297,11 @@ Wildcards aren't recommended. Prism (`poe mock`) sends permissive CORS headers b
 
 ## 8. Signed-in features (Auth0)
 
-The renter journey above is public and needs no login. Three endpoints need a signed-in user:
-`GET /v1/me`, `POST /v1/photo-screen` and `POST /v1/read-aloud`. Send an Auth0 access token
-issued for the Haven API audience:
+Browsing, costs, requirement checks, profiles and example reports are public. Everything that
+stores something about the renter needs a signed-in user: uploads, creating and listing reports,
+editing or deleting a profile, saved homes, deleting all data, plus `GET /v1/me`,
+`POST /v1/photo-screen` and `POST /v1/read-aloud`. Send an Auth0 access token issued for the
+Haven API audience:
 
 ```
 Authorization: Bearer <access token>

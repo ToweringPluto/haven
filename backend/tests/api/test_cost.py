@@ -125,17 +125,6 @@ def test_any_profile_property_pair_is_estimated(engine: TestClient) -> None:
     assert body["budget_monthly_gbp"] == 900.0
 
 
-def test_created_property_is_estimated(engine: TestClient, example: Example) -> None:
-    item = example("wheelchair_user", "properties")["items"][0]
-    created = engine.post("/v1/properties", json={k: v for k, v in item.items() if k != "id"})
-    assert created.status_code == 201
-    new_id = created.json()["id"]
-    body = post_cost(engine, new_id).json()
-    reference = post_cost(engine, "ill-prop-leith-flat").json()
-    assert body["property_id"] == new_id
-    assert body["total_monthly_gbp"] == reference["total_monthly_gbp"]
-
-
 def test_created_profile_is_used(engine: TestClient, example: Example) -> None:
     profile = {k: v for k, v in example("student", "profile").items() if k != "id"}
     profile["monthly_budget_gbp"] = 100.0

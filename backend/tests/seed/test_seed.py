@@ -35,6 +35,9 @@ NEIGHBOURHOODS = {
     "Craigleith",
     "Gilmerton",
     "Bruntsfield",
+    "Dalry",
+    "Sighthill",
+    "Wester Hailes",
 }
 # Generous City of Edinburgh bounding box.
 LAT_RANGE = (55.85, 56.00)
@@ -71,8 +74,8 @@ def test_generator_is_deterministic() -> None:
     assert make_seed.render(make_seed.build_seed()) == make_seed.render(make_seed.build_seed())
 
 
-def test_eight_fictional_properties_in_the_named_neighbourhoods(props: list[Property]) -> None:
-    assert len(props) == 8
+def test_eleven_fictional_properties_in_the_named_neighbourhoods(props: list[Property]) -> None:
+    assert len(props) == 11
     assert {p.area for p in props} == NEIGHBOURHOODS
     for p in props:
         assert p.illustrative is True
@@ -115,7 +118,7 @@ def test_meta_records_sources(store: SeedStore) -> None:
     assert "openstreetmap" in meta.coordinates_source.lower()
     assert meta.coordinates_retrieved <= date.today()
     assert set(meta.edge_cases) <= {p.id for p in store}
-    assert len(meta.edge_cases) == 5
+    assert len(meta.edge_cases) == 8
 
 
 # --- EPC mix is drawn from the Edinburgh EPC distribution ------------------------------
@@ -160,8 +163,21 @@ def test_edge_case_steps_and_third_floor_without_lift(props: list[Property]) -> 
 def test_edge_case_cheap_rent_but_epc_f(props: list[Property]) -> None:
     p = by_id(props, "gorgie")
     assert p.epc_rating.value == "F"
+    assert p.rent_pcm_gbp.value is not None and p.rent_pcm_gbp.value < 750
+
+
+def test_low_budget_demo_homes(props: list[Property]) -> None:
+    """Three homes under £700 a month, one of them step-free, for lower-budget demos."""
+    low = [p for p in props if (p.rent_pcm_gbp.value or 10_000) < 700]
+    assert {p.id for p in low} == {
+        "seed-prop-dalry",
+        "seed-prop-sighthill",
+        "seed-prop-wester-hailes",
+    }
+    sighthill = by_id(props, "sighthill")
     rents = [q.rent_pcm_gbp.value for q in props if q.rent_pcm_gbp.value is not None]
-    assert p.rent_pcm_gbp.value == min(rents)
+    assert sighthill.rent_pcm_gbp.value == min(rents)
+    assert sighthill.entrance_steps.value == 0
 
 
 def test_edge_case_missing_council_tax_band(props: list[Property]) -> None:
@@ -222,7 +238,7 @@ def _raw() -> dict[str, Any]:
 
 
 def test_store_get_and_iteration(store: SeedStore) -> None:
-    assert len(store) == 8
+    assert len(store) == 11
     first = store.list()[0]
     assert store.get(first.id) == first
     assert store.get("seed-prop-nowhere") is None

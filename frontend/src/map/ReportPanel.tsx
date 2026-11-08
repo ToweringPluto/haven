@@ -1,6 +1,7 @@
 import { api } from "../api/client";
 import type { Report } from "../api/types";
 import { useLoad } from "../api/useLoad";
+import { useAuth } from "../auth/AuthProvider";
 import { Icon } from "../components/Icon";
 import { LoadProblem } from "../components/LoadProblem";
 import { ReadAloudButton } from "../components/ReadAloudButton";
@@ -16,7 +17,10 @@ function spokenSummary(report: Report): string {
 /** The generated report, revealed section by section inside the drawer. */
 export function ReportPanel({ reportId }: { reportId: string }) {
   const { go } = useNavigation();
-  const [report, reload] = useLoad(reportId, () => api.report(reportId));
+  const { isLoading, isAuthenticated, getAccessToken } = useAuth();
+  // Saved reports need the owner's token, so wait for sign-in to settle before loading.
+  const key = !isLoading ? `${reportId}:${isAuthenticated}` : null;
+  const [report, reload] = useLoad(key, async () => api.report(reportId, await getAccessToken()));
 
   if (report.status === "loading") return <div className="drawer-skeleton" aria-busy="true">Opening the report…</div>;
   if (report.status !== "ok") return <LoadProblem result={report} onRetry={reload} />;

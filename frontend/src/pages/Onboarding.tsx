@@ -58,12 +58,14 @@ export default function Onboarding() {
   const { go } = useNavigation();
   const label = useEnumLabel();
   const priorityOptions = useEnumValues("priority", PRIORITY_OPTIONS);
-  const { draft, updateDraft, saveProfile, choosePersona } = useRenterProfile();
+  const { draft, updateDraft, saved, saveProfile, choosePersona } = useRenterProfile();
   const [step, setStep] = useState(1);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const current = STEPS[step - 1];
   const isLast = step === TOTAL_STEPS;
+  const back = () => (step > 1 ? setStep(step - 1) : go(saved ? "explore" : "home"));
+  const backLabel = step > 1 ? "Back" : saved ? "Back to homes" : "Back to home";
 
   const finish = async () => {
     setBusy(true);
@@ -96,11 +98,11 @@ export default function Onboarding() {
               </button>
             ))}
           </div>
-          <small>Illustrative examples, not real people.</small>
+          <small>Examples, not real people.</small>
         </aside>
         <div className="progress-top">
-          <button type="button" onClick={() => (step > 1 ? setStep(step - 1) : go("home"))}>
-            ← Back
+          <button type="button" className="back-link onboarding-back" onClick={back}>
+            ← {backLabel}
           </button>
           <span>
             Step {step} of {TOTAL_STEPS}
@@ -206,6 +208,9 @@ export default function Onboarding() {
           <div className="onboarding-actions">
             <small>You can change these at any time.</small>
             <div className="onboarding-buttons">
+              <Button secondary onClick={back} disabled={busy}>
+                {backLabel}
+              </Button>
               <Button
                 onClick={() => (isLast ? finish() : setStep(step + 1))}
                 disabled={busy}

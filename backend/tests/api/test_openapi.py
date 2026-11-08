@@ -16,8 +16,8 @@ from haven.api.routes import (
     reports,
     uploads,
 )
-from haven.api.schemas import ProfileInput, PropertyInput
-from haven.domain import Property, RenterProfile
+from haven.api.schemas import ProfileInput
+from haven.domain import RenterProfile
 
 APP = create_app()
 SPEC: dict[str, Any] = APP.openapi()
@@ -46,18 +46,24 @@ EXPECTED = {
     ("POST", "/v1/profiles"),
     ("GET", "/v1/profiles"),
     ("GET", "/v1/profiles/{profile_id}"),
+    ("PUT", "/v1/profiles/{profile_id}"),
+    ("DELETE", "/v1/profiles/{profile_id}"),
     ("GET", "/v1/properties"),
-    ("POST", "/v1/properties"),
     ("GET", "/v1/properties/{property_id}"),
     ("POST", "/v1/properties/{property_id}/cost"),
     ("POST", "/v1/properties/{property_id}/suitability"),
     ("POST", "/v1/uploads"),
+    ("GET", "/v1/uploads"),
     ("DELETE", "/v1/uploads/{upload_id}"),
     ("POST", "/v1/assessments"),
+    ("GET", "/v1/reports"),
     ("GET", "/v1/reports/{report_id}"),
     ("GET", "/v1/meta/enums"),
     ("GET", "/v1/data-sources"),
     ("GET", "/v1/me"),
+    ("DELETE", "/v1/me"),
+    ("GET", "/v1/me/saved-homes"),
+    ("PUT", "/v1/me/saved-homes"),
     ("POST", "/v1/photo-screen"),
     ("POST", "/v1/read-aloud"),
 }
@@ -111,9 +117,7 @@ def test_problem_detail_component_is_registered() -> None:
     assert "HTTPValidationError" not in components
 
 
-@pytest.mark.parametrize(
-    "input_model,model", [(ProfileInput, RenterProfile), (PropertyInput, Property)]
-)
+@pytest.mark.parametrize("input_model,model", [(ProfileInput, RenterProfile)])
 def test_input_models_match_domain_models(input_model: Any, model: Any) -> None:
     """Request bodies are the domain model without the server-assigned id."""
     expected = {k: v for k, v in model.model_fields.items() if k != "id"}

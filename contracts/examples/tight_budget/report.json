@@ -30,7 +30,8 @@
           "note": "Illustrative value for the API contract; not real data."
         }
       }
-    ]
+    ],
+    "preferred_areas": []
   },
   "property": {
     "id": "ill-prop-gorgie-flat",

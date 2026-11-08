@@ -270,6 +270,33 @@ components:
       - items
       title: DataSourceList
       type: object
+    DeletedData:
+      additionalProperties: false
+      description: What ``DELETE /v1/me`` removed.
+      properties:
+        profiles:
+          minimum: 0.0
+          title: Profiles
+          type: integer
+        reports:
+          minimum: 0.0
+          title: Reports
+          type: integer
+        saved_homes:
+          description: True when a saved-homes list was removed.
+          title: Saved Homes
+          type: boolean
+        uploads:
+          minimum: 0.0
+          title: Uploads
+          type: integer
+      required:
+      - profiles
+      - reports
+      - uploads
+      - saved_homes
+      title: DeletedData
+      type: object
     Destination:
       additionalProperties: false
       properties:
@@ -939,6 +966,12 @@ components:
             $ref: '#/components/schemas/RecurringCost'
           title: Other Recurring Costs
           type: array
+        preferred_areas:
+          description: Neighbourhoods the renter would like to live in (listed first); empty = anywhere.
+          items:
+            type: string
+          title: Preferred Areas
+          type: array
         priorities:
           items:
             $ref: '#/components/schemas/Priority'
@@ -1037,84 +1070,6 @@ components:
       - has_lift
       - entrance_steps
       title: Property
-      type: object
-    PropertyInput:
-      additionalProperties: false
-      description: 'A property as submitted by a client. The server assigns the id.
-
-
-        Every fact carries its own provenance; a value the client doesn''t have is sent as
-
-        ``{"value": null, "status": "insufficient", ...}``, never left out or defaulted.'
-      properties:
-        area:
-          anyOf:
-          - type: string
-          - type: 'null'
-          description: Neighbourhood, never a house number.
-          title: Area
-        bedrooms:
-          $ref: '#/components/schemas/Evidence_int_'
-        council_tax_band:
-          $ref: '#/components/schemas/Evidence_CouncilTaxBand_'
-        entrance_steps:
-          $ref: '#/components/schemas/Evidence_int_'
-          description: Number of steps at the entrance.
-        epc_rating:
-          $ref: '#/components/schemas/Evidence_EpcBand_'
-        floor_area_m2:
-          $ref: '#/components/schemas/Evidence_float_'
-        floor_level:
-          $ref: '#/components/schemas/Evidence_int_'
-          description: 0 = ground floor.
-        has_lift:
-          $ref: '#/components/schemas/Evidence_bool_'
-        illustrative:
-          default: false
-          description: True when this is a fictional example, not a real listing.
-          title: Illustrative
-          type: boolean
-        latitude:
-          anyOf:
-          - maximum: 90.0
-            minimum: -90.0
-            type: number
-          - type: 'null'
-          title: Latitude
-        longitude:
-          anyOf:
-          - maximum: 180.0
-            minimum: -180.0
-            type: number
-          - type: 'null'
-          title: Longitude
-        main_fuel:
-          $ref: '#/components/schemas/Evidence_MainFuel_'
-        other_recurring_costs:
-          items:
-            $ref: '#/components/schemas/RecurringCost'
-          title: Other Recurring Costs
-          type: array
-        property_type:
-          $ref: '#/components/schemas/Evidence_PropertyType_'
-        rent_pcm_gbp:
-          $ref: '#/components/schemas/Evidence_float_'
-        title:
-          title: Title
-          type: string
-      required:
-      - title
-      - rent_pcm_gbp
-      - bedrooms
-      - property_type
-      - floor_area_m2
-      - council_tax_band
-      - epc_rating
-      - main_fuel
-      - floor_level
-      - has_lift
-      - entrance_steps
-      title: PropertyInput
       type: object
     PropertyList:
       additionalProperties: false
@@ -1291,6 +1246,12 @@ components:
             $ref: '#/components/schemas/RecurringCost'
           title: Other Recurring Costs
           type: array
+        preferred_areas:
+          description: Neighbourhoods the renter would like to live in (listed first); empty = anywhere.
+          items:
+            type: string
+          title: Preferred Areas
+          type: array
         priorities:
           items:
             $ref: '#/components/schemas/Priority'
@@ -1353,6 +1314,19 @@ components:
       - property
       title: Report
       type: object
+    ReportList:
+      additionalProperties: false
+      properties:
+        items:
+          description: Newest first.
+          items:
+            $ref: '#/components/schemas/ReportSummary'
+          title: Items
+          type: array
+      required:
+      - items
+      title: ReportList
+      type: object
     ReportSection:
       additionalProperties: false
       properties:
@@ -1383,6 +1357,52 @@ components:
       required:
       - text
       title: ReportSentence
+      type: object
+    ReportSummary:
+      additionalProperties: false
+      description: One of the signed-in user's saved reports, for a list.
+      properties:
+        created_at:
+          format: date-time
+          title: Created At
+          type: string
+        id:
+          title: Id
+          type: string
+        profile_label:
+          title: Profile Label
+          type: string
+        property_area:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Property Area
+        property_id:
+          title: Property Id
+          type: string
+        property_title:
+          title: Property Title
+          type: string
+      required:
+      - id
+      - created_at
+      - property_id
+      - property_title
+      - property_area
+      - profile_label
+      title: ReportSummary
+      type: object
+    SavedHomes:
+      additionalProperties: false
+      description: The homes the signed-in user has saved (their shortlist), in the order saved.
+      properties:
+        property_ids:
+          items:
+            type: string
+          maxItems: 200
+          title: Property Ids
+          type: array
+      title: SavedHomes
       type: object
     Signal:
       additionalProperties: false
@@ -1548,6 +1568,19 @@ components:
       - document
       title: UploadKind
       type: string
+    UploadList:
+      additionalProperties: false
+      description: The signed-in user's uploads.
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Upload'
+          title: Items
+          type: array
+      required:
+      - items
+      title: UploadList
+      type: object
   securitySchemes:
     Auth0:
       description: 'Auth0 access token for the Haven API (`Authorization: Bearer <token>`).'
@@ -1557,7 +1590,7 @@ info:
   description: 'Decision support for Edinburgh renters. Prototype: assessments are indicative, not a legal,
     safety, accessibility or compliance certification.'
   title: Haven API
-  version: 0.1.4
+  version: 0.2.0
 openapi: 3.1.0
 paths:
   /healthz:
@@ -1575,7 +1608,8 @@ paths:
     post:
       description: A report combines cost, rule findings and screening signals with a plain-language explanation
         whose sentences cite finding/signal ids. Always show `disclaimer`. There is deliberately no overall
-        score.
+        score. The report is saved to the signed-in user's account. The profile must be a sample, one
+        of theirs, or one saved without signing in; uploads must be theirs.
       operationId: create_assessment_v1_assessments_post
       requestBody:
         content:
@@ -1729,6 +1763,7 @@ paths:
                       label: Student (illustrative persona)
                       monthly_budget_gbp: 900.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - transport_access
@@ -1996,6 +2031,7 @@ paths:
                           source: illustrative fixture
                           status: known
                           value: 30.0
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - heating_cost
@@ -2291,6 +2327,7 @@ paths:
                       label: Wheelchair user (illustrative persona)
                       monthly_budget_gbp: 1250.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - step_free_access
                       - lift_access
@@ -2420,6 +2457,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Report'
           description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
         '404':
           content:
             application/problem+json:
@@ -2456,7 +2499,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
           description: The current backend can't answer this request yet (fixture backend).
-      summary: Assess a property for a renter profile and create a report
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Assess a property for a renter profile and create a report (signed in)
       tags:
       - reports
   /v1/data-sources:
@@ -2594,6 +2645,43 @@ paths:
       tags:
       - meta
   /v1/me:
+    delete:
+      description: Permanently deletes every profile, report, upload (the stored file included) and saved
+        home that belongs to the signed-in user, and says how many of each were removed. The Auth0 account
+        itself isn't deleted.
+      operationId: delete_my_data_v1_me_delete
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example:
+                  summary: Everything removed
+                  value:
+                    profiles: 1
+                    reports: 2
+                    saved_homes: true
+                    uploads: 3
+              schema:
+                $ref: '#/components/schemas/DeletedData'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Delete all my data (signed in)
+      tags:
+      - account
     get:
       description: Returns the verified `sub` and, when the token carries it, the email. Requires an Auth0
         access token for this API.
@@ -2626,6 +2714,118 @@ paths:
       security:
       - Auth0: []
       summary: Who am I (signed in)
+      tags:
+      - account
+  /v1/me/saved-homes:
+    get:
+      description: The property ids the signed-in user has saved, in the order saved.
+      operationId: get_saved_homes_v1_me_saved_homes_get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example:
+                  summary: Two saved homes
+                  value:
+                    property_ids:
+                    - seed-prop-leith
+                    - seed-prop-gorgie
+              schema:
+                $ref: '#/components/schemas/SavedHomes'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: My saved homes (signed in)
+      tags:
+      - account
+    put:
+      description: Replaces the whole list. Duplicates are dropped; an unknown property id is `404`.
+      operationId: set_saved_homes_v1_me_saved_homes_put
+      requestBody:
+        content:
+          application/json:
+            examples:
+              two:
+                summary: Two saved homes
+                value:
+                  property_ids:
+                  - seed-prop-leith
+                  - seed-prop-gorgie
+            schema:
+              $ref: '#/components/schemas/SavedHomes'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example:
+                  summary: Two saved homes
+                  value:
+                    property_ids:
+                    - seed-prop-leith
+                    - seed-prop-gorgie
+              schema:
+                $ref: '#/components/schemas/SavedHomes'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: No property with id 'ill-prop-does-not-exist'.
+                instance: /v1/properties/ill-prop-does-not-exist
+                status: 404
+                title: Not Found
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The resource does not exist.
+        '422':
+          content:
+            application/problem+json:
+              example:
+                detail: The request body failed validation.
+                errors:
+                - loc:
+                  - body
+                  - monthly_budget_gbp
+                  msg: Input should be greater than 0
+                  type: greater_than
+                instance: /v1/profiles
+                status: 422
+                title: Unprocessable Content
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request failed validation.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Replace my saved homes (signed in)
       tags:
       - account
   /v1/meta/enums:
@@ -2936,6 +3136,7 @@ paths:
                       label: Wheelchair user (illustrative persona)
                       monthly_budget_gbp: 1250.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - step_free_access
                       - lift_access
@@ -2954,6 +3155,7 @@ paths:
                       label: Student (illustrative persona)
                       monthly_budget_gbp: 900.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - transport_access
@@ -2977,6 +3179,7 @@ paths:
                           source: illustrative fixture
                           status: known
                           value: 30.0
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - heating_cost
@@ -3020,6 +3223,7 @@ paths:
                   label: Student (illustrative persona)
                   monthly_budget_gbp: 900.0
                   other_recurring_costs: []
+                  preferred_areas: []
                   priorities:
                   - total_cost
                   - transport_access
@@ -3045,6 +3249,7 @@ paths:
                       source: illustrative fixture
                       status: known
                       value: 30.0
+                  preferred_areas: []
                   priorities:
                   - total_cost
                   - heating_cost
@@ -3064,6 +3269,7 @@ paths:
                   label: Wheelchair user (illustrative persona)
                   monthly_budget_gbp: 1250.0
                   other_recurring_costs: []
+                  preferred_areas: []
                   priorities:
                   - step_free_access
                   - lift_access
@@ -3093,6 +3299,7 @@ paths:
                     label: Student (illustrative persona)
                     monthly_budget_gbp: 900.0
                     other_recurring_costs: []
+                    preferred_areas: []
                     priorities:
                     - total_cost
                     - transport_access
@@ -3119,6 +3326,7 @@ paths:
                         source: illustrative fixture
                         status: known
                         value: 30.0
+                    preferred_areas: []
                     priorities:
                     - total_cost
                     - heating_cost
@@ -3139,6 +3347,7 @@ paths:
                     label: Wheelchair user (illustrative persona)
                     monthly_budget_gbp: 1250.0
                     other_recurring_costs: []
+                    preferred_areas: []
                     priorities:
                     - step_free_access
                     - lift_access
@@ -3177,6 +3386,67 @@ paths:
       tags:
       - profiles
   /v1/profiles/{profile_id}:
+    delete:
+      description: Sample profiles and other people's profiles are `404`. Reports made with the profile
+        keep their own copy of it.
+      operationId: delete_profile_v1_profiles__profile_id__delete
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          title: Profile Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: No property with id 'ill-prop-does-not-exist'.
+                instance: /v1/properties/ill-prop-does-not-exist
+                status: 404
+                title: Not Found
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The resource does not exist.
+        '422':
+          content:
+            application/problem+json:
+              example:
+                detail: The request body failed validation.
+                errors:
+                - loc:
+                  - body
+                  - monthly_budget_gbp
+                  msg: Input should be greater than 0
+                  type: greater_than
+                instance: /v1/profiles
+                status: 422
+                title: Unprocessable Content
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request failed validation.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Delete one of your profiles (signed in)
+      tags:
+      - profiles
     get:
       operationId: get_profile_v1_profiles__profile_id__get
       parameters:
@@ -3208,6 +3478,7 @@ paths:
                     label: Student (illustrative persona)
                     monthly_budget_gbp: 900.0
                     other_recurring_costs: []
+                    preferred_areas: []
                     priorities:
                     - total_cost
                     - transport_access
@@ -3234,6 +3505,7 @@ paths:
                         source: illustrative fixture
                         status: known
                         value: 30.0
+                    preferred_areas: []
                     priorities:
                     - total_cost
                     - heating_cost
@@ -3254,6 +3526,7 @@ paths:
                     label: Wheelchair user (illustrative persona)
                     monthly_budget_gbp: 1250.0
                     other_recurring_costs: []
+                    preferred_areas: []
                     priorities:
                     - step_free_access
                     - lift_access
@@ -3292,6 +3565,216 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
           description: The request failed validation.
       summary: Get a renter profile
+      tags:
+      - profiles
+    put:
+      description: Replaces everything in a profile the signed-in user created; the id stays the same.
+        Sample profiles and other people's profiles are `404`.
+      operationId: update_profile_v1_profiles__profile_id__put
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          title: Profile Id
+          type: string
+      requestBody:
+        content:
+          application/json:
+            examples:
+              student:
+                summary: Student (illustrative persona)
+                value:
+                  access:
+                    lift_required_above_floor: null
+                    max_walk_to_stop_m: null
+                    step_free_entrance_required: false
+                    wheelchair_user: false
+                  destinations:
+                  - latitude: 55.9445
+                    longitude: -3.1892
+                    max_travel_minutes: 30
+                    name: University of Edinburgh Central Area
+                  label: Student (illustrative persona)
+                  monthly_budget_gbp: 900.0
+                  other_recurring_costs: []
+                  preferred_areas: []
+                  priorities:
+                  - total_cost
+                  - transport_access
+                  - travel_time
+              tight_budget:
+                summary: Renter on a tight budget (illustrative persona)
+                value:
+                  access:
+                    lift_required_above_floor: null
+                    max_walk_to_stop_m: null
+                    step_free_entrance_required: false
+                    wheelchair_user: false
+                  destinations: []
+                  label: Renter on a tight budget (illustrative persona)
+                  monthly_budget_gbp: 1000.0
+                  other_recurring_costs:
+                  - label: Broadband
+                    monthly_gbp:
+                      as_of: '2026-11-01'
+                      confidence: null
+                      note: Illustrative value for the API contract; not real data.
+                      origin: user
+                      source: illustrative fixture
+                      status: known
+                      value: 30.0
+                  preferred_areas: []
+                  priorities:
+                  - total_cost
+                  - heating_cost
+              wheelchair_user:
+                summary: Wheelchair user (illustrative persona)
+                value:
+                  access:
+                    lift_required_above_floor: 0
+                    max_walk_to_stop_m: 400
+                    step_free_entrance_required: true
+                    wheelchair_user: true
+                  destinations:
+                  - latitude: 55.9216
+                    longitude: -3.1347
+                    max_travel_minutes: 45
+                    name: Royal Infirmary of Edinburgh
+                  label: Wheelchair user (illustrative persona)
+                  monthly_budget_gbp: 1250.0
+                  other_recurring_costs: []
+                  preferred_areas: []
+                  priorities:
+                  - step_free_access
+                  - lift_access
+                  - transport_access
+            schema:
+              $ref: '#/components/schemas/ProfileInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                student:
+                  summary: Student (illustrative persona)
+                  value:
+                    access:
+                      lift_required_above_floor: null
+                      max_walk_to_stop_m: null
+                      step_free_entrance_required: false
+                      wheelchair_user: false
+                    destinations:
+                    - latitude: 55.9445
+                      longitude: -3.1892
+                      max_travel_minutes: 30
+                      name: University of Edinburgh Central Area
+                    id: persona-student
+                    label: Student (illustrative persona)
+                    monthly_budget_gbp: 900.0
+                    other_recurring_costs: []
+                    preferred_areas: []
+                    priorities:
+                    - total_cost
+                    - transport_access
+                    - travel_time
+                tight_budget:
+                  summary: Renter on a tight budget (illustrative persona)
+                  value:
+                    access:
+                      lift_required_above_floor: null
+                      max_walk_to_stop_m: null
+                      step_free_entrance_required: false
+                      wheelchair_user: false
+                    destinations: []
+                    id: persona-tight-budget
+                    label: Renter on a tight budget (illustrative persona)
+                    monthly_budget_gbp: 1000.0
+                    other_recurring_costs:
+                    - label: Broadband
+                      monthly_gbp:
+                        as_of: '2026-11-01'
+                        confidence: null
+                        note: Illustrative value for the API contract; not real data.
+                        origin: user
+                        source: illustrative fixture
+                        status: known
+                        value: 30.0
+                    preferred_areas: []
+                    priorities:
+                    - total_cost
+                    - heating_cost
+                wheelchair_user:
+                  summary: Wheelchair user (illustrative persona)
+                  value:
+                    access:
+                      lift_required_above_floor: 0
+                      max_walk_to_stop_m: 400
+                      step_free_entrance_required: true
+                      wheelchair_user: true
+                    destinations:
+                    - latitude: 55.9216
+                      longitude: -3.1347
+                      max_travel_minutes: 45
+                      name: Royal Infirmary of Edinburgh
+                    id: persona-wheelchair-user
+                    label: Wheelchair user (illustrative persona)
+                    monthly_budget_gbp: 1250.0
+                    other_recurring_costs: []
+                    preferred_areas: []
+                    priorities:
+                    - step_free_access
+                    - lift_access
+                    - transport_access
+              schema:
+                $ref: '#/components/schemas/RenterProfile'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: No property with id 'ill-prop-does-not-exist'.
+                instance: /v1/properties/ill-prop-does-not-exist
+                status: 404
+                title: Not Found
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The resource does not exist.
+        '422':
+          content:
+            application/problem+json:
+              example:
+                detail: The request body failed validation.
+                errors:
+                - loc:
+                  - body
+                  - monthly_budget_gbp
+                  msg: Input should be greater than 0
+                  type: greater_than
+                instance: /v1/profiles
+                status: 422
+                title: Unprocessable Content
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request failed validation.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Replace one of your profiles (signed in)
       tags:
       - profiles
   /v1/properties:
@@ -3571,583 +4054,6 @@ paths:
                 $ref: '#/components/schemas/PropertyList'
           description: Successful Response
       summary: List properties
-      tags:
-      - properties
-    post:
-      description: 'Every fact carries its provenance. Send a missing fact as `{"value": null, "status":
-        "insufficient", ...}` rather than leaving it out. The server assigns the id.'
-      operationId: create_property_v1_properties_post
-      requestBody:
-        content:
-          application/json:
-            examples:
-              student:
-                summary: Student (illustrative persona)
-                value:
-                  area: Marchmont
-                  bedrooms:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 1
-                  council_tax_band:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: The listing does not state a council tax band.
-                    origin: listing
-                    source: illustrative fixture
-                    status: insufficient
-                    value: null
-                  entrance_steps:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 4
-                  epc_rating:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: D
-                  floor_area_m2:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 45.0
-                  floor_level:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 3
-                  has_lift:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: false
-                  illustrative: true
-                  latitude: 55.937
-                  longitude: -3.193
-                  main_fuel:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: mains_gas
-                  other_recurring_costs: []
-                  property_type:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: flat
-                  rent_pcm_gbp:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 825.0
-                  title: 'Illustrative property — not a real listing: 1-bed flat, Marchmont'
-              tight_budget:
-                summary: Renter on a tight budget (illustrative persona)
-                value:
-                  area: Gorgie
-                  bedrooms:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 2
-                  council_tax_band:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: B
-                  entrance_steps:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 2
-                  epc_rating:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: F
-                  floor_area_m2:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 60.0
-                  floor_level:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 1
-                  has_lift:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: false
-                  illustrative: true
-                  latitude: 55.938
-                  longitude: -3.235
-                  main_fuel:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: electricity
-                  other_recurring_costs: []
-                  property_type:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: flat
-                  rent_pcm_gbp:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 795.0
-                  title: 'Illustrative property — not a real listing: 2-bed flat, Gorgie'
-              wheelchair_user:
-                summary: Wheelchair user (illustrative persona)
-                value:
-                  area: Leith
-                  bedrooms:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 2
-                  council_tax_band:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: C
-                  entrance_steps:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 3
-                  epc_rating:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: C
-                  floor_area_m2:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 68.0
-                  floor_level:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 2
-                  has_lift:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: The listing does not say whether there is a lift.
-                    origin: listing
-                    source: illustrative fixture
-                    status: insufficient
-                    value: null
-                  illustrative: true
-                  latitude: 55.97
-                  longitude: -3.172
-                  main_fuel:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: public_data
-                    source: illustrative fixture
-                    status: known
-                    value: mains_gas
-                  other_recurring_costs: []
-                  property_type:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: flat
-                  rent_pcm_gbp:
-                    as_of: '2026-11-01'
-                    confidence: null
-                    note: Illustrative value for the API contract; not real data.
-                    origin: listing
-                    source: illustrative fixture
-                    status: known
-                    value: 950.0
-                  title: 'Illustrative property — not a real listing: 2-bed flat, Leith'
-            schema:
-              $ref: '#/components/schemas/PropertyInput'
-        required: true
-      responses:
-        '201':
-          content:
-            application/json:
-              examples:
-                student:
-                  summary: Student (illustrative persona)
-                  value:
-                    area: Marchmont
-                    bedrooms:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 1
-                    council_tax_band:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: The listing does not state a council tax band.
-                      origin: listing
-                      source: illustrative fixture
-                      status: insufficient
-                      value: null
-                    entrance_steps:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 4
-                    epc_rating:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: D
-                    floor_area_m2:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 45.0
-                    floor_level:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 3
-                    has_lift:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: false
-                    id: ill-prop-marchmont-flat
-                    illustrative: true
-                    latitude: 55.937
-                    longitude: -3.193
-                    main_fuel:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: mains_gas
-                    other_recurring_costs: []
-                    property_type:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: flat
-                    rent_pcm_gbp:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 825.0
-                    title: 'Illustrative property — not a real listing: 1-bed flat, Marchmont'
-                tight_budget:
-                  summary: Renter on a tight budget (illustrative persona)
-                  value:
-                    area: Gorgie
-                    bedrooms:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 2
-                    council_tax_band:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: B
-                    entrance_steps:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 2
-                    epc_rating:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: F
-                    floor_area_m2:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 60.0
-                    floor_level:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 1
-                    has_lift:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: false
-                    id: ill-prop-gorgie-flat
-                    illustrative: true
-                    latitude: 55.938
-                    longitude: -3.235
-                    main_fuel:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: electricity
-                    other_recurring_costs: []
-                    property_type:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: flat
-                    rent_pcm_gbp:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 795.0
-                    title: 'Illustrative property — not a real listing: 2-bed flat, Gorgie'
-                wheelchair_user:
-                  summary: Wheelchair user (illustrative persona)
-                  value:
-                    area: Leith
-                    bedrooms:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 2
-                    council_tax_band:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: C
-                    entrance_steps:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 3
-                    epc_rating:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: C
-                    floor_area_m2:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 68.0
-                    floor_level:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 2
-                    has_lift:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: The listing does not say whether there is a lift.
-                      origin: listing
-                      source: illustrative fixture
-                      status: insufficient
-                      value: null
-                    id: ill-prop-leith-flat
-                    illustrative: true
-                    latitude: 55.97
-                    longitude: -3.172
-                    main_fuel:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: public_data
-                      source: illustrative fixture
-                      status: known
-                      value: mains_gas
-                    other_recurring_costs: []
-                    property_type:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: flat
-                    rent_pcm_gbp:
-                      as_of: '2026-11-01'
-                      confidence: null
-                      note: Illustrative value for the API contract; not real data.
-                      origin: listing
-                      source: illustrative fixture
-                      status: known
-                      value: 950.0
-                    title: 'Illustrative property — not a real listing: 2-bed flat, Leith'
-              schema:
-                $ref: '#/components/schemas/Property'
-          description: Successful Response
-        '422':
-          content:
-            application/problem+json:
-              example:
-                detail: The request body failed validation.
-                errors:
-                - loc:
-                  - body
-                  - monthly_budget_gbp
-                  msg: Input should be greater than 0
-                  type: greater_than
-                instance: /v1/profiles
-                status: 422
-                title: Unprocessable Content
-                type: about:blank
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-          description: The request failed validation.
-      summary: Add a property
       tags:
       - properties
   /v1/properties/{property_id}:
@@ -5083,11 +4989,51 @@ paths:
       summary: Read text aloud (signed in)
       tags:
       - assist
+  /v1/reports:
+    get:
+      description: The signed-in user's saved reports, newest first.
+      operationId: list_reports_v1_reports_get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example:
+                  summary: One saved report
+                  value:
+                    items:
+                    - created_at: '2026-11-01T10:00:00Z'
+                      id: ill-report-tb
+                      profile_label: Renter on a tight budget (illustrative persona)
+                      property_area: Gorgie
+                      property_id: ill-prop-gorgie-flat
+                      property_title: 'Illustrative property — not a real listing: 2-bed flat, Gorgie'
+              schema:
+                $ref: '#/components/schemas/ReportList'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: List your reports (signed in)
+      tags:
+      - reports
   /v1/reports/{report_id}:
     get:
       description: A report combines cost, rule findings and screening signals with a plain-language explanation
         whose sentences cite finding/signal ids. Always show `disclaimer`. There is deliberately no overall
-        score.
+        score. Example reports are public. A saved report is only returned to the user who made it (send
+        the bearer token); anyone else gets `404`.
       operationId: get_report_v1_reports__report_id__get
       parameters:
       - in: path
@@ -5234,6 +5180,7 @@ paths:
                       label: Student (illustrative persona)
                       monthly_budget_gbp: 900.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - transport_access
@@ -5501,6 +5448,7 @@ paths:
                           source: illustrative fixture
                           status: known
                           value: 30.0
+                      preferred_areas: []
                       priorities:
                       - total_cost
                       - heating_cost
@@ -5796,6 +5744,7 @@ paths:
                       label: Wheelchair user (illustrative persona)
                       monthly_budget_gbp: 1250.0
                       other_recurring_costs: []
+                      preferred_areas: []
                       priorities:
                       - step_free_access
                       - lift_access
@@ -5925,6 +5874,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Report'
           description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
         '404':
           content:
             application/problem+json:
@@ -5955,18 +5910,109 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
           description: The request failed validation.
+      security:
+      - Auth0: []
+      - {}
       summary: Get a report
       tags:
       - reports
   /v1/uploads:
+    get:
+      description: The signed-in user's uploads, oldest first, optionally only those about one property.
+      operationId: list_uploads_v1_uploads_get
+      parameters:
+      - description: Only uploads about this property.
+        in: query
+        name: property_id
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Only uploads about this property.
+          title: Property Id
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example:
+                  summary: One upload
+                  value:
+                    items:
+                    - content_type: image/jpeg
+                      evidence_quality: limited
+                      extracted_facts: []
+                      filename: bathroom_ceiling.jpg
+                      id: ill-upload-tb-bathroom
+                      kind: photo
+                      metadata_stripped: true
+                      property_id: ill-prop-gorgie-flat
+                      signals:
+                      - confidence: null
+                        evidence_quality: limited
+                        id: tb-sig-damp
+                        kind: possible_damp
+                        likelihood: possible
+                        note: Illustrative output, not a measured model probability.
+                        source: illustrative fixture
+                        upload_id: ill-upload-tb-bathroom
+                      - confidence: null
+                        evidence_quality: limited
+                        id: tb-sig-mould
+                        kind: possible_mould
+                        likelihood: insufficient_evidence
+                        note: 'Illustrative output: the photo is too dark to judge.'
+                        source: illustrative fixture
+                        upload_id: ill-upload-tb-bathroom
+                      size_bytes: 356201
+                      uploaded_at: '2026-11-01T10:00:00Z'
+              schema:
+                $ref: '#/components/schemas/UploadList'
+          description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
+        '422':
+          content:
+            application/problem+json:
+              example:
+                detail: The request body failed validation.
+                errors:
+                - loc:
+                  - body
+                  - monthly_budget_gbp
+                  msg: Input should be greater than 0
+                  type: greater_than
+                instance: /v1/profiles
+                status: 422
+                title: Unprocessable Content
+                type: about:blank
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: The request failed validation.
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: List your uploads (signed in)
+      tags:
+      - uploads
     post:
-      description: 'Multipart upload of a JPEG, PNG, WebP or PDF file (max 15 MB by default). The type
-        is checked from the file''s content, not its name: anything else is rejected with 415, and larger
-        files with 413. Images are stored with EXIF/GPS metadata removed (`metadata_stripped: true`);
-        PDFs are stored unchanged. Screening results are possible signals to inspect, never diagnoses;
-        a signal may be ''insufficient_evidence''. Screening isn''t built yet, so uploads currently have
-        no signals and `evidence_quality: null`. The fixture backend (`HAVEN_BACKEND=fixtures`) does not
-        store the file at all.'
+      description: 'Multipart upload of a JPEG, PNG, WebP or PDF file (max 15 MB by default). The upload
+        belongs to the signed-in user. The type is checked from the file''s content, not its name: anything
+        else is rejected with 415, and larger files with 413. Images are stored with EXIF/GPS metadata
+        removed (`metadata_stripped: true`); PDFs are stored unchanged. Photos are screened for possible
+        issues (signals to inspect, never diagnoses; a signal may be ''insufficient_evidence''), floor
+        plans get a quality grade and documents have their facts extracted. The fixture backend (`HAVEN_BACKEND=fixtures`)
+        does not store or screen the file.'
       operationId: create_upload_v1_uploads_post
       requestBody:
         content:
@@ -6066,6 +6112,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Upload'
           description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
         '404':
           content:
             application/problem+json:
@@ -6108,12 +6160,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
           description: The request failed validation.
-      summary: Upload a photo, floor plan or document
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Upload a photo, floor plan or document (signed in)
       tags:
       - uploads
   /v1/uploads/{upload_id}:
     delete:
-      description: Removes the stored file, its record and its derived signals.
+      description: Removes the stored file, its record and its derived signals. Other people's uploads
+        are `404`.
       operationId: delete_upload_v1_uploads__upload_id__delete
       parameters:
       - in: path
@@ -6125,6 +6186,12 @@ paths:
       responses:
         '204':
           description: Successful Response
+        '401':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Missing or invalid bearer token. Sign in and retry.
         '404':
           content:
             application/problem+json:
@@ -6155,6 +6222,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
           description: The request failed validation.
-      summary: Delete an upload
+        '503':
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+          description: Sign-in isn't configured on this server, or Auth0 couldn't be reached.
+      security:
+      - Auth0: []
+      summary: Delete one of your uploads (signed in)
       tags:
       - uploads
