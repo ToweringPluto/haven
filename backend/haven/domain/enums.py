@@ -68,6 +68,14 @@ class BudgetComparison(StrEnum):
     unknown = "unknown"
 
 
+class RentComparison(StrEnum):
+    """A rent compared with a reference figure (within 5% counts as ``similar``)."""
+
+    below = "below"
+    similar = "similar"
+    above = "above"
+
+
 class CouncilTaxBand(StrEnum):
     A = "A"
     B = "B"

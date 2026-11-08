@@ -41,6 +41,13 @@ export default function About() {
             Haven brings those details together and makes them personal. We don't tell you what to
             choose—we help you see the trade-offs clearly.
           </p>
+          <p>
+            <b>Your photos and documents.</b> Photos you screen are sent to Google’s Gemini AI
+            service to look for possible issues such as damp, mould or a step at the entrance.
+            Haven doesn’t keep screened photos. Files you attach to a report are stored with
+            location data removed so the report can use them, and you can delete them at any
+            time. Results are possibilities to check in person, never a diagnosis.
+          </p>
           <Button onClick={() => go("onboarding")}>
             Find your fit <Icon name="arrow" />
           </Button>

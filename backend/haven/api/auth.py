@@ -88,3 +88,20 @@ def get_current_user(
 
 
 CurrentUserDep = Annotated[CurrentUser, Depends(get_current_user)]
+
+
+def get_optional_user(
+    request: Request,
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer_scheme)],
+) -> CurrentUser | None:
+    """FastAPI dependency for public endpoints that do more for a signed-in user.
+
+    No token (or sign-in not configured) gives ``None``. A token that is sent but invalid is
+    still a 401, so a client never silently loses its user.
+    """
+    if credentials is None or request.app.state.jwks_client is None:
+        return None
+    return get_current_user(request, credentials)
+
+
+OptionalUserDep = Annotated[CurrentUser | None, Depends(get_optional_user)]

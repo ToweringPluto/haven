@@ -88,6 +88,26 @@ export interface CostLine {
   high_gbp: number | null;
 }
 
+export type RentComparison = "below" | "similar" | "above";
+
+/** Local rent statistics and housing allowance next to the listing's rent. Context only. */
+export interface RentContext {
+  bedrooms: number;
+  area: string;
+  lower_quartile_gbp_pcm: number;
+  median_gbp_pcm: number;
+  upper_quartile_gbp_pcm: number;
+  statistics_year: number;
+  statistics_source: string;
+  statistics_as_of: string;
+  lha_monthly_gbp: number | null;
+  lha_source: string | null;
+  lha_as_of: string | null;
+  rent_vs_median: RentComparison | null;
+  rent_vs_lha: RentComparison | null;
+  caveats: string[];
+}
+
 export interface CostBreakdown {
   property_id: string;
   profile_id: string | null;
@@ -97,6 +117,7 @@ export interface CostBreakdown {
   total_high_gbp: number | null;
   budget_monthly_gbp: number | null;
   budget_comparison: BudgetComparison;
+  rent_context?: RentContext | null;
 }
 
 export interface CitedFact {
@@ -130,6 +151,22 @@ export interface Signal {
   upload_id: string | null;
   source: string;
   note: string | null;
+}
+
+export type UploadKind = "photo" | "floor_plan" | "document";
+
+export interface Upload {
+  id: string;
+  kind: UploadKind;
+  filename: string;
+  content_type: string;
+  size_bytes: number;
+  uploaded_at: string;
+  property_id: string | null;
+  metadata_stripped: boolean;
+  evidence_quality: string | null;
+  signals: Signal[];
+  extracted_facts: CitedFact[];
 }
 
 export interface ReportSentence {

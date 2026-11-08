@@ -135,6 +135,13 @@ class UploadStore:
         self._record(upload_id).write_text(upload.model_dump_json(), encoding="utf-8")
         return upload
 
+    def update(self, upload: Upload) -> None:
+        """Rewrite an existing upload's record (e.g. after screening). The file is untouched."""
+        path = self._record(upload.id)
+        if not path.is_file():
+            raise KeyError(upload.id)
+        path.write_text(upload.model_dump_json(), encoding="utf-8")
+
     def get(self, upload_id: str) -> Upload | None:
         try:
             path = self._record(upload_id)

@@ -21,7 +21,7 @@ from haven.api.schemas import ProblemDetail
 from haven.config import Settings
 from haven.datasets import load_registry
 from haven.location import CachedProvider
-from haven.store import UploadStore, load_seed
+from haven.store import UploadStore, load_seed, make_record_store
 
 
 class Health(BaseModel):
@@ -100,6 +100,8 @@ def create_app(settings: Settings | None = None, backend: Backend | None = None)
                 seed=load_seed(settings.seed_path),
                 location=CachedProvider(settings.location_cache_dir),
                 uploads=UploadStore(settings.upload_dir, max_bytes=settings.upload_max_bytes),
+                records=make_record_store(settings),
+                settings=settings,
             )
         )
     app.state.backend = backend

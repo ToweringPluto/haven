@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.3**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.1.4**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,7 +24,7 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.1.3):** profiles are the illustrative persona data in
+- **Current behaviour (contract 0.1.4):** profiles are the illustrative persona data in
   [`contracts/examples/`](../contracts/examples/) plus anything you create.
   - `GET /v1/properties` lists 8 **fictional seed properties** first (`seed-prop-*`, from
     `data/seed/properties.yaml`, each `illustrative: true` and titled "Illustrative property —
@@ -44,15 +44,30 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
     data; other properties get `unknown` location findings. Findings therefore differ from the
     illustrative suitability examples in the spec (same schema). Travel times are walking or
     wheelchair only; public transport isn't modelled.
-  - Assessment (reports) is still served by a *fixture backend* and only works for the
-    exact persona pairs listed in [§3](#3-payload-walkthrough-wheelchair-user-persona). Any
-    other combination returns **501** (`application/problem+json`) rather than invented data.
+  - The cost breakdown carries `rent_context`: the Lothian rent statistics (lower quartile,
+    median, upper quartile) and the Local Housing Allowance rate for the property's bedroom
+    count, with `rent_vs_median` / `rent_vs_lha`. Show it as context, never as a valuation,
+    and show every caveat (Lothian is wider than Edinburgh; mostly advertised rents). It's
+    `null` for studios and 5+ bedrooms.
+  - Assessment is real: `POST /v1/assessments` builds a report for any profile × property from
+    the cost engine, the rules, the uploads' signals and any document that disagrees with the
+    listing (`document_conflict` findings). Its sections ("What works", "What may be
+    unsuitable", "What could be expensive", "Check before signing") are built from the
+    findings' own wording, and every sentence cites the finding/signal ids it relies on. The
+    exact persona pairs listed in [§3](#3-payload-walkthrough-wheelchair-user-persona) (with no
+    uploads of their own) still return their illustrative reports.
   - Uploads are stored on disk (`backend/var/uploads/`): JPEG, PNG, WebP or PDF only, checked
     from the file's content (anything else → **415**), max 15 MB (→ **413**). Images are saved
     with EXIF/GPS metadata removed (`metadata_stripped: true`); PDFs unchanged. `DELETE` removes
-    the file. Screening isn't built yet: uploads come back with `signals: []` and
-    `evidence_quality: null`.
-  - Created profiles and properties are kept in memory and are lost on restart.
+    the file. Uploads are screened when stored: photos get `evidence_quality` and one signal per
+    kind (Google Gemini when the server has `HAVEN_VISION_PROVIDER=gemini`, otherwise every
+    signal is `insufficient_evidence`); floor plans get `evidence_quality` only; documents get
+    `extracted_facts`. Pass the upload ids to `POST /v1/assessments` to include them.
+  - Created profiles, properties and reports are saved in the database when the server has
+    `HAVEN_DATABASE_URL` set; without it they're kept in memory and lost on restart.
+  - Profiles: send the Auth0 token (optional) on `POST /v1/profiles` so the profile belongs to
+    the signed-in user and shows in their `GET /v1/profiles`. Profiles created without a token
+    aren't listed; keep their id to reopen them.
   - Set `HAVEN_BACKEND=fixtures` to serve **only** the fixtures (cost included, returning the
     illustrative examples), e.g. for demos that must match the spec examples exactly.
 - Real engines will replace the fixtures endpoint by endpoint without changing the contract.
@@ -96,7 +111,7 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | 6 | Generate the report | `POST /v1/assessments` | Body `{"profile_id", "property_id", "upload_ids": [...]}`. Returns the full `Report`. |
 | 6 | Reopen a report | `GET /v1/reports/{report_id}` | |
 | – | Who is signed in | `GET /v1/me` | **Signed in.** Returns `{sub, email}`. See [§8](#8-signed-in-features-auth0). |
-| – | Screen a photo | `POST /v1/photo-screen` | **Signed in.** Raw image body (`Content-Type: image/jpeg`, `image/png` or `image/webp`, max 5 MB). Never stored. Returns `PhotoScreen`. |
+| – | Screen a photo | `POST /v1/photo-screen` | **Signed in.** Raw image body (`Content-Type: image/jpeg`, `image/png` or `image/webp`, max 5 MB). Sent to Google Gemini for screening when configured; never stored by Haven. Returns `PhotoScreen`. |
 | – | Read text aloud | `POST /v1/read-aloud` | **Signed in.** Body `{"text": "..."}` (max 5000 characters). Returns `audio/mpeg`. |
 
 ## 3. Payload walkthrough: wheelchair user persona
@@ -300,4 +315,8 @@ Authorization: Bearer <access token>
   shows pre-processed results from `frontend/public/samples/`, visibly labelled "Sample result"
   or "Sample audio". The demo must never depend on sign-in working.
 - Photos are sent as the raw request body, not multipart, so the server can keep them in memory.
-  Screening signals follow the same rules as upload signals (see [UI obligations](#4-ui-obligations)).
+  With `HAVEN_VISION_PROVIDER=gemini` and `HAVEN_GEMINI_API_KEY` set, the server sends the photo
+  to Google Gemini to be screened, so tell the renter that before they upload. Haven itself
+  doesn't keep it. Screening signals follow the same rules as upload signals (see
+  [UI obligations](#4-ui-obligations)). A `503` means the screening service failed; fall back to
+  the sample result.

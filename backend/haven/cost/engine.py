@@ -35,6 +35,8 @@ from haven.domain import (
     MainFuel,
     Origin,
     Property,
+    RentComparison,
+    RentContext,
     RenterProfile,
     Status,
 )
@@ -447,6 +449,65 @@ def _zip(lines: Sequence[CostLine]) -> list[tuple[CostLine, float]]:
 # --- entry point ----------------------------------------------------------------------
 
 
+# --- rent context ---------------------------------------------------------------------
+
+SIMILAR_SHARE = 0.05  # within 5% of the reference figure counts as "similar"
+
+RENT_CONTEXT_AREA = (
+    "Lothian Broad Rental Market Area (City of Edinburgh, East Lothian and Midlothian)"
+)
+RENT_CONTEXT_CAVEATS = [
+    "Lothian covers three council areas, not Edinburgh alone.",
+    "The rent statistics are mostly advertised rents for new lets, not what sitting tenants pay.",
+    "This is context for the rent, not a valuation of this property.",
+]
+LHA_CAVEAT = (
+    "Local Housing Allowance rates are frozen for 2026-27, so they sit below current rents. "
+    "What you could get depends on your circumstances."
+)
+
+
+def _compare(rent: float, reference: float) -> RentComparison:
+    if abs(rent - reference) <= SIMILAR_SHARE * reference:
+        return RentComparison.similar
+    return RentComparison.above if rent > reference else RentComparison.below
+
+
+def rent_context(prop: Property, refs: CostReferences, on: date) -> RentContext | None:
+    """The rent next to Lothian rent statistics and the LHA rate for the property's size.
+
+    ``None`` when the bedroom count isn't known or isn't published (studios, 5+ bedrooms),
+    or when the rent statistics aren't loaded. The LHA part is left out outside its year.
+    """
+    bedrooms = prop.bedrooms.value
+    if refs.rents is None or bedrooms is None:
+        return None
+    stats = refs.rents.for_bedrooms(bedrooms)
+    if stats is None:
+        return None
+    rent = prop.rent_pcm_gbp.value
+    lha = refs.lha
+    lha_monthly = None
+    if lha is not None and lha.as_of <= on <= lha.valid_to:
+        lha_monthly = lha.monthly_gbp_by_bedrooms.get(bedrooms)
+    return RentContext(
+        bedrooms=bedrooms,
+        area=RENT_CONTEXT_AREA,
+        lower_quartile_gbp_pcm=stats.lower_quartile_gbp_pcm,
+        median_gbp_pcm=stats.median_gbp_pcm,
+        upper_quartile_gbp_pcm=stats.upper_quartile_gbp_pcm,
+        statistics_year=refs.rents.year,
+        statistics_source=f"{refs.rents.publisher}, {refs.rents.publication}",
+        statistics_as_of=refs.rents.period_end,
+        lha_monthly_gbp=lha_monthly,
+        lha_source=None if lha_monthly is None or lha is None else lha.source,
+        lha_as_of=None if lha_monthly is None or lha is None else lha.as_of,
+        rent_vs_median=None if rent is None else _compare(rent, stats.median_gbp_pcm),
+        rent_vs_lha=None if rent is None or lha_monthly is None else _compare(rent, lha_monthly),
+        caveats=RENT_CONTEXT_CAVEATS + ([LHA_CAVEAT] if lha_monthly is not None else []),
+    )
+
+
 def estimate_monthly_cost(
     prop: Property,
     profile: RenterProfile | None,
@@ -481,4 +542,5 @@ def estimate_monthly_cost(
         total_high_gbp=high,
         budget_monthly_gbp=budget,
         budget_comparison=comparison,
+        rent_context=rent_context(prop, refs, on),
     )

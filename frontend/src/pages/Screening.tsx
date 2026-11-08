@@ -105,7 +105,10 @@ export default function Screening() {
           {isAuthenticated ? (
             <>
               <h2>Choose a property photo</h2>
-              <p>Photos are analysed in memory and never stored.</p>
+              <p>
+                Your photo is sent to Google’s Gemini AI service to be checked. Haven doesn’t
+                keep it.
+              </p>
               <span>JPG, PNG or WebP · up to 5 MB</span>
               <input
                 ref={fileInput}

@@ -4,6 +4,18 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
+## 0.1.4 (2026-11-07)
+
+Additive, not breaking.
+
+- `CostBreakdown` has a new optional field `rent_context` (`RentContext`): the Lothian lower quartile, median and upper quartile monthly rent for the property's bedroom count (Scottish Government Private Sector Rent Statistics), the monthly Local Housing Allowance rate for that size, `rent_vs_median` and `rent_vs_lha` (`below` / `similar` / `above`; within 5% counts as similar; `null` when the rent or rate isn't known), sources, dates and `caveats` (show every one). It is `null` for studios and 5+ bedroom homes, which aren't published. New enum `RentComparison`.
+- `POST /v1/assessments` builds a real report for **any** profile and property on the engine backend: cost, rule findings, a `document_conflict` concern when an uploaded document disagrees with the listing on rent, council tax band or EPC rating, the uploads' signals, and four sections ("What works", "What may be unsuitable", "What could be expensive", "Check before signing") whose sentences cite finding/signal ids. The persona pairs without uploads of their own still return the illustrative reports. The fixture backend still returns 501 for other pairs.
+- `POST /v1/uploads` now screens what it stores: photos get `evidence_quality` and one signal per kind (quality gate, then the configured screener: Google Gemini or none); floor plans get `evidence_quality` only; documents (and PDFs) get `extracted_facts`. If screening is unavailable, signals are `insufficient_evidence`; the upload never fails because of it.
+- `POST /v1/photo-screen` works on the engine backend (no more 501). It returns the quality grade and signals: all `insufficient_evidence` when no model is configured, and `503` if the screening service fails. The photo is sent to Google Gemini when `HAVEN_VISION_PROVIDER=gemini`; Haven still doesn't store it. Signals never carry a `confidence` (Gemini's ratings aren't calibrated).
+- `GET /v1/profiles` and `POST /v1/profiles` accept an optional Auth0 bearer token (`security: [Auth0, {}]`). A profile created while signed in belongs to that user and is listed for them. Profiles created without signing in are **no longer listed** in `GET /v1/profiles`; they can still be fetched by id. An invalid token is `401`.
+- Profiles, properties and reports created through the API are saved in the database when `HAVEN_DATABASE_URL` is set, so they survive restarts.
+- New server settings: `HAVEN_VISION_PROVIDER=gemini`, `HAVEN_GEMINI_API_KEY`, `HAVEN_GEMINI_MODEL`, `HAVEN_GEMINI_TIMEOUT_SECONDS`, `HAVEN_REPORT_WORDING` (`template` or `gemini`).
+
 ## 0.1.3 (2026-11-07)
 
 Additive, not breaking.

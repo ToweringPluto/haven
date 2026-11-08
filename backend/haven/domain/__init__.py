@@ -1,6 +1,6 @@
 """Haven domain models: provenance-carrying facts, findings, signals and reports."""
 
-from haven.domain.cost import CostBreakdown, CostLine
+from haven.domain.cost import CostBreakdown, CostLine, RentContext
 from haven.domain.enums import (
     BudgetComparison,
     CostKind,
@@ -14,6 +14,7 @@ from haven.domain.enums import (
     Outcome,
     Priority,
     PropertyType,
+    RentComparison,
     SignalKind,
     Status,
     UploadKind,
@@ -50,6 +51,8 @@ __all__ = [
     "Property",
     "PropertyType",
     "RecurringCost",
+    "RentComparison",
+    "RentContext",
     "RenterProfile",
     "Report",
     "ReportSection",

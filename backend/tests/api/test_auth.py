@@ -177,8 +177,13 @@ def test_photo_screen_success(client: TestClient) -> None:
 
 
 def test_photo_screen_on_fixture_backend_is_501() -> None:
-    res = screen(make_client(), JPEG)
+    res = screen(make_client(FixtureBackend(CONTRACT_EXAMPLES_DIR)), JPEG)
     assert res.status_code == 501
+
+
+def test_photo_screen_on_engine_backend_rejects_unreadable_image() -> None:
+    # The signature matches, but the bytes aren't a decodable image.
+    assert screen(make_client(), JPEG).status_code == 415
 
 
 def test_photo_screen_rejects_oversized_images() -> None:

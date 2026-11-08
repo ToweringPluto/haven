@@ -2,6 +2,7 @@ import type { CostBreakdown } from "../api/types";
 import { formatGBP } from "../lib/format";
 import { BudgetBadge, EvidenceValue } from "./Evidence";
 import { Icon } from "./Icon";
+import { RentContextNote } from "./RentContextNote";
 
 /** "about £1,495 a month, likely between £1,468 and £1,531", or the insufficient wording. */
 export function costHeadline(cost: CostBreakdown): string | null {
@@ -50,6 +51,7 @@ export function CostSummary({ cost }: { cost: CostBreakdown }) {
           <EvidenceValue evidence={cost.total_monthly_gbp} name="total_gbp" format={formatGBP} />
         </div>
       </div>
+      {cost.rent_context && <RentContextNote context={cost.rent_context} />}
       <p>
         <Icon name="info" size={17} /> Estimates, not quotes. A line without enough information is
         marked as such and isn’t counted as £0. Open any source label to see where a figure comes
