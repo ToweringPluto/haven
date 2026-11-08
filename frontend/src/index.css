@@ -3233,7 +3233,7 @@ h2,
 .empty-card,
 .screen-results {
   background:
-    linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.84)),
+    linear-gradient(color-mix(in srgb, var(--card) 84%, transparent), color-mix(in srgb, var(--card) 84%, transparent)),
     repeating-linear-gradient(0deg, transparent 0 5px, color-mix(in srgb, var(--terracotta) 9%, transparent) 5px 6px);
   border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   border-radius: 18px;
@@ -4588,4 +4588,24 @@ footer .logo > span:last-child {
 .a11y-dialog:focus-visible {
   outline: 3px solid var(--teal-ink);
   outline-offset: 2px;
+}
+
+/* Map controls (zoom buttons, credits) come from MapLibre's own stylesheet, which knows
+   nothing about Haven's themes: give them the theme's surfaces, and lighten the dark
+   built-in icons in dark mode. */
+:root .maplibregl-ctrl-group,
+:root .maplibregl-ctrl-attrib,
+:root .maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact {
+  background: var(--card);
+  color: var(--charcoal);
+}
+:root .maplibregl-ctrl-group button + button {
+  border-top-color: var(--line);
+}
+:root .maplibregl-ctrl-attrib a {
+  color: var(--charcoal);
+}
+:root[data-theme="dark"] .maplibregl-ctrl-icon,
+:root[data-theme="dark"] .maplibregl-ctrl-attrib-button {
+  filter: invert(1) brightness(1.1);
 }

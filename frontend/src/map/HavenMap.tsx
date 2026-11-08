@@ -126,6 +126,18 @@ function addOverlayLayers(map: MapLibreMap, t: BrandTokens) {
   });
 }
 
+/** Recolours the overlay layers when the theme changes. */
+function recolourOverlayLayers(map: MapLibreMap, t: BrandTokens) {
+  const set = (layer: string, prop: string, value: string) => {
+    if (map.getLayer(layer)) map.setPaintProperty(layer, prop as Parameters<MapLibreMap["setPaintProperty"]>[1], value);
+  };
+  set("haven-compare-line", "line-color", t.charcoal);
+  set("haven-arcs-casing", "line-color", t.surface);
+  set("haven-arcs-line", "line-color", t.terracotta);
+  set("haven-arc-labels", "text-color", t.charcoal);
+  set("haven-arc-labels", "text-halo-color", t.surface);
+}
+
 const setData = (map: MapLibreMap, id: string, data: FeatureCollection) =>
   (map.getSource(id) as GeoJSONSource | undefined)?.setData(data);
 
@@ -174,7 +186,6 @@ export function HavenMap({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const tokens = readBrandTokens();
     const map = new MapLibreMap({
       container,
       style: BASEMAP_STYLE,
@@ -186,15 +197,30 @@ export function HavenMap({
     mapRef.current = map;
     map.addControl(new NavigationControl({ visualizePitch: true }), "top-right");
     map.on("style.load", () => {
+      const tokens = readBrandTokens();
       applyBrand(map, tokens);
       addOverlayLayers(map, tokens);
     });
     map.on("load", () => setLoaded(true));
     map.on("click", () => onSelectRef.current(null));
 
+    // The colour theme can change while the map is open (accessibility settings or the
+    // system switching light/dark), so repaint when <html>'s theme attributes change.
+    const themeWatch = new MutationObserver(() => {
+      if (!map.isStyleLoaded()) return;
+      const next = readBrandTokens();
+      applyBrand(map, next);
+      recolourOverlayLayers(map, next);
+    });
+    themeWatch.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme", "data-contrast"],
+    });
+
     const resize = new ResizeObserver(() => map.resize());
     resize.observe(container);
     return () => {
+      themeWatch.disconnect();
       resize.disconnect();
       map.remove();
       mapRef.current = null;

@@ -144,6 +144,16 @@ export function applyBrand(map: MapLibreMap, t: BrandTokens) {
       firstLabel,
     );
   }
+  // Runs again when the theme changes, so recolour buildings that are already there.
+  setPaint(map, BUILDINGS_LAYER, "fill-extrusion-color", [
+    "interpolate",
+    ["linear"],
+    ["coalesce", ["get", "render_height"], 6],
+    0,
+    mix(t.paper, t.surface, 0.2),
+    40,
+    mix(t.paper, t.line, 0.55),
+  ]);
 }
 
 /** Sets building heights to `k` × their real height (0 = flat, 1 = full). */
