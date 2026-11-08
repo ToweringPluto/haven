@@ -3,9 +3,10 @@
 * :class:`Screener` is the protocol every screener implements (H-02 adds a zero-shot one).
 * :class:`NullScreener` is the default: no model, so every signal is
   ``insufficient_evidence`` with a note saying so.
-* :class:`VisionModelScreener` is the adapter slot for a vision model. It raises
-  :class:`NotConfigured` unless ``HAVEN_VISION_PROVIDER`` is set, and no provider is
-  implemented yet (the choice is made later).
+* :class:`haven.screening.gemini.GeminiScreener` screens with Google Gemini
+  (``HAVEN_VISION_PROVIDER=gemini`` plus ``HAVEN_GEMINI_API_KEY``).
+* :class:`VisionModelScreener` is the slot for any other provider name; it raises
+  :class:`NotConfigured` because no other provider is implemented.
 * :class:`ScreeningPipeline` runs the quality gate first: a ``poor`` photo makes every signal
   ``insufficient_evidence``, whatever the screener would say.
 
@@ -14,6 +15,7 @@ confidence unless a calibrated model produced one.
 """
 
 import io
+import logging
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import Protocol
@@ -23,6 +25,8 @@ from PIL import Image
 from haven.config import QualityThresholds, Settings
 from haven.domain import EvidenceQuality, Likelihood, Signal, SignalKind
 from haven.screening.quality import QualityReport, assess_quality
+
+logger = logging.getLogger(__name__)
 
 SIGNAL_KINDS: tuple[SignalKind, ...] = tuple(SignalKind)
 
@@ -107,10 +111,25 @@ class VisionModelScreener:
 
 
 def make_screener(settings: Settings | None = None) -> Screener:
-    """The configured screener: :class:`NullScreener` unless a vision provider is set."""
-    provider = (Settings() if settings is None else settings).vision_provider
+    """The configured screener: :class:`NullScreener` unless a vision provider is set.
+
+    ``gemini`` gives :class:`haven.screening.gemini.GeminiScreener` when
+    ``HAVEN_GEMINI_API_KEY`` is set, and :class:`NullScreener` (with a warning) when it isn't,
+    so a missing key means "can't tell", never a crash.
+    """
+    settings = Settings() if settings is None else settings
+    provider = settings.vision_provider
     if not provider:
         return NullScreener()
+    if provider.lower() == "gemini":
+        from haven.gemini import make_gemini
+        from haven.screening.gemini import GeminiScreener
+
+        model = make_gemini(settings)
+        if model is None:
+            logger.warning("HAVEN_VISION_PROVIDER=gemini but HAVEN_GEMINI_API_KEY isn't set")
+            return NullScreener()
+        return GeminiScreener(model)
     return VisionModelScreener(provider)
 
 

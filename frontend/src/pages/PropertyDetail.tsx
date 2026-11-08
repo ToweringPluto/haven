@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { api } from "../api/client";
-import type { Evidence, Property } from "../api/types";
+import type { Evidence, Property, Upload } from "../api/types";
 import { useLoad } from "../api/useLoad";
 import { BackLink } from "../components/BackLink";
 import { Button } from "../components/Button";
 import { CostSummary } from "../components/CostSummary";
 import { EvidenceValue } from "../components/Evidence";
+import { EvidenceUploads } from "../components/EvidenceUploads";
 import { FindingsList } from "../components/FindingsList";
 import { Icon } from "../components/Icon";
 import { LoadProblem } from "../components/LoadProblem";
@@ -51,6 +52,7 @@ export default function PropertyDetail() {
   );
   const [reportError, setReportError] = useState<string | null>(null);
   const [creatingReport, setCreatingReport] = useState(false);
+  const [uploads, setUploads] = useState<Upload[]>([]);
 
   if (!propertyId) {
     return (
@@ -80,7 +82,11 @@ export default function PropertyDetail() {
     if (!profileId) return;
     setCreatingReport(true);
     setReportError(null);
-    const res = await api.createAssessment(profileId, p.id);
+    const res = await api.createAssessment(
+      profileId,
+      p.id,
+      uploads.filter((u) => u.property_id === p.id).map((u) => u.id),
+    );
     setCreatingReport(false);
     if (res.status === "ok") go("report", res.data.id);
     else setReportError(res.status === "unavailable" ? `${res.message} ${PAIRS_HINT}` : res.message);
@@ -162,6 +168,12 @@ export default function PropertyDetail() {
             )}
           </section>
 
+          <EvidenceUploads
+            propertyId={p.id}
+            uploads={uploads.filter((u) => u.property_id === p.id)}
+            onChange={setUploads}
+          />
+
           <section className="screening-teaser">
             <div className="feature-icon">
               <Icon name="spark" />
@@ -199,6 +211,9 @@ export default function PropertyDetail() {
             {creatingReport ? "Preparing report…" : "Get the full report"}
           </Button>
           {!profileId && <small>Reports need a renter profile.</small>}
+          {profileId && uploads.some((u) => u.property_id === p.id) && (
+            <small>Your attached files will be included.</small>
+          )}
           {reportError && (
             <small className="screen-notice" role="alert">
               {reportError}

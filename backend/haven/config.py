@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, SecretStr
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -95,7 +95,27 @@ class Settings(BaseSettings):
     )
     vision_provider: str | None = Field(
         default=None,
-        description="Photo screening model provider (HAVEN_VISION_PROVIDER); unset = no model.",
+        description="Photo screening model provider (HAVEN_VISION_PROVIDER): 'gemini', or "
+        "unset for no model (every signal is insufficient_evidence).",
+    )
+    gemini_api_key: SecretStr | None = Field(
+        default=None,
+        description="Google Gemini API key (HAVEN_GEMINI_API_KEY), from Google AI Studio. "
+        "Needed for HAVEN_VISION_PROVIDER=gemini and HAVEN_REPORT_WORDING=gemini.",
+    )
+    gemini_model: str = Field(
+        default="gemini-3.8-flash",
+        description="Gemini model used for photo screening and report wording "
+        "(HAVEN_GEMINI_MODEL).",
+    )
+    gemini_timeout_seconds: float = Field(
+        default=30.0, gt=0, description="Timeout for one Gemini request, in seconds."
+    )
+    report_wording: Literal["template", "gemini"] = Field(
+        default="template",
+        description="How report sentences are worded (HAVEN_REPORT_WORDING): 'template' uses "
+        "the findings' own wording; 'gemini' asks Gemini to reword them and keeps the template "
+        "if the rewording changes what is cited or sounds more certain than the evidence.",
     )
     quality: QualityThresholds = Field(
         default_factory=QualityThresholds,
@@ -144,6 +164,14 @@ class Settings(BaseSettings):
     rate_limit_window_seconds: int = Field(
         default=3600, gt=0, description="Length of the per-user rate-limit window."
     )
+
+    @field_validator("database_url", "gemini_api_key", "vision_provider", mode="before")
+    @classmethod
+    def _blank_is_unset(cls, value: object) -> object:
+        """``KEY=""`` (as in .env.example) means "not set", never an empty URL or key."""
+        if isinstance(value, str) and not value.strip():
+            return None
+        return value
 
     @property
     def auth_configured(self) -> bool:

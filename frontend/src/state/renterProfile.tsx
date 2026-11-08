@@ -1,5 +1,6 @@
 import { createContext, use, useCallback, useMemo, useState, type ReactNode } from "react";
 import { api } from "../api/client";
+import { useAuth } from "../auth/AuthProvider";
 import type { Priority, ProfileInput, RenterProfile } from "../api/types";
 import {
   DESTINATIONS,
@@ -76,6 +77,7 @@ const RenterProfileContext = createContext<RenterProfileValue | null>(null);
 export function RenterProfileProvider({ children }: { children: ReactNode }) {
   const [draft, setDraft] = useState(DEFAULT_DRAFT);
   const [saved, setSaved] = useState<SavedProfile | null>(null);
+  const { getAccessToken } = useAuth();
 
   const updateDraft = useCallback(
     (patch: Partial<ProfileDraft>) => setDraft((d) => ({ ...d, ...patch })),
@@ -83,11 +85,13 @@ export function RenterProfileProvider({ children }: { children: ReactNode }) {
   );
 
   const saveProfile = useCallback(async () => {
-    const res = await api.createProfile(toInput(draft));
+    // Signed in: the profile is saved to the account. Signed out: it's private to its id.
+    const token = await getAccessToken().catch(() => null);
+    const res = await api.createProfile(toInput(draft), token);
     if (res.status !== "ok") return res.message;
     setSaved({ id: res.data.id, label: "Your profile", personaId: null });
     return null;
-  }, [draft]);
+  }, [draft, getAccessToken]);
 
   const choosePersona = useCallback(async (personaId: string) => {
     const res = await api.profile(personaId);

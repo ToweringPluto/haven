@@ -208,7 +208,8 @@
     "total_low_gbp": 1100.0,
     "total_high_gbp": 1180.0,
     "budget_monthly_gbp": 1000.0,
-    "budget_comparison": "over"
+    "budget_comparison": "over",
+    "rent_context": null
   },
   "findings": [
     {

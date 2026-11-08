@@ -55,7 +55,8 @@ def test_create_profile_assigns_id_and_can_be_fetched(client: TestClient, exampl
     assert created["id"] and created["id"] != "persona-student"
     assert {k: v for k, v in created.items() if k != "id"} == body
     assert client.get(f"/v1/profiles/{created['id']}").json() == created
-    assert created in client.get("/v1/profiles").json()["items"]
+    # Created without signing in: fetchable by id, never listed for everyone.
+    assert created not in client.get("/v1/profiles").json()["items"]
 
 
 def test_create_profile_validation_error_is_problem_json(client: TestClient) -> None:
@@ -278,9 +279,19 @@ def test_assessment_unknown_upload_is_404(client: TestClient) -> None:
     assert_problem(client.post("/v1/assessments", json=body), 404)
 
 
-def test_assessment_unmatched_pair_is_501(client: TestClient) -> None:
+def test_assessment_unmatched_pair_is_501_on_fixture_backend(fixture_client: TestClient) -> None:
     body = {"profile_id": "persona-student", "property_id": "ill-prop-gorgie-flat"}
-    assert_problem(client.post("/v1/assessments", json=body), 501)
+    assert_problem(fixture_client.post("/v1/assessments", json=body), 501)
+
+
+def test_assessment_unmatched_pair_is_built_by_engines(client: TestClient) -> None:
+    body = {"profile_id": "persona-student", "property_id": "ill-prop-gorgie-flat"}
+    response = client.post("/v1/assessments", json=body)
+    assert response.status_code == 201, response.text
+    report = response.json()
+    assert report["profile"]["id"] == "persona-student"
+    assert report["property"]["id"] == "ill-prop-gorgie-flat"
+    assert client.get(f"/v1/reports/{report['id']}").json() == report
 
 
 def test_unknown_report_is_404(client: TestClient) -> None:

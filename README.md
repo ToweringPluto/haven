@@ -140,9 +140,9 @@ These are potential signals for investigation, not diagnoses or certifications. 
 | Cost calculation | Structured inputs and deterministic monthly estimates | Compare estimates with verified property bills and assumptions |
 | Property and location data | Listing, user-provided and attributable public data | Record source, date, coverage and known gaps |
 | Requirement checks | Rules grounded in renter-provided priorities | Test edge cases and review accessibility assumptions with users |
-| Image analysis | Proposed classifier for visual property signals | Build an annotated dataset, evaluate precision and recall, and test false-positive and false-negative rates |
+| Image analysis | Google Gemini rates possible damp, mould and entrance steps in photos (after a photo-quality check); ratings carry no confidence score | Build an annotated Edinburgh dataset, evaluate precision and recall, and test false-positive and false-negative rates |
 | Floor plans and documents | Proposed extraction and screening | Evaluate OCR, extraction accuracy and insufficient-evidence handling |
-| Personalised report | Explanation grounded in structured results | Check that generated text preserves evidence, uncertainty and source context |
+| Personalised report | Sections built from the findings' own wording, each sentence citing its evidence; optional Gemini rewording is rejected if it changes facts or sounds certain | Check that generated text preserves evidence, uncertainty and source context |
 
 ## Proposed technical approach
 

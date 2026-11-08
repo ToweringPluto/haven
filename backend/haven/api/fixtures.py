@@ -93,10 +93,10 @@ class FixtureBackend:
 
     # --- profiles ----------------------------------------------------------------------
 
-    def list_profiles(self) -> list[RenterProfile]:
+    def list_profiles(self, owner_sub: str | None = None) -> list[RenterProfile]:
         return list(self._profiles.values())
 
-    def create_profile(self, data: ProfileInput) -> RenterProfile:
+    def create_profile(self, data: ProfileInput, owner_sub: str | None = None) -> RenterProfile:
         profile = RenterProfile.model_validate({"id": _new_id("profile"), **data.model_dump()})
         self._profiles[profile.id] = profile
         return profile
