@@ -4424,20 +4424,64 @@ footer .logo > span:last-child {
   color: var(--charcoal);
 }
 
+/* The settings open in a native <dialog> over any page. */
+.a11y-dialog {
+  width: min(880px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: var(--charcoal);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.a11y-dialog::backdrop {
+  background: color-mix(in srgb, var(--shadow) 55%, transparent);
+}
+.a11y-dialog[open] {
+  animation: a11y-dialog-in 0.18s ease-out;
+}
+@keyframes a11y-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
 .a11y-card {
-  margin: 32px 0;
+  position: relative;
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 22px;
   background: var(--card);
-  scroll-margin-top: 96px;
 }
 .a11y-card > h2 {
   margin: 10px 0 6px;
   font-size: calc(30px * var(--text-scale, 1));
 }
-.a11y-card > h2:focus {
-  outline: none;
+.a11y-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--charcoal);
+}
+.a11y-close:hover {
+  border-color: var(--teal-ink);
+}
+.a11y-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
 }
 .a11y-card > p {
   max-width: 62ch;
@@ -4539,4 +4583,9 @@ footer .logo > span:last-child {
   .a11y-card {
     padding: 20px 16px;
   }
+}
+.a11y-close:focus-visible,
+.a11y-dialog:focus-visible {
+  outline: 3px solid var(--teal-ink);
+  outline-offset: 2px;
 }

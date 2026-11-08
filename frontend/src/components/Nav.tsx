@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigation } from "../state/navigation";
 import type { Page } from "../types";
+import { AccessibilityDialog } from "./AccessibilitySettings";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { LoginButton } from "./LoginButton";
@@ -19,10 +20,23 @@ const NAV_LINKS: { label: string; page: Page; highlight: boolean }[] = [
 export function Nav() {
   const { page, go } = useNavigation();
   const [open, setOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const cogRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
 
-  const navigate = (next: Page, param?: string) => {
-    go(next, param);
+  const navigate = (next: Page) => {
+    go(next);
     setOpen(false);
+  };
+  const openSettings = () => {
+    setOpen(false);
+    setSettingsOpen(true);
+  };
+  // Back to whichever opener is on screen: the cog on desktop, the menu button on phones.
+  const closeSettings = () => {
+    setSettingsOpen(false);
+    const cog = cogRef.current;
+    (cog && cog.offsetParent !== null ? cog : menuRef.current)?.focus();
   };
 
   return (
@@ -45,7 +59,7 @@ export function Nav() {
             );
           })}
           <div className="mobile-actions">
-            <button type="button" onClick={() => navigate("dashboard", "accessibility")}>
+            <button type="button" onClick={openSettings} aria-haspopup="dialog">
               <Icon name="cog" size={18} /> Accessibility settings
             </button>
             <UserBadge onClick={() => navigate("dashboard")} />
@@ -61,8 +75,10 @@ export function Nav() {
           <Button onClick={() => go("onboarding")}>Get started</Button>
           <button
             type="button"
+            ref={cogRef}
             className="a11y-nav-button"
-            onClick={() => go("dashboard", "accessibility")}
+            onClick={openSettings}
+            aria-haspopup="dialog"
             aria-label="Accessibility settings"
             title="Accessibility settings"
           >
@@ -71,6 +87,7 @@ export function Nav() {
         </div>
         <button
           type="button"
+          ref={menuRef}
           className="menu-button"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
@@ -80,6 +97,7 @@ export function Nav() {
           <Icon name={open ? "x" : "menu"} />
         </button>
       </nav>
+      <AccessibilityDialog open={settingsOpen} onClose={closeSettings} />
     </header>
   );
 }

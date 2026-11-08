@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useEffect, useId, useRef } from "react";
 import {
   SPEECH_RATES,
   TEXT_SCALES,
@@ -7,6 +7,7 @@ import {
   type FontChoice,
   type ThemeChoice,
 } from "../state/accessibility";
+import { Button } from "./Button";
 import { Icon } from "./Icon";
 
 const THEMES: { value: ThemeChoice; label: string }[] = [
@@ -57,19 +58,49 @@ const TOGGLES: { key: Toggle; label: string; hint: string }[] = [
   },
 ];
 
-/** Display and reading preferences, saved in this browser. */
-export function AccessibilitySettings() {
+/**
+ * Display and reading preferences, saved in this browser, in a modal that opens over any
+ * page. Uses the native <dialog>: it traps focus, closes on Escape and returns focus to the
+ * button that opened it.
+ */
+export function AccessibilityDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const ref = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!dialog) return;
+    if (open && !dialog.open) dialog.showModal();
+    if (!open && dialog.open) dialog.close();
+  }, [open]);
+
+  const id = useId();
+  return (
+    <dialog
+      ref={ref}
+      className="a11y-dialog"
+      aria-labelledby={`${id}-title`}
+      onClose={onClose}
+      // A click on the backdrop (the dialog element itself, outside its content) closes it.
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      {open && <AccessibilitySettings titleId={`${id}-title`} onClose={onClose} />}
+    </dialog>
+  );
+}
+
+function AccessibilitySettings({ titleId, onClose }: { titleId: string; onClose: () => void }) {
   const { settings, update, reset } = useAccessibility();
   const id = useId();
 
   return (
-    <section className="a11y-card" id="accessibility" aria-labelledby={`${id}-title`}>
+    <section className="a11y-card">
+      <button type="button" className="a11y-close" onClick={onClose} aria-label="Close">
+        <Icon name="x" />
+      </button>
       <div className="feature-icon">
         <Icon name="access" />
       </div>
-      <h2 id={`${id}-title`} tabIndex={-1}>
-        Accessibility
-      </h2>
+      <h2 id={titleId}>Accessibility</h2>
       <p>
         Change how Haven looks and reads. These settings are saved in this browser, so they
         work whether or not you’re signed in.
@@ -169,9 +200,12 @@ export function AccessibilitySettings() {
         </div>
       </fieldset>
 
-      <button type="button" className="text-button" onClick={reset}>
-        Reset to defaults
-      </button>
+      <div className="a11y-actions">
+        <button type="button" className="text-button" onClick={reset}>
+          Reset to defaults
+        </button>
+        <Button onClick={onClose}>Done</Button>
+      </div>
     </section>
   );
 }
