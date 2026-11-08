@@ -56,6 +56,12 @@ function CurrentPage() {
   );
 }
 
+/** The map is full-bleed, so Explore has no footer. */
+function PageFooter() {
+  const { page } = useNavigation();
+  return page === "explore" ? null : <Footer />;
+}
+
 export default function App() {
   usePrefetchPages();
   return (
@@ -63,7 +69,7 @@ export default function App() {
       <Nav />
       <AuthErrorBanner />
       <CurrentPage />
-      <Footer />
+      <PageFooter />
     </AppProviders>
   );
 }
