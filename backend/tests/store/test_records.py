@@ -1,11 +1,13 @@
 """Saved records: memory and SQL stores behave the same; ownership filters lists."""
 
+import time
+
 import pytest
 from sqlmodel import create_engine
 
 from haven.config import Settings
 from haven.domain import RenterProfile
-from haven.store import MemoryRecordStore, RecordStore, SqlRecordStore, make_record_store
+from haven.store import MemoryRecordStore, RecordStore, SqlRecordStore, db, make_record_store
 
 
 def profile(pid: str, label: str = "x") -> RenterProfile:
@@ -53,3 +55,13 @@ def test_blank_settings_count_as_unset() -> None:
     assert settings.gemini_api_key is None
     assert settings.vision_provider is None
     assert isinstance(make_record_store(settings), MemoryRecordStore)
+
+
+def test_silently_dropped_database_falls_back_quickly(monkeypatch: pytest.MonkeyPatch) -> None:
+    # 10.255.255.1 is non-routable: packets vanish like behind a firewall, so only the
+    # default connect timeout (no timeout in the URL) stops startup from hanging.
+    monkeypatch.setattr(db, "CONNECT_TIMEOUT_S", 1)
+    settings = Settings(database_url="postgresql://nobody:x@10.255.255.1:5432/none")
+    started = time.monotonic()
+    assert isinstance(make_record_store(settings), MemoryRecordStore)
+    assert time.monotonic() - started < 10

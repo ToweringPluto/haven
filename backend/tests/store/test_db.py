@@ -39,3 +39,30 @@ def test_database_url_is_kept_secret(monkeypatch: pytest.MonkeyPatch) -> None:
     settings = Settings()
     assert isinstance(settings.database_url, SecretStr)
     assert "hunter2" not in repr(settings)
+
+
+def _captured_connect_args(monkeypatch: pytest.MonkeyPatch, url: str) -> dict[str, object]:
+    seen: dict[str, object] = {}
+
+    def fake_create_engine(url: str, **kwargs: object) -> object:
+        seen.update(kwargs)
+        return object()
+
+    monkeypatch.setattr(db, "create_engine", fake_create_engine)
+    db.engine_for(url)
+    args = seen["connect_args"]
+    assert isinstance(args, dict)
+    return args
+
+
+def test_postgres_engines_get_a_connect_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
+    args = _captured_connect_args(monkeypatch, "postgres://u:p@h:5432/db?sslmode=require")
+    assert args == {"connect_timeout": db.CONNECT_TIMEOUT_S}
+
+
+def test_a_timeout_in_the_url_is_respected(monkeypatch: pytest.MonkeyPatch) -> None:
+    assert _captured_connect_args(monkeypatch, "postgresql://u:p@h/db?connect_timeout=30") == {}
+
+
+def test_sqlite_engines_get_no_postgres_arguments(monkeypatch: pytest.MonkeyPatch) -> None:
+    assert _captured_connect_args(monkeypatch, "sqlite://") == {}
