@@ -3679,7 +3679,7 @@
   "access_tags": {
     "radius_m": 500.0,
     "source": "OpenStreetMap (Overpass API)",
-    "fetched_at": "2026-11-07T22:59:23Z",
+    "fetched_at": "2026-11-08T09:41:09Z",
     "ways": 1658,
     "ways_with_surface": 1041,
     "ways_with_smoothness": 165,

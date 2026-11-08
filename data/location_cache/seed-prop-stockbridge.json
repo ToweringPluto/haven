@@ -1,0 +1,3130 @@
+{
+  "schema_version": 1,
+  "property_id": "seed-prop-stockbridge",
+  "origin": {
+    "latitude": 55.95853,
+    "longitude": -3.20912,
+    "name": null
+  },
+  "nearby": [
+    {
+      "kind": "bus_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "bus_stop",
+          "name": "Raeburn Place",
+          "latitude": 55.9587621,
+          "longitude": -3.2098638,
+          "distance_m": 53.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530719",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hamilton Place",
+          "latitude": 55.9582498,
+          "longitude": -3.2083579,
+          "distance_m": 56.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530721",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hamilton Place",
+          "latitude": 55.9584545,
+          "longitude": -3.2079471,
+          "distance_m": 73.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533737",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kerr Street",
+          "latitude": 55.957664,
+          "longitude": -3.2079321,
+          "distance_m": 121.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530924",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Raeburn Place",
+          "latitude": 55.9589375,
+          "longitude": -3.2114017,
+          "distance_m": 149.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533738",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Carlton Street",
+          "latitude": 55.9577176,
+          "longitude": -3.2110983,
+          "distance_m": 152.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530694",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kerr Street",
+          "latitude": 55.9573676,
+          "longitude": -3.2075007,
+          "distance_m": 163.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533638",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Carlton Street",
+          "latitude": 55.957379,
+          "longitude": -3.2117285,
+          "distance_m": 206.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533743",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cheyne Street",
+          "latitude": 55.9591815,
+          "longitude": -3.2129376,
+          "distance_m": 248.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530715",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Circus Lane",
+          "latitude": 55.9571799,
+          "longitude": -3.2058027,
+          "distance_m": 255.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530928",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Academy",
+          "latitude": 55.9599197,
+          "longitude": -3.2051397,
+          "distance_m": 292.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533736",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Academy",
+          "latitude": 55.9600586,
+          "longitude": -3.2050362,
+          "distance_m": 305.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530723",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ann Street",
+          "latitude": 55.9574409,
+          "longitude": -3.2136525,
+          "distance_m": 307.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530690",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Circus",
+          "latitude": 55.9569448,
+          "longitude": -3.2042268,
+          "distance_m": 351.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533636",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Circus",
+          "latitude": 55.9570817,
+          "longitude": -3.2039477,
+          "distance_m": 360.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530933",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ann Street",
+          "latitude": 55.9566515,
+          "longitude": -3.2146896,
+          "distance_m": 404.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533744",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Perth Street",
+          "latitude": 55.9602477,
+          "longitude": -3.2031604,
+          "distance_m": 417.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533735",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dean Park Street",
+          "latitude": 55.9592993,
+          "longitude": -3.2157222,
+          "distance_m": 419.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533739",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dean Park Street",
+          "latitude": 55.9594385,
+          "longitude": -3.2162145,
+          "distance_m": 453.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530712",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Howe Street",
+          "latitude": 55.9565584,
+          "longitude": -3.2022962,
+          "distance_m": 478.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530956",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Perth Street",
+          "latitude": 55.9605028,
+          "longitude": -3.2019585,
+          "distance_m": 496.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530726",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Howe Street",
+          "latitude": 55.9557782,
+          "longitude": -3.2021658,
+          "distance_m": 530.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533625",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Comely Bank Avenue",
+          "latitude": 55.9557574,
+          "longitude": -3.2161987,
+          "distance_m": 537.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533745",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Comely Bank Avenue",
+          "latitude": 55.9558088,
+          "longitude": -3.2163084,
+          "distance_m": 540.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530686",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fettes Row",
+          "latitude": 55.9594706,
+          "longitude": -3.2005316,
+          "distance_m": 544.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533646",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Airlie Place",
+          "latitude": 55.9602002,
+          "longitude": -3.2007101,
+          "distance_m": 555.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2408063553",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Airlie Place",
+          "latitude": 55.9612444,
+          "longitude": -3.201541,
+          "distance_m": 560.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533658",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fettes Row",
+          "latitude": 55.9590746,
+          "longitude": -3.2001052,
+          "distance_m": 564.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530913",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Great King Street",
+          "latitude": 55.958137,
+          "longitude": -3.1998753,
+          "distance_m": 577.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533642",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Eyre Place",
+          "latitude": 55.9606413,
+          "longitude": -3.200379,
+          "distance_m": 592.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3146594739",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dean Bridge",
+          "latitude": 55.954486,
+          "longitude": -3.2153379,
+          "distance_m": 593.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530680",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queen Street Gardens West",
+          "latitude": 55.9551302,
+          "longitude": -3.2015249,
+          "distance_m": 605.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530959",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dean Bridge",
+          "latitude": 55.954323,
+          "longitude": -3.2154609,
+          "distance_m": 612.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533746",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Great King Street",
+          "latitude": 55.9574525,
+          "longitude": -3.1992269,
+          "distance_m": 627.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530917",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dundas Street",
+          "latitude": 55.95797,
+          "longitude": -3.1990768,
+          "distance_m": 628.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530937",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dundas Street",
+          "latitude": 55.9578837,
+          "longitude": -3.1987058,
+          "distance_m": 652.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533634",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Brandon Terrace",
+          "latitude": 55.9622762,
+          "longitude": -3.2005938,
+          "distance_m": 674.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533662",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Abercromby Place",
+          "latitude": 55.9563095,
+          "longitude": -3.1988813,
+          "distance_m": 683.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533488",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Abercromby Place",
+          "latitude": 55.9562981,
+          "longitude": -3.1986248,
+          "distance_m": 698.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2408063554",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Brandon Terrace",
+          "latitude": 55.9623519,
+          "longitude": -3.1999659,
+          "distance_m": 710.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530907",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hill Street (Frederick Street)",
+          "latitude": 55.9539159,
+          "longitude": -3.2011436,
+          "distance_m": 714.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533623",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Botanic Gardens",
+          "latitude": 55.9646582,
+          "longitude": -3.2129757,
+          "distance_m": 722.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533670",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Learmonth Grove",
+          "latitude": 55.9592368,
+          "longitude": -3.2207211,
+          "distance_m": 726.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533741",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Learmonth Terrace",
+          "latitude": 55.955251,
+          "longitude": -3.2192802,
+          "distance_m": 730.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530669",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Logan Street",
+          "latitude": 55.9611948,
+          "longitude": -3.1982635,
+          "distance_m": 737.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533650",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Canonmills",
+          "latitude": 55.9634143,
+          "longitude": -3.2010164,
+          "distance_m": 741.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533666",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Botanic Garden",
+          "latitude": 55.9647714,
+          "longitude": -3.2133264,
+          "distance_m": 741.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12046770311",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Learmonth Terrace",
+          "latitude": 55.9551,
+          "longitude": -3.2194496,
+          "distance_m": 747.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533747",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "South Charlotte Street",
+          "latitude": 55.9519898,
+          "longitude": -3.2056255,
+          "distance_m": 759.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533627",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Charlotte Square",
+          "latitude": 55.951684,
+          "longitude": -3.2088535,
+          "distance_m": 761.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530952",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Learmonth Grove",
+          "latitude": 55.9592623,
+          "longitude": -3.2214794,
+          "distance_m": 773.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530706",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drumsheugh Place",
+          "latitude": 55.9516656,
+          "longitude": -3.21168,
+          "distance_m": 779.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530944",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drumsheugh Place",
+          "latitude": 55.9515492,
+          "longitude": -3.2118533,
+          "distance_m": 794.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533632",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Canonmills",
+          "latitude": 55.9625715,
+          "longitude": -3.1984359,
+          "distance_m": 802.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530902",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Botanic Gardens",
+          "latitude": 55.9648275,
+          "longitude": -3.2026212,
+          "distance_m": 808.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530899",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drumsheugh Gardens",
+          "latitude": 55.9514349,
+          "longitude": -3.2130963,
+          "distance_m": 826.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530467",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "George Street",
+          "latitude": 55.9532169,
+          "longitude": -3.1997535,
+          "distance_m": 830.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534794",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Thistle Street",
+          "latitude": 55.9543976,
+          "longitude": -3.1978822,
+          "distance_m": 837.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533490",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Thistle Street",
+          "latitude": 55.9545267,
+          "longitude": -3.1976404,
+          "distance_m": 841.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531509",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Royal Botanic Gardens",
+          "latitude": 55.9654477,
+          "longitude": -3.2035216,
+          "distance_m": 844.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533674",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drummond Place",
+          "latitude": 55.9588833,
+          "longitude": -3.1955153,
+          "distance_m": 847.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530940",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "George Street (Assembly Rooms)",
+          "latitude": 55.9530467,
+          "longitude": -3.1993848,
+          "distance_m": 859.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533495",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drummond Place",
+          "latitude": 55.9590379,
+          "longitude": -3.1952954,
+          "distance_m": 862.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533633",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "George Street (Assembly Rooms)",
+          "latitude": 55.9534306,
+          "longitude": -3.1985121,
+          "distance_m": 870.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531494",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Street",
+          "latitude": 55.9506831,
+          "longitude": -3.2095125,
+          "distance_m": 872.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533628",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Frederick Street",
+          "latitude": 55.952543,
+          "longitude": -3.1999703,
+          "distance_m": 876.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2422689021",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Street",
+          "latitude": 55.9505151,
+          "longitude": -3.2088197,
+          "distance_m": 891.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530948",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drumsheugh Gardens",
+          "latitude": 55.950915,
+          "longitude": -3.2138808,
+          "distance_m": 897.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533792",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rodney Street",
+          "latitude": 55.9620775,
+          "longitude": -3.1961605,
+          "distance_m": 897.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533427",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Street",
+          "latitude": 55.9504442,
+          "longitude": -3.2089792,
+          "distance_m": 899.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533629",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Warriston Drive",
+          "latitude": 55.9661868,
+          "longitude": -3.2040897,
+          "distance_m": 907.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530894",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9507072,
+          "longitude": -3.2048527,
+          "distance_m": 909.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531472",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9508281,
+          "longitude": -3.2041607,
+          "distance_m": 910.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531476",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9509629,
+          "longitude": -3.2033577,
+          "distance_m": 914.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531479",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Orchard Brae Avenue",
+          "latitude": 55.9563514,
+          "longitude": -3.2233322,
+          "distance_m": 917.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530664",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rodney Street",
+          "latitude": 55.9618206,
+          "longitude": -3.1955056,
+          "distance_m": 923.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533425",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Flora Stevenson School",
+          "latitude": 55.9587955,
+          "longitude": -3.2239813,
+          "distance_m": 925.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533742",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9512566,
+          "longitude": -3.2016509,
+          "distance_m": 932.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531485",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9505839,
+          "longitude": -3.2042838,
+          "distance_m": 933.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533504",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rodney Street",
+          "latitude": 55.9619137,
+          "longitude": -3.1953922,
+          "distance_m": 933.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531712",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Frederick Street",
+          "latitude": 55.9519009,
+          "longitude": -3.1998852,
+          "distance_m": 934.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533497",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9507272,
+          "longitude": -3.2035127,
+          "distance_m": 935.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533503",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9513633,
+          "longitude": -3.2009788,
+          "distance_m": 944.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531490",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.950941,
+          "longitude": -3.2022815,
+          "distance_m": 945.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533500",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9510505,
+          "longitude": -3.2016407,
+          "distance_m": 953.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533499",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9514939,
+          "longitude": -3.200272,
+          "distance_m": 956.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2425287070",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (west)",
+          "latitude": 55.9511643,
+          "longitude": -3.2010095,
+          "distance_m": 962.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533498",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.9498723,
+          "longitude": -3.2090167,
+          "distance_m": 962.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529862",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hanover Street",
+          "latitude": 55.9530354,
+          "longitude": -3.1971681,
+          "distance_m": 962.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533491",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Warriston Drive",
+          "latitude": 55.9669436,
+          "longitude": -3.2050472,
+          "distance_m": 969.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533678",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dublin Street",
+          "latitude": 55.955651,
+          "longitude": -3.1943402,
+          "distance_m": 974.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531621",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hanover Street",
+          "latitude": 55.9530635,
+          "longitude": -3.1968648,
+          "distance_m": 975.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531511",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "North St David Street",
+          "latitude": 55.9549942,
+          "longitude": -3.1947329,
+          "distance_m": 978.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/4640101721",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Logie Green Road",
+          "latitude": 55.963112,
+          "longitude": -3.1956917,
+          "distance_m": 978.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531760",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Flora Stevenson School",
+          "latitude": 55.9587954,
+          "longitude": -3.2248638,
+          "distance_m": 980.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530701",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.9496459,
+          "longitude": -3.2091031,
+          "distance_m": 987.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534037",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "George Street (The Dome)",
+          "latitude": 55.953937,
+          "longitude": -3.1955307,
+          "distance_m": 988.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2435877156",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "North St David Street",
+          "latitude": 55.9549913,
+          "longitude": -3.1945553,
+          "distance_m": 988.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533465",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.949573,
+          "longitude": -3.2096804,
+          "distance_m": 996.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529857",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "George Street (The Dome)",
+          "latitude": 55.9536719,
+          "longitude": -3.1956542,
+          "distance_m": 997.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533469",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lothian Road",
+          "latitude": 55.9495419,
+          "longitude": -3.2067125,
+          "distance_m": 1010.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533508",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Flora Stevenson School",
+          "latitude": 55.9577885,
+          "longitude": -3.225393,
+          "distance_m": 1016.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533748",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Flora Stevenson School",
+          "latitude": 55.9580189,
+          "longitude": -3.2254413,
+          "distance_m": 1017.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530659",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bellevue",
+          "latitude": 55.9606648,
+          "longitude": -3.1931837,
+          "distance_m": 1020.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533421",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hanover Street",
+          "latitude": 55.9525566,
+          "longitude": -3.1966048,
+          "distance_m": 1023.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531517",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.9493283,
+          "longitude": -3.2098171,
+          "distance_m": 1024.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2501607094",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.9493392,
+          "longitude": -3.2102332,
+          "distance_m": 1024.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2472266183",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Chester Street",
+          "latitude": 55.9500952,
+          "longitude": -3.215921,
+          "distance_m": 1029.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530464",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Stewart's Melville",
+          "latitude": 55.954864,
+          "longitude": -3.2243511,
+          "distance_m": 1032.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533786",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lothian Road",
+          "latitude": 55.9492711,
+          "longitude": -3.2066103,
+          "distance_m": 1041.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533509",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Shandwick Place",
+          "latitude": 55.9491494,
+          "longitude": -3.2102141,
+          "distance_m": 1045.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534039",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lothian Road",
+          "latitude": 55.9492105,
+          "longitude": -3.2068663,
+          "distance_m": 1045.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531455",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Warriston Gardens",
+          "latitude": 55.9677907,
+          "longitude": -3.205597,
+          "distance_m": 1052.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530889",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Chester Street",
+          "latitude": 55.9498283,
+          "longitude": -3.2161667,
+          "distance_m": 1062.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533793",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "St Andrew Square - Edinburgh Bus Tours",
+          "latitude": 55.9549106,
+          "longitude": -3.1931533,
+          "distance_m": 1072.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531611",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Logie Green Road",
+          "latitude": 55.9636516,
+          "longitude": -3.1942489,
+          "distance_m": 1086.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533392",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Warriston Gardens",
+          "latitude": 55.9683045,
+          "longitude": -3.2063198,
+          "distance_m": 1100.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533679",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.9523426,
+          "longitude": -3.1952878,
+          "distance_m": 1102.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531578",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.9520868,
+          "longitude": -3.1956429,
+          "distance_m": 1103.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533474",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Mansfield Place",
+          "latitude": 55.9597602,
+          "longitude": -3.1915275,
+          "distance_m": 1103.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533418",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Mound (foot)",
+          "latitude": 55.9514559,
+          "longitude": -3.1965157,
+          "distance_m": 1111.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531521",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Mound (foot)",
+          "latitude": 55.9513407,
+          "longitude": -3.1966893,
+          "distance_m": 1112.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533487",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.9524242,
+          "longitude": -3.1948448,
+          "distance_m": 1118.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531582",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 1)",
+          "latitude": 55.9553235,
+          "longitude": -3.1920547,
+          "distance_m": 1120.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534687",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 2)",
+          "latitude": 55.9553332,
+          "longitude": -3.1919926,
+          "distance_m": 1123.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534688",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 3)",
+          "latitude": 55.9553429,
+          "longitude": -3.1919304,
+          "distance_m": 1127.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534689",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Stewart's Melville",
+          "latitude": 55.9549145,
+          "longitude": -3.226053,
+          "distance_m": 1128.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530488",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.952216,
+          "longitude": -3.1948868,
+          "distance_m": 1130.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533473",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 4)",
+          "latitude": 55.9553525,
+          "longitude": -3.1918683,
+          "distance_m": 1130.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534690",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Mansfield Place",
+          "latitude": 55.9597239,
+          "longitude": -3.1910585,
+          "distance_m": 1132.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531718",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 5)",
+          "latitude": 55.9553622,
+          "longitude": -3.1918061,
+          "distance_m": 1133.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534692",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 6)",
+          "latitude": 55.9553719,
+          "longitude": -3.191744,
+          "distance_m": 1137.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534693",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "South St. David Street",
+          "latitude": 55.9530238,
+          "longitude": -3.1937098,
+          "distance_m": 1138.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531595",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.9525111,
+          "longitude": -3.1943166,
+          "distance_m": 1138.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2430615246",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 7)",
+          "latitude": 55.9553816,
+          "longitude": -3.1916819,
+          "distance_m": 1140.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534694",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rothesay Place",
+          "latitude": 55.9500048,
+          "longitude": -3.2193422,
+          "distance_m": 1141.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530460",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "South St. David Street",
+          "latitude": 55.9530819,
+          "longitude": -3.1935547,
+          "distance_m": 1142.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7720900445",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 8)",
+          "latitude": 55.9553913,
+          "longitude": -3.1916197,
+          "distance_m": 1143.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534695",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 9)",
+          "latitude": 55.955401,
+          "longitude": -3.1915576,
+          "distance_m": 1147.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534697",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 10)",
+          "latitude": 55.9554107,
+          "longitude": -3.1914955,
+          "distance_m": 1150.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534698",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Beaverhall Road",
+          "latitude": 55.9640881,
+          "longitude": -3.1935142,
+          "distance_m": 1151.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531764",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 11)",
+          "latitude": 55.9554204,
+          "longitude": -3.1914333,
+          "distance_m": 1154.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534699",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Scott Monument)",
+          "latitude": 55.9523424,
+          "longitude": -3.1941852,
+          "distance_m": 1156.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533472",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 12)",
+          "latitude": 55.9554301,
+          "longitude": -3.1913712,
+          "distance_m": 1157.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534700",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 13)",
+          "latitude": 55.9554398,
+          "longitude": -3.1913091,
+          "distance_m": 1160.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534702",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 14)",
+          "latitude": 55.9554495,
+          "longitude": -3.1912469,
+          "distance_m": 1164.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534703",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Goldenacre Terrace",
+          "latitude": 55.9689311,
+          "longitude": -3.2067013,
+          "distance_m": 1166.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530884",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 15)",
+          "latitude": 55.9554592,
+          "longitude": -3.1911848,
+          "distance_m": 1167.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534704",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Palmerston Place",
+          "latitude": 55.9495686,
+          "longitude": -3.2189589,
+          "distance_m": 1169.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533795",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 16)",
+          "latitude": 55.9554688,
+          "longitude": -3.1911227,
+          "distance_m": 1170.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534705",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 17)",
+          "latitude": 55.9554785,
+          "longitude": -3.1910605,
+          "distance_m": 1174.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534706",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Exchange",
+          "latitude": 55.9480111,
+          "longitude": -3.2070831,
+          "distance_m": 1176.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531452",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Edinburgh Bus Station (Stance 18)",
+          "latitude": 55.9554882,
+          "longitude": -3.1909984,
+          "distance_m": 1177.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534707",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Belford Bridge",
+          "latitude": 55.9509026,
+          "longitude": -3.2222768,
+          "distance_m": 1179.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530456",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Broughton Place",
+          "latitude": 55.9587469,
+          "longitude": -3.1900917,
+          "distance_m": 1184.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531724",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "King's Stables Road",
+          "latitude": 55.9483042,
+          "longitude": -3.203526,
+          "distance_m": 1189.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533510",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Exchange",
+          "latitude": 55.9477777,
+          "longitude": -3.207431,
+          "distance_m": 1200.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533511",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Orchard Place",
+          "latitude": 55.9581693,
+          "longitude": -3.2284212,
+          "distance_m": 1202.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530503",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Comely Bank Cemetery",
+          "latitude": 55.9600193,
+          "longitude": -3.2284432,
+          "distance_m": 1214.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533750",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Comely Bank Cemetery",
+          "latitude": 55.9601794,
+          "longitude": -3.2284095,
+          "distance_m": 1214.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530655",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Sheraton Hotel",
+          "latitude": 55.9476032,
+          "longitude": -3.2085057,
+          "distance_m": 1215.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2422689022",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Atholl Crescent",
+          "latitude": 55.9478159,
+          "longitude": -3.2131649,
+          "distance_m": 1217.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534043",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Beaverhall Road",
+          "latitude": 55.9642904,
+          "longitude": -3.1922393,
+          "distance_m": 1230.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533390",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Goldenacre Terrace",
+          "latitude": 55.9696149,
+          "longitude": -3.2076181,
+          "distance_m": 1236.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533680",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Belford Bridge",
+          "latitude": 55.9505731,
+          "longitude": -3.2230145,
+          "distance_m": 1237.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533797",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Mound Place",
+          "latitude": 55.9502711,
+          "longitude": -3.195248,
+          "distance_m": 1260.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531525",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Waverley Bridge",
+          "latitude": 55.9523041,
+          "longitude": -3.1921025,
+          "distance_m": 1265.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531539",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Orchard Place",
+          "latitude": 55.9578389,
+          "longitude": -3.2295517,
+          "distance_m": 1274.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533781",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dean Art Gallery",
+          "latitude": 55.9517872,
+          "longitude": -3.2257263,
+          "distance_m": 1277.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530454",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "St Andrews Church",
+          "latitude": 55.952497,
+          "longitude": -3.226618,
+          "distance_m": 1279.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530447",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Usher Hall",
+          "latitude": 55.9471588,
+          "longitude": -3.2058443,
+          "distance_m": 1280.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533512",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "York Place",
+          "latitude": 55.9566142,
+          "longitude": -3.1887896,
+          "distance_m": 1283.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531625",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Castle Esplanade",
+          "latitude": 55.9486914,
+          "longitude": -3.1982744,
+          "distance_m": 1285.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529940",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "St James Church",
+          "latitude": 55.9701039,
+          "longitude": -3.2078561,
+          "distance_m": 1289.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530879",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Gallery of Modern Art",
+          "latitude": 55.9514713,
+          "longitude": -3.2255762,
+          "distance_m": 1290.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533798",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Broughton Street",
+          "latitude": 55.9572218,
+          "longitude": -3.1884308,
+          "distance_m": 1296.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533414",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Broughton Street",
+          "latitude": 55.9574145,
+          "longitude": -3.1883681,
+          "distance_m": 1297.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531726",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Terrace",
+          "latitude": 55.9546595,
+          "longitude": -3.2287876,
+          "distance_m": 1297.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533787",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Waverley Steps)",
+          "latitude": 55.9529417,
+          "longitude": -3.1908127,
+          "distance_m": 1298.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533464",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Torphichen Street",
+          "latitude": 55.9470379,
+          "longitude": -3.2129291,
+          "distance_m": 1299.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529873",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Waverley Steps)",
+          "latitude": 55.9531636,
+          "longitude": -3.190549,
+          "distance_m": 1301.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531614",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Johnston Terrace",
+          "latitude": 55.9475607,
+          "longitude": -3.2016597,
+          "distance_m": 1305.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529933",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Torphichen Street",
+          "latitude": 55.9470382,
+          "longitude": -3.2136679,
+          "distance_m": 1308.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528386",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Waverley Steps)",
+          "latitude": 55.9530038,
+          "longitude": -3.1904535,
+          "distance_m": 1314.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533463",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Princes Street (Waverley Steps)",
+          "latitude": 55.9532463,
+          "longitude": -3.1901162,
+          "distance_m": 1320.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531617",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Terrace",
+          "latitude": 55.9547662,
+          "longitude": -3.2292497,
+          "distance_m": 1321.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530485",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dewar Place",
+          "latitude": 55.9466831,
+          "longitude": -3.2111062,
+          "distance_m": 1323.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529877",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Mound Place",
+          "latitude": 55.9499433,
+          "longitude": -3.1943661,
+          "distance_m": 1324.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533486",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "St James Church",
+          "latitude": 55.9705997,
+          "longitude": -3.2085738,
+          "distance_m": 1342.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533681",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Market Street",
+          "latitude": 55.9504494,
+          "longitude": -3.1929935,
+          "distance_m": 1347.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534016",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ravelston Terrace",
+          "latitude": 55.9527412,
+          "longitude": -3.2281759,
+          "distance_m": 1349.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533799",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Maitland Street",
+          "latitude": 55.9469311,
+          "longitude": -3.2156834,
+          "distance_m": 1352.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529849",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Western General",
+          "latitude": 55.9615682,
+          "longitude": -3.230222,
+          "distance_m": 1356.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530650",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Usher Hall",
+          "latitude": 55.9464535,
+          "longitude": -3.2059155,
+          "distance_m": 1357.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531443",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "York Place",
+          "latitude": 55.9564425,
+          "longitude": -3.1874937,
+          "distance_m": 1366.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533457",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Market Street",
+          "latitude": 55.9507195,
+          "longitude": -3.1921655,
+          "distance_m": 1366.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3025664789",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Maitland Street",
+          "latitude": 55.946725,
+          "longitude": -3.2161068,
+          "distance_m": 1382.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529846",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Wardie Road",
+          "latitude": 55.9709236,
+          "longitude": -3.2119326,
+          "distance_m": 1389.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533682",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Arboretum Road",
+          "latitude": 55.9703938,
+          "longitude": -3.2166705,
+          "distance_m": 1400.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533683",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Grove Street",
+          "latitude": 55.9460697,
+          "longitude": -3.2125273,
+          "distance_m": 1401.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534035",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Hub",
+          "latitude": 55.9486521,
+          "longitude": -3.1951042,
+          "distance_m": 1402.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529937",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Wardie Road",
+          "latitude": 55.9709772,
+          "longitude": -3.2128796,
+          "distance_m": 1403.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530858",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lawnmarket",
+          "latitude": 55.9493934,
+          "longitude": -3.193539,
+          "distance_m": 1404.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529944",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Leith Street",
+          "latitude": 55.9542367,
+          "longitude": -3.1878658,
+          "distance_m": 1406.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8867581727",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Western General",
+          "latitude": 55.9618987,
+          "longitude": -3.2309495,
+          "distance_m": 1409.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533751",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Maitland Street",
+          "latitude": 55.9465978,
+          "longitude": -3.2168376,
+          "distance_m": 1411.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11300878158",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Leith Street",
+          "latitude": 55.9556831,
+          "longitude": -3.1869575,
+          "distance_m": 1415.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531735",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "The Hub",
+          "latitude": 55.9485101,
+          "longitude": -3.1950625,
+          "distance_m": 1416.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534019",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lawnmarket",
+          "latitude": 55.9492107,
+          "longitude": -3.1934801,
+          "distance_m": 1421.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534018",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Morrison Street",
+          "latitude": 55.9457403,
+          "longitude": -3.2083802,
+          "distance_m": 1422.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529881",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Boswall Drive",
+          "latitude": 55.9701736,
+          "longitude": -3.2188015,
+          "distance_m": 1428.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533684",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Goldenacre",
+          "latitude": 55.9712913,
+          "longitude": -3.2063993,
+          "distance_m": 1429.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533456",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Goldenacre",
+          "latitude": 55.9713321,
+          "longitude": -3.2069302,
+          "distance_m": 1430.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531627",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Leith Street",
+          "latitude": 55.9556674,
+          "longitude": -3.186721,
+          "distance_m": 1430.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533405",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Morrison Street",
+          "latitude": 55.9456681,
+          "longitude": -3.20818,
+          "distance_m": 1431.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534034",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Leith Street",
+          "latitude": 55.9553744,
+          "longitude": -3.1867905,
+          "distance_m": 1433.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/5803039871",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bread Street",
+          "latitude": 55.9458494,
+          "longitude": -3.2043614,
+          "distance_m": 1440.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529912",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Boswall Drive",
+          "latitude": 55.9702438,
+          "longitude": -3.2195171,
+          "distance_m": 1454.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530854",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rosebank Grove",
+          "latitude": 55.9712946,
+          "longitude": -3.2144423,
+          "distance_m": 1457.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533696",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Port",
+          "latitude": 55.9463971,
+          "longitude": -3.2001543,
+          "distance_m": 1460.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529916",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Waterloo Place (ZJ)",
+          "latitude": 55.953609,
+          "longitude": -3.1872578,
+          "distance_m": 1466.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533317",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ravelston Park",
+          "latitude": 55.9525706,
+          "longitude": -3.2301584,
+          "distance_m": 1467.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530443",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Waterloo Place (ZK)",
+          "latitude": 55.9537668,
+          "longitude": -3.1871129,
+          "distance_m": 1468.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531975",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "McDonald Road",
+          "latitude": 55.9659262,
+          "longitude": -3.1894058,
+          "distance_m": 1477.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502531767",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Grassmarket",
+          "latitude": 55.9473914,
+          "longitude": -3.1961446,
+          "distance_m": 1478.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529920",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Craigleith Hill Crescent",
+          "latitude": 55.9572859,
+          "longitude": -3.2327712,
+          "distance_m": 1478.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533783",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Semple Street",
+          "latitude": 55.9452599,
+          "longitude": -3.2068906,
+          "distance_m": 1482.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529908",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Lauriston Street",
+          "latitude": 55.9458781,
+          "longitude": -3.2015473,
+          "distance_m": 1483.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534025",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Waterloo Place (ZH)",
+          "latitude": 55.9536754,
+          "longitude": -3.1868854,
+          "distance_m": 1485.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2421492179",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bangholm Place",
+          "latitude": 55.9716154,
+          "longitude": -3.2041806,
+          "distance_m": 1487.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533450",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Broughton Primary School",
+          "latitude": 55.9659016,
+          "longitude": -3.1891647,
+          "distance_m": 1488.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533388",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Port",
+          "latitude": 55.9464948,
+          "longitude": -3.1985795,
+          "distance_m": 1490.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2423788814",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Ravelston Park",
+          "latitude": 55.9524374,
+          "longitude": -3.2305188,
+          "distance_m": 1494.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533800",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "tram_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "tram_stop",
+          "name": "Princes Street",
+          "latitude": 55.9517113,
+          "longitude": -3.1981756,
+          "distance_m": 1019.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2693088951",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "Princes Street",
+          "latitude": 55.9518937,
+          "longitude": -3.1974619,
+          "distance_m": 1035.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1882457672",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "West End",
+          "latitude": 55.9488688,
+          "longitude": -3.2112042,
+          "distance_m": 1082.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2892442824",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "St Andrew Square",
+          "latitude": 55.9547054,
+          "longitude": -3.1924578,
+          "distance_m": 1121.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2319609566",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "West End",
+          "latitude": 55.9483873,
+          "longitude": -3.2120915,
+          "distance_m": 1142.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8443670817",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "St Andrew Square",
+          "latitude": 55.9543601,
+          "longitude": -3.192155,
+          "distance_m": 1153.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2693088956",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "Picardy Place",
+          "latitude": 55.9566961,
+          "longitude": -3.1871461,
+          "distance_m": 1382.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8071098686",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "tram_stop",
+          "name": "Picardy Place",
+          "latitude": 55.956868,
+          "longitude": -3.1864167,
+          "distance_m": 1425.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8071098687",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "rail_station",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "rail_station",
+          "name": "Edinburgh Waverley",
+          "latitude": 55.9519018,
+          "longitude": -3.1904199,
+          "distance_m": 1377.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7149998196",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "supermarket",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "supermarket",
+          "name": "Co-op Food",
+          "latitude": 55.9596287,
+          "longitude": -3.2163119,
+          "distance_m": 464.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/8273715640",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Waitrose",
+          "latitude": 55.9591512,
+          "longitude": -3.2239007,
+          "distance_m": 922.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/4892124",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Tesco",
+          "latitude": 55.9632981,
+          "longitude": -3.1963011,
+          "distance_m": 958.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/31562095",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Lidl",
+          "latitude": 55.9639788,
+          "longitude": -3.1953315,
+          "distance_m": 1050.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/391593035",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Greens on the Go",
+          "latitude": 55.9458272,
+          "longitude": -3.2086099,
+          "distance_m": 1412.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3797156107",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "pharmacy",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "pharmacy",
+          "name": "Dears Pharmacy & Travel Clinic",
+          "latitude": 55.9583072,
+          "longitude": -3.2090826,
+          "distance_m": 24.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/33526704",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Stockbridge Pharmacy",
+          "latitude": 55.9571426,
+          "longitude": -3.2068415,
+          "distance_m": 209.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1167236991",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "New Town Pharmacy",
+          "latitude": 55.9605779,
+          "longitude": -3.200385,
+          "distance_m": 589.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2081380225",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Boots",
+          "latitude": 55.9588897,
+          "longitude": -3.2225962,
+          "distance_m": 839.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2169103656",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Boots",
+          "latitude": 55.951533,
+          "longitude": -3.2004872,
+          "distance_m": 945.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/443416327",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Tesco Pharmacy",
+          "latitude": 55.9629859,
+          "longitude": -3.1961423,
+          "distance_m": 947.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1086058483",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Boots",
+          "latitude": 55.9495564,
+          "longitude": -3.2099563,
+          "distance_m": 999.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2073164197",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Broughton Pharmacy",
+          "latitude": 55.9588881,
+          "longitude": -3.1901102,
+          "distance_m": 1184.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2113960969",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Boots",
+          "latitude": 55.9552133,
+          "longitude": -3.1892036,
+          "distance_m": 1293.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/10226495556",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Boots",
+          "latitude": 55.9470639,
+          "longitude": -3.2154953,
+          "distance_m": 1335.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2071527402",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "gp_surgery",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API); Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+      "fetched_at": "2026-11-07T20:54:19Z",
+      "places": [
+        {
+          "kind": "gp_surgery",
+          "name": "The Green Practice",
+          "latitude": 55.957193,
+          "longitude": -3.20774,
+          "distance_m": 171.7,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/70094",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Dr Thyne & Partners",
+          "latitude": 55.957193,
+          "longitude": -3.20774,
+          "distance_m": 171.7,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/70408",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Stockbridge Health Centre",
+          "latitude": 55.9570699,
+          "longitude": -3.2073173,
+          "distance_m": 197.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1167236989",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Dr. David Jack",
+          "latitude": 55.956211,
+          "longitude": -3.2019003,
+          "distance_m": 518.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2821786775",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Your GP",
+          "latitude": 55.958148,
+          "longitude": -3.1994342,
+          "distance_m": 604.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11559803054",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Eyre Medical Practice",
+          "latitude": 55.9614472,
+          "longitude": -3.1995521,
+          "distance_m": 678.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2876055527",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "The Group Practice - Eyre",
+          "latitude": 55.961664,
+          "longitude": -3.198925,
+          "distance_m": 724.0,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/71326",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "your GP",
+          "latitude": 55.9516461,
+          "longitude": -3.217774,
+          "distance_m": 936.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3347700401",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "West End Medical Practice",
+          "latitude": 55.949393,
+          "longitude": -3.216017,
+          "distance_m": 1103.0,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/70319",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "West End Medical Practice",
+          "latitude": 55.9492185,
+          "longitude": -3.2166052,
+          "distance_m": 1135.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/266052514",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    },
+    {
+      "kind": "school",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:13:53Z",
+      "places": [
+        {
+          "kind": "school",
+          "name": "Stockbridge Primary School",
+          "latitude": 55.9594262,
+          "longitude": -3.2076228,
+          "distance_m": 136.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/77764214",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "The Edinburgh Academy",
+          "latitude": 55.9607716,
+          "longitude": -3.2059147,
+          "distance_m": 319.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/77757792",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Basil Paterson School",
+          "latitude": 55.953486,
+          "longitude": -3.2053002,
+          "distance_m": 609.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/1281993766",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Broughton High School",
+          "latitude": 55.9609608,
+          "longitude": -3.2219233,
+          "distance_m": 841.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/59292072",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "BSC Edinburgh",
+          "latitude": 55.9529392,
+          "longitude": -3.1994168,
+          "distance_m": 866.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3342159194",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": null,
+          "latitude": 55.9543525,
+          "longitude": -3.2217358,
+          "distance_m": 912.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/1283237239",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "The Flora Stevenson Primary School",
+          "latitude": 55.9579949,
+          "longitude": -3.2248737,
+          "distance_m": 982.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/5038806",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Edinburgh Academy Junior School",
+          "latitude": 55.9687389,
+          "longitude": -3.2129366,
+          "distance_m": 1159.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/168487389",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Drummond Community High School",
+          "latitude": 55.9605629,
+          "longitude": -3.1901004,
+          "distance_m": 1205.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/23164582",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Stewart's Melville College",
+          "latitude": 55.9538632,
+          "longitude": -3.2274011,
+          "distance_m": 1250.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/23213650",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Caledonian Language School",
+          "latitude": 55.9471277,
+          "longitude": -3.2137763,
+          "distance_m": 1300.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3284467981",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "ESMS Junior School",
+          "latitude": 55.9537364,
+          "longitude": -3.2288353,
+          "distance_m": 1338.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/277205646",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "St Mary's RC Primary School",
+          "latitude": 55.9594915,
+          "longitude": -3.1875674,
+          "distance_m": 1345.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/93234794",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Fettes College",
+          "latitude": 55.9651821,
+          "longitude": -3.2272166,
+          "distance_m": 1347.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/5004430",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Fettes College Preparatory School",
+          "latitude": 55.9666246,
+          "longitude": -3.2259783,
+          "distance_m": 1382.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/262689411",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "St Mary's Music School",
+          "latitude": 55.9469842,
+          "longitude": -3.2203563,
+          "distance_m": 1462.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/278806451",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        },
+        {
+          "kind": "school",
+          "name": "Broughton Primary School",
+          "latitude": 55.9657243,
+          "longitude": -3.189214,
+          "distance_m": 1474.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:relation/9311920",
+          "fetched_at": "2026-11-08T09:13:53Z"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "estimated",
+      "distance_m": 2590.8,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:21Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "estimated",
+      "distance_m": 2590.8,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:22Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 1791.2,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:24Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 1791.2,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:26Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "estimated",
+      "distance_m": 8049.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:27Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "estimated",
+      "distance_m": 8049.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:29Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9587621,
+        "longitude": -3.2098638,
+        "name": "Raeburn Place"
+      },
+      "status": "estimated",
+      "distance_m": 68.9,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:31Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9587621,
+        "longitude": -3.2098638,
+        "name": "Raeburn Place"
+      },
+      "status": "estimated",
+      "distance_m": 68.9,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:32Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9517113,
+        "longitude": -3.1981756,
+        "name": "Princes Street"
+      },
+      "status": "estimated",
+      "distance_m": 1325.1,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:34Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95853,
+        "longitude": -3.20912,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9517113,
+        "longitude": -3.1981756,
+        "name": "Princes Street"
+      },
+      "status": "estimated",
+      "distance_m": 1325.1,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:15:36Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    }
+  ],
+  "access_tags": {
+    "radius_m": 500.0,
+    "source": "OpenStreetMap (Overpass API)",
+    "fetched_at": "2026-11-08T09:47:53Z",
+    "ways": 984,
+    "ways_with_surface": 292,
+    "ways_with_smoothness": 56,
+    "ways_with_incline": 122,
+    "ways_with_sidewalk": 104,
+    "steps_ways": 143,
+    "crossings": 11,
+    "crossings_with_tactile_paving": 10,
+    "kerbs": {
+      "lowered": 7,
+      "flush": 3,
+      "raised": 3,
+      "no": 0,
+      "other": 0,
+      "untagged": 1
+    }
+  }
+}

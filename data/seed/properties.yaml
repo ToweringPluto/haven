@@ -2,9 +2,9 @@
 # Every property here is FICTIONAL (illustrative only, not a real listing).
 meta:
   generated_by: backend/scripts/make_seed.py
-  generated_on: '2026-11-07'
+  generated_on: '2026-11-08'
   random_seed: 2026
-  notes: All 11 properties are FICTIONAL ('Illustrative property — not a real listing'). Rents, bedrooms,
+  notes: All 48 properties are FICTIONAL ('Illustrative property — not a real listing'). Rents, bedrooms,
     floor areas, floors, lifts, steps, council tax bands and other costs are hand-chosen illustrative
     values, not statistics. EPC band, main fuel and (where no edge case fixes it) property type are drawn
     with the fixed random seed, weighted by Edinburgh EPC certificate counts. Coordinates are points on
@@ -12,13 +12,26 @@ meta:
     up on 2026-11-08.
   epc_distribution_source: data/reference/energy_kwh_per_m2_edinburgh.yaml (https://data.gov.scot/dataset/domestic_energy_performance_certificates___dataset_to_q1_2026,
     release Q4 2016 to Q3 2026 (extracted 21 October 2026))
-  coordinates_source: 'OpenStreetMap street ways, point returned by Nominatim search (https://nominatim.openstreetmap.org/),
-    rounded to 5 decimal places; OSM way ids: Great Junction Street (way 872066201), Marchmont Crescent
-    (way 93760508), Wheatfield Street (way 5197312), Blackfriars Street (way 4827445), Craigleith Road
-    (way 481282493), Bath Street (way 4391658), Drum Street (way 53770836), Leamington Terrace (way 276992921),
-    Dalry Road (way 362445600), Calder Road (way 41421727), Wester Hailes Road (way 4435839)'
+  coordinates_source: 'OpenStreetMap street ways, rounded to 5 decimal places. First 8: point from Nominatim
+    search (https://nominatim.openstreetmap.org/), retrieved 2026-11-07. The rest: way centre from Overpass,
+    2026-11-08; OSM way ids: Great Junction Street (way 872066201), Marchmont Crescent (way 93760508),
+    Wheatfield Street (way 5197312), Blackfriars Street (way 4827445), Craigleith Road (way 481282493),
+    Bath Street (way 4391658), Drum Street (way 53770836), Leamington Terrace (way 276992921), Dalry Road
+    (way 362445600), Calder Road (way 41421727), Wester Hailes Road (way 4435839), Newhaven Main Street
+    (way 61563731), Granton Road (way 4854373), Pilton Drive North (way 481288657), Crewe Road Gardens
+    (way 4997598), Haugh Street (way 5024414), Abercromby Place (way 4835697), Inverleith Place (way 228988817),
+    Bangholm Terrace (way 4798787), Drylaw Grove (way 24351548), Corbiehill Place (way 6137753), Cramond
+    Glebe Road (way 360419954), Parkgrove Drive (way 1297208593), Falkland Gardens (way 25122405), Manse
+    Street (way 5916425), Ormidale Terrace (way 4629731), Grindlay Street (way 449597029), Falcon Road
+    West (way 41053777), Merchiston Gardens (way 478728618), Upper Gray Street (way 4242254), Cameron
+    Park (way 5411520), Mount Vernon Road (way 61892206), Ochiltree Gardens (way 5819342), West Court
+    (way 1373148389), Meadowfield Terrace (way 5395282), Findlay Grove (way 23149665), West Kilnacre (way
+    217561178), Carlton Terrace Brae (way 333299196), Coillesdene Drive (way 5367620), Niddrie Mill Avenue
+    (way 5393989), Kingsknowe Road North (way 231039593), Stenhouse Place East (way 276094800), Dreghorn
+    Loan (way 165872861), Oxgangs View (way 1159143040), Frogston Avenue (way 5785685), Glenlockhart Bank
+    (way 6175329), Blackford Hill View (way 26431200), South Gyle Road (way 5915376)'
   coordinates_licence: © OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)
-  coordinates_retrieved: '2026-11-07'
+  coordinates_retrieved: '2026-11-08'
   edge_cases:
     seed-prop-leith: entrance steps and a 3rd-floor flat with no lift
     seed-prop-marchmont: council tax band not stated
@@ -39,7 +52,7 @@ properties:
     value: 1195.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -47,7 +60,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -55,7 +68,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -63,7 +76,7 @@ properties:
     value: 64.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -71,7 +84,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -79,7 +92,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -88,7 +101,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -97,7 +110,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: entrance steps and a 3rd-floor flat with
@@ -106,7 +119,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: entrance steps and a 3rd-floor flat with
@@ -115,7 +128,7 @@ properties:
     value: 4
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: entrance steps and a 3rd-floor flat with
@@ -131,7 +144,7 @@ properties:
     value: 1650.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -139,7 +152,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -147,7 +160,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -155,7 +168,7 @@ properties:
     value: 92.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -163,7 +176,7 @@ properties:
     value: null
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: insufficient
     note: The listing doesn't state the council tax band; check the Scottish Assessors portal.
@@ -171,7 +184,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -180,7 +193,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -189,7 +202,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -197,7 +210,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -205,7 +218,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -220,7 +233,7 @@ properties:
     value: 725.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: cheap rent but EPC F (heating cost risk)'
@@ -228,7 +241,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -236,7 +249,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -244,7 +257,7 @@ properties:
     value: 41.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -252,7 +265,7 @@ properties:
     value: A
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -260,7 +273,7 @@ properties:
     value: F
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: cheap rent but EPC F (heating cost risk)'
@@ -268,7 +281,7 @@ properties:
     value: electricity
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -277,7 +290,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -285,7 +298,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -293,7 +306,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -308,7 +321,7 @@ properties:
     value: 1100.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -316,7 +329,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -324,7 +337,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -332,7 +345,7 @@ properties:
     value: 48.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -340,7 +353,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -348,7 +361,7 @@ properties:
     value: D
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -357,7 +370,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -366,7 +379,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: 2nd-floor flat; the listing doesn''t say
@@ -375,7 +388,7 @@ properties:
     value: null
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: insufficient
     note: The listing doesn't say whether there is a lift; check with the letting agent.
@@ -383,7 +396,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -398,7 +411,7 @@ properties:
     value: 1450.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -406,7 +419,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -414,7 +427,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -422,7 +435,7 @@ properties:
     value: 71.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -430,7 +443,7 @@ properties:
     value: E
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -438,7 +451,7 @@ properties:
     value: B
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: step-free new build (no entrance steps, lift
@@ -447,7 +460,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -456,7 +469,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: step-free new build (no entrance steps, lift
@@ -465,7 +478,7 @@ properties:
     value: true
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: step-free new build (no entrance steps, lift
@@ -474,7 +487,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: step-free new build (no entrance steps, lift
@@ -485,7 +498,7 @@ properties:
       value: 28.0
       origin: listing
       source: illustrative seed (fictional listing)
-      as_of: '2026-11-07'
+      as_of: '2026-11-08'
       confidence: null
       status: known
       note: Fictional value for an illustrative property; not real listing data.
@@ -499,7 +512,7 @@ properties:
     value: 1295.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -507,7 +520,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -515,7 +528,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -524,7 +537,7 @@ properties:
     value: 70.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -532,7 +545,7 @@ properties:
     value: D
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -540,7 +553,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -549,7 +562,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -558,7 +571,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -566,7 +579,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -574,7 +587,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -589,7 +602,7 @@ properties:
     value: 1250.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -597,7 +610,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -605,7 +618,7 @@ properties:
     value: house
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -614,7 +627,7 @@ properties:
     value: 84.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -622,7 +635,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -630,7 +643,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -639,7 +652,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -648,7 +661,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -656,7 +669,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -664,7 +677,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -679,7 +692,7 @@ properties:
     value: 1425.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -687,7 +700,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -695,7 +708,7 @@ properties:
     value: house
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -704,7 +717,7 @@ properties:
     value: 75.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -712,7 +725,7 @@ properties:
     value: D
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -720,7 +733,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -729,7 +742,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -738,7 +751,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -746,7 +759,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -754,7 +767,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -769,7 +782,7 @@ properties:
     value: 625.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
@@ -778,7 +791,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -786,7 +799,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -794,7 +807,7 @@ properties:
     value: 38.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -802,7 +815,7 @@ properties:
     value: A
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -810,7 +823,7 @@ properties:
     value: D
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -819,7 +832,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -828,7 +841,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
@@ -837,7 +850,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low rent (lower-budget demo) but up two flights
@@ -846,7 +859,7 @@ properties:
     value: 3
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -861,7 +874,7 @@ properties:
     value: 595.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
@@ -870,7 +883,7 @@ properties:
     value: 1
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -878,7 +891,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -886,7 +899,7 @@ properties:
     value: 45.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -894,7 +907,7 @@ properties:
     value: A
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -902,7 +915,7 @@ properties:
     value: C
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -911,7 +924,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -920,7 +933,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
@@ -929,7 +942,7 @@ properties:
     value: false
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -937,7 +950,7 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: cheapest rent in the seed and step-free (lower-budget
@@ -953,7 +966,7 @@ properties:
     value: 695.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
@@ -962,7 +975,7 @@ properties:
     value: 2
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -970,7 +983,7 @@ properties:
     value: flat
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -978,7 +991,7 @@ properties:
     value: 62.0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -986,7 +999,7 @@ properties:
     value: B
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value for an illustrative property; not real listing data.
@@ -994,7 +1007,7 @@ properties:
     value: D
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -1003,7 +1016,7 @@ properties:
     value: mains_gas
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
@@ -1012,7 +1025,7 @@ properties:
     value: 5
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
@@ -1021,7 +1034,7 @@ properties:
     value: true
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
@@ -1030,9 +1043,3324 @@ properties:
     value: 0
     origin: listing
     source: illustrative seed (fictional listing)
-    as_of: '2026-11-07'
+    as_of: '2026-11-08'
     confidence: null
     status: known
     note: 'Fictional value fixed for a deliberate edge case: low-rent 2-bed (lower-budget demo) on the
       5th floor with a lift'
+  other_recurring_costs: []
+- id: seed-prop-newhaven
+  title: 'Illustrative property — not a real listing: 2-bed flat, Newhaven'
+  illustrative: true
+  area: Newhaven
+  latitude: 55.9803
+  longitude: -3.19531
+  rent_pcm_gbp:
+    value: 1295.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 66.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-trinity
+  title: 'Illustrative property — not a real listing: 3-bed flat, Trinity'
+  illustrative: true
+  area: Trinity
+  latitude: 55.97527
+  longitude: -3.21506
+  rent_pcm_gbp:
+    value: 1750.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 98.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-granton
+  title: 'Illustrative property — not a real listing: 2-bed new-build flat, Granton'
+  illustrative: true
+  area: Granton
+  latitude: 55.97868
+  longitude: -3.23135
+  rent_pcm_gbp:
+    value: 1165.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 63.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: true
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-pilton
+  title: 'Illustrative property — not a real listing: 2-bed flat, Pilton'
+  illustrative: true
+  area: Pilton
+  latitude: 55.97071
+  longitude: -3.23893
+  rent_pcm_gbp:
+    value: 1150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 61.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-stockbridge
+  title: 'Illustrative property — not a real listing: 2-bed tenement flat, Stockbridge'
+  illustrative: true
+  area: Stockbridge
+  latitude: 55.95853
+  longitude: -3.20912
+  rent_pcm_gbp:
+    value: 1495.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 72.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-new-town
+  title: 'Illustrative property — not a real listing: 3-bed Georgian flat, New Town'
+  illustrative: true
+  area: New Town
+  latitude: 55.95638
+  longitude: -3.19601
+  rent_pcm_gbp:
+    value: 2100.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 118.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: G
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 5
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-inverleith
+  title: 'Illustrative property — not a real listing: 4-bed house, Inverleith'
+  illustrative: true
+  area: Inverleith
+  latitude: 55.9655
+  longitude: -3.21829
+  rent_pcm_gbp:
+    value: 2750.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: G
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-goldenacre
+  title: 'Illustrative property — not a real listing: 2-bed flat, Goldenacre'
+  illustrative: true
+  area: Goldenacre
+  latitude: 55.96931
+  longitude: -3.20646
+  rent_pcm_gbp:
+    value: 1395.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 70.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-blackhall
+  title: 'Illustrative property — not a real listing: 3-bed flat, Blackhall'
+  illustrative: true
+  area: Blackhall
+  latitude: 55.96032
+  longitude: -3.25344
+  rent_pcm_gbp:
+    value: 1550.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 90.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-davidsons-mains
+  title: 'Illustrative property — not a real listing: 3-bed flat, Davidson''s Mains'
+  illustrative: true
+  area: Davidson's Mains
+  latitude: 55.9647
+  longitude: -3.27116
+  rent_pcm_gbp:
+    value: 1495.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 86.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-cramond
+  title: 'Illustrative property — not a real listing: 4-bed house, Cramond'
+  illustrative: true
+  area: Cramond
+  latitude: 55.97734
+  longitude: -3.3004
+  rent_pcm_gbp:
+    value: 2400.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 140.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: G
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-barnton
+  title: 'Illustrative property — not a real listing: 4-bed house, Barnton'
+  illustrative: true
+  area: Barnton
+  latitude: 55.95964
+  longitude: -3.29469
+  rent_pcm_gbp:
+    value: 2250.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 132.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: F
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-clermiston
+  title: 'Illustrative property — not a real listing: 3-bed flat, Clermiston'
+  illustrative: true
+  area: Clermiston
+  latitude: 55.95326
+  longitude: -3.27891
+  rent_pcm_gbp:
+    value: 1450.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 84.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-corstorphine
+  title: 'Illustrative property — not a real listing: 2-bed house, Corstorphine'
+  illustrative: true
+  area: Corstorphine
+  latitude: 55.94138
+  longitude: -3.28561
+  rent_pcm_gbp:
+    value: 1250.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 68.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-murrayfield
+  title: 'Illustrative property — not a real listing: 3-bed flat, Murrayfield'
+  illustrative: true
+  area: Murrayfield
+  latitude: 55.94694
+  longitude: -3.24232
+  rent_pcm_gbp:
+    value: 1850.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 102.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: F
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-tollcross
+  title: 'Illustrative property — not a real listing: 1-bed flat, Tollcross'
+  illustrative: true
+  area: Tollcross
+  latitude: 55.94657
+  longitude: -3.20353
+  rent_pcm_gbp:
+    value: 1150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 50.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: null
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: insufficient
+    note: The listing doesn't say whether there is a lift; check with the letting agent.
+  entrance_steps:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-morningside
+  title: 'Illustrative property — not a real listing: 3-bed flat, Morningside'
+  illustrative: true
+  area: Morningside
+  latitude: 55.92917
+  longitude: -3.20812
+  rent_pcm_gbp:
+    value: 1995.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 108.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: F
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: G
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-merchiston
+  title: 'Illustrative property — not a real listing: 2-bed flat, Merchiston'
+  illustrative: true
+  area: Merchiston
+  latitude: 55.92973
+  longitude: -3.22359
+  rent_pcm_gbp:
+    value: 1450.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 74.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-newington
+  title: 'Illustrative property — not a real listing: 1-bed tenement flat, Newington'
+  illustrative: true
+  area: Newington
+  latitude: 55.93614
+  longitude: -3.17857
+  rent_pcm_gbp:
+    value: 1100.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 52.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-prestonfield
+  title: 'Illustrative property — not a real listing: 3-bed flat, Prestonfield'
+  illustrative: true
+  area: Prestonfield
+  latitude: 55.93064
+  longitude: -3.16188
+  rent_pcm_gbp:
+    value: 1500.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 88.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-liberton
+  title: 'Illustrative property — not a real listing: 2-bed house, Liberton'
+  illustrative: true
+  area: Liberton
+  latitude: 55.91344
+  longitude: -3.15906
+  rent_pcm_gbp:
+    value: 1175.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 65.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-inch
+  title: 'Illustrative property — not a real listing: 2-bed flat, Inch'
+  illustrative: true
+  area: Inch
+  latitude: 55.92107
+  longitude: -3.14925
+  rent_pcm_gbp:
+    value: 1150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 62.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-craigmillar
+  title: 'Illustrative property — not a real listing: 2-bed new-build flat, Craigmillar'
+  illustrative: true
+  area: Craigmillar
+  latitude: 55.92999
+  longitude: -3.13234
+  rent_pcm_gbp:
+    value: 1150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 66.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: true
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-duddingston
+  title: 'Illustrative property — not a real listing: 2-bed house, Duddingston'
+  illustrative: true
+  area: Duddingston
+  latitude: 55.94373
+  longitude: -3.14354
+  rent_pcm_gbp:
+    value: 1250.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 67.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-restalrig
+  title: 'Illustrative property — not a real listing: 1-bed flat, Restalrig'
+  illustrative: true
+  area: Restalrig
+  latitude: 55.96375
+  longitude: -3.14851
+  rent_pcm_gbp:
+    value: 925.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 46.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-lochend
+  title: 'Illustrative property — not a real listing: 1-bed house, Lochend'
+  illustrative: true
+  area: Lochend
+  latitude: 55.96179
+  longitude: -3.16292
+  rent_pcm_gbp:
+    value: 900.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 45.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: A
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-abbeyhill
+  title: 'Illustrative property — not a real listing: 1-bed top-floor tenement flat, Abbeyhill'
+  illustrative: true
+  area: Abbeyhill
+  latitude: 55.9566
+  longitude: -3.17297
+  rent_pcm_gbp:
+    value: 975.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 47.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-joppa
+  title: 'Illustrative property — not a real listing: 3-bed flat, Joppa'
+  illustrative: true
+  area: Joppa
+  latitude: 55.94768
+  longitude: -3.0952
+  rent_pcm_gbp:
+    value: 1695.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 96.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-niddrie
+  title: 'Illustrative property — not a real listing: 2-bed flat, Niddrie'
+  illustrative: true
+  area: Niddrie
+  latitude: 55.935
+  longitude: -3.11574
+  rent_pcm_gbp:
+    value: 1150.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 64.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-kingsknowe
+  title: 'Illustrative property — not a real listing: 3-bed flat, Kingsknowe'
+  illustrative: true
+  area: Kingsknowe
+  latitude: 55.92464
+  longitude: -3.25968
+  rent_pcm_gbp:
+    value: 1475.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 85.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-stenhouse
+  title: 'Illustrative property — not a real listing: 2-bed flat, Stenhouse'
+  illustrative: true
+  area: Stenhouse
+  latitude: 55.93272
+  longitude: -3.25771
+  rent_pcm_gbp:
+    value: 1160.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 60.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-colinton
+  title: 'Illustrative property — not a real listing: 4-bed house, Colinton'
+  illustrative: true
+  area: Colinton
+  latitude: 55.90583
+  longitude: -3.25418
+  rent_pcm_gbp:
+    value: 2300.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 4
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: house
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 138.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: G
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-oxgangs
+  title: 'Illustrative property — not a real listing: 2-bed flat, Oxgangs'
+  illustrative: true
+  area: Oxgangs
+  latitude: 55.90575
+  longitude: -3.21987
+  rent_pcm_gbp:
+    value: 1175.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 63.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: B
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-fairmilehead
+  title: 'Illustrative property — not a real listing: 3-bed flat, Fairmilehead'
+  illustrative: true
+  area: Fairmilehead
+  latitude: 55.9019
+  longitude: -3.20178
+  rent_pcm_gbp:
+    value: 1650.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 95.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-craiglockhart
+  title: 'Illustrative property — not a real listing: 3-bed flat, Craiglockhart'
+  illustrative: true
+  area: Craiglockhart
+  latitude: 55.91997
+  longitude: -3.23791
+  rent_pcm_gbp:
+    value: 1700.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 3
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 94.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: E
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: electricity
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-blackford
+  title: 'Illustrative property — not a real listing: 2-bed flat, Blackford'
+  illustrative: true
+  area: Blackford
+  latitude: 55.9248
+  longitude: -3.1875
+  rent_pcm_gbp:
+    value: 1450.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_area_m2:
+    value: 76.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: D
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: false
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 1
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  other_recurring_costs: []
+- id: seed-prop-south-gyle
+  title: 'Illustrative property — not a real listing: 2-bed flat, South Gyle'
+  illustrative: true
+  area: South Gyle
+  latitude: 55.93491
+  longitude: -3.30516
+  rent_pcm_gbp:
+    value: 1200.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  bedrooms:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  property_type:
+    value: flat
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  floor_area_m2:
+    value: 69.0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  council_tax_band:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  epc_rating:
+    value: C
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  main_fuel:
+    value: mains_gas
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value drawn at random, weighted by the City of Edinburgh EPC certificate mix (data/reference/energy_kwh_per_m2_edinburgh.yaml
+      group counts).
+  floor_level:
+    value: 2
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  has_lift:
+    value: true
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
+  entrance_steps:
+    value: 0
+    origin: listing
+    source: illustrative seed (fictional listing)
+    as_of: '2026-11-08'
+    confidence: null
+    status: known
+    note: Fictional value for an illustrative property; not real listing data.
   other_recurring_costs: []

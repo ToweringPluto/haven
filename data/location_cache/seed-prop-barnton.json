@@ -1,0 +1,1298 @@
+{
+  "schema_version": 1,
+  "property_id": "seed-prop-barnton",
+  "origin": {
+    "latitude": 55.95964,
+    "longitude": -3.29469,
+    "name": null
+  },
+  "nearby": [
+    {
+      "kind": "bus_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": [
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Avenue",
+          "latitude": 55.959079,
+          "longitude": -3.2959881,
+          "distance_m": 102.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721786",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Road",
+          "latitude": 55.9605777,
+          "longitude": -3.2944572,
+          "distance_m": 105.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533949",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Road",
+          "latitude": 55.9606997,
+          "longitude": -3.2948136,
+          "distance_m": 118.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530110",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Avenue",
+          "latitude": 55.9594363,
+          "longitude": -3.2967364,
+          "distance_m": 129.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721785",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae North",
+          "latitude": 55.9603819,
+          "longitude": -3.2994004,
+          "distance_m": 304.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530106",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Street",
+          "latitude": 55.9610606,
+          "longitude": -3.2903885,
+          "distance_m": 310.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533945",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Terrace",
+          "latitude": 55.9589168,
+          "longitude": -3.2897038,
+          "distance_m": 320.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721787",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Parkgrove Street",
+          "latitude": 55.9612436,
+          "longitude": -3.2900742,
+          "distance_m": 338.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530114",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae North",
+          "latitude": 55.9602766,
+          "longitude": -3.3000055,
+          "distance_m": 338.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533952",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Craigmount Avenue North",
+          "latitude": 55.9575519,
+          "longitude": -3.2997035,
+          "distance_m": 389.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534090",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Green",
+          "latitude": 55.9602323,
+          "longitude": -3.2862833,
+          "distance_m": 527.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721788",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Junction",
+          "latitude": 55.9605113,
+          "longitude": -3.3033132,
+          "distance_m": 545.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533953",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Drive",
+          "latitude": 55.9547615,
+          "longitude": -3.2929817,
+          "distance_m": 552.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534081",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Drive",
+          "latitude": 55.95453,
+          "longitude": -3.2935948,
+          "distance_m": 572.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529724",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Drive",
+          "latitude": 55.9594838,
+          "longitude": -3.2853501,
+          "distance_m": 581.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721790",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hoseason Gardens",
+          "latitude": 55.955527,
+          "longitude": -3.2883775,
+          "distance_m": 603.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534082",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae North",
+          "latitude": 55.9541381,
+          "longitude": -3.2957554,
+          "distance_m": 615.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534079",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Avenue",
+          "latitude": 55.96094,
+          "longitude": -3.2850315,
+          "distance_m": 618.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721789",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Hub",
+          "latitude": 55.955537,
+          "longitude": -3.2873634,
+          "distance_m": 645.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529716",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Junction",
+          "latitude": 55.9607792,
+          "longitude": -3.3050722,
+          "distance_m": 658.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530102",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae North",
+          "latitude": 55.9537879,
+          "longitude": -3.2968199,
+          "distance_m": 664.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529727",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": null,
+          "latitude": 55.9618906,
+          "longitude": -3.2844955,
+          "distance_m": 682.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/13310650985",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Hub",
+          "latitude": 55.9558191,
+          "longitude": -3.2859786,
+          "distance_m": 688.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534083",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Drive",
+          "latitude": 55.9617455,
+          "longitude": -3.2841798,
+          "distance_m": 694.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533941",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Drive",
+          "latitude": 55.9619927,
+          "longitude": -3.2837395,
+          "distance_m": 730.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530118",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Grove",
+          "latitude": 55.9614981,
+          "longitude": -3.3060056,
+          "distance_m": 734.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533910",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Duart Crescent",
+          "latitude": 55.9531967,
+          "longitude": -3.2973819,
+          "distance_m": 735.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534078",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Hill",
+          "latitude": 55.9591181,
+          "longitude": -3.2826715,
+          "distance_m": 750.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721791",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Grove",
+          "latitude": 55.961595,
+          "longitude": -3.3063448,
+          "distance_m": 757.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530146",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Road",
+          "latitude": 55.9615196,
+          "longitude": -3.2825704,
+          "distance_m": 782.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7399712058",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Duart Crescent",
+          "latitude": 55.9526179,
+          "longitude": -3.2968557,
+          "distance_m": 792.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529731",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Queensferry Road",
+          "latitude": 55.9613714,
+          "longitude": -3.282133,
+          "distance_m": 804.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533930",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "School",
+          "latitude": 55.9523381,
+          "longitude": -3.2926267,
+          "distance_m": 822.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721794",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston View",
+          "latitude": 55.9562732,
+          "longitude": -3.2828051,
+          "distance_m": 829.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534084",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo Terminus",
+          "latitude": 55.9583427,
+          "longitude": -3.3078852,
+          "distance_m": 833.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/9967293340",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo Gardens",
+          "latitude": 55.9575195,
+          "longitude": -3.3077759,
+          "distance_m": 848.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533955",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo Terminus",
+          "latitude": 55.9581438,
+          "longitude": -3.3080623,
+          "distance_m": 848.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/9967293341",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Braehead Grove",
+          "latitude": 55.9630787,
+          "longitude": -3.3069399,
+          "distance_m": 853.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533907",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo Crescent",
+          "latitude": 55.9609484,
+          "longitude": -3.3086943,
+          "distance_m": 883.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533957",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Braehead Grove",
+          "latitude": 55.9632903,
+          "longitude": -3.3073155,
+          "distance_m": 884.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530150",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Crescent",
+          "latitude": 55.9561416,
+          "longitude": -3.281689,
+          "distance_m": 897.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7399712059",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo Crescent",
+          "latitude": 55.9611238,
+          "longitude": -3.3091006,
+          "distance_m": 912.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530095",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Avenue",
+          "latitude": 55.9514807,
+          "longitude": -3.2964837,
+          "distance_m": 914.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534076",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Road North",
+          "latitude": 55.95887,
+          "longitude": -3.2798719,
+          "distance_m": 926.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530122",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Road North",
+          "latitude": 55.9585564,
+          "longitude": -3.2795494,
+          "distance_m": 950.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533933",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clermiston Crescent",
+          "latitude": 55.9566784,
+          "longitude": -3.2802604,
+          "distance_m": 956.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534085",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "North Bughtlin Neuk (North Bughtlin)",
+          "latitude": 55.9541005,
+          "longitude": -3.3069065,
+          "distance_m": 978.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534103",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "East Craigs Centre",
+          "latitude": 55.9521791,
+          "longitude": -3.3035457,
+          "distance_m": 996.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7197589486",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hoseason Gardens",
+          "latitude": 55.95245,
+          "longitude": -3.2849658,
+          "distance_m": 1002.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721793",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Alan Breck Gardens",
+          "latitude": 55.953465,
+          "longitude": -3.2826673,
+          "distance_m": 1015.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11333721792",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "East Craigs Centre",
+          "latitude": 55.9521292,
+          "longitude": -3.3040459,
+          "distance_m": 1018.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529655",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "East Craigs",
+          "latitude": 55.9518392,
+          "longitude": -3.3036547,
+          "distance_m": 1031.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7197589485",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Park",
+          "latitude": 55.9497118,
+          "longitude": -3.2953978,
+          "distance_m": 1104.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529735",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Templar's Cramond",
+          "latitude": 55.9666493,
+          "longitude": -3.3076171,
+          "distance_m": 1120.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533903",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Templar's Cramond",
+          "latitude": 55.9667265,
+          "longitude": -3.3078159,
+          "distance_m": 1135.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530154",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bughtlin Drive",
+          "latitude": 55.9518907,
+          "longitude": -3.3070273,
+          "distance_m": 1154.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529659",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rannoch Road",
+          "latitude": 55.9545013,
+          "longitude": -3.2783023,
+          "distance_m": 1169.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534086",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bughtlin Drive",
+          "latitude": 55.9517191,
+          "longitude": -3.3074357,
+          "distance_m": 1185.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534101",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rannoch Road",
+          "latitude": 55.9536726,
+          "longitude": -3.2784992,
+          "distance_m": 1206.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529701",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Braehead Avenue",
+          "latitude": 55.9622583,
+          "longitude": -3.3135912,
+          "distance_m": 1211.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530091",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Gardens",
+          "latitude": 55.9487126,
+          "longitude": -3.2948458,
+          "distance_m": 1215.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529739",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hillpark Steps",
+          "latitude": 55.9627081,
+          "longitude": -3.2758476,
+          "distance_m": 1221.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530130",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Drum Brae Gardens",
+          "latitude": 55.9486042,
+          "longitude": -3.2950363,
+          "distance_m": 1227.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534075",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hillpark Steps",
+          "latitude": 55.9625577,
+          "longitude": -3.275553,
+          "distance_m": 1234.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533926",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo South",
+          "latitude": 55.9529536,
+          "longitude": -3.3113151,
+          "distance_m": 1274.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12288332418",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Braehead Avenue",
+          "latitude": 55.9626361,
+          "longitude": -3.3145272,
+          "distance_m": 1278.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533959",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cammo South",
+          "latitude": 55.9526964,
+          "longitude": -3.3112501,
+          "distance_m": 1287.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/12288332419",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cramond Regis",
+          "latitude": 55.9688279,
+          "longitude": -3.3073731,
+          "distance_m": 1291.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533894",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Burnside",
+          "latitude": 55.9503694,
+          "longitude": -3.3080038,
+          "distance_m": 1322.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529664",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Quality Street",
+          "latitude": 55.9639639,
+          "longitude": -3.2738884,
+          "distance_m": 1381.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530142",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Pearce Road",
+          "latitude": 55.9471946,
+          "longitude": -3.2945205,
+          "distance_m": 1383.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534074",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Avenue",
+          "latitude": 55.9668038,
+          "longitude": -3.276449,
+          "distance_m": 1386.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533865",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Quality Street",
+          "latitude": 55.9637469,
+          "longitude": -3.2735503,
+          "distance_m": 1392.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533913",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Park",
+          "latitude": 55.9684197,
+          "longitude": -3.27871,
+          "distance_m": 1393.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533873",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Park",
+          "latitude": 55.9681583,
+          "longitude": -3.2781696,
+          "distance_m": 1398.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530192",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Burnside",
+          "latitude": 55.9498444,
+          "longitude": -3.3087719,
+          "distance_m": 1398.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534100",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Avenue",
+          "latitude": 55.966337,
+          "longitude": -3.2755364,
+          "distance_m": 1405.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530196",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Peggy's Mill Road",
+          "latitude": 55.9700751,
+          "longitude": -3.307533,
+          "distance_m": 1409.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530161",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Main Street",
+          "latitude": 55.9657775,
+          "longitude": -3.2744093,
+          "distance_m": 1434.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533868",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Main Street",
+          "latitude": 55.9657954,
+          "longitude": -3.2744099,
+          "distance_m": 1435.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530200",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Gardens",
+          "latitude": 55.9702842,
+          "longitude": -3.2813543,
+          "distance_m": 1445.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533877",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clerwood Terminus",
+          "latitude": 55.9499007,
+          "longitude": -3.2790754,
+          "distance_m": 1455.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/290520086",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnton Gardens",
+          "latitude": 55.970331,
+          "longitude": -3.2811796,
+          "distance_m": 1456.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502530188",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Main Street",
+          "latitude": 55.9653926,
+          "longitude": -3.2731612,
+          "distance_m": 1484.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502533863",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        }
+      ]
+    },
+    {
+      "kind": "tram_stop",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": []
+    },
+    {
+      "kind": "rail_station",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": []
+    },
+    {
+      "kind": "supermarket",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": [
+        {
+          "kind": "supermarket",
+          "name": "Scotmid",
+          "latitude": 55.9618056,
+          "longitude": -3.3058905,
+          "distance_m": 737.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/282751059",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Scotmid",
+          "latitude": 55.9548045,
+          "longitude": -3.2860453,
+          "distance_m": 760.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/244904021",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Scotmid",
+          "latitude": 55.951265,
+          "longitude": -3.2957672,
+          "distance_m": 933.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/174312069",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "supermarket",
+          "name": "Tesco",
+          "latitude": 55.9661577,
+          "longitude": -3.2741491,
+          "distance_m": 1469.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/103799725",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        }
+      ]
+    },
+    {
+      "kind": "pharmacy",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": [
+        {
+          "kind": "pharmacy",
+          "name": "Omnicare",
+          "latitude": 55.9600799,
+          "longitude": -3.2958714,
+          "distance_m": 88.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2080671267",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Omnicare",
+          "latitude": 55.9533584,
+          "longitude": -3.2967454,
+          "distance_m": 710.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/300023515",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Barnton Pharmacy",
+          "latitude": 55.9616497,
+          "longitude": -3.3059674,
+          "distance_m": 736.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1233870478",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "East Craigs Pharmacy",
+          "latitude": 55.9518976,
+          "longitude": -3.3043344,
+          "distance_m": 1049.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/1818223666",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        }
+      ]
+    },
+    {
+      "kind": "gp_surgery",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API); Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+      "fetched_at": "2026-11-07T20:54:19Z",
+      "places": [
+        {
+          "kind": "gp_surgery",
+          "name": "Parkgrove Medical Practice",
+          "latitude": 55.959227,
+          "longitude": -3.28802,
+          "distance_m": 417.7,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/71487",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Barclay Medical Practice East Craigs",
+          "latitude": 55.95136,
+          "longitude": -3.303806,
+          "distance_m": 1081.5,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/71434",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "East Craigs Medical Centre",
+          "latitude": 55.9506811,
+          "longitude": -3.3037025,
+          "distance_m": 1143.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/301235027",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Davidson's Mains Medical Centre",
+          "latitude": 55.963666,
+          "longitude": -3.273318,
+          "distance_m": 1403.5,
+          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
+          "source_ref": "phs:gp_practice/70709",
+          "fetched_at": "2026-11-07T20:54:19Z"
+        },
+        {
+          "kind": "gp_surgery",
+          "name": "Davidsons Mains Medical Centre",
+          "latitude": 55.9630297,
+          "longitude": -3.272446,
+          "distance_m": 1434.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/3250875171",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        }
+      ]
+    },
+    {
+      "kind": "school",
+      "radius_m": 1500.0,
+      "source": "OpenStreetMap (Overpass API)",
+      "fetched_at": "2026-11-08T09:20:36Z",
+      "places": [
+        {
+          "kind": "school",
+          "name": "Clermiston Primary School",
+          "latitude": 55.9600052,
+          "longitude": -3.2909856,
+          "distance_m": 234.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/375583282",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "The Royal High School",
+          "latitude": 55.9637398,
+          "longitude": -3.2848766,
+          "distance_m": 762.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/61188902",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "East Craigs Primary School",
+          "latitude": 55.9514229,
+          "longitude": -3.3015195,
+          "distance_m": 1007.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/41311179",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": null,
+          "latitude": 55.9523894,
+          "longitude": -3.2805878,
+          "distance_m": 1191.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/27235503",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "Cargilfield School",
+          "latitude": 55.9699167,
+          "longitude": -3.3009838,
+          "distance_m": 1208.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/186834404",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "Fox Covert Primary School",
+          "latitude": 55.952496,
+          "longitude": -3.2797797,
+          "distance_m": 1221.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/4029779325",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "St Andrew's Fox Covert RC Primary School",
+          "latitude": 55.9523307,
+          "longitude": -3.2797668,
+          "distance_m": 1234.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/4029779326",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        },
+        {
+          "kind": "school",
+          "name": "Cramond Primary School",
+          "latitude": 55.9714552,
+          "longitude": -3.3045297,
+          "distance_m": 1449.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:relation/1415594",
+          "fetched_at": "2026-11-08T09:20:36Z"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "estimated",
+      "distance_m": 8813.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:00Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9445,
+        "longitude": -3.1892,
+        "name": "University of Edinburgh Central Area"
+      },
+      "status": "estimated",
+      "distance_m": 8813.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:02Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 8512.0,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:04Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9519018,
+        "longitude": -3.1904199,
+        "name": "Edinburgh Waverley"
+      },
+      "status": "estimated",
+      "distance_m": 8512.0,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:05Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "estimated",
+      "distance_m": 14071.3,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:07Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.9216,
+        "longitude": -3.1347,
+        "name": "Royal Infirmary of Edinburgh"
+      },
+      "status": "estimated",
+      "distance_m": 14071.3,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:09Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "foot_walking",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.959079,
+        "longitude": -3.2959881,
+        "name": "Parkgrove Avenue"
+      },
+      "status": "estimated",
+      "distance_m": 132.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:10Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    },
+    {
+      "profile": "wheelchair",
+      "origin": {
+        "latitude": 55.95964,
+        "longitude": -3.29469,
+        "name": null
+      },
+      "destination": {
+        "latitude": 55.959079,
+        "longitude": -3.2959881,
+        "name": "Parkgrove Avenue"
+      },
+      "status": "estimated",
+      "distance_m": 132.7,
+      "duration_s": null,
+      "data_completeness": null,
+      "source": "Haven straight-line estimate",
+      "fetched_at": "2026-11-08T10:17:12Z",
+      "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
+    }
+  ],
+  "access_tags": {
+    "radius_m": 500.0,
+    "source": "OpenStreetMap (Overpass API)",
+    "fetched_at": "2026-11-08T09:52:44Z",
+    "ways": 187,
+    "ways_with_surface": 139,
+    "ways_with_smoothness": 8,
+    "ways_with_incline": 17,
+    "ways_with_sidewalk": 59,
+    "steps_ways": 11,
+    "crossings": 7,
+    "crossings_with_tactile_paving": 5,
+    "kerbs": {
+      "lowered": 2,
+      "flush": 1,
+      "raised": 1,
+      "no": 0,
+      "other": 0,
+      "untagged": 0
+    }
+  }
+}
