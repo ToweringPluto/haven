@@ -15,6 +15,10 @@ services:
     image: haven-api:dev
     ports:
       - "8000:8000"
+    # Secrets (Gemini key, database URL, Auth0) come from backend/.env, which isn't in the image.
+    env_file:
+      - path: ./backend/.env
+        required: false
     environment:
       HAVEN_CORS_ORIGINS: "${HAVEN_CORS_ORIGINS:-http://localhost:3000}"
     volumes:
