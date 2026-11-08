@@ -46,7 +46,7 @@ export function Nav() {
           })}
           <div className="mobile-actions">
             <button type="button" onClick={() => navigate("dashboard", "accessibility")}>
-              <Icon name="access" size={18} /> Accessibility
+              <Icon name="cog" size={18} /> Accessibility settings
             </button>
             <UserBadge onClick={() => navigate("dashboard")} />
             <LoginButton variant="text" />
@@ -55,6 +55,10 @@ export function Nav() {
           </div>
         </div>
         <div className="nav-actions">
+          <UserBadge onClick={() => go("dashboard")} />
+          <LoginButton variant="text" />
+          <LogoutButton />
+          <Button onClick={() => go("onboarding")}>Get started</Button>
           <button
             type="button"
             className="a11y-nav-button"
@@ -62,12 +66,8 @@ export function Nav() {
             aria-label="Accessibility settings"
             title="Accessibility settings"
           >
-            <Icon name="access" />
+            <Icon name="cog" />
           </button>
-          <UserBadge onClick={() => go("dashboard")} />
-          <LoginButton variant="text" />
-          <LogoutButton />
-          <Button onClick={() => go("onboarding")}>Get started</Button>
         </div>
         <button
           type="button"

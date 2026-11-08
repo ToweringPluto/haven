@@ -19,6 +19,8 @@
     --ink-bg: #2c2a2a; /* dark chips, buttons and bands that carry light text */
     --on-ink: #f2e6d2; /* text on --ink-bg, teal and photo overlays */
     --shadow: #2c2a2a; /* shadows and photo overlays: dark in every theme */
+    --terracotta-strong: #96503a; /* terracotta behind white text: dark in every theme */
+    --ink-fixed: #1c1a19; /* dark text on mid-tone accents (terracotta, sage) in every theme */
     --text-scale: 1;
     color: var(--charcoal);
     background: var(--cream);
@@ -249,7 +251,7 @@
   height: 32px;
   border: 2px solid var(--cream);
   background: var(--terracotta);
-  color: var(--charcoal);
+  color: var(--ink-fixed);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -2805,7 +2807,7 @@ footer .logo {
   margin: 25px 0 55px 100px;
   padding: 30px 260px 25px 38px;
   background: var(--terracotta);
-  color: var(--charcoal);
+  color: var(--ink-fixed);
   box-shadow: 8px 9px 0 color-mix(in srgb, var(--shadow) 20%, transparent);
   transform: rotate(-1deg);
 }
@@ -3125,8 +3127,9 @@ footer .logo {
   background: var(--teal);
   border: 1px solid color-mix(in srgb, var(--cream) 35%, transparent);
 }
-.nav-wrap .logo-dot {
-  color: var(--terracotta-ink);
+.nav-wrap .logo-dot,
+footer .logo-dot {
+  color: var(--terracotta); /* on the dark top bar */
 }
 .nav-wrap .nav-links > button:hover,
 .nav-wrap .nav-links > button.active {
@@ -3379,7 +3382,7 @@ h2,
   flex: 0 0 28px;
   place-items: center;
   border-radius: 50%;
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
   color: white;
   font-size: calc(12px * var(--text-scale, 1));
   font-weight: 700;
@@ -3438,7 +3441,7 @@ h2,
   background: var(--teal);
 }
 .match-badge.medium {
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
 }
 .journey-snapshot {
   display: flex;
@@ -3634,7 +3637,7 @@ footer .button {
   align-items: center;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
   color: white;
   font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
