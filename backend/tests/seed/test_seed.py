@@ -21,6 +21,7 @@ from haven.domain import (
     PropertyType,
     Status,
 )
+from haven.location.geo import haversine_m
 from haven.reference import load_energy_model
 from haven.store import ILLUSTRATIVE_TITLE_PREFIX, SeedDataError, SeedFile, SeedStore, load_seed
 from scripts import make_seed
@@ -71,12 +72,21 @@ def test_generator_is_deterministic() -> None:
     assert make_seed.render(make_seed.build_seed()) == make_seed.render(make_seed.build_seed())
 
 
-def test_eight_fictional_properties_in_the_named_neighbourhoods(props: list[Property]) -> None:
-    assert len(props) == 8
-    assert {p.area for p in props} == NEIGHBOURHOODS
+def test_fictional_properties_cover_the_named_neighbourhoods(props: list[Property]) -> None:
+    assert len(props) == 48
+    assert {p.area for p in props} >= NEIGHBOURHOODS
     for p in props:
         assert p.illustrative is True
         assert p.title.startswith(f"{ILLUSTRATIVE_TITLE_PREFIX}: ")
+
+
+def test_homes_are_spread_out_so_map_pins_stay_readable(props: list[Property]) -> None:
+    points = [(p.latitude, p.longitude) for p in props]
+    for i, (lat1, lon1) in enumerate(points):
+        assert lat1 is not None and lon1 is not None
+        for lat2, lon2 in points[i + 1 :]:
+            assert lat2 is not None and lon2 is not None
+            assert haversine_m(lat1, lon1, lat2, lon2) >= 800
 
 
 def test_coordinates_are_street_points_in_edinburgh(props: list[Property]) -> None:
@@ -222,7 +232,7 @@ def _raw() -> dict[str, Any]:
 
 
 def test_store_get_and_iteration(store: SeedStore) -> None:
-    assert len(store) == 8
+    assert len(store) == 48
     first = store.list()[0]
     assert store.get(first.id) == first
     assert store.get("seed-prop-nowhere") is None
