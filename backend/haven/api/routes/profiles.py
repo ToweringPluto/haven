@@ -2,10 +2,10 @@
 
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, Response
 
 from haven.api import examples as ex
-from haven.api.auth import OptionalUserDep
+from haven.api.auth import CurrentUserDep, OptionalUserDep
 from haven.api.deps import BackendDep
 from haven.api.errors import problem_responses
 from haven.api.schemas import ProfileInput, ProfileList
@@ -60,3 +60,35 @@ def create_profile(
 )
 def get_profile(backend: BackendDep, profile_id: str) -> RenterProfile:
     return backend.get_profile(profile_id)
+
+
+@router.put(
+    "/{profile_id}",
+    response_model=RenterProfile,
+    summary="Replace one of your profiles (signed in)",
+    description="Replaces everything in a profile the signed-in user created; the id stays the "
+    "same. Sample profiles and other people's profiles are `404`.",
+    responses=ex.json_response(200, ex.per_persona("profile"))
+    | problem_responses(401, 404, 422, 503),
+)
+def update_profile(
+    backend: BackendDep,
+    user: CurrentUserDep,
+    profile_id: str,
+    data: Annotated[ProfileInput, Body(openapi_examples=ex.profile_inputs())],
+) -> RenterProfile:
+    return backend.update_profile(profile_id, data, user.sub)
+
+
+@router.delete(
+    "/{profile_id}",
+    status_code=204,
+    response_class=Response,
+    summary="Delete one of your profiles (signed in)",
+    description="Sample profiles and other people's profiles are `404`. Reports made with the "
+    "profile keep their own copy of it.",
+    responses=problem_responses(401, 404, 422, 503),
+)
+def delete_profile(backend: BackendDep, user: CurrentUserDep, profile_id: str) -> Response:
+    backend.delete_profile(profile_id, user.sub)
+    return Response(status_code=204)

@@ -10,6 +10,7 @@ import { displayTitle } from "../lib/format";
 import "../map/map.css";
 import { CompareTray } from "../map/CompareTray";
 import { HavenMap, type PinView, type PlaceView } from "../map/HavenMap";
+import { filtersFromProfile, passesFilters, sameFilters, type MapFilters } from "../map/filters";
 import { findingFor, LENSES, orderedLenses, outcomeState, type Lens, type LensId, type LensState } from "../map/lenses";
 import { MapControls, type PriceMode } from "../map/MapControls";
 import { PropertyDrawer } from "../map/PropertyDrawer";
@@ -72,21 +73,40 @@ export default function Explore() {
   const lenses = useMemo(() => orderedLenses(draft.priorities), [draft.priorities]);
   const lens = LENSES.find((l) => l.id === lensId) ?? LENSES[0];
 
+  // The map's filters start from the renter's profile, and follow it whenever it changes
+  // (finishing onboarding, editing the profile, switching example renter).
+  const hasProfile = profileId !== null;
+  const profileFilters = useMemo(() => filtersFromProfile(draft, hasProfile), [draft, hasProfile]);
+  const [filters, setFilters] = useState<MapFilters>(profileFilters);
+  const profileKey = JSON.stringify([profileId, profileFilters]);
+  // Keyed on the profile's content, not object identity, so a re-render doesn't undo the
+  // renter's own filter changes.
+  useEffect(() => setFilters(profileFilters), [profileKey]);
+  // Colour pins by the renter's top priority to start with.
+  const topLens = lenses[0].id;
+  useEffect(() => setLensId(topLens), [profileId, topLens]);
+
   const located = useMemo(
     () => (items ?? []).filter((p) => p.latitude !== null && p.longitude !== null),
     [items],
   );
+  const areaOptions = useMemo(
+    () => [...new Set(located.map((p) => p.area).filter((a): a is string => !!a))].sort(),
+    [located],
+  );
   const q = query.trim().toLowerCase();
   const shown = useMemo(() => {
     const preferred = (area: string | null) => draft.areas.includes(area ?? "");
+    const stateOf = (id: string) => (lensId: LensId) =>
+      lensState(LENSES.find((l) => l.id === lensId)!, homes[id], budget, hasProfile);
     return located
-      .filter((p) => matchesQuery(p, q))
+      .filter((p) => matchesQuery(p, q) && passesFilters(filters, p.area, stateOf(p.id)))
       .sort((a, b) => Number(preferred(b.area)) - Number(preferred(a.area)));
-  }, [located, q, draft.areas]);
+  }, [located, q, draft.areas, filters, homes, budget, hasProfile]);
 
   const stateFor = useCallback(
-    (id: string) => lensState(lens, homes[id], budget, profileId !== null),
-    [lens, homes, budget, profileId],
+    (id: string) => lensState(lens, homes[id], budget, hasProfile),
+    [lens, homes, budget, hasProfile],
   );
 
   const pins: PinView[] = useMemo(
@@ -172,6 +192,13 @@ export default function Explore() {
 
       <MapControls
         count={shown.length}
+        hiddenCount={located.filter((p) => matchesQuery(p, q)).length - shown.length}
+        filters={filters}
+        onFilters={setFilters}
+        areaOptions={areaOptions}
+        hasProfile={hasProfile}
+        matchesProfile={sameFilters(filters, profileFilters)}
+        onResetFilters={() => setFilters(profileFilters)}
         query={query}
         onQuery={setQuery}
         priceMode={priceMode}
@@ -212,7 +239,9 @@ export default function Explore() {
 
       {view === "list" && (
         <section className="map-list" aria-label="Homes as a list">
-          {draft.areas.length > 0 && <p className="list-note">Showing {draft.areas.join(", ")} first.</p>}
+          {draft.areas.length > 0 && filters.areas.length === 0 && (
+            <p className="list-note">Showing {draft.areas.join(", ")} first.</p>
+          )}
           <div className="property-grid">
             {shown.map((p) => (
               <PropertyCard key={p.id} property={p} />

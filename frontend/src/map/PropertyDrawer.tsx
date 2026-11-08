@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CostBreakdown, Evidence, Property, Upload } from "../api/types";
 import { useCreateReport } from "../api/useCreateReport";
+import { useAuth } from "../auth/AuthProvider";
 import { Button } from "../components/Button";
 import { CostSummary } from "../components/CostSummary";
 import { EvidenceValue } from "../components/Evidence";
@@ -8,7 +9,7 @@ import { EvidenceUploads } from "../components/EvidenceUploads";
 import { FindingsList } from "../components/FindingsList";
 import { Icon } from "../components/Icon";
 import { LoadProblem } from "../components/LoadProblem";
-import { areaImage } from "../data/images";
+import { listingImage } from "../data/images";
 import { displayTitle, factName, formatGBP } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
@@ -44,6 +45,7 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
   const { go } = useNavigation();
   const { saved: profile, draft } = useRenterProfile();
   const { isSaved, toggleSaved, compare, toggleCompare } = useShortlist();
+  const { isConfigured, isAuthenticated, login } = useAuth();
   const { create, creating, error } = useCreateReport();
   const [reportId, setReportId] = useState<string | null>(null);
   const profileId = profile?.id ?? null;
@@ -67,8 +69,7 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
   return (
     <aside className="map-drawer" aria-label={`Details: ${displayTitle(p.title)}`} key={p.id}>
       <div className="drawer-hero">
-        <img src={areaImage(p.area)} alt="" />
-        <span className="drawer-hero-note">Photo of the area, not this home</span>
+        <img src={listingImage(p.id)} alt="" />
         <button type="button" className="drawer-close" onClick={onClose} aria-label="Close details">
           <Icon name="x" size={18} />
         </button>
@@ -76,7 +77,6 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
 
       <div className="drawer-body">
         <header className="drawer-heading">
-          {p.illustrative && <span className="illustrative-tag">Illustrative — not a real listing</span>}
           <span className="drawer-area">{p.area ?? "Edinburgh"}</span>
           <h2>{displayTitle(p.title)}</h2>
           <div className="drawer-prices">
@@ -137,7 +137,7 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
             <b>Screen a listing photo</b>
             <p>Look for possible issues worth asking about, such as entrance steps or signs of damp.</p>
           </div>
-          <Button secondary onClick={() => go("screening")}>
+          <Button secondary onClick={() => go("screening", p.id)}>
             Start <Icon name="arrow" size={15} />
           </Button>
         </section>
@@ -153,13 +153,17 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
                 from the results above.
                 {mine.length > 0 && " Your attached files will be included."}
               </p>
-              <Button
-                onClick={async () => profileId && setReportId(await create(profileId, p.id, uploads))}
-                disabled={!profileId || creating}
-              >
-                <Icon name="spark" size={17} />
-                {creating ? "Preparing report…" : "Generate report"}
-              </Button>
+              {isAuthenticated || !isConfigured ? (
+                <Button
+                  onClick={async () => profileId && setReportId(await create(profileId, p.id, uploads))}
+                  disabled={!profileId || creating}
+                >
+                  <Icon name="spark" size={17} />
+                  {creating ? "Preparing report…" : "Generate report"}
+                </Button>
+              ) : (
+                <Button onClick={login}>Sign in for the report</Button>
+              )}
               {!profileId && <small>Reports need a renter profile.</small>}
               {error && (
                 <small className="screen-notice" role="alert">

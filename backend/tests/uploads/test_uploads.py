@@ -7,12 +7,12 @@ import pytest
 from fastapi.testclient import TestClient
 from PIL import Image
 
-from haven.api.app import create_app
 from haven.api.engines import EngineBackend
 from haven.config import CONTRACT_EXAMPLES_DIR
 from haven.domain import UploadKind
 from haven.store import UploadRejected, UploadStore
 from haven.store.uploads import sniff
+from tests.api.auth_helpers import signed_in
 
 GPS_IFD = 0x8825
 
@@ -130,7 +130,7 @@ def client(tmp_path: Path) -> TestClient:
     backend = EngineBackend(
         CONTRACT_EXAMPLES_DIR, uploads=UploadStore(tmp_path, max_bytes=1024 * 1024)
     )
-    return TestClient(create_app(backend=backend))
+    return signed_in(backend)
 
 
 def post(client: TestClient, content: bytes, name: str = "p.jpg", ctype: str = "image/jpeg"):

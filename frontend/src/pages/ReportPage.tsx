@@ -10,6 +10,7 @@ import { LoadProblem } from "../components/LoadProblem";
 import { ReadAloudButton } from "../components/ReadAloudButton";
 import { Status } from "../components/Status";
 import { displayTitle } from "../lib/format";
+import { useAuth } from "../auth/AuthProvider";
 import { useNavigation } from "../state/navigation";
 
 /** Plain-text version of the report sections, for read-aloud. */
@@ -22,7 +23,12 @@ function spokenSummary(report: Report): string {
 export default function ReportPage() {
   const { param: reportId } = useNavigation();
   const label = useEnumLabel();
-  const [report, reload] = useLoad(reportId, () => api.report(reportId ?? ""));
+  const { isLoading, isAuthenticated, getAccessToken } = useAuth();
+  // Saved reports need the owner's token, so wait for sign-in to settle before loading.
+  const key = reportId && !isLoading ? `${reportId}:${isAuthenticated}` : null;
+  const [report, reload] = useLoad(key, async () =>
+    api.report(reportId ?? "", await getAccessToken()),
+  );
 
   if (report.status === "loading") {
     return <main className="report-page shell" aria-busy="true" style={{ minHeight: "60vh" }} />;
@@ -54,9 +60,6 @@ export default function ReportPage() {
 
       <header className="report-header">
         <span className="section-kicker">Property suitability report</span>
-        {r.illustrative && (
-          <span className="illustrative-tag">Illustrative report built from example data</span>
-        )}
         <h1>{displayTitle(r.property.title)}</h1>
         <p>
           For <b>{r.profile.label}</b> · {new Date(r.created_at).toLocaleDateString("en-GB")}

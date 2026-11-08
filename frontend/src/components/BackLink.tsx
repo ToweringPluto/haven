@@ -1,10 +1,10 @@
 import { useNavigation } from "../state/navigation";
 import type { Page } from "../types";
 
-export function BackLink({ to, children }: { to: Page; children: string }) {
+export function BackLink({ to, param, children }: { to: Page; param?: string; children: string }) {
   const { go } = useNavigation();
   return (
-    <button type="button" className="back-link" onClick={() => go(to)}>
+    <button type="button" className="back-link" onClick={() => go(to, param)}>
       ← {children}
     </button>
   );

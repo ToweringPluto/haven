@@ -2,8 +2,8 @@
   "schema_version": 1,
   "property_id": "seed-prop-wester-hailes",
   "origin": {
-    "latitude": 55.91591,
-    "longitude": -3.28277,
+    "latitude": 55.90977,
+    "longitude": -3.27575,
     "name": null
   },
   "nearby": [
@@ -11,1357 +11,1157 @@
       "kind": "bus_stop",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": [
-        {
-          "kind": "bus_stop",
-          "name": "Wester Hailes Drive",
-          "latitude": 55.9147125,
-          "longitude": -3.2811816,
-          "distance_m": 165.9,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528695",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westside Plaza",
-          "latitude": 55.916441,
-          "longitude": -3.285415,
-          "distance_m": 175.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534536",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Park",
-          "latitude": 55.91751,
-          "longitude": -3.2832607,
-          "distance_m": 180.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534527",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westside Plaza",
-          "latitude": 55.9164787,
-          "longitude": -3.2856249,
-          "distance_m": 188.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534543",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westside Plaza",
-          "latitude": 55.9163544,
-          "longitude": -3.285764,
-          "distance_m": 193.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534537",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westside Plaza",
-          "latitude": 55.916432,
-          "longitude": -3.2858171,
-          "distance_m": 198.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534545",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Park",
-          "latitude": 55.9176165,
-          "longitude": -3.2808163,
-          "distance_m": 225.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528691",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Hailesland Place",
-          "latitude": 55.916537,
-          "longitude": -3.2787953,
-          "distance_m": 257.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534523",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Hailesland Place",
-          "latitude": 55.9164778,
-          "longitude": -3.2785909,
-          "distance_m": 268.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528699",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westburn Bank",
-          "latitude": 55.914415,
-          "longitude": -3.2864518,
-          "distance_m": 283.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528805",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Approach",
-          "latitude": 55.9177403,
-          "longitude": -3.2859368,
-          "distance_m": 283.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/11998052944",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Cinema",
-          "latitude": 55.914477,
-          "longitude": -3.2865339,
-          "distance_m": 283.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528685",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westside Plaza",
-          "latitude": 55.9145344,
-          "longitude": -3.286957,
-          "distance_m": 302.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534546",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Hailesland Grove",
-          "latitude": 55.9173359,
-          "longitude": -3.2775988,
-          "distance_m": 359.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534519",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Healthy Living Centre",
-          "latitude": 55.9128275,
-          "longitude": -3.2845949,
-          "distance_m": 361.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528748",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Healthy Living Centre",
-          "latitude": 55.9128017,
-          "longitude": -3.2846447,
-          "distance_m": 364.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/7551934451",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Hailesland Grove",
-          "latitude": 55.9174821,
-          "longitude": -3.2768906,
-          "distance_m": 405.9,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528751",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Wester Hailes Park",
-          "latitude": 55.9142887,
-          "longitude": -3.2767704,
-          "distance_m": 415.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534522",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Wester Hailes Park",
-          "latitude": 55.9140947,
-          "longitude": -3.2764121,
-          "distance_m": 444.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528702",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Gardens",
-          "latitude": 55.919934,
-          "longitude": -3.2819773,
-          "distance_m": 450.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528772",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Greenacre",
-          "latitude": 55.911739,
-          "longitude": -3.2817421,
-          "distance_m": 468.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528743",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Gardens",
-          "latitude": 55.9200764,
-          "longitude": -3.2810447,
-          "distance_m": 475.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534517",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Grove",
-          "latitude": 55.9179311,
-          "longitude": -3.2897768,
-          "distance_m": 491.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528623",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Road",
-          "latitude": 55.9124792,
-          "longitude": -3.2770949,
-          "distance_m": 520.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534520",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westburn Gardens",
-          "latitude": 55.9144242,
-          "longitude": -3.2907241,
-          "distance_m": 522.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528661",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Grove",
-          "latitude": 55.9181367,
-          "longitude": -3.2901665,
-          "distance_m": 523.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534524",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Roundabout",
-          "latitude": 55.9113322,
-          "longitude": -3.2807192,
-          "distance_m": 524.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528688",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Harvesters Way",
-          "latitude": 55.911257,
-          "longitude": -3.2813389,
-          "distance_m": 525.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534521",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Drive",
-          "latitude": 55.9191202,
-          "longitude": -3.2889826,
-          "distance_m": 526.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/270540568",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Drive",
-          "latitude": 55.9188275,
-          "longitude": -3.2898464,
-          "distance_m": 547.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528626",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Road",
-          "latitude": 55.9131991,
-          "longitude": -3.2752627,
-          "distance_m": 556.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528735",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Road",
-          "latitude": 55.9119732,
-          "longitude": -3.27721,
-          "distance_m": 558.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528719",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Grove",
-          "latitude": 55.9178881,
-          "longitude": -3.2743744,
-          "distance_m": 567.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534516",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Westburn Gardens",
-          "latitude": 55.91388,
-          "longitude": -3.2912021,
-          "distance_m": 571.9,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534539",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Drive",
-          "latitude": 55.9185427,
-          "longitude": -3.2906819,
-          "distance_m": 573.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534530",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains Grove",
-          "latitude": 55.9114544,
-          "longitude": -3.2877137,
-          "distance_m": 583.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534541",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Barn Park",
-          "latitude": 55.9109627,
-          "longitude": -3.2794928,
-          "distance_m": 586.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528738",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden School",
-          "latitude": 55.9193096,
-          "longitude": -3.2754765,
-          "distance_m": 591.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534518",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Park",
-          "latitude": 55.9113087,
-          "longitude": -3.277492,
-          "distance_m": 608.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528711",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden School",
-          "latitude": 55.9200023,
-          "longitude": -3.2762674,
-          "distance_m": 609.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528768",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Grove",
-          "latitude": 55.9183364,
-          "longitude": -3.2736235,
-          "distance_m": 630.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528755",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Drive",
-          "latitude": 55.9199552,
-          "longitude": -3.2900303,
-          "distance_m": 638.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534547",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Place",
-          "latitude": 55.9197426,
-          "longitude": -3.2908369,
-          "distance_m": 659.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528645",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Gardens",
-          "latitude": 55.9198755,
-          "longitude": -3.2910665,
-          "distance_m": 679.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534531",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains View",
-          "latitude": 55.9095492,
-          "longitude": -3.2825632,
-          "distance_m": 707.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534542",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Gardens",
-          "latitude": 55.9215018,
-          "longitude": -3.2763807,
-          "distance_m": 738.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528778",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains Dell",
-          "latitude": 55.9109496,
-          "longitude": -3.2912967,
-          "distance_m": 765.9,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534540",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains Dell",
-          "latitude": 55.910873,
-          "longitude": -3.2914133,
-          "distance_m": 777.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528681",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "One Stop Nursery",
-          "latitude": 55.9176148,
-          "longitude": -3.2948741,
-          "distance_m": 777.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528631",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Road",
-          "latitude": 55.9200063,
-          "longitude": -3.2724109,
-          "distance_m": 790.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528759",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "One Stop Nursery",
-          "latitude": 55.9177066,
-          "longitude": -3.2953263,
-          "distance_m": 807.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534529",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Gardens",
-          "latitude": 55.9130845,
-          "longitude": -3.2706992,
-          "distance_m": 815.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528731",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Napier University (Sighthill)",
-          "latitude": 55.9228091,
-          "longitude": -3.2876688,
-          "distance_m": 825.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534474",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains Green",
-          "latitude": 55.908408,
-          "longitude": -3.2842852,
-          "distance_m": 839.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528665",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Baberton Mains Park",
-          "latitude": 55.9092294,
-          "longitude": -3.2890958,
-          "distance_m": 841.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528676",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Sighthill Green",
-          "latitude": 55.9233377,
-          "longitude": -3.2855031,
-          "distance_m": 843.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528916",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Sighthill Gardens",
-          "latitude": 55.9235091,
-          "longitude": -3.2826819,
-          "distance_m": 845.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534473",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
         {
           "kind": "bus_stop",
           "name": "Clovenstone Drive",
           "latitude": 55.9099227,
           "longitude": -3.2738138,
-          "distance_m": 868.8,
+          "distance_m": 121.9,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502528722",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Road",
-          "latitude": 55.9203149,
-          "longitude": -3.2712369,
-          "distance_m": 869.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534515",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dumbryden Gardens",
-          "latitude": 55.9220575,
-          "longitude": -3.2740097,
-          "distance_m": 874.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534511",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Napier University (Sighthill)",
-          "latitude": 55.9226893,
-          "longitude": -3.2900645,
-          "distance_m": 880.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528909",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Wester Hailes Road",
-          "latitude": 55.9218602,
-          "longitude": -3.2928436,
-          "distance_m": 912.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534587",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Road",
-          "latitude": 55.921523,
-          "longitude": -3.2717245,
-          "distance_m": 929.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528763",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Clovenstone Park (Clovenstone Drive)",
-          "latitude": 55.9106353,
-          "longitude": -3.271195,
-          "distance_m": 929.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528727",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Park",
-          "latitude": 55.9208961,
-          "longitude": -3.2948119,
-          "distance_m": 933.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528654",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Gardens",
-          "latitude": 55.9206354,
-          "longitude": -3.2955263,
-          "distance_m": 952.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534532",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Broomhouse Road",
-          "latitude": 55.9243342,
-          "longitude": -3.279519,
-          "distance_m": 958.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502529009",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Murrayburn Road",
-          "latitude": 55.9222182,
-          "longitude": -3.2722754,
-          "distance_m": 959.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534513",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Cobbinshaw House",
-          "latitude": 55.9196821,
-          "longitude": -3.2967661,
-          "distance_m": 967.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534534",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Bankhead Loan",
-          "latitude": 55.9231767,
-          "longitude": -3.2915592,
-          "distance_m": 976.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534583",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Bankhead Loan",
-          "latitude": 55.9231926,
-          "longitude": -3.2917517,
-          "distance_m": 984.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528498",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Cobbinshaw House",
-          "latitude": 55.9201941,
-          "longitude": -3.2966032,
-          "distance_m": 984.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528650",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Viewfield Road",
           "latitude": 55.9089844,
           "longitude": -3.2729139,
-          "distance_m": 985.1,
+          "distance_m": 197.2,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534509",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Calder Grove",
-          "latitude": 55.9181916,
-          "longitude": -3.2982827,
-          "distance_m": 999.4,
+          "name": "Clovenstone Park",
+          "latitude": 55.9113087,
+          "longitude": -3.277492,
+          "distance_m": 202.6,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534528",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Sighthill Wynd",
-          "latitude": 55.9249276,
-          "longitude": -3.2819695,
-          "distance_m": 1004.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528962",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Grove",
-          "latitude": 55.9181261,
-          "longitude": -3.2984479,
-          "distance_m": 1007.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528636",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528711",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Viewfield Road",
           "latitude": 55.9088192,
           "longitude": -3.2725382,
-          "distance_m": 1014.0,
+          "distance_m": 226.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502528852",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Calder Gardens",
-          "latitude": 55.9195397,
-          "longitude": -3.2981751,
-          "distance_m": 1041.3,
+          "name": "Clovenstone Road",
+          "latitude": 55.9119732,
+          "longitude": -3.27721,
+          "distance_m": 261.3,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534564",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528719",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Calder View",
-          "latitude": 55.9214822,
-          "longitude": -3.2963197,
-          "distance_m": 1047.2,
+          "name": "Barn Park",
+          "latitude": 55.9109627,
+          "longitude": -3.2794928,
+          "distance_m": 268.3,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528492",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Sighthill Post office",
-          "latitude": 55.9247391,
-          "longitude": -3.2765332,
-          "distance_m": 1055.9,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/2459088414",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Muirend Avenue",
-          "latitude": 55.9071611,
-          "longitude": -3.2755396,
-          "distance_m": 1072.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528848",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Parkhead Drive",
-          "latitude": 55.9232457,
-          "longitude": -3.2714011,
-          "distance_m": 1080.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528785",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder Crescent",
-          "latitude": 55.9192788,
-          "longitude": -3.2990625,
-          "distance_m": 1082.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534535",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calders Crescent",
-          "latitude": 55.9194547,
-          "longitude": -3.2989445,
-          "distance_m": 1082.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528657",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528738",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Muirend Avenue",
           "latitude": 55.9075423,
           "longitude": -3.2737816,
-          "distance_m": 1086.1,
+          "distance_m": 276.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534496",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Spylaw Bank Road",
-          "latitude": 55.9099696,
-          "longitude": -3.2687444,
-          "distance_m": 1095.6,
+          "name": "Muirend Avenue",
+          "latitude": 55.9071611,
+          "longitude": -3.2755396,
+          "distance_m": 290.4,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528859",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528848",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Sighthill Post Office",
-          "latitude": 55.9251046,
-          "longitude": -3.2762214,
-          "distance_m": 1100.8,
+          "name": "Clovenstone Park (Clovenstone Drive)",
+          "latitude": 55.9106353,
+          "longitude": -3.271195,
+          "distance_m": 299.7,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502529011",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528727",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Clovenstone Road",
+          "latitude": 55.9124792,
+          "longitude": -3.2770949,
+          "distance_m": 312.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534520",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Spylaw Park",
           "latitude": 55.9083363,
           "longitude": -3.2713061,
-          "distance_m": 1104.4,
+          "distance_m": 319.6,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502528856",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder View",
-          "latitude": 55.9208065,
-          "longitude": -3.2982015,
-          "distance_m": 1105.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534589",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Foulis Crescent",
-          "latitude": 55.9063568,
-          "longitude": -3.2777165,
-          "distance_m": 1108.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528844",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder View",
-          "latitude": 55.9207966,
-          "longitude": -3.2982812,
-          "distance_m": 1108.8,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534592",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Spylaw Bank Road",
-          "latitude": 55.9098809,
-          "longitude": -3.2685467,
-          "distance_m": 1111.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534494",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Calder View",
-          "latitude": 55.920776,
-          "longitude": -3.2985365,
-          "distance_m": 1121.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534593",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Spylaw Park",
           "latitude": 55.908426,
           "longitude": -3.2706266,
-          "distance_m": 1124.8,
+          "distance_m": 352.6,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534495",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Kingsknowe Drive",
-          "latitude": 55.9174527,
-          "longitude": -3.2647107,
-          "distance_m": 1138.3,
+          "name": "Clovenstone Roundabout",
+          "latitude": 55.9113322,
+          "longitude": -3.2807192,
+          "distance_m": 355.1,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528870",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528688",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Foulis Crescent",
-          "latitude": 55.9059731,
-          "longitude": -3.2783233,
-          "distance_m": 1139.2,
+          "name": "Clovenstone Road",
+          "latitude": 55.9131991,
+          "longitude": -3.2752627,
+          "distance_m": 382.5,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534497",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528735",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "New Lairdship Place",
-          "latitude": 55.9261855,
-          "longitude": -3.2831548,
-          "distance_m": 1142.8,
+          "name": "Harvesters Way",
+          "latitude": 55.911257,
+          "longitude": -3.2813389,
+          "distance_m": 385.6,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534466",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Kingsknowe Drive",
-          "latitude": 55.9168804,
-          "longitude": -3.264436,
-          "distance_m": 1147.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534489",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Kingsknowe Station",
-          "latitude": 55.9193076,
-          "longitude": -3.2652191,
-          "distance_m": 1157.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528878",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Kingsknowe Station",
-          "latitude": 55.9196102,
-          "longitude": -3.2651228,
-          "distance_m": 1174.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534487",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Hailes Grove",
-          "latitude": 55.9118884,
-          "longitude": -3.2651385,
-          "distance_m": 1186.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534492",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534521",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Cross Road",
           "latitude": 55.9075518,
           "longitude": -3.2708595,
-          "distance_m": 1189.4,
+          "distance_m": 392.1,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502529155",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Hailes Grove",
-          "latitude": 55.9125084,
-          "longitude": -3.2644863,
-          "distance_m": 1200.5,
+          "name": "Foulis Crescent",
+          "latitude": 55.9063568,
+          "longitude": -3.2777165,
+          "distance_m": 398.8,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528862",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528844",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Juniper Green Kirk",
-          "latitude": 55.9049837,
-          "longitude": -3.2814186,
-          "distance_m": 1217.9,
+          "name": "Baberton Mains View",
+          "latitude": 55.9095492,
+          "longitude": -3.2825632,
+          "distance_m": 425.3,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528841",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534542",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Juniper Green Kirk",
-          "latitude": 55.9047965,
-          "longitude": -3.2815651,
-          "distance_m": 1238.0,
+          "name": "Greenacre",
+          "latitude": 55.911739,
+          "longitude": -3.2817421,
+          "distance_m": 432.9,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534498",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528743",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Kingsknowe Golf Club",
-          "latitude": 55.9145231,
-          "longitude": -3.2626175,
-          "distance_m": 1265.3,
+          "name": "Spylaw Bank Road",
+          "latitude": 55.9099696,
+          "longitude": -3.2687444,
+          "distance_m": 437.2,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528875",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528859",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Kingsknowe Road South",
-          "latitude": 55.9130899,
-          "longitude": -3.262931,
-          "distance_m": 1275.5,
+          "name": "Spylaw Bank Road",
+          "latitude": 55.9098809,
+          "longitude": -3.2685467,
+          "distance_m": 449.1,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534491",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534494",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Kingsknowe Road South",
-          "latitude": 55.9136225,
-          "longitude": -3.2625705,
-          "distance_m": 1284.2,
+          "name": "Foulis Crescent",
+          "latitude": 55.9059731,
+          "longitude": -3.2783233,
+          "distance_m": 451.6,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528866",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534497",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Kingsknowe Golf Club",
-          "latitude": 55.9143329,
-          "longitude": -3.262278,
-          "distance_m": 1289.0,
+          "name": "Wester Hailes Park",
+          "latitude": 55.9140947,
+          "longitude": -3.2764121,
+          "distance_m": 482.7,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534490",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528702",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Bankhead Medway",
-          "latitude": 55.9261437,
-          "longitude": -3.2931143,
-          "distance_m": 1307.8,
+          "name": "Clovenstone Gardens",
+          "latitude": 55.9130845,
+          "longitude": -3.2706992,
+          "distance_m": 484.7,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534582",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528731",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Parkhead Terrace",
-          "latitude": 55.9259239,
-          "longitude": -3.2716878,
-          "distance_m": 1310.2,
+          "name": "Wester Hailes Park",
+          "latitude": 55.9142887,
+          "longitude": -3.2767704,
+          "distance_m": 506.5,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534448",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534522",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Murrayburn Road (East)",
-          "latitude": 55.9243166,
-          "longitude": -3.2678592,
-          "distance_m": 1317.9,
+          "name": "Baberton Mains Green",
+          "latitude": 55.908408,
+          "longitude": -3.2842852,
+          "distance_m": 553.1,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534510",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Woodhall Drive",
-          "latitude": 55.9039436,
-          "longitude": -3.2837443,
-          "distance_m": 1332.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534499",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dovecot Park",
-          "latitude": 55.9153374,
-          "longitude": -3.2610734,
-          "distance_m": 1353.5,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528893",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Longstone Place",
-          "latitude": 55.9216247,
-          "longitude": -3.2635823,
-          "distance_m": 1354.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528882",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Dovecot Park",
-          "latitude": 55.9150076,
-          "longitude": -3.2610326,
-          "distance_m": 1358.3,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534482",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Longstone Place",
-          "latitude": 55.9216262,
-          "longitude": -3.2634383,
-          "distance_m": 1362.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534486",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Parkhead Drive",
-          "latitude": 55.9246236,
-          "longitude": -3.2673341,
-          "distance_m": 1365.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528790",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528665",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Spylaw Bank",
           "latitude": 55.9071049,
           "longitude": -3.2674549,
-          "distance_m": 1367.3,
+          "distance_m": 595.9,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534403",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Longstone Terrace",
-          "latitude": 55.925699,
-          "longitude": -3.2693485,
-          "distance_m": 1372.6,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534447",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Bankhead Medway",
-          "latitude": 55.926794,
-          "longitude": -3.2936169,
-          "distance_m": 1386.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/5148472589",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "bus_stop",
-          "name": "Longstone Terrace",
-          "latitude": 55.9256684,
-          "longitude": -3.268878,
-          "distance_m": 1388.0,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502529012",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Spylaw Bank",
           "latitude": 55.90716,
           "longitude": -3.2668392,
-          "distance_m": 1390.1,
+          "distance_m": 626.6,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502529158",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Broomhouse Drive",
-          "latitude": 55.9284581,
-          "longitude": -3.2844113,
-          "distance_m": 1399.0,
+          "name": "Juniper Green Kirk",
+          "latitude": 55.9049837,
+          "longitude": -3.2814186,
+          "distance_m": 638.8,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528958",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528841",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Wester Hailes Drive",
+          "latitude": 55.9147125,
+          "longitude": -3.2811816,
+          "distance_m": 645.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528695",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Healthy Living Centre",
+          "latitude": 55.9128275,
+          "longitude": -3.2845949,
+          "distance_m": 647.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528748",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Healthy Living Centre",
+          "latitude": 55.9128017,
+          "longitude": -3.2846447,
+          "distance_m": 648.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/7551934451",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Juniper Green Kirk",
+          "latitude": 55.9047965,
+          "longitude": -3.2815651,
+          "distance_m": 661.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534498",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailes Grove",
+          "latitude": 55.9118884,
+          "longitude": -3.2651385,
+          "distance_m": 702.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534492",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailes Grove",
+          "latitude": 55.9125084,
+          "longitude": -3.2644863,
+          "distance_m": 765.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528862",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailesland Place",
+          "latitude": 55.9164778,
+          "longitude": -3.2785909,
+          "distance_m": 766.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528699",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Baberton Mains Grove",
+          "latitude": 55.9114544,
+          "longitude": -3.2877137,
+          "distance_m": 768.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534541",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailesland Place",
+          "latitude": 55.916537,
+          "longitude": -3.2787953,
+          "distance_m": 776.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534523",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Woodhall Drive",
+          "latitude": 55.9039436,
+          "longitude": -3.2837443,
+          "distance_m": 817.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534499",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Baberton Mains Park",
+          "latitude": 55.9092294,
+          "longitude": -3.2890958,
+          "distance_m": 833.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528676",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westburn Bank",
+          "latitude": 55.914415,
+          "longitude": -3.2864518,
+          "distance_m": 843.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528805",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailesland Grove",
+          "latitude": 55.9173359,
+          "longitude": -3.2775988,
+          "distance_m": 849.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534519",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Cinema",
+          "latitude": 55.914477,
+          "longitude": -3.2865339,
+          "distance_m": 851.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528685",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Hailesland Grove",
+          "latitude": 55.9174821,
+          "longitude": -3.2768906,
+          "distance_m": 860.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528751",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westside Plaza",
+          "latitude": 55.9145344,
+          "longitude": -3.286957,
+          "distance_m": 876.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534546",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Road South",
+          "latitude": 55.9130899,
+          "longitude": -3.262931,
+          "distance_m": 880.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534491",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Woodfield Avenue",
+          "latitude": 55.903157,
+          "longitude": -3.2679381,
+          "distance_m": 881.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529172",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Woodfield Avenue",
+          "latitude": 55.9029773,
+          "longitude": -3.2681264,
+          "distance_m": 892.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534398",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden Grove",
+          "latitude": 55.9178881,
+          "longitude": -3.2743744,
+          "distance_m": 906.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534516",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Baberton Avenue",
           "latitude": 55.9033226,
           "longitude": -3.2851259,
-          "distance_m": 1407.3,
+          "distance_m": 924.9,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534503",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Road South",
+          "latitude": 55.9136225,
+          "longitude": -3.2625705,
+          "distance_m": 926.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528866",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Park",
+          "latitude": 55.9176165,
+          "longitude": -3.2808163,
+          "distance_m": 927.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528691",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Baberton Avenue",
           "latitude": 55.9033339,
           "longitude": -3.2853742,
-          "distance_m": 1407.8,
+          "distance_m": 933.8,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502528838",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Broomhouse Drive",
-          "latitude": 55.9285559,
-          "longitude": -3.2847302,
-          "distance_m": 1411.5,
+          "name": "Fernielaw Avenue",
+          "latitude": 55.9034482,
+          "longitude": -3.2655755,
+          "distance_m": 946.7,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534467",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534397",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Bankhead Avenue",
-          "latitude": 55.9269314,
-          "longitude": -3.2942609,
-          "distance_m": 1419.3,
+          "name": "Westside Plaza",
+          "latitude": 55.916441,
+          "longitude": -3.285415,
+          "distance_m": 955.5,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534578",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534536",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Fernielaw Avenue",
+          "latitude": 55.9035529,
+          "longitude": -3.2651501,
+          "distance_m": 956.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529174",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden Grove",
+          "latitude": 55.9183364,
+          "longitude": -3.2736235,
+          "distance_m": 961.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528755",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westside Plaza",
+          "latitude": 55.9163544,
+          "longitude": -3.285764,
+          "distance_m": 962.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534537",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westside Plaza",
+          "latitude": 55.9164787,
+          "longitude": -3.2856249,
+          "distance_m": 967.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534543",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westside Plaza",
+          "latitude": 55.916432,
+          "longitude": -3.2858171,
+          "distance_m": 970.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534545",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Golf Club",
+          "latitude": 55.9145231,
+          "longitude": -3.2626175,
+          "distance_m": 974.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528875",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Baberton Mains Dell",
+          "latitude": 55.9109496,
+          "longitude": -3.2912967,
+          "distance_m": 977.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534540",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Park",
+          "latitude": 55.91751,
+          "longitude": -3.2832607,
+          "distance_m": 979.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534527",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Golf Club",
+          "latitude": 55.9143329,
+          "longitude": -3.262278,
+          "distance_m": 981.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534490",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Baberton Mains Dell",
+          "latitude": 55.910873,
+          "longitude": -3.2914133,
+          "distance_m": 983.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528681",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Mill Road",
+          "latitude": 55.9041357,
+          "longitude": -3.2624773,
+          "distance_m": 1037.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529178",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Torphin Bank",
+          "latitude": 55.9011959,
+          "longitude": -3.2683402,
+          "distance_m": 1059.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529169",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Drive",
+          "latitude": 55.9168804,
+          "longitude": -3.264436,
+          "distance_m": 1059.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534489",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden School",
+          "latitude": 55.9193096,
+          "longitude": -3.2754765,
+          "distance_m": 1060.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534518",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westburn Gardens",
+          "latitude": 55.91388,
+          "longitude": -3.2912021,
+          "distance_m": 1065.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534539",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westburn Gardens",
+          "latitude": 55.9144242,
+          "longitude": -3.2907241,
+          "distance_m": 1067.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528661",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Torphin Bank",
+          "latitude": 55.9011531,
+          "longitude": -3.2681454,
+          "distance_m": 1069.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534399",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "West Mill Road",
+          "latitude": 55.9042486,
+          "longitude": -3.2616137,
+          "distance_m": 1073.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534395",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dovecot Park",
+          "latitude": 55.9150076,
+          "longitude": -3.2610326,
+          "distance_m": 1086.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534482",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Approach",
+          "latitude": 55.9177403,
+          "longitude": -3.2859368,
+          "distance_m": 1090.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/11998052944",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Juniperlee",
+          "latitude": 55.902521,
+          "longitude": -3.2875307,
+          "distance_m": 1090.4,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528836",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Drive",
+          "latitude": 55.9174527,
+          "longitude": -3.2647107,
+          "distance_m": 1096.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528870",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Colinton Village",
+          "latitude": 55.907241,
+          "longitude": -3.2587178,
+          "distance_m": 1098.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534401",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Grant Avenue",
+          "latitude": 55.9041265,
+          "longitude": -3.2612218,
+          "distance_m": 1101.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529185",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dovecot Park",
+          "latitude": 55.9153374,
+          "longitude": -3.2610734,
+          "distance_m": 1104.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528893",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden School",
+          "latitude": 55.9200023,
+          "longitude": -3.2762674,
+          "distance_m": 1138.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528768",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Colinton Village",
+          "latitude": 55.9073193,
+          "longitude": -3.2578735,
+          "distance_m": 1147.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529166",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden Road",
+          "latitude": 55.9200063,
+          "longitude": -3.2724109,
+          "distance_m": 1157.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528759",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Torphin Terminus",
+          "latitude": 55.8997894,
+          "longitude": -3.2704385,
+          "distance_m": 1158.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534400",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnshot Road",
+          "latitude": 55.9065856,
+          "longitude": -3.2580063,
+          "distance_m": 1161.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534393",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Barnshot Road",
+          "latitude": 55.9067893,
+          "longitude": -3.2575288,
+          "distance_m": 1183.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529188",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Gardens",
+          "latitude": 55.9200764,
+          "longitude": -3.2810447,
+          "distance_m": 1192.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534517",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Gardens",
+          "latitude": 55.919934,
+          "longitude": -3.2819773,
+          "distance_m": 1195.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528772",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden Road",
+          "latitude": 55.9203149,
+          "longitude": -3.2712369,
+          "distance_m": 1205.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534515",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Juniper Avenue",
+          "latitude": 55.9019047,
+          "longitude": -3.2892932,
+          "distance_m": 1215.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528832",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Kingsknowe Park",
           "latitude": 55.9162499,
           "longitude": -3.2599838,
-          "distance_m": 1420.4,
+          "distance_m": 1218.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502534478",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Juniper Avenue",
+          "latitude": 55.9016919,
+          "longitude": -3.2895998,
+          "distance_m": 1245.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534504",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Station",
+          "latitude": 55.9193076,
+          "longitude": -3.2652191,
+          "distance_m": 1247.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528878",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Calder Grove",
+          "latitude": 55.9179311,
+          "longitude": -3.2897768,
+          "distance_m": 1260.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528623",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Kingsknowe Station",
+          "latitude": 55.9196102,
+          "longitude": -3.2651228,
+          "distance_m": 1279.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534487",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
           "name": "Kingsknowe Park",
           "latitude": 55.917191,
           "longitude": -3.2599014,
-          "distance_m": 1432.1,
+          "distance_m": 1287.0,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/502528897",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Bankhead Avenue",
-          "latitude": 55.9270654,
-          "longitude": -3.2943294,
-          "distance_m": 1434.4,
+          "name": "Calder Grove",
+          "latitude": 55.9181367,
+          "longitude": -3.2901665,
+          "distance_m": 1293.3,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528512",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502534524",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Longstone Gardens",
-          "latitude": 55.9253143,
-          "longitude": -3.2670077,
-          "distance_m": 1434.6,
+          "name": "Dumbryden Gardens",
+          "latitude": 55.9215018,
+          "longitude": -3.2763807,
+          "distance_m": 1305.1,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534446",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528778",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Edinburgh College",
-          "latitude": 55.9277979,
-          "longitude": -3.292177,
-          "distance_m": 1446.0,
+          "name": "Calder Drive",
+          "latitude": 55.9191202,
+          "longitude": -3.2889826,
+          "distance_m": 1327.0,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502534577",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/270540568",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Edinburgh College",
-          "latitude": 55.9280466,
-          "longitude": -3.2924574,
-          "distance_m": 1478.4,
+          "name": "Murrayburn Road",
+          "latitude": 55.921523,
+          "longitude": -3.2717245,
+          "distance_m": 1330.7,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502528513",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528763",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "bus_stop",
-          "name": "Saughton Mains",
-          "latitude": 55.9268691,
-          "longitude": -3.2688937,
-          "distance_m": 1494.1,
+          "name": "Calder Drive",
+          "latitude": 55.9188275,
+          "longitude": -3.2898464,
+          "distance_m": 1336.4,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/502529049",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:node/502528626",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Calder Drive",
+          "latitude": 55.9185427,
+          "longitude": -3.2906819,
+          "distance_m": 1348.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534530",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "St Cuthbert's Church",
+          "latitude": 55.9075503,
+          "longitude": -3.2541662,
+          "distance_m": 1367.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534392",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dumbryden Gardens",
+          "latitude": 55.9220575,
+          "longitude": -3.2740097,
+          "distance_m": 1370.6,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534511",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rustic Cottages",
+          "latitude": 55.9079352,
+          "longitude": -3.2536702,
+          "distance_m": 1391.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534385",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Murrayburn Road",
+          "latitude": 55.9222182,
+          "longitude": -3.2722754,
+          "distance_m": 1401.0,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534513",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Bonaly Terminus",
+          "latitude": 55.9013113,
+          "longitude": -3.2588432,
+          "distance_m": 1412.5,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534394",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Rustic Cottages",
+          "latitude": 55.908253,
+          "longitude": -3.253101,
+          "distance_m": 1421.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502529192",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Calder Drive",
+          "latitude": 55.9199552,
+          "longitude": -3.2900303,
+          "distance_m": 1440.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534547",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Calder Place",
+          "latitude": 55.9197426,
+          "longitude": -3.2908369,
+          "distance_m": 1453.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528645",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dovecot Grove",
+          "latitude": 55.9187743,
+          "longitude": -3.2586503,
+          "distance_m": 1462.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528901",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Dovecot Grove",
+          "latitude": 55.9186709,
+          "longitude": -3.2583494,
+          "distance_m": 1468.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534477",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Westgarth Avenue",
+          "latitude": 55.9064491,
+          "longitude": -3.2528829,
+          "distance_m": 1472.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534391",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "Calder Gardens",
+          "latitude": 55.9198755,
+          "longitude": -3.2910665,
+          "distance_m": 1474.3,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502534531",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "bus_stop",
+          "name": "One Stop Nursery",
+          "latitude": 55.9176148,
+          "longitude": -3.2948741,
+          "distance_m": 1476.9,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/502528631",
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     },
@@ -1369,34 +1169,34 @@
       "kind": "tram_stop",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": []
     },
     {
       "kind": "rail_station",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": [
         {
           "kind": "rail_station",
           "name": "Wester Hailes",
           "latitude": 55.9143713,
           "longitude": -3.2838201,
-          "distance_m": 183.2,
+          "distance_m": 717.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/4305266451",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "rail_station",
           "name": "Kingsknowe",
           "latitude": 55.9189091,
           "longitude": -3.2648569,
-          "distance_m": 1165.0,
+          "distance_m": 1222.1,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/4305266448",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     },
@@ -1404,37 +1204,17 @@
       "kind": "supermarket",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": [
         {
           "kind": "supermarket",
           "name": "Lidl",
           "latitude": 55.9152198,
           "longitude": -3.2842269,
-          "distance_m": 118.9,
+          "distance_m": 803.9,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/3804025685",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "supermarket",
-          "name": "H M Foods",
-          "latitude": 55.9243678,
-          "longitude": -3.2775498,
-          "distance_m": 995.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/6660620836",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "supermarket",
-          "name": "Scotmid",
-          "latitude": 55.9246571,
-          "longitude": -3.2763264,
-          "distance_m": 1052.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/783575155",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     },
@@ -1442,47 +1222,37 @@
       "kind": "pharmacy",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": [
         {
           "kind": "pharmacy",
           "name": "Wester Hailes Pharmacy",
           "latitude": 55.9155925,
           "longitude": -3.2844796,
-          "distance_m": 112.2,
+          "distance_m": 845.7,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/12178958962",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "pharmacy",
-          "name": "Calder Pharmacy",
-          "latitude": 55.9196921,
-          "longitude": -3.2949028,
-          "distance_m": 865.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/2750960699",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "pharmacy",
-          "name": "M&D Green Sighthill",
-          "latitude": 55.9246048,
-          "longitude": -3.2765477,
-          "distance_m": 1041.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/783575123",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "pharmacy",
           "name": "Lindsay Gilmour",
           "latitude": 55.9036955,
           "longitude": -3.2847591,
-          "distance_m": 1363.8,
+          "distance_m": 878.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:node/2121583798",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "pharmacy",
+          "name": "Colinton Village Pharmacy",
+          "latitude": 55.9073684,
+          "longitude": -3.2576409,
+          "distance_m": 1159.8,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:node/2351659621",
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     },
@@ -1490,47 +1260,37 @@
       "kind": "gp_surgery",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API); Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
-      "fetched_at": "2026-11-07T20:54:19Z",
+      "fetched_at": "2026-11-08T01:19:29Z",
       "places": [
         {
           "kind": "gp_surgery",
           "name": "Wester Hailes Medical Practice",
           "latitude": 55.912194,
           "longitude": -3.282348,
-          "distance_m": 414.0,
+          "distance_m": 491.7,
           "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
           "source_ref": "phs:gp_practice/70978",
-          "fetched_at": "2026-11-07T20:54:19Z"
+          "fetched_at": "2026-11-08T01:19:29Z"
         },
         {
           "kind": "gp_surgery",
-          "name": "Sighthill Red Medical Practice",
-          "latitude": 55.923468,
-          "longitude": -3.286017,
-          "distance_m": 864.4,
+          "name": "Colinton Surgery",
+          "latitude": 55.908895,
+          "longitude": -3.25274,
+          "distance_m": 1437.4,
           "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
-          "source_ref": "phs:gp_practice/70906",
-          "fetched_at": "2026-11-07T20:54:19Z"
+          "source_ref": "phs:gp_practice/70131",
+          "fetched_at": "2026-11-08T01:19:29Z"
         },
         {
           "kind": "gp_surgery",
-          "name": "Sighthill Green Medical Practice",
-          "latitude": 55.923468,
-          "longitude": -3.286017,
-          "distance_m": 864.4,
-          "source": "Public Health Scotland, GP Practice Contact Details and List Sizes (October 2026); location is the practice postcode's centroid (ONS Postcode Directory via postcodes.io), so it is approximate",
-          "source_ref": "phs:gp_practice/70911",
-          "fetched_at": "2026-11-07T20:54:19Z"
-        },
-        {
-          "kind": "gp_surgery",
-          "name": "Sighthill Health Centre",
-          "latitude": 55.9236491,
-          "longitude": -3.2861747,
-          "distance_m": 886.3,
+          "name": "Colinton Medical Practice",
+          "latitude": 55.9088699,
+          "longitude": -3.2522159,
+          "distance_m": 1470.2,
           "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:relation/3095116",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "source_ref": "osm:way/75403595",
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     },
@@ -1538,107 +1298,67 @@
       "kind": "school",
       "radius_m": 1500.0,
       "source": "OpenStreetMap (Overpass API)",
-      "fetched_at": "2026-11-08T09:34:33Z",
+      "fetched_at": "2026-11-08T01:29:38Z",
       "places": [
-        {
-          "kind": "school",
-          "name": "Canal View Primary School",
-          "latitude": 55.9158817,
-          "longitude": -3.2803771,
-          "distance_m": 149.1,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/37937346",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": "Wester Hailes High School",
-          "latitude": 55.9173349,
-          "longitude": -3.2904722,
-          "distance_m": 505.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/39691689",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": "Murrayburn Primary School",
-          "latitude": 55.9224312,
-          "longitude": -3.2814575,
-          "distance_m": 729.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/5038625",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
         {
           "kind": "school",
           "name": "Clovenstone Primary School",
           "latitude": 55.9114752,
           "longitude": -3.2739123,
-          "distance_m": 740.2,
+          "distance_m": 221.5,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:way/219752433",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": "Sighthill Primary School",
-          "latitude": 55.9198687,
-          "longitude": -3.2930779,
-          "distance_m": 778.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/39691421",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "school",
           "name": "Juniper Green Primary School",
           "latitude": 55.9064634,
           "longitude": -3.284954,
-          "distance_m": 1059.2,
+          "distance_m": 681.4,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:way/196120306",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "school",
+          "name": "Canal View Primary School",
+          "latitude": 55.9158817,
+          "longitude": -3.2803771,
+          "distance_m": 738.2,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/37937346",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "school",
+          "name": "Wester Hailes High School",
+          "latitude": 55.9173349,
+          "longitude": -3.2904722,
+          "distance_m": 1244.7,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/39691689",
+          "fetched_at": "2026-11-08T01:29:38Z"
+        },
+        {
+          "kind": "school",
+          "name": "Murrayburn Primary School",
+          "latitude": 55.9224312,
+          "longitude": -3.2814575,
+          "distance_m": 1452.1,
+          "source": "OpenStreetMap (Overpass API)",
+          "source_ref": "osm:way/5038625",
+          "fetched_at": "2026-11-08T01:29:38Z"
         },
         {
           "kind": "school",
           "name": "Redhall School",
           "latitude": 55.9206673,
           "longitude": -3.2625575,
-          "distance_m": 1366.0,
+          "distance_m": 1464.3,
           "source": "OpenStreetMap (Overpass API)",
           "source_ref": "osm:way/393061570",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": "Longstone Primary School",
-          "latitude": 55.9206374,
-          "longitude": -3.2611473,
-          "distance_m": 1446.2,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/393061568",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": "St Joseph's RC Primary School",
-          "latitude": 55.9283187,
-          "longitude": -3.2737141,
-          "distance_m": 1490.7,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:node/4026681924",
-          "fetched_at": "2026-11-08T09:34:33Z"
-        },
-        {
-          "kind": "school",
-          "name": null,
-          "latitude": 55.9284349,
-          "longitude": -3.2741187,
-          "distance_m": 1493.4,
-          "source": "OpenStreetMap (Overpass API)",
-          "source_ref": "osm:way/156335906",
-          "fetched_at": "2026-11-08T09:34:33Z"
+          "fetched_at": "2026-11-08T01:29:38Z"
         }
       ]
     }
@@ -1647,8 +1367,8 @@
     {
       "profile": "foot_walking",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1657,18 +1377,18 @@
         "name": "University of Edinburgh Central Area"
       },
       "status": "estimated",
-      "distance_m": 8631.0,
+      "distance_m": 8621.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:16Z",
+      "fetched_at": "2026-11-08T01:35:27Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "wheelchair",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1677,18 +1397,18 @@
         "name": "University of Edinburgh Central Area"
       },
       "status": "estimated",
-      "distance_m": 8631.0,
+      "distance_m": 8621.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:18Z",
+      "fetched_at": "2026-11-08T01:35:29Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "foot_walking",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1697,18 +1417,18 @@
         "name": "Edinburgh Waverley"
       },
       "status": "estimated",
-      "distance_m": 9109.6,
+      "distance_m": 9210.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:20Z",
+      "fetched_at": "2026-11-08T01:35:31Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "wheelchair",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1717,18 +1437,18 @@
         "name": "Edinburgh Waverley"
       },
       "status": "estimated",
-      "distance_m": 9109.6,
+      "distance_m": 9210.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:22Z",
+      "fetched_at": "2026-11-08T01:35:32Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "foot_walking",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1737,18 +1457,18 @@
         "name": "Royal Infirmary of Edinburgh"
       },
       "status": "estimated",
-      "distance_m": 12022.3,
+      "distance_m": 11553.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:23Z",
+      "fetched_at": "2026-11-08T01:35:34Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "wheelchair",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1757,58 +1477,58 @@
         "name": "Royal Infirmary of Edinburgh"
       },
       "status": "estimated",
-      "distance_m": 12022.3,
+      "distance_m": 11553.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:25Z",
+      "fetched_at": "2026-11-08T01:35:36Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "foot_walking",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
-        "latitude": 55.9147125,
-        "longitude": -3.2811816,
-        "name": "Wester Hailes Drive"
+        "latitude": 55.9099227,
+        "longitude": -3.2738138,
+        "name": "Clovenstone Drive"
       },
       "status": "estimated",
-      "distance_m": 215.7,
+      "distance_m": 158.4,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:27Z",
+      "fetched_at": "2026-11-08T01:35:38Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "wheelchair",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
-        "latitude": 55.9147125,
-        "longitude": -3.2811816,
-        "name": "Wester Hailes Drive"
+        "latitude": 55.9099227,
+        "longitude": -3.2738138,
+        "name": "Clovenstone Drive"
       },
       "status": "estimated",
-      "distance_m": 215.7,
+      "distance_m": 158.4,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:28Z",
+      "fetched_at": "2026-11-08T01:35:40Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "foot_walking",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1817,18 +1537,18 @@
         "name": "Wester Hailes"
       },
       "status": "estimated",
-      "distance_m": 238.1,
+      "distance_m": 932.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:30Z",
+      "fetched_at": "2026-11-08T01:35:43Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     },
     {
       "profile": "wheelchair",
       "origin": {
-        "latitude": 55.91591,
-        "longitude": -3.28277,
+        "latitude": 55.90977,
+        "longitude": -3.27575,
         "name": null
       },
       "destination": {
@@ -1837,29 +1557,29 @@
         "name": "Wester Hailes"
       },
       "status": "estimated",
-      "distance_m": 238.1,
+      "distance_m": 932.7,
       "duration_s": null,
       "data_completeness": null,
       "source": "Haven straight-line estimate",
-      "fetched_at": "2026-11-08T10:22:32Z",
+      "fetched_at": "2026-11-08T01:35:46Z",
       "note": "routing unavailable (ORS: ORS HTTP 403): straight-line distance x 1.3; no duration or accessibility data."
     }
   ],
   "access_tags": {
     "radius_m": 500.0,
     "source": "OpenStreetMap (Overpass API)",
-    "fetched_at": "2026-11-08T10:06:59Z",
-    "ways": 494,
-    "ways_with_surface": 255,
-    "ways_with_smoothness": 50,
-    "ways_with_incline": 19,
-    "ways_with_sidewalk": 38,
-    "steps_ways": 45,
-    "crossings": 18,
-    "crossings_with_tactile_paving": 13,
+    "fetched_at": "2026-11-08T01:31:47Z",
+    "ways": 247,
+    "ways_with_surface": 157,
+    "ways_with_smoothness": 7,
+    "ways_with_incline": 10,
+    "ways_with_sidewalk": 53,
+    "steps_ways": 9,
+    "crossings": 8,
+    "crossings_with_tactile_paving": 6,
     "kerbs": {
       "lowered": 1,
-      "flush": 2,
+      "flush": 0,
       "raised": 0,
       "no": 0,
       "other": 0,

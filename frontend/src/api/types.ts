@@ -74,6 +74,8 @@ export interface ProfileInput {
   access: AccessRequirements;
   destinations: Destination[];
   other_recurring_costs: RecurringCost[];
+  /** Neighbourhoods the renter would like to live in; empty means anywhere. */
+  preferred_areas: string[];
 }
 
 export interface RenterProfile extends ProfileInput {
@@ -199,4 +201,22 @@ export interface EnumOption {
 
 export interface EnumsResponse {
   enums: Record<string, EnumOption[]>;
+}
+
+/** One of the signed-in user's saved reports (GET /v1/reports). */
+export interface ReportSummary {
+  id: string;
+  created_at: string;
+  property_id: string;
+  property_title: string;
+  property_area: string | null;
+  profile_label: string;
+}
+
+/** What DELETE /v1/me removed. */
+export interface DeletedData {
+  profiles: number;
+  reports: number;
+  uploads: number;
+  saved_homes: boolean;
 }

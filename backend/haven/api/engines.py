@@ -14,12 +14,12 @@
   sections from :func:`haven.explain.build_sections` (optionally reworded by Gemini). The
   persona pairs (with no uploads of their own) still return their illustrative reports, so
   the contract examples stay valid.
-* Profiles, user-added properties and reports are saved through a
+* Profiles, reports, upload records and saved homes are saved through a
   :class:`haven.store.RecordStore` (Tiger Cloud when ``HAVEN_DATABASE_URL`` is set, memory
-  otherwise). ``GET /v1/profiles`` lists the sample personas plus the signed-in caller's own.
+  otherwise), each owned by the signed-in user who created it.
 * ``GET /v1/properties`` / ``GET /v1/properties/{id}`` serve the seed properties
   (``data/seed/properties.yaml``, fictional and marked illustrative) first, then the persona
-  fixture properties, then properties created through the API.
+  fixture properties. Renters can't add listings.
 
 Read-aloud still has no speech service (501).
 """
@@ -33,9 +33,9 @@ from pathlib import Path
 
 from PIL import Image, UnidentifiedImageError
 
-from haven.api.errors import NotFound, PayloadTooLarge, ServiceUnavailable, UnsupportedMediaType
+from haven.api.errors import PayloadTooLarge, ServiceUnavailable, UnsupportedMediaType
 from haven.api.fixtures import FixtureBackend
-from haven.api.schemas import AssessmentRequest, PhotoScreen, ProfileInput, PropertyInput
+from haven.api.schemas import AssessmentRequest, PhotoScreen
 from haven.config import UPLOAD_DIR, UPLOAD_MAX_BYTES, Settings
 from haven.cost import CostReferences, estimate_monthly_cost, load_cost_references
 from haven.domain import (
@@ -119,45 +119,6 @@ class EngineBackend(FixtureBackend):
         self._properties = {**{p.id: p for p in self.seed}, **self._properties}
         self._fixture_upload_ids = set(self._uploads)
 
-    # --- profiles ----------------------------------------------------------------------
-
-    def list_profiles(self, owner_sub: str | None = None) -> list[RenterProfile]:
-        samples = [persona.profile for persona in self.personas]
-        if owner_sub is None:
-            return samples  # profiles created without signing in are private to their link
-        return samples + self.records.list("profile", RenterProfile, owner_sub=owner_sub)
-
-    def create_profile(self, data: ProfileInput, owner_sub: str | None = None) -> RenterProfile:
-        profile = RenterProfile.model_validate({"id": _new_id("profile"), **data.model_dump()})
-        self.records.put("profile", profile, owner_sub=owner_sub)
-        return profile
-
-    def get_profile(self, profile_id: str) -> RenterProfile:
-        profile = self._profiles.get(profile_id) or self.records.get(
-            "profile", profile_id, RenterProfile
-        )
-        if profile is None:
-            raise NotFound("profile", profile_id)
-        return profile
-
-    # --- properties --------------------------------------------------------------------
-
-    def list_properties(self) -> list[Property]:
-        return list(self._properties.values()) + self.records.list("property", Property)
-
-    def create_property(self, data: PropertyInput) -> Property:
-        prop = Property.model_validate({"id": _new_id("property"), **data.model_dump()})
-        self.records.put("property", prop)
-        return prop
-
-    def get_property(self, property_id: str) -> Property:
-        prop = self._properties.get(property_id) or self.records.get(
-            "property", property_id, Property
-        )
-        if prop is None:
-            raise NotFound("property", property_id)
-        return prop
-
     # --- engines -----------------------------------------------------------------------
 
     def _cost(self, prop: Property, profile: RenterProfile | None) -> CostBreakdown:
@@ -221,6 +182,7 @@ class EngineBackend(FixtureBackend):
         content_type: str,
         content: bytes,
         property_id: str | None,
+        owner_sub: str,
     ) -> Upload:
         # content_type is the client's claim; the store decides the type from the bytes.
         if property_id is not None:
@@ -236,8 +198,11 @@ class EngineBackend(FixtureBackend):
 
         upload = self._screen(upload, content)
         self.uploads.update(upload)
-        self._uploads[upload.id] = upload
+        self.records.put("upload", upload, owner_sub=owner_sub)
         return upload
+
+    def _forget_upload_file(self, upload_id: str) -> None:
+        self.uploads.delete(upload_id)
 
     def _screen(self, upload: Upload, content: bytes) -> Upload:
         is_image = upload.content_type in _IMAGE_TYPES
@@ -262,18 +227,12 @@ class EngineBackend(FixtureBackend):
             return upload
         return upload.model_copy(update={"evidence_quality": report.quality})
 
-    def _get_upload(self, upload_id: str) -> Upload:
-        upload = self._uploads.get(upload_id) or self.uploads.get(upload_id)
-        if upload is None:
-            raise NotFound("upload", upload_id)
-        return upload
-
     # --- reports -----------------------------------------------------------------------
 
-    def create_assessment(self, data: AssessmentRequest) -> Report:
-        profile = self.get_profile(data.profile_id)
+    def create_assessment(self, data: AssessmentRequest, owner_sub: str) -> Report:
+        profile = self._usable_profile(data.profile_id, owner_sub)
         prop = self.get_property(data.property_id)
-        uploads = [self._get_upload(upload_id) for upload_id in data.upload_ids]
+        uploads = [self._get_upload(upload_id, owner_sub) for upload_id in data.upload_ids]
 
         persona = self._by_property.get(prop.id)
         if (
@@ -281,7 +240,7 @@ class EngineBackend(FixtureBackend):
             and persona.profile.id == profile.id
             and set(data.upload_ids) <= self._fixture_upload_ids
         ):
-            return super().create_assessment(data)  # the illustrative example report
+            return super().create_assessment(data, owner_sub)  # the illustrative example
 
         cost = self._cost(prop, profile)
         facts: list[CitedFact] = [f for u in uploads for f in u.extracted_facts]
@@ -301,20 +260,8 @@ class EngineBackend(FixtureBackend):
             signals=signals,
             sections=sections,
         )
-        self.records.put("report", report)
+        self.records.put("report", report, owner_sub=owner_sub)
         return report
-
-    def get_report(self, report_id: str) -> Report:
-        report = self._reports.get(report_id) or self.records.get("report", report_id, Report)
-        if report is None:
-            raise NotFound("report", report_id)
-        return report
-
-    def delete_upload(self, upload_id: str) -> None:
-        stored = self.uploads.delete(upload_id)
-        known = self._uploads.pop(upload_id, None) is not None
-        if not (stored or known):
-            raise NotFound("upload", upload_id)
 
 
 class _UnavailableScreener:

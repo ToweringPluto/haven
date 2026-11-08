@@ -1,6 +1,6 @@
 [project]
 name = "haven"
-version = "0.1.4"
+version = "0.2.0"
 description = "Haven (Housing And Visibility Edinburgh Network): decision-support API for Edinburgh renters"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
@@ -69,6 +69,7 @@ seeds = { cmd = "python scripts/build_seeds.py", help = "Rebuild the offline see
 fetch-cached = { cmd = "python scripts/fetch_cached.py", help = "Fetch Overpass/NaPTAN once for the three demo areas (never refetches)" }
 load-db = { cmd = "python scripts/load_db.py", help = "Create/upsert the rent_stats hypertable in HAVEN_DATABASE_URL" }
 serve = { cmd = "uvicorn haven.api.app:create_app --factory --reload --port 8000", help = "Run the API with auto-reload on :8000" }
+check-gemini = { cmd = "python scripts/check_gemini.py", help = "Check the Gemini key and model; pass a photo path to screen it" }
 dev = { cmd = "python scripts/dev.py", help = "Run backend (:8000) and frontend (:5173) together; open http://localhost:5173" }
 
 [tool.poe.tasks.lint]

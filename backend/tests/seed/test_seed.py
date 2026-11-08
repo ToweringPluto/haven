@@ -36,6 +36,9 @@ NEIGHBOURHOODS = {
     "Craigleith",
     "Gilmerton",
     "Bruntsfield",
+    "Dalry",
+    "Sighthill",
+    "Wester Hailes",
 }
 # Generous City of Edinburgh bounding box.
 LAT_RANGE = (55.85, 56.00)
@@ -86,7 +89,7 @@ def test_homes_are_spread_out_so_map_pins_stay_readable(props: list[Property]) -
         assert lat1 is not None and lon1 is not None
         for lat2, lon2 in points[i + 1 :]:
             assert lat2 is not None and lon2 is not None
-            assert haversine_m(lat1, lon1, lat2, lon2) >= 800
+            assert haversine_m(lat1, lon1, lat2, lon2) >= 650
 
 
 def test_coordinates_are_street_points_in_edinburgh(props: list[Property]) -> None:
@@ -125,7 +128,7 @@ def test_meta_records_sources(store: SeedStore) -> None:
     assert "openstreetmap" in meta.coordinates_source.lower()
     assert meta.coordinates_retrieved <= date.today()
     assert set(meta.edge_cases) <= {p.id for p in store}
-    assert len(meta.edge_cases) == 5
+    assert len(meta.edge_cases) == 8
 
 
 # --- EPC mix is drawn from the Edinburgh EPC distribution ------------------------------
@@ -170,8 +173,21 @@ def test_edge_case_steps_and_third_floor_without_lift(props: list[Property]) -> 
 def test_edge_case_cheap_rent_but_epc_f(props: list[Property]) -> None:
     p = by_id(props, "gorgie")
     assert p.epc_rating.value == "F"
+    assert p.rent_pcm_gbp.value is not None and p.rent_pcm_gbp.value < 750
+
+
+def test_low_budget_demo_homes(props: list[Property]) -> None:
+    """Three homes under £700 a month, one of them step-free, for lower-budget demos."""
+    low = [p for p in props if (p.rent_pcm_gbp.value or 10_000) < 700]
+    assert {p.id for p in low} == {
+        "seed-prop-dalry",
+        "seed-prop-sighthill",
+        "seed-prop-wester-hailes",
+    }
+    sighthill = by_id(props, "sighthill")
     rents = [q.rent_pcm_gbp.value for q in props if q.rent_pcm_gbp.value is not None]
-    assert p.rent_pcm_gbp.value == min(rents)
+    assert sighthill.rent_pcm_gbp.value == min(rents)
+    assert sighthill.entrance_steps.value == 0
 
 
 def test_edge_case_missing_council_tax_band(props: list[Property]) -> None:

@@ -3,10 +3,10 @@ import { useAuth } from "../auth/AuthProvider";
 import { useAuthFetch } from "../auth/authFetch";
 import { sampleUrl } from "../auth/config";
 import { BackLink } from "../components/BackLink";
+import { useNavigation } from "../state/navigation";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { SampleLabel } from "../components/SampleLabel";
-import { SignInPrompt } from "../components/SignInPrompt";
 import { Status } from "../components/Status";
 import { useEnumLabel } from "../api/enums";
 import {
@@ -37,10 +37,12 @@ function validateImage(file: File): string | null {
 }
 
 export default function Screening() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isConfigured, isLoading, login } = useAuth();
   const label = useEnumLabel();
   const authFetch = useAuthFetch();
   const fileInput = useRef<HTMLInputElement>(null);
+  // Set when opened from a home (`#/screening/<property id>`), so "back" returns to it.
+  const { param: fromPropertyId } = useNavigation();
   const [state, setState] = useState<ScreenState>({ phase: "idle" });
 
   const showSample = async (notice?: string) => {
@@ -82,9 +84,24 @@ export default function Screening() {
     }
   };
 
+  // Every signal "insufficient_evidence" means nothing was actually assessed (no model
+  // connected, or the photo was too poor), so don't present it as a completed screening.
+  const signals = state.phase === "done" ? state.result.signals : [];
+  const assessed =
+    signals.length === 0 || signals.some((s) => s.likelihood !== "insufficient_evidence");
+  const flaggedCount = signals.filter(
+    (s) => s.likelihood === "possible" || s.likelihood === "likely",
+  ).length;
+
   return (
     <main className="screen-page shell">
-      <BackLink to="property">Back to property</BackLink>
+      {fromPropertyId ? (
+        <BackLink to="property" param={fromPropertyId}>
+          Back to property
+        </BackLink>
+      ) : (
+        <BackLink to="explore">Back to homes</BackLink>
+      )}
       <div className="screen-header">
         <div className="spark-large">
           <Icon name="spark" size={30} />
@@ -99,7 +116,7 @@ export default function Screening() {
 
       {state.phase !== "done" ? (
         <div className="upload-card" aria-busy={state.phase === "loading"}>
-          <div>
+          <div className="upload-icon">
             <Icon name="upload" size={30} />
           </div>
           {isAuthenticated ? (
@@ -126,11 +143,26 @@ export default function Screening() {
             </>
           ) : (
             <>
-              <h2>See how screening works</h2>
-              <p>Explore a pre-processed example, or sign in to screen your own photos.</p>
-              <Button onClick={() => showSample()} disabled={state.phase === "loading"}>
-                {state.phase === "loading" ? "Loading…" : "View sample result"}
-              </Button>
+              <h2>Check a property photo</h2>
+              <p>
+                {isConfigured
+                  ? "Sign in to upload your own photo, or explore a pre-processed example."
+                  : "Explore a pre-processed example of what the check finds."}
+              </p>
+              <div className="upload-actions">
+                {isConfigured && (
+                  <Button onClick={login} disabled={isLoading}>
+                    <Icon name="upload" size={18} /> Sign in to upload a photo
+                  </Button>
+                )}
+                <Button
+                  secondary={isConfigured}
+                  onClick={() => showSample()}
+                  disabled={state.phase === "loading"}
+                >
+                  {state.phase === "loading" ? "Loading…" : "View sample result"}
+                </Button>
+              </div>
             </>
           )}
           {state.phase === "idle" && state.notice && (
@@ -155,14 +187,20 @@ export default function Screening() {
               <Icon name="check" size={30} />
             </div>
             <span>
-              <b>{state.isSample ? "Sample screening" : "Screening complete"}</b>
+              <b>
+                {state.isSample
+                  ? "Sample screening"
+                  : assessed
+                    ? "Screening complete"
+                    : "This photo couldn’t be checked"}
+              </b>
               <small>
                 Photo quality:{" "}
                 {state.result.evidence_quality
                   ? label("evidence_quality", state.result.evidence_quality)
-                  : "not assessed"}{" "}
-                · {state.result.signals.length}{" "}
-                {state.result.signals.length === 1 ? "possible issue" : "possible issues"} to check
+                  : "not assessed"}
+                {assessed &&
+                  ` · ${flaggedCount} ${flaggedCount === 1 ? "possible issue" : "possible issues"} to check`}
               </small>
             </span>
             <Button secondary onClick={() => setState({ phase: "idle" })}>
@@ -195,7 +233,6 @@ export default function Screening() {
         </div>
       )}
 
-      {!isAuthenticated && <SignInPrompt message="Sign in to screen your own photos" />}
 
       <div className="disclaimer">
         <Icon name="info" />

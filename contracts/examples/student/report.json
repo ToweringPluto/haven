@@ -25,7 +25,8 @@
         "max_travel_minutes": 30
       }
     ],
-    "other_recurring_costs": []
+    "other_recurring_costs": [],
+    "preferred_areas": []
   },
   "property": {
     "id": "ill-prop-marchmont-flat",
