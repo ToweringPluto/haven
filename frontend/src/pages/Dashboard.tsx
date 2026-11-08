@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEnumLabel } from "../api/enums";
 import { api } from "../api/client";
 import { useLoad } from "../api/useLoad";
@@ -8,7 +9,7 @@ import { Icon } from "../components/Icon";
 import { PropertyCard } from "../components/PropertyCard";
 import { SignInPrompt } from "../components/SignInPrompt";
 import { ACCESS_OPTIONS, DESTINATIONS } from "../data/onboarding";
-import { formatGBP } from "../lib/format";
+import { displayTitle, formatGBP } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
 import { useShortlist } from "../state/shortlist";
@@ -16,12 +17,46 @@ import { useShortlist } from "../state/shortlist";
 export default function Dashboard() {
   const { go } = useNavigation();
   const label = useEnumLabel();
-  const { draft, saved: profile } = useRenterProfile();
-  const { saved } = useShortlist();
-  const { isConfigured, isAuthenticated, user } = useAuth();
-  // Saved comparisons are a signed-in feature; without Auth0 configured the demo shows them.
-  const needsSignIn = isConfigured && !isAuthenticated;
+  const { draft, saved: profile, deleteProfile, reset: resetProfile } = useRenterProfile();
+  const { saved, syncError, reset: resetShortlist } = useShortlist();
+  const { isConfigured, isAuthenticated, user, getAccessToken } = useAuth();
   const firstName = user?.name?.split(" ")[0];
+  const [reports, reloadReports] = useLoad(isAuthenticated ? "my-reports" : null, async () =>
+    api.myReports(await getAccessToken()),
+  );
+  const [notice, setNotice] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const removeProfile = async () => {
+    if (!window.confirm("Delete your saved renter profile? Your reports keep their own copy.")) {
+      return;
+    }
+    setBusy(true);
+    const problem = await deleteProfile();
+    setBusy(false);
+    setNotice(problem ?? "Your profile was deleted.");
+  };
+
+  const deleteEverything = async () => {
+    const ok = window.confirm(
+      "Delete everything Haven has saved for you: your profile, reports, uploaded files and " +
+        "saved homes? This can’t be undone.",
+    );
+    if (!ok) return;
+    setBusy(true);
+    const res = await api.deleteMyData(await getAccessToken());
+    setBusy(false);
+    if (res.status !== "ok") return setNotice(`Nothing was deleted: ${res.message}`);
+    resetProfile();
+    resetShortlist();
+    reloadReports();
+    const d = res.data;
+    setNotice(
+      `Deleted ${d.profiles} ${d.profiles === 1 ? "profile" : "profiles"}, ${d.reports} ` +
+        `${d.reports === 1 ? "report" : "reports"}, ${d.uploads} ` +
+        `${d.uploads === 1 ? "upload" : "uploads"}${d.saved_homes ? " and your saved homes" : ""}.`,
+    );
+  };
   const [properties] = useLoad(saved.length ? "all" : null, api.properties);
   const savedProperties =
     properties.status === "ok" ? properties.data.items.filter((p) => saved.includes(p.id)) : [];
@@ -82,9 +117,15 @@ export default function Dashboard() {
               Compare →
             </button>
           </div>
-          {needsSignIn ? (
-            <SignInPrompt message="Sign in to keep your saved homes and comparisons" />
-          ) : savedProperties.length > 0 ? (
+          {isConfigured && !isAuthenticated && (
+            <SignInPrompt message="Sign in to keep your saved homes on every device" />
+          )}
+          {syncError && (
+            <p className="screen-notice" role="alert">
+              {syncError}
+            </p>
+          )}
+          {savedProperties.length > 0 ? (
             savedProperties.map((p) => <PropertyCard key={p.id} property={p} />)
           ) : (
             <div className="empty-card">
@@ -111,8 +152,64 @@ export default function Dashboard() {
           <Button secondary onClick={() => go("onboarding")}>
             Edit preferences
           </Button>
+          {profile?.owned && (
+            <button type="button" className="text-button" onClick={removeProfile} disabled={busy}>
+              Delete my profile
+            </button>
+          )}
         </aside>
       </div>
+
+      {isAuthenticated && (
+        <div className="dashboard-grid account-grid">
+          <section>
+            <div className="section-title">
+              <h2>My reports</h2>
+            </div>
+            {reports.status === "loading" && <p>Loading your reports…</p>}
+            {reports.status === "ok" && reports.data.items.length === 0 && (
+              <p>No reports yet. Open a home and choose “Get the full report”.</p>
+            )}
+            {reports.status === "ok" && reports.data.items.length > 0 && (
+              <ul className="report-list">
+                {reports.data.items.map((r) => (
+                  <li key={r.id}>
+                    <button type="button" onClick={() => go("report", r.id)}>
+                      <b>{displayTitle(r.property_title)}</b>
+                      <small>
+                        For {r.profile_label} ·{" "}
+                        {new Date(r.created_at).toLocaleDateString("en-GB")}
+                      </small>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {reports.status !== "loading" && reports.status !== "ok" && (
+              <p className="screen-notice">{reports.message}</p>
+            )}
+          </section>
+
+          <aside className="preferences-card privacy-card">
+            <div className="feature-icon">
+              <Icon name="shield" />
+            </div>
+            <h2>Your data</h2>
+            <p>
+              Haven saves your renter profile (including any access needs), your reports, the files
+              you upload and your saved homes to your account. Only you can see them.
+            </p>
+            <Button secondary onClick={deleteEverything} disabled={busy}>
+              {busy ? "Deleting…" : "Delete all my data"}
+            </Button>
+          </aside>
+        </div>
+      )}
+      {notice && (
+        <p className="screen-notice" role="status">
+          {notice}
+        </p>
+      )}
     </main>
   );
 }

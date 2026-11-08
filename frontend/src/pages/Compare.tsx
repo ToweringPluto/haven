@@ -7,7 +7,7 @@ import { costHeadline } from "../components/CostSummary";
 import { BudgetBadge, EvidenceValue } from "../components/Evidence";
 import { LoadProblem } from "../components/LoadProblem";
 import { ProfileBar } from "../components/ProfileBar";
-import { areaImage } from "../data/images";
+import { listingImage } from "../data/images";
 import { displayTitle, factName } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
@@ -67,7 +67,7 @@ export default function Compare() {
                 </th>
                 {chosen.map((p) => (
                   <th key={p.id} scope="col">
-                    <img src={areaImage(p.area)} alt="" loading="lazy" />
+                    <img src={listingImage(p.id, 600)} alt="" loading="lazy" />
                     <span>{p.area}</span>
                     <b>{displayTitle(p.title)}</b>
                     <button type="button" className="text-button" onClick={() => go("property", p.id)}>

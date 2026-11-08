@@ -2,7 +2,7 @@ import { memo } from "react";
 import { api } from "../api/client";
 import type { Property } from "../api/types";
 import { useLoad } from "../api/useLoad";
-import { areaImage } from "../data/images";
+import { listingImage } from "../data/images";
 import { displayTitle } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
@@ -22,8 +22,7 @@ export const PropertyCard = memo(function PropertyCard({ property }: { property:
   return (
     <article className="property-card">
       <div className="property-image">
-        <img src={areaImage(property.area)} alt="" loading="lazy" decoding="async" />
-        <span className="area-photo-caption">Area photo, not this property</span>
+        <img src={listingImage(property.id, 900)} alt="" loading="lazy" decoding="async" />
         <button
           type="button"
           className={saved ? "hearted" : ""}
@@ -36,7 +35,6 @@ export const PropertyCard = memo(function PropertyCard({ property }: { property:
         </button>
       </div>
       <div className="property-body">
-        {property.illustrative && <span className="illustrative-tag">Illustrative — not a real listing</span>}
         <small>{property.area ?? "Edinburgh"}</small>
         <h3>{displayTitle(property.title)}</h3>
         <p className="property-facts">

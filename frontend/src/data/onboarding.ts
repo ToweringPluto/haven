@@ -1,4 +1,4 @@
-import type { AccessRequirements, Destination, Priority } from "../api/types";
+import type { AccessRequirements, Destination, Priority, ProfileInput } from "../api/types";
 
 // Every option here maps to something the backend can check (ProfileInput in the contract),
 // so the renter is never asked about a need Haven silently ignores.
@@ -6,6 +6,9 @@ import type { AccessRequirements, Destination, Priority } from "../api/types";
 /** Areas of the seed properties. Used client-side only, to list preferred areas first. */
 export const AREA_OPTIONS = [
   "Leith",
+  "Dalry",
+  "Sighthill",
+  "Wester Hailes",
   "Marchmont",
   "Bruntsfield",
   "Old Town",
@@ -70,24 +73,64 @@ export const DESTINATIONS: (Omit<Destination, "max_travel_minutes"> & { id: stri
 
 export const BUDGET_RANGE = { min: 500, max: 2500, step: 50 } as const;
 
-/** The illustrative personas the backend has full suitability results for. */
-export const PERSONAS = [
+export interface ExampleRenter {
+  id: string;
+  name: string;
+  blurb: string;
+  /**
+   * Set for the lower-budget demo renters, which aren't stored on the server: choosing one
+   * creates a profile from these answers. The others are the server's sample profiles.
+   */
+  preset?: ProfileInput;
+}
+
+const preset = (
+  label: string,
+  budget: number,
+  priorities: Priority[],
+  access: AccessKey[] = [],
+): ProfileInput => ({
+  label,
+  monthly_budget_gbp: budget,
+  priorities,
+  access: accessRequirements(access),
+  destinations: [],
+  other_recurring_costs: [],
+  preferred_areas: [],
+});
+
+/** Example renters for exploring without filling in the profile builder. */
+export const PERSONAS: ExampleRenter[] = [
   {
     id: "persona-wheelchair-user",
     name: "Wheelchair user",
     blurb: "Needs step-free access and a lift; travels to the Royal Infirmary.",
-    propertyId: "ill-prop-leith-flat",
   },
   {
     id: "persona-student",
     name: "Student",
     blurb: "Budget of £900; cares about cost and the journey to university.",
-    propertyId: "ill-prop-marchmont-flat",
   },
   {
     id: "persona-tight-budget",
     name: "Tight budget",
     blurb: "Budget of £1,000; total cost and heating bills come first.",
-    propertyId: "ill-prop-gorgie-flat",
   },
-] as const;
+  {
+    id: "demo-low-budget",
+    name: "Low budget",
+    blurb: "£750 a month all in; total cost and heating bills come first.",
+    preset: preset("Low budget", 750, ["total_cost", "heating_cost"]),
+  },
+  {
+    id: "demo-low-budget-step-free",
+    name: "Low budget, step-free",
+    blurb: "£800 a month; needs a step-free entrance and a bus stop within 400 m.",
+    preset: preset(
+      "Low budget, step-free",
+      800,
+      ["total_cost", "step_free_access", "transport_access"],
+      ["step_free", "short_walk"],
+    ),
+  },
+];

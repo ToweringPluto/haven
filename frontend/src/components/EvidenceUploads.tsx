@@ -1,13 +1,14 @@
-import { useRef, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { useEnumLabel } from "../api/enums";
 import { api } from "../api/client";
 import type { Upload, UploadKind } from "../api/types";
-import { likelihoodStatus } from "../data/screening";
+import { useAuth } from "../auth/AuthProvider";
+import { ACCEPTED_IMAGE_TYPES, likelihoodStatus } from "../data/screening";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { Status } from "./Status";
 
-const ACCEPT = "image/jpeg,image/png,image/webp,application/pdf";
+const ACCEPT_ANY = "image/jpeg,image/png,image/webp,application/pdf";
 const MAX_BYTES = 15 * 1024 * 1024;
 
 const KINDS: { value: UploadKind; label: string }[] = [
@@ -17,8 +18,10 @@ const KINDS: { value: UploadKind; label: string }[] = [
 ];
 
 /**
- * Photos, floor plans and documents the renter attaches to this home's report. Every upload
- * has a delete control (UI obligation 6); signals are shown with their likelihood label.
+ * Photos, floor plans and documents the renter attaches to this home's report. Photos get the
+ * AI check (possible damp, mould, entrance step). Uploads are saved to the signed-in renter's
+ * account, so they come back after a reload. Every upload has a delete control (UI obligation 6);
+ * signals are shown with their likelihood label.
  */
 export function EvidenceUploads({
   propertyId,
@@ -30,26 +33,38 @@ export function EvidenceUploads({
   onChange: (uploads: Upload[]) => void;
 }) {
   const label = useEnumLabel();
-  const input = useRef<HTMLInputElement>(null);
-  const [kind, setKind] = useState<UploadKind>("photo");
-  const [busy, setBusy] = useState(false);
+  const { isConfigured, isAuthenticated, isLoading, login, getAccessToken } = useAuth();
+  const photoInput = useRef<HTMLInputElement>(null);
+  const otherInput = useRef<HTMLInputElement>(null);
+  const [otherKind, setOtherKind] = useState<UploadKind>("document");
+  const [busy, setBusy] = useState<UploadKind | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  // Previews of photos chosen in this visit (the server doesn't send files back).
+  const [previews, setPreviews] = useState<Record<string, string>>({});
+  const previewUrls = useRef<string[]>([]);
 
-  const add = async (event: ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => () => previewUrls.current.forEach((url) => URL.revokeObjectURL(url)), []);
+
+  const add = async (kind: UploadKind, event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
     if (file.size > MAX_BYTES) return setNotice("That file is over 15 MB. Choose a smaller one.");
-    setBusy(true);
+    setBusy(kind);
     setNotice(null);
-    const res = await api.uploadFile(kind, file, propertyId);
-    setBusy(false);
-    if (res.status === "ok") onChange([...uploads, res.data]);
-    else setNotice(res.message);
+    const res = await api.uploadFile(kind, file, propertyId, await getAccessToken());
+    setBusy(null);
+    if (res.status !== "ok") return setNotice(res.message);
+    if (file.type.startsWith("image/")) {
+      const url = URL.createObjectURL(file);
+      previewUrls.current.push(url);
+      setPreviews((p) => ({ ...p, [res.data.id]: url }));
+    }
+    onChange([...uploads, res.data]);
   };
 
   const remove = async (id: string) => {
-    const res = await api.deleteUpload(id);
+    const res = await api.deleteUpload(id, await getAccessToken());
     if (res.status === "ok" || res.status === "not_found") {
       onChange(uploads.filter((u) => u.id !== id));
     } else setNotice(res.message);
@@ -57,37 +72,79 @@ export function EvidenceUploads({
 
   return (
     <section className="assessment-card evidence-uploads">
-      <span className="section-kicker">Your evidence</span>
-      <h2>Add photos or documents to your report</h2>
-      <p>
-        Photos are checked for possible damp, mould or a step at the entrance using Google’s Gemini
-        AI service. Documents are read for the rent, council tax band and EPC rating, and compared
-        with the listing. Files are stored with location data removed; delete them at any time.
-      </p>
-      <div className="evidence-controls">
-        <label>
-          <span>Type</span>
-          <select value={kind} onChange={(e) => setKind(e.target.value as UploadKind)}>
-            {KINDS.map((k) => (
-              <option key={k.value} value={k.value}>
-                {k.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <input ref={input} type="file" accept={ACCEPT} hidden onChange={add} />
-        <Button secondary onClick={() => input.current?.click()} disabled={busy}>
-          <Icon name="spark" size={18} />
-          {busy ? "Checking…" : "Choose file"}
-        </Button>
+      <div className="evidence-head">
+        <div className="feature-icon">
+          <Icon name="spark" />
+        </div>
+        <div>
+          <span className="section-kicker">AI photo check</span>
+          <h2>Look closer before you view</h2>
+        </div>
       </div>
+      <p>
+        Upload a photo from the listing or your viewing. Google’s Gemini AI looks for possible damp,
+        mould or a step at the entrance: things worth asking about, never a diagnosis. You can also
+        add documents (we read the rent, council tax band and EPC rating and compare them with the
+        listing). Files are stored with location data removed; delete them at any time.
+      </p>
+
+      {!isAuthenticated ? (
+        <div className="evidence-signin">
+          <Icon name="user" size={18} />
+          {isConfigured ? (
+            <>
+              <span>Sign in to upload photos. They’re saved to your account and added to your report.</span>
+              <Button onClick={login} disabled={isLoading}>
+                <Icon name="upload" size={18} /> Sign in to upload a photo
+              </Button>
+            </>
+          ) : (
+            <span>Uploading needs sign-in, which isn’t set up on this copy of Haven.</span>
+          )}
+        </div>
+      ) : (
+        <div className="evidence-controls">
+          <input
+            ref={photoInput}
+            type="file"
+            accept={ACCEPTED_IMAGE_TYPES.join(",")}
+            hidden
+            onChange={(e) => add("photo", e)}
+          />
+          <Button onClick={() => photoInput.current?.click()} disabled={busy !== null}>
+            <Icon name="upload" size={18} />
+            {busy === "photo" ? "Checking photo…" : "Upload a photo for the AI check"}
+          </Button>
+          <span className="evidence-or">or add</span>
+          <label>
+            <span className="visually-hidden">File type</span>
+            <select value={otherKind} onChange={(e) => setOtherKind(e.target.value as UploadKind)}>
+              {KINDS.filter((k) => k.value !== "photo").map((k) => (
+                <option key={k.value} value={k.value}>
+                  {k.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <input
+            ref={otherInput}
+            type="file"
+            accept={ACCEPT_ANY}
+            hidden
+            onChange={(e) => add(otherKind, e)}
+          />
+          <Button secondary onClick={() => otherInput.current?.click()} disabled={busy !== null}>
+            {busy && busy !== "photo" ? "Reading…" : "Choose file"}
+          </Button>
+        </div>
+      )}
       {notice && (
         <p className="screen-notice" role="alert">
           {notice}
         </p>
       )}
       {uploads.length > 0 && (
-        <ul className="evidence-list">
+        <ul className="evidence-list" aria-live="polite">
           {uploads.map((u) => {
             const flagged = u.signals.filter(
               (s) => s.likelihood === "possible" || s.likelihood === "likely",
@@ -95,6 +152,7 @@ export function EvidenceUploads({
             const facts = u.extracted_facts.filter((f) => f.evidence.value !== null);
             return (
               <li key={u.id}>
+                {previews[u.id] && <img className="evidence-thumb" src={previews[u.id]} alt="" />}
                 <div>
                   <b>{u.filename}</b>
                   <small>

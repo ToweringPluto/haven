@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../api/client";
 import type { Evidence, Property, Upload } from "../api/types";
 import { useLoad } from "../api/useLoad";
@@ -11,8 +11,8 @@ import { FindingsList } from "../components/FindingsList";
 import { Icon } from "../components/Icon";
 import { LoadProblem } from "../components/LoadProblem";
 import { ProfileBar } from "../components/ProfileBar";
-import { areaImage, IMAGES } from "../data/images";
-import { PERSONAS } from "../data/onboarding";
+import { useAuth } from "../auth/AuthProvider";
+import { listingImage } from "../data/images";
 import { displayTitle, factName } from "../lib/format";
 import { useNavigation } from "../state/navigation";
 import { useRenterProfile } from "../state/renterProfile";
@@ -33,15 +33,11 @@ const FACTS = [
   "main_fuel",
 ] as const satisfies readonly (keyof Property)[];
 
-const PAIRS_HINT =
-  "Requirement checks currently work for the example renters with their example homes: " +
-  PERSONAS.map((p) => `${p.name} → ${p.propertyId}`).join(", ") +
-  ".";
-
 export default function PropertyDetail() {
   const { go, param: propertyId } = useNavigation();
   const { saved: profile, draft } = useRenterProfile();
   const { isSaved, toggleSaved, addToCompare } = useShortlist();
+  const { isConfigured, isAuthenticated, login, getAccessToken } = useAuth();
   const profileId = profile?.id ?? null;
   const id = propertyId ?? "";
 
@@ -53,6 +49,20 @@ export default function PropertyDetail() {
   const [reportError, setReportError] = useState<string | null>(null);
   const [creatingReport, setCreatingReport] = useState(false);
   const [uploads, setUploads] = useState<Upload[]>([]);
+
+  // Signed in: show the files the renter already added to this home (they're on the account).
+  useEffect(() => {
+    setUploads([]);
+    if (!isAuthenticated || !propertyId) return;
+    let cancelled = false;
+    void (async () => {
+      const res = await api.myUploads(propertyId, await getAccessToken());
+      if (!cancelled && res.status === "ok") setUploads(res.data.items);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [isAuthenticated, propertyId, getAccessToken]);
 
   if (!propertyId) {
     return (
@@ -86,22 +96,18 @@ export default function PropertyDetail() {
       profileId,
       p.id,
       uploads.filter((u) => u.property_id === p.id).map((u) => u.id),
+      await getAccessToken(),
     );
     setCreatingReport(false);
     if (res.status === "ok") go("report", res.data.id);
-    else setReportError(res.status === "unavailable" ? `${res.message} ${PAIRS_HINT}` : res.message);
+    else setReportError(res.message);
   };
 
   return (
     <main className="detail-page shell">
       <BackLink to="explore">Back to homes</BackLink>
-      <div className="detail-gallery">
-        <img src={areaImage(p.area)} alt="" fetchPriority="high" />
-        <img src={IMAGES.street} alt="" decoding="async" />
-        <div className="gallery-placeholder">
-          <Icon name="info" />
-          <span>Area photos for illustration. This listing has no photos.</span>
-        </div>
+      <div className="detail-gallery single">
+        <img src={listingImage(p.id, 1400)} alt="" fetchPriority="high" />
       </div>
 
       <ProfileBar />
@@ -110,9 +116,6 @@ export default function PropertyDetail() {
         <div className="detail-main">
           <div className="detail-heading">
             <div>
-              {p.illustrative && (
-                <span className="illustrative-tag">Illustrative — not a real listing</span>
-              )}
               <span>{p.area ?? "Edinburgh"}</span>
               <h1>{displayTitle(p.title)}</h1>
             </div>
@@ -164,7 +167,7 @@ export default function PropertyDetail() {
                 <p>No requirement checks apply to this profile.</p>
               ))}
             {profileId && suitability.status !== "ok" && suitability.status !== "loading" && (
-              <LoadProblem result={suitability} unavailableHint={PAIRS_HINT} />
+              <LoadProblem result={suitability} />
             )}
           </section>
 
@@ -174,22 +177,6 @@ export default function PropertyDetail() {
             onChange={setUploads}
           />
 
-          <section className="screening-teaser">
-            <div className="feature-icon">
-              <Icon name="spark" />
-            </div>
-            <div>
-              <span className="section-kicker">AI property screening</span>
-              <h2>Look closer before you view</h2>
-              <p>
-                Screen a listing photo for possible issues worth asking about, such as entrance
-                steps or signs of damp.
-              </p>
-            </div>
-            <Button secondary onClick={() => go("screening")}>
-              Start screening <Icon name="arrow" />
-            </Button>
-          </section>
         </div>
 
         <aside className="sticky-card">
@@ -207,10 +194,17 @@ export default function PropertyDetail() {
           >
             Add to comparison
           </Button>
-          <Button secondary onClick={createReport} disabled={!profileId || creatingReport}>
-            {creatingReport ? "Preparing report…" : "Get the full report"}
-          </Button>
+          {isAuthenticated || !isConfigured ? (
+            <Button secondary onClick={createReport} disabled={!profileId || creatingReport}>
+              {creatingReport ? "Preparing report…" : "Get the full report"}
+            </Button>
+          ) : (
+            <Button secondary onClick={login}>
+              Sign in for the full report
+            </Button>
+          )}
           {!profileId && <small>Reports need a renter profile.</small>}
+          {isAuthenticated && <small>Reports are saved to your account.</small>}
           {profileId && uploads.some((u) => u.property_id === p.id) && (
             <small>Your attached files will be included.</small>
           )}
