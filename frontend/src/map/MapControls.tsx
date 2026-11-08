@@ -3,12 +3,22 @@ import { Icon } from "../components/Icon";
 import { ProfileBar } from "../components/ProfileBar";
 import { BUDGET_RANGE } from "../data/onboarding";
 import { formatGBP } from "../lib/format";
+import { MUST_MEET, type MapFilters } from "./filters";
 import { STATE_COPY, type Lens, type LensId, type LensState } from "./lenses";
 
 export type PriceMode = "rent" | "total";
 
 interface MapControlsProps {
   count: number;
+  /** Homes that match the search but are hidden by the filters. */
+  hiddenCount: number;
+  filters: MapFilters;
+  onFilters: (f: MapFilters) => void;
+  areaOptions: string[];
+  hasProfile: boolean;
+  /** True while the filters are exactly what the renter's profile asks for. */
+  matchesProfile: boolean;
+  onResetFilters: () => void;
   query: string;
   onQuery: (q: string) => void;
   priceMode: PriceMode;
@@ -29,7 +39,9 @@ const LEGEND: LensState[] = ["meets", "concern", "unknown", "not_checked", "need
 
 /** The floating control card: whose needs, which price, which single indicator to colour by. */
 export function MapControls(props: MapControlsProps) {
-  const { lens, tally, priceMode, budget } = props;
+  const { lens, tally, priceMode, budget, filters, onFilters } = props;
+  const toggle = <T,>(list: T[], item: T) =>
+    list.includes(item) ? list.filter((x) => x !== item) : [...list, item];
   const [open, setOpen] = useState(true);
 
   return (
@@ -40,6 +52,9 @@ export function MapControls(props: MapControlsProps) {
           <h1>
             {props.count} {props.count === 1 ? "home" : "homes"} on the map
           </h1>
+          {props.hiddenCount > 0 && (
+            <small className="map-hidden-count">{props.hiddenCount} hidden by your filters</small>
+          )}
         </div>
         <button
           type="button"
@@ -68,6 +83,93 @@ export function MapControls(props: MapControlsProps) {
             onChange={(e) => props.onQuery(e.target.value)}
           />
         </div>
+
+        <fieldset className="map-filters">
+          <legend className="section-kicker">Show only</legend>
+          {props.hasProfile && (
+            <p className="map-filters-note">
+              {props.matchesProfile ? (
+                <>
+                  <Icon name="check" size={14} /> Set from your renter profile.
+                </>
+              ) : (
+                <button type="button" className="text-button" onClick={props.onResetFilters}>
+                  Match my profile again
+                </button>
+              )}
+            </p>
+          )}
+
+          <label className="filter-check">
+            <input
+              type="checkbox"
+              checked={filters.withinBudget}
+              onChange={() => onFilters({ ...filters, withinBudget: !filters.withinBudget })}
+            />
+            Within budget <small>(estimated monthly total)</small>
+          </label>
+          {(filters.withinBudget || lens.id === "budget") && (
+            <label className="budget-horizon">
+              <span>
+                Budget <b>{formatGBP(budget)}</b> a month
+              </span>
+              <input
+                type="range"
+                min={BUDGET_RANGE.min}
+                max={BUDGET_RANGE.max}
+                step={BUDGET_RANGE.step}
+                value={budget}
+                onChange={(e) => props.onBudget(Number(e.target.value))}
+                style={{ ["--fill" as string]: `${((budget - BUDGET_RANGE.min) / (BUDGET_RANGE.max - BUDGET_RANGE.min)) * 100}%` }}
+              />
+            </label>
+          )}
+
+          {MUST_MEET.map((m) => (
+            <label key={m.id} className="filter-check">
+              <input
+                type="checkbox"
+                checked={filters.mustMeet.includes(m.id)}
+                disabled={!props.hasProfile}
+                onChange={() => onFilters({ ...filters, mustMeet: toggle(filters.mustMeet, m.id) })}
+              />
+              {m.label}
+            </label>
+          ))}
+          {!props.hasProfile && (
+            <small className="map-filters-hint">Access and travel filters need a renter profile.</small>
+          )}
+
+          <div className="area-chips" role="group" aria-label="Areas">
+            <button
+              type="button"
+              className={filters.areas.length === 0 ? "is-on" : ""}
+              aria-pressed={filters.areas.length === 0}
+              onClick={() => onFilters({ ...filters, areas: [] })}
+            >
+              All areas
+            </button>
+            {props.areaOptions.map((a) => (
+              <button
+                key={a}
+                type="button"
+                className={filters.areas.includes(a) ? "is-on" : ""}
+                aria-pressed={filters.areas.includes(a)}
+                onClick={() => onFilters({ ...filters, areas: toggle(filters.areas, a) })}
+              >
+                {a}
+              </button>
+            ))}
+          </div>
+          <small className="map-filters-hint">
+            Homes Haven isn’t sure about stay on the map; only clear concerns are hidden.
+          </small>
+          {props.count === 0 && props.hiddenCount > 0 && (
+            <p className="map-filters-empty" role="status">
+              No homes match all of these. Try turning a filter off.
+            </p>
+          )}
+        </fieldset>
 
         <fieldset className="segmented">
           <legend className="section-kicker">Price on the pins</legend>
@@ -98,23 +200,6 @@ export function MapControls(props: MapControlsProps) {
               : "From Haven’s requirement check for the selected renter. One indicator at a time: there is no overall score."}
           </p>
         </fieldset>
-
-        {lens.id === "budget" && (
-          <label className="budget-horizon">
-            <span>
-              Budget <b>{formatGBP(budget)}</b> a month
-            </span>
-            <input
-              type="range"
-              min={BUDGET_RANGE.min}
-              max={BUDGET_RANGE.max}
-              step={BUDGET_RANGE.step}
-              value={budget}
-              onChange={(e) => props.onBudget(Number(e.target.value))}
-              style={{ ["--fill" as string]: `${((budget - BUDGET_RANGE.min) / (BUDGET_RANGE.max - BUDGET_RANGE.min)) * 100}%` }}
-            />
-          </label>
-        )}
 
         <ul className="map-legend" aria-label="Legend">
           {LEGEND.filter((s) => tally[s]).map((s) => (

@@ -1294,7 +1294,7 @@ footer .logo {
   align-items: center;
   gap: 10px;
 }
-.upload-card > div {
+.upload-card > .upload-icon {
   color: var(--teal);
   width: 55px;
   height: 55px;
@@ -4276,4 +4276,14 @@ footer .logo > span:last-child {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+}
+
+/* Long button labels wrap inside narrow cards (e.g. the map drawer) instead of overflowing. */
+.evidence-uploads .button,
+.upload-actions .button {
+  max-width: 100%;
+  text-align: center;
+}
+.evidence-list li > .button {
+  flex: none;
 }

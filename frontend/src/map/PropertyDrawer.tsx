@@ -137,7 +137,7 @@ export function PropertyDrawer({ property: p, home, uploads, onUploadsChange, on
             <b>Screen a listing photo</b>
             <p>Look for possible issues worth asking about, such as entrance steps or signs of damp.</p>
           </div>
-          <Button secondary onClick={() => go("screening")}>
+          <Button secondary onClick={() => go("screening", p.id)}>
             Start <Icon name="arrow" size={15} />
           </Button>
         </section>
