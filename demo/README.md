@@ -37,5 +37,3 @@ This folder explains how Haven fits each HackTheBurgh 2026 challenge track we're
 - **"Insufficient evidence" is a valid answer.** Every check and every model output can say it doesn't know.
 - **Possibilities, not diagnoses.** Haven says "possible mould visible, inspect before signing", never "this flat has mould".
 - **No hidden score.** Haven never collapses a home into one number. It shows the evidence and the uncertainty.
-
-> All 48 properties are fictional seed data, clearly labelled as illustrative. Reference data (council tax, Ofgem price cap, EPC energy use, rent statistics, OpenStreetMap) is real and attributed. See [docs/DATA_SOURCES.md](../docs/DATA_SOURCES.md).
