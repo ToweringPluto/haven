@@ -103,10 +103,14 @@ def test_photo_upload_is_screened(client: TestClient) -> None:
     assert all(s["confidence"] is None for s in body["signals"])
 
 
-def test_floor_plan_gets_quality_only(client: TestClient) -> None:
-    body = upload(client, jpeg(), "plan.jpg", "image/jpeg", "floor_plan")
-    assert body["evidence_quality"] == "good"
-    assert body["signals"] == []
+def test_floor_plan_uploads_are_rejected(client: TestClient) -> None:
+    # No floor plan data or model: the kind was removed in contract 0.3.0.
+    response = client.post(
+        "/v1/uploads",
+        files={"file": ("plan.jpg", jpeg(), "image/jpeg")},
+        data={"kind": "floor_plan"},
+    )
+    assert response.status_code == 422
 
 
 def test_document_upload_has_extracted_facts(client: TestClient) -> None:

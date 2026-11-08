@@ -13,6 +13,15 @@
     --line: #cbbfae;
     --terracotta-ink: #96503a; /* terracotta darkened for text (4.5:1 on cream) */
     --sage-ink: #426b67; /* sage darkened for text (4.5:1 on cream) */
+    /* Roles the themes below redefine (see state/accessibility.tsx) */
+    --card: #ffffff; /* raised cards and inputs */
+    --teal-ink: #006b6f; /* teal used for text, icons and outlines */
+    --ink-bg: #2c2a2a; /* dark chips, buttons and bands that carry light text */
+    --on-ink: #f2e6d2; /* text on --ink-bg, teal and photo overlays */
+    --shadow: #2c2a2a; /* shadows and photo overlays: dark in every theme */
+    --terracotta-strong: #96503a; /* terracotta behind white text: dark in every theme */
+    --ink-fixed: #1c1a19; /* dark text on mid-tone accents (terracotta, sage) in every theme */
+    --text-scale: 1;
     color: var(--charcoal);
     background: var(--cream);
     font-family: "DM Sans", sans-serif;
@@ -72,8 +81,8 @@
   gap: 9px;
   border: 0;
   background: none;
-  color: var(--teal);
-  font-size: 25px;
+  color: var(--teal-ink);
+  font-size: calc(25px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: -0.8px;
 }
@@ -100,12 +109,12 @@
   border: 0;
   background: none;
   color: var(--charcoal);
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   padding: 12px 0;
 }
 .nav-links > button:hover,
 .nav-links > button.active {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .nav-links > button.active {
   font-weight: 700;
@@ -127,7 +136,7 @@
   border-radius: 9px;
   padding: 0 20px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -136,12 +145,12 @@
   transition: 0.2s ease;
 }
 .button:hover {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   transform: translateY(-1px);
 }
 .button-secondary {
   background: transparent;
-  color: var(--teal);
+  color: var(--teal-ink);
   box-shadow: none;
 }
 .button-secondary:hover {
@@ -163,7 +172,7 @@
 .section-kicker {
   color: var(--charcoal);
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   letter-spacing: 1.7px;
   font-weight: 700;
 }
@@ -178,7 +187,7 @@
 .hero h1 {
   font-family: "DM Serif Display", serif;
   color: var(--charcoal);
-  font-size: clamp(52px, 5.2vw, 76px);
+  font-size: calc(clamp(52px, 5.2vw, 76px) * var(--text-scale, 1));
   line-height: 0.98;
   letter-spacing: -2px;
   margin: 25px 0;
@@ -190,7 +199,7 @@
 }
 .hero-copy > p {
   color: var(--charcoal);
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
   line-height: 1.7;
   max-width: 560px;
 }
@@ -203,7 +212,7 @@
 .hero-actions .button {
   min-height: 54px;
   padding-inline: 26px;
-  font-size: 15px;
+  font-size: calc(15px * var(--text-scale, 1));
 }
 .play-link {
   border: 0;
@@ -221,8 +230,8 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 10px;
-  color: var(--teal);
+  font-size: calc(10px * var(--text-scale, 1));
+  color: var(--teal-ink);
 }
 .trust-row {
   margin-top: 40px;
@@ -242,11 +251,11 @@
   height: 32px;
   border: 2px solid var(--cream);
   background: var(--terracotta);
-  color: var(--charcoal);
+  color: var(--ink-fixed);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
   font-weight: 700;
   margin-left: -8px;
 }
@@ -259,7 +268,7 @@
 .trust-row > div:last-child {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .trust-row small {
   color: var(--charcoal);
@@ -274,16 +283,16 @@
   height: 100%;
   object-fit: cover;
   border-radius: 180px 180px 24px 24px;
-  box-shadow: 0 22px 50px color-mix(in srgb, var(--charcoal) 14%, transparent);
+  box-shadow: 0 22px 50px color-mix(in srgb, var(--shadow) 14%, transparent);
 }
 .match-card {
   position: absolute;
   left: -46px;
   bottom: 40px;
-  background: white;
+  background: var(--card);
   padding: 16px 20px;
   border-radius: 14px;
-  box-shadow: 0 12px 38px color-mix(in srgb, var(--charcoal) 15%, transparent);
+  box-shadow: 0 12px 38px color-mix(in srgb, var(--shadow) 15%, transparent);
   display: flex;
   align-items: center;
   gap: 14px;
@@ -301,17 +310,17 @@
   color: var(--charcoal);
 }
 .score-ring b {
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
 }
 .score-ring span {
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .match-card > div:last-child {
   display: flex;
   flex-direction: column;
 }
 .match-card small {
-  font-size: 8px;
+  font-size: calc(8px * var(--text-scale, 1));
   color: var(--charcoal);
   letter-spacing: 1px;
 }
@@ -319,22 +328,22 @@
   margin: 4px 0 1px;
 }
 .match-card span {
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   color: var(--charcoal);
 }
 .floating-pill {
   position: absolute;
   top: 60px;
   right: -25px;
-  background: white;
+  background: var(--card);
   border-radius: 99px;
   padding: 11px 16px;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 8px 25px color-mix(in srgb, var(--charcoal) 13%, transparent);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--shadow) 13%, transparent);
   color: var(--charcoal);
 }
 .intro {
@@ -352,7 +361,7 @@
 .mission h2,
 .about-story h2 {
   font-family: "DM Serif Display", serif;
-  font-size: 42px;
+  font-size: calc(42px * var(--text-scale, 1));
   line-height: 1.13;
   color: var(--charcoal);
   font-weight: 400;
@@ -368,11 +377,11 @@
   gap: 20px;
 }
 .feature-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 7px 22px color-mix(in srgb, var(--charcoal) 5%, transparent);
+  box-shadow: 0 7px 22px color-mix(in srgb, var(--shadow) 5%, transparent);
 }
 .feature-icon {
   width: 46px;
@@ -380,7 +389,7 @@
   border-radius: 12px;
   display: grid;
   place-items: center;
-  color: var(--teal);
+  color: var(--teal-ink);
   background: var(--paper);
 }
 .feature-card:nth-child(2) .feature-icon {
@@ -393,18 +402,18 @@
 }
 .feature-card h3 {
   margin: 24px 0 10px;
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
 }
 .feature-card p {
   color: var(--charcoal);
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   line-height: 1.65;
   min-height: 70px;
 }
 .feature-card > span {
-  color: var(--teal);
+  color: var(--teal-ink);
   font-weight: 700;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   display: flex;
   align-items: center;
   gap: 6px;
@@ -446,7 +455,7 @@
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  background: white;
+  background: var(--card);
   color: var(--charcoal);
   display: grid;
   place-items: center;
@@ -456,7 +465,7 @@
   margin: 22px 0 10px;
 }
 .step p {
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   color: var(--charcoal);
   line-height: 1.6;
   max-width: 270px;
@@ -479,7 +488,7 @@
 .mission p {
   color: var(--charcoal);
   line-height: 1.75;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
 }
 .mission button {
   margin-top: 25px;
@@ -488,13 +497,13 @@
   gap: 8px;
   border: 0;
   background: none;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-weight: 700;
   padding: 0 0 7px;
   border-bottom: 1px solid var(--teal);
 }
 footer {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   padding: 65px 0 25px;
 }
@@ -507,7 +516,7 @@ footer .logo {
   gap: 50px;
 }
 .footer-inner p {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   line-height: 1.7;
   color: var(--charcoal);
   margin-top: 18px;
@@ -519,7 +528,7 @@ footer .logo {
   gap: 12px;
 }
 .footer-inner > div > b {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   margin-bottom: 6px;
 }
 .footer-inner > div > button:not(.button) {
@@ -527,11 +536,11 @@ footer .logo {
   background: none;
   border: 0;
   padding: 0;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .footer-cta .button {
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   margin-top: 8px;
 }
 .footer-bottom {
@@ -539,7 +548,7 @@ footer .logo {
   padding-top: 22px;
   border-top: 1px solid var(--charcoal);
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   display: flex;
   justify-content: space-between;
 }
@@ -557,7 +566,7 @@ footer .logo {
   grid-template-columns: 1fr auto;
   gap: 12px;
   align-items: center;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   color: var(--charcoal);
 }
 .progress-top button {
@@ -576,20 +585,20 @@ footer .logo {
 .progress-track i {
   display: block;
   height: 100%;
-  background: var(--charcoal);
+  background: var(--ink-bg);
   transition: width 0.3s;
 }
 .onboarding-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 50px 60px;
   margin-top: 28px;
-  box-shadow: 0 15px 45px color-mix(in srgb, var(--charcoal) 7%, transparent);
+  box-shadow: 0 15px 45px color-mix(in srgb, var(--shadow) 7%, transparent);
 }
 .onboarding-card h1 {
   font-family: "DM Serif Display", serif;
-  font-size: 40px;
+  font-size: calc(40px * var(--text-scale, 1));
   font-weight: 400;
   margin: 12px 0;
 }
@@ -600,18 +609,18 @@ footer .logo {
   margin-top: 38px;
 }
 .budget-box label {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   font-weight: 700;
 }
 .budget-value {
   font-family: "DM Serif Display", serif;
-  font-size: 38px;
-  color: var(--teal);
+  font-size: calc(38px * var(--text-scale, 1));
+  color: var(--teal-ink);
   margin: 12px 0 25px;
 }
 .budget-value span {
   font-family: "DM Sans";
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   color: var(--charcoal);
 }
 .budget-box input {
@@ -622,7 +631,7 @@ footer .logo {
   display: flex;
   justify-content: space-between;
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .cost-note {
   margin-top: 30px;
@@ -632,7 +641,7 @@ footer .logo {
   display: flex;
   gap: 10px;
   color: var(--charcoal);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .choice-grid {
   display: grid;
@@ -665,7 +674,7 @@ footer .logo {
   color: var(--charcoal);
 }
 .choice-grid button.selected > span {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   border-color: var(--charcoal);
 }
@@ -704,7 +713,7 @@ footer .logo {
 .screen-header h1,
 .detail-heading h1 {
   font-family: "DM Serif Display", serif;
-  font-size: 43px;
+  font-size: calc(43px * var(--text-scale, 1));
   font-weight: 400;
   color: var(--charcoal);
   margin: 9px 0;
@@ -717,13 +726,13 @@ footer .logo {
 .profile-chip,
 .filter-button {
   border: 1px solid var(--line);
-  background: white;
+  background: var(--card);
   border-radius: 9px;
   padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   font-weight: 600;
 }
 .search-row {
@@ -735,7 +744,7 @@ footer .logo {
   flex: 1;
   display: flex;
   align-items: center;
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding-left: 16px;
@@ -758,14 +767,14 @@ footer .logo {
   font-weight: 700;
 }
 .filter-button span {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .view-toggle {
   display: flex;
@@ -781,10 +790,10 @@ footer .logo {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .view-toggle button.active {
-  background: white;
+  background: var(--card);
   box-shadow: 0 2px 7px var(--line);
 }
 .active-filters {
@@ -798,13 +807,13 @@ footer .logo {
   color: var(--charcoal);
   border-radius: 99px;
   padding: 7px 11px;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .active-filters button {
   border: 0;
   background: none;
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   text-decoration: underline;
 }
 .property-grid {
@@ -813,11 +822,11 @@ footer .logo {
   gap: 20px;
 }
 .property-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 5px 18px color-mix(in srgb, var(--charcoal) 5%, transparent);
+  box-shadow: 0 5px 18px color-mix(in srgb, var(--shadow) 5%, transparent);
 }
 .property-image {
   height: 220px;
@@ -836,7 +845,7 @@ footer .logo {
   height: 36px;
   border: 0;
   border-radius: 50%;
-  background: white;
+  background: var(--card);
   display: grid;
   place-items: center;
   color: var(--charcoal);
@@ -845,11 +854,11 @@ footer .logo {
   position: absolute;
   left: 14px;
   bottom: 12px;
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   padding: 7px 10px;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
 }
 .match-badge.medium {
@@ -863,15 +872,15 @@ footer .logo {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .property-body h3 {
   margin: 7px 0;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
 }
 .property-body > p {
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .property-cost {
   display: grid;
@@ -893,7 +902,7 @@ footer .logo {
 }
 .property-cost span {
   color: var(--charcoal);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   margin-top: 2px;
 }
 .property-status {
@@ -904,8 +913,8 @@ footer .logo {
 .property-status button {
   border: 0;
   background: none;
-  color: var(--teal);
-  font-size: 11px;
+  color: var(--teal-ink);
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -914,7 +923,7 @@ footer .logo {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   font-weight: 700;
   white-space: nowrap;
 }
@@ -924,7 +933,7 @@ footer .logo {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .status-good {
   color: var(--charcoal);
@@ -948,7 +957,7 @@ footer .logo {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   color: var(--charcoal);
   margin-top: 16px;
   padding-top: 14px;
@@ -964,18 +973,18 @@ footer .logo {
   transform: translateX(-50%);
   width: min(750px, calc(100% - 30px));
   z-index: 20;
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   border-radius: 14px;
   padding: 12px 15px 12px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 15px 40px color-mix(in srgb, var(--charcoal) 67%, transparent);
-  font-size: 13px;
+  box-shadow: 0 15px 40px color-mix(in srgb, var(--shadow) 67%, transparent);
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .compare-bar > span b {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   width: 25px;
   height: 25px;
   display: inline-grid;
@@ -989,21 +998,21 @@ footer .logo {
   gap: 15px;
 }
 .compare-bar > div > button:first-child {
-  color: var(--cream);
+  color: var(--on-ink);
   background: none;
   border: 0;
 }
 .compare-bar .button {
   min-height: 42px;
-  background: white;
-  color: var(--teal);
+  background: var(--card);
+  color: var(--teal-ink);
 }
 
 .back-link {
   border: 0;
   background: none;
   color: var(--charcoal);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   padding: 0;
   margin-bottom: 25px;
 }
@@ -1032,7 +1041,7 @@ footer .logo {
   justify-content: center;
   gap: 8px;
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .detail-layout {
   display: grid;
@@ -1050,17 +1059,17 @@ footer .logo {
 .detail-heading > div:first-child > span {
   color: var(--charcoal);
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: 1px;
 }
 .detail-heading h1 {
-  font-size: 38px;
+  font-size: calc(38px * var(--text-scale, 1));
   margin: 7px 0;
 }
 .detail-heading p {
   color: var(--charcoal);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .detail-price {
   display: flex;
@@ -1069,16 +1078,16 @@ footer .logo {
 }
 .detail-price b {
   font-family: "DM Serif Display";
-  font-size: 30px;
-  color: var(--teal);
+  font-size: calc(30px * var(--text-scale, 1));
+  color: var(--teal-ink);
 }
 .detail-price span {
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .assessment-card,
 .cost-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 15px;
   margin-top: 25px;
@@ -1102,24 +1111,24 @@ footer .logo {
   display: grid;
   place-items: center;
   color: var(--charcoal);
-  font-size: 27px;
+  font-size: calc(27px * var(--text-scale, 1));
   font-weight: 700;
   grid-template-columns: auto auto;
 }
 .big-score span {
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .assessment-head h2,
 .cost-card h2,
 .screening-teaser h2 {
   font-family: "DM Serif Display";
-  font-size: 26px;
+  font-size: calc(26px * var(--text-scale, 1));
   font-weight: 400;
   margin: 6px 0;
 }
 .assessment-head p {
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .assessment-grid {
   display: grid;
@@ -1143,11 +1152,11 @@ footer .logo {
   gap: 5px;
 }
 .assessment-item > div > b {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .assessment-item small {
   color: var(--charcoal);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .cost-card .section-title {
   display: flex;
@@ -1156,15 +1165,15 @@ footer .logo {
 }
 .section-title > b {
   font-family: "DM Serif Display";
-  font-size: 26px;
-  color: var(--teal);
+  font-size: calc(26px * var(--text-scale, 1));
+  color: var(--teal-ink);
   display: flex;
   flex-direction: column;
   text-align: right;
 }
 .section-title > b small {
   font-family: "DM Sans";
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
   font-weight: 400;
   color: var(--charcoal);
 }
@@ -1176,7 +1185,7 @@ footer .logo {
   justify-content: space-between;
   padding: 11px 0;
   border-top: 1px solid var(--paper);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .cost-lines span small {
   color: var(--charcoal);
@@ -1192,7 +1201,7 @@ footer .logo {
   background: var(--paper);
   padding: 12px;
   border-radius: 7px;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   margin-top: 15px;
 }
 .screening-teaser {
@@ -1212,25 +1221,25 @@ footer .logo {
 }
 .screening-teaser p {
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   line-height: 1.5;
 }
 .sticky-card {
   align-self: start;
   position: sticky;
   top: 105px;
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 8px 25px color-mix(in srgb, var(--charcoal) 6%, transparent);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--shadow) 6%, transparent);
 }
 .sticky-card > span {
   font-weight: 700;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .sticky-card .button {
   width: 100%;
@@ -1238,7 +1247,7 @@ footer .logo {
 .sticky-card > small {
   text-align: center;
   color: var(--charcoal);
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
 }
 .safe-note {
   display: flex;
@@ -1250,12 +1259,12 @@ footer .logo {
   margin-top: 5px;
 }
 .safe-note p {
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
   line-height: 1.5;
 }
 .safe-note b {
   display: block;
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 
 .screen-page {
@@ -1284,7 +1293,7 @@ footer .logo {
   line-height: 1.6;
 }
 .upload-card {
-  background: white;
+  background: var(--card);
   border: 2px dashed var(--line);
   border-radius: 18px;
   padding: 55px;
@@ -1295,7 +1304,7 @@ footer .logo {
   gap: 10px;
 }
 .upload-card > .upload-icon {
-  color: var(--teal);
+  color: var(--teal-ink);
   width: 55px;
   height: 55px;
   background: var(--paper);
@@ -1311,7 +1320,7 @@ footer .logo {
 }
 .upload-card > span {
   color: var(--charcoal);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   margin-bottom: 10px;
 }
 .disclaimer {
@@ -1325,15 +1334,15 @@ footer .logo {
   color: var(--charcoal);
 }
 .disclaimer p {
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   line-height: 1.55;
 }
 .disclaimer b {
   display: block;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .screen-results {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
@@ -1376,12 +1385,12 @@ footer .logo {
   border-bottom: 1px solid var(--paper);
 }
 .result-row h3 {
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   margin-bottom: 5px;
 }
 .result-row p {
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   line-height: 1.5;
 }
 
@@ -1391,7 +1400,7 @@ footer .logo {
 .compare-table {
   display: grid;
   grid-template-columns: 220px 1fr 1fr;
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -1418,26 +1427,26 @@ footer .logo {
 }
 .compare-property > span {
   color: var(--charcoal);
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
   font-weight: 700;
   text-transform: uppercase;
 }
 .compare-property h3 {
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   margin: 5px 0 10px;
 }
 .compare-property > b {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .compare-property > b small {
   color: var(--charcoal);
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
 }
 .best-tag {
   position: absolute;
   top: 28px;
   left: 28px !important;
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white !important;
   padding: 5px 7px;
   border-radius: 4px;
@@ -1451,7 +1460,7 @@ footer .logo {
 .compare-row > * {
   padding: 15px 20px;
   border-left: 1px solid var(--line);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .compare-row > b {
   border: 0;
@@ -1485,7 +1494,7 @@ footer .logo {
   margin-bottom: 30px;
 }
 .dashboard-stats > div {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 20px;
@@ -1495,12 +1504,12 @@ footer .logo {
 }
 .dashboard-stats b {
   font-family: "DM Serif Display";
-  font-size: 34px;
-  color: var(--teal);
+  font-size: calc(34px * var(--text-scale, 1));
+  color: var(--teal-ink);
 }
 .dashboard-stats span {
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   margin-bottom: 6px;
 }
 .dashboard-grid {
@@ -1517,16 +1526,16 @@ footer .logo {
 .dashboard-grid .section-title button {
   border: 0;
   background: none;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-weight: 700;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .dashboard-grid .property-card {
   max-width: 370px;
 }
 .preferences-card,
 .empty-card {
-  background: white;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 25px;
@@ -1542,10 +1551,10 @@ footer .logo {
 }
 .preferences-card span {
   color: var(--charcoal);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .preferences-card b {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   margin-top: 3px;
 }
 .preferences-card .button {
@@ -1566,7 +1575,7 @@ footer .logo {
   margin: 15px 0 7px;
 }
 .empty-card p {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   margin-bottom: 18px;
 }
 
@@ -1577,7 +1586,7 @@ footer .logo {
 }
 .about-hero h1 {
   font-family: "DM Serif Display";
-  font-size: 56px;
+  font-size: calc(56px * var(--text-scale, 1));
   line-height: 1.08;
   font-weight: 400;
   color: var(--charcoal);
@@ -1587,7 +1596,7 @@ footer .logo {
   color: var(--charcoal);
   max-width: 620px;
   margin: auto;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   line-height: 1.7;
 }
 .about-story {
@@ -1646,7 +1655,7 @@ footer .logo {
     place-items: center;
     border: 0;
     background: none;
-    color: var(--teal);
+    color: var(--teal-ink);
   }
   .hero {
     grid-template-columns: 1fr;
@@ -1728,10 +1737,10 @@ footer .logo {
     padding-top: 35px;
   }
   .hero h1 {
-    font-size: 46px;
+    font-size: calc(46px * var(--text-scale, 1));
   }
   .hero-copy > p {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
   .hero-actions {
     flex-direction: column;
@@ -1757,7 +1766,7 @@ footer .logo {
   .intro-heading h2,
   .section-center h2,
   .mission h2 {
-    font-size: 34px;
+    font-size: calc(34px * var(--text-scale, 1));
   }
   .steps-section {
     padding: 70px 0;
@@ -1787,7 +1796,7 @@ footer .logo {
     padding: 30px 20px;
   }
   .onboarding-card h1 {
-    font-size: 32px;
+    font-size: calc(32px * var(--text-scale, 1));
   }
   .choice-grid {
     grid-template-columns: 1fr;
@@ -1815,7 +1824,7 @@ footer .logo {
   .explore-title h1,
   .dashboard-head h1,
   .screen-header h1 {
-    font-size: 36px;
+    font-size: calc(36px * var(--text-scale, 1));
   }
   .search-row {
     flex-wrap: wrap;
@@ -1900,7 +1909,7 @@ footer .logo {
     padding: 75px 0;
   }
   .about-hero h1 {
-    font-size: 42px;
+    font-size: calc(42px * var(--text-scale, 1));
   }
   .about-story {
     grid-template-columns: 1fr;
@@ -1930,7 +1939,7 @@ footer .logo {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--terracotta);
   color: var(--sage-ink);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -1939,19 +1948,19 @@ footer .logo {
   max-width: 650px;
   margin: 22px 0 24px;
   font-family: "Fraunces", serif;
-  font-size: clamp(52px, 6.4vw, 86px);
+  font-size: calc(clamp(52px, 6.4vw, 86px) * var(--text-scale, 1));
   font-weight: 500;
   line-height: 0.96;
   letter-spacing: -2.5px;
 }
 .hero-story h1 em {
-  color: var(--teal);
+  color: var(--teal-ink);
   font-weight: 500;
 }
 .hero-story > p {
   max-width: 510px;
   color: var(--charcoal);
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   line-height: 1.75;
 }
 .underlined-link,
@@ -1968,9 +1977,9 @@ footer .logo {
   width: fit-content;
   max-width: 390px;
   margin: 37px 0 0 28px;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
   transform: rotate(-1.5deg);
 }
 .handwritten-note::before {
@@ -1989,7 +1998,7 @@ footer .logo {
   margin: 0;
   padding: 11px 11px 30px;
   background: var(--surface);
-  box-shadow: 0 18px 44px color-mix(in srgb, var(--charcoal) 18%, transparent);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--shadow) 18%, transparent);
 }
 .hero-postcard img {
   width: 100%;
@@ -2003,7 +2012,7 @@ footer .logo {
   left: 16px;
   color: var(--charcoal);
   font-family: "Caveat", cursive;
-  font-size: 16px;
+  font-size: calc(16px * var(--text-scale, 1));
 }
 .main-postcard {
   inset: 0 20px 48px 28px;
@@ -2040,7 +2049,7 @@ footer .logo {
   font-family: "Fraunces", serif;
 }
 .wax-note span {
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
   opacity: 0.8;
 }
 .edinburgh-sketch {
@@ -2076,20 +2085,20 @@ footer .logo {
 .opening-note .drop-cap {
   color: var(--terracotta-ink);
   font-family: "Fraunces", serif;
-  font-size: 100px;
+  font-size: calc(100px * var(--text-scale, 1));
   line-height: 0.6;
 }
 .opening-note p {
   color: var(--charcoal);
   font-family: "Fraunces", serif;
-  font-size: clamp(26px, 3vw, 40px);
+  font-size: calc(clamp(26px, 3vw, 40px) * var(--text-scale, 1));
   line-height: 1.26;
 }
 .opening-note > span:last-child {
   max-width: 130px;
   color: var(--sage-ink);
   font-family: "Caveat", cursive;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   transform: rotate(-3deg);
 }
 .neighbourhood-stories {
@@ -2106,7 +2115,7 @@ footer .logo {
 .advice-intro h2,
 .invite-copy h2 {
   font-family: "Fraunces", serif;
-  font-size: 42px;
+  font-size: calc(42px * var(--text-scale, 1));
   font-weight: 500;
   line-height: 1.1;
 }
@@ -2126,7 +2135,7 @@ footer .logo {
   position: relative;
   padding: 10px 10px 24px;
   background: var(--surface);
-  box-shadow: 0 8px 25px color-mix(in srgb, var(--charcoal) 11%, transparent);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--shadow) 11%, transparent);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -2143,7 +2152,7 @@ footer .logo {
 }
 .neighbourhood-postcard:hover {
   z-index: 2;
-  box-shadow: 0 18px 40px color-mix(in srgb, var(--charcoal) 18%, transparent);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--shadow) 18%, transparent);
   transform: rotate(0) translateY(-8px);
 }
 .neighbourhood-postcard img {
@@ -2155,8 +2164,8 @@ footer .logo {
 .neighbourhood-postcard > span {
   display: block;
   margin: 18px 12px 5px;
-  color: var(--teal);
-  font-size: 9px;
+  color: var(--teal-ink);
+  font-size: calc(9px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -2167,13 +2176,13 @@ footer .logo {
 }
 .neighbourhood-postcard h3 {
   font-family: "Fraunces", serif;
-  font-size: 23px;
+  font-size: calc(23px * var(--text-scale, 1));
   font-weight: 500;
 }
 .neighbourhood-postcard p {
   margin-top: 8px;
   color: var(--sage-ink);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   line-height: 1.6;
 }
 .neighbourhood-stories > .sketch-link {
@@ -2185,9 +2194,9 @@ footer .logo {
 .advice-ledger {
   padding-block: 100px;
   background:
-    linear-gradient(color-mix(in srgb, var(--charcoal) 96.5%, transparent), color-mix(in srgb, var(--charcoal) 96.5%, transparent)),
+    linear-gradient(color-mix(in srgb, var(--ink-bg) 96.5%, transparent), color-mix(in srgb, var(--ink-bg) 96.5%, transparent)),
     repeating-linear-gradient(90deg, transparent 0 30px, color-mix(in srgb, var(--cream) 8%, transparent) 31px);
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .advice-layout {
   display: grid;
@@ -2201,11 +2210,11 @@ footer .logo {
 }
 .advice-intro h2 {
   margin: 16px 0;
-  color: var(--cream);
-  font-size: 48px;
+  color: var(--on-ink);
+  font-size: calc(48px * var(--text-scale, 1));
 }
 .advice-intro p {
-  color: color-mix(in srgb, var(--cream) 67%, transparent);
+  color: color-mix(in srgb, var(--on-ink) 67%, transparent);
 }
 .advice-intro .edinburgh-sketch {
   margin-top: 35px;
@@ -2240,7 +2249,7 @@ footer .logo {
 .advice-pages .feature-card h3 {
   margin: 2px 0 7px;
   font-family: "Fraunces", serif;
-  font-size: 23px;
+  font-size: calc(23px * var(--text-scale, 1));
 }
 .advice-pages .feature-card p {
   min-height: 0;
@@ -2260,7 +2269,7 @@ footer .logo {
   height: 520px;
   padding: 13px 13px 43px;
   background: var(--surface);
-  box-shadow: 0 15px 45px color-mix(in srgb, var(--charcoal) 16%, transparent);
+  box-shadow: 0 15px 45px color-mix(in srgb, var(--shadow) 16%, transparent);
   transform: rotate(-2.5deg);
 }
 .invite-photo img {
@@ -2281,11 +2290,11 @@ footer .logo {
 .invite-copy h2 {
   max-width: 520px;
   margin: 15px 0 20px;
-  font-size: 50px;
+  font-size: calc(50px * var(--text-scale, 1));
 }
 .invite-copy p {
   max-width: 520px;
-  font-size: 16px;
+  font-size: calc(16px * var(--text-scale, 1));
 }
 .invite-copy .button {
   margin-top: 30px;
@@ -2295,7 +2304,7 @@ footer .logo {
   margin: 14px 0 0 20px;
   color: var(--sage-ink);
   font-family: "Caveat", cursive;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   transform: rotate(-1deg);
 }
 
@@ -2311,8 +2320,8 @@ footer .logo {
   left: 0;
   width: 245px;
   padding: 24px 21px 28px;
-  background: var(--charcoal);
-  color: var(--cream);
+  background: var(--ink-bg);
+  color: var(--on-ink);
   box-shadow: 9px 10px 0 color-mix(in srgb, var(--terracotta) 45%, transparent);
   transform: rotate(-2.5deg);
 }
@@ -2323,12 +2332,12 @@ footer .logo {
 .local-welcome p {
   margin: 15px 0 10px;
   font-family: "Fraunces", serif;
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
   line-height: 1.4;
 }
 .local-welcome small {
   font-family: "Caveat", cursive;
-  font-size: 16px;
+  font-size: calc(16px * var(--text-scale, 1));
   opacity: 0.75;
 }
 .postcard-pin {
@@ -2340,13 +2349,13 @@ footer .logo {
   border: 4px solid var(--surface);
   border-radius: 50%;
   background: var(--teal);
-  box-shadow: 0 3px 7px color-mix(in srgb, var(--charcoal) 30%, transparent);
+  box-shadow: 0 3px 7px color-mix(in srgb, var(--shadow) 30%, transparent);
 }
 .onboarding-card {
   border-radius: 3px 18px 18px 3px;
   box-shadow:
     12px 13px 0 color-mix(in srgb, var(--sage) 20%, transparent),
-    0 18px 44px color-mix(in srgb, var(--charcoal) 8%, transparent);
+    0 18px 44px color-mix(in srgb, var(--shadow) 8%, transparent);
 }
 .choice-grid button {
   border-radius: 4px 13px 13px 4px;
@@ -2378,8 +2387,8 @@ footer .logo {
   align-items: center;
   margin: 0 0 42px;
   padding: 28px;
-  background: var(--charcoal);
-  color: var(--cream);
+  background: var(--ink-bg);
+  color: var(--on-ink);
   box-shadow: 11px 12px 0 color-mix(in srgb, var(--terracotta) 35%, transparent);
 }
 .neighbourhood-opening-photo {
@@ -2399,22 +2408,22 @@ footer .logo {
   bottom: -12px;
   padding: 7px 11px;
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 16px;
+  font-size: calc(16px * var(--text-scale, 1));
   transform: rotate(2deg);
 }
 .neighbourhood-opening h2 {
   margin: 9px 0 12px;
-  color: var(--cream);
+  color: var(--on-ink);
   font-family: "Fraunces", serif;
-  font-size: 32px;
+  font-size: calc(32px * var(--text-scale, 1));
   font-weight: 500;
   line-height: 1.12;
 }
 .neighbourhood-opening p {
-  color: color-mix(in srgb, var(--cream) 72%, transparent);
-  font-size: 13px;
+  color: color-mix(in srgb, var(--on-ink) 72%, transparent);
+  font-size: calc(13px * var(--text-scale, 1));
   line-height: 1.65;
 }
 .local-details {
@@ -2422,8 +2431,8 @@ footer .logo {
   flex-direction: column;
   gap: 8px;
   margin-top: 18px;
-  color: var(--cream);
-  font-size: 11px;
+  color: var(--on-ink);
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .local-details span {
   display: flex;
@@ -2445,13 +2454,13 @@ footer .logo {
 .map-doodle b,
 .map-doodle small {
   position: absolute;
-  color: var(--cream);
+  color: var(--on-ink);
   font-family: "Caveat", cursive;
 }
 .map-doodle b {
   bottom: 28px;
   left: 18px;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
 }
 .map-doodle small {
   top: 49%;
@@ -2472,7 +2481,7 @@ footer .logo {
   padding: 12px;
   border: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
   background: color-mix(in srgb, var(--cream) 92%, transparent);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--charcoal) 8%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--shadow) 8%, transparent);
   backdrop-filter: blur(12px);
 }
 .property-grid {
@@ -2510,7 +2519,7 @@ footer .logo {
   min-height: 390px;
   padding: 10px;
   background: var(--surface);
-  box-shadow: 0 13px 32px color-mix(in srgb, var(--charcoal) 14%, transparent);
+  box-shadow: 0 13px 32px color-mix(in srgb, var(--shadow) 14%, transparent);
   transform: rotate(-1.4deg);
 }
 .property-image img {
@@ -2526,11 +2535,11 @@ footer .logo {
 }
 .property-body h3 {
   font-family: "Fraunces", serif;
-  font-size: 28px;
+  font-size: calc(28px * var(--text-scale, 1));
   font-weight: 500;
 }
 .property-body > small {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .property-image > button {
   overflow: visible;
@@ -2542,7 +2551,7 @@ footer .logo {
   transform: scale(1.12) rotate(-8deg);
 }
 .property-image > button.hearted {
-  color: var(--teal);
+  color: var(--teal-ink);
   animation: heart-pop 0.38s ease;
 }
 .property-image > button.hearted svg {
@@ -2556,9 +2565,9 @@ footer .logo {
   padding: 5px 9px;
   border-radius: 2px;
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 15px;
+  font-size: calc(15px * var(--text-scale, 1));
   opacity: 0;
   pointer-events: none;
   transform: rotate(3deg) translateY(-4px);
@@ -2588,7 +2597,7 @@ footer .logo {
 .detail-gallery img {
   padding: 10px;
   background: var(--surface);
-  box-shadow: 0 11px 30px color-mix(in srgb, var(--charcoal) 14%, transparent);
+  box-shadow: 0 11px 30px color-mix(in srgb, var(--shadow) 14%, transparent);
 }
 .detail-gallery img:first-child {
   transform: rotate(-1deg);
@@ -2601,7 +2610,7 @@ footer .logo {
   border: 1px dashed var(--sage);
   background: var(--paper);
   font-family: "Caveat", cursive;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   transform: rotate(-1deg);
 }
 .detail-heading {
@@ -2610,7 +2619,7 @@ footer .logo {
 }
 .detail-heading h1 {
   max-width: 650px;
-  font-size: 48px;
+  font-size: calc(48px * var(--text-scale, 1));
 }
 .viewing-journal-note {
   position: relative;
@@ -2622,14 +2631,14 @@ footer .logo {
   transform: rotate(-0.6deg);
 }
 .viewing-journal-note > span {
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 22px;
+  font-size: calc(22px * var(--text-scale, 1));
 }
 .viewing-journal-note p {
   margin: 7px 0 12px;
   font-family: "Fraunces", serif;
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
   line-height: 1.55;
 }
 .viewing-journal-note small {
@@ -2662,7 +2671,7 @@ footer .logo {
 }
 .assessment-item > div > b {
   font-family: "Fraunces", serif;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
 }
 .cost-card {
   margin: 55px 0 35px 40px;
@@ -2687,9 +2696,9 @@ footer .logo {
   position: absolute;
   top: -27px;
   right: 9px;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
   transform: rotate(3deg);
 }
 
@@ -2717,7 +2726,7 @@ footer .logo {
   color: white;
 }
 .screen-header h1 {
-  font-size: 52px;
+  font-size: calc(52px * var(--text-scale, 1));
 }
 .upload-card {
   border: 2px dashed var(--sage);
@@ -2742,16 +2751,16 @@ footer .logo {
   content: "We’ve put the useful bits on the table.";
   display: block;
   margin-top: 10px;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 19px;
+  font-size: calc(19px * var(--text-scale, 1));
 }
 .compare-table {
   overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
-  box-shadow: 0 16px 38px color-mix(in srgb, var(--charcoal) 8%, transparent);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--shadow) 8%, transparent);
   transform: rotate(-0.25deg);
 }
 .compare-property {
@@ -2760,8 +2769,8 @@ footer .logo {
 }
 .compare-property.blank,
 .compare-row > b {
-  background: var(--charcoal);
-  color: var(--cream);
+  background: var(--ink-bg);
+  color: var(--on-ink);
 }
 .compare-property img {
   height: 180px;
@@ -2778,7 +2787,7 @@ footer .logo {
   border-radius: 2px;
   background: var(--teal);
   font-family: "Caveat", cursive;
-  font-size: 14px !important;
+  font-size: calc(14px * var(--text-scale, 1)) !important;
   letter-spacing: 0;
   text-transform: none !important;
   transform: rotate(-4deg);
@@ -2789,7 +2798,7 @@ footer .logo {
   max-width: 1050px;
 }
 .dashboard-head h1 {
-  font-size: 54px;
+  font-size: calc(54px * var(--text-scale, 1));
 }
 .scrapbook-note {
   position: relative;
@@ -2798,18 +2807,18 @@ footer .logo {
   margin: 25px 0 55px 100px;
   padding: 30px 260px 25px 38px;
   background: var(--terracotta);
-  color: var(--charcoal);
-  box-shadow: 8px 9px 0 color-mix(in srgb, var(--charcoal) 20%, transparent);
+  color: var(--ink-fixed);
+  box-shadow: 8px 9px 0 color-mix(in srgb, var(--shadow) 20%, transparent);
   transform: rotate(-1deg);
 }
 .scrapbook-note > span {
   font-family: "Caveat", cursive;
-  font-size: 24px;
+  font-size: calc(24px * var(--text-scale, 1));
 }
 .scrapbook-note p {
   margin-top: 8px;
   font-family: "Fraunces", serif;
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
   line-height: 1.5;
 }
 .scrapbook-note .edinburgh-sketch {
@@ -2826,7 +2835,7 @@ footer .logo {
 }
 .dashboard-grid .section-title h2 {
   font-family: "Fraunces", serif;
-  font-size: 28px;
+  font-size: calc(28px * var(--text-scale, 1));
   font-weight: 500;
 }
 .dashboard-grid .property-card {
@@ -2856,9 +2865,9 @@ footer .logo {
   position: absolute;
   top: -29px;
   left: 12px;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
   transform: rotate(-3deg);
 }
 
@@ -2871,7 +2880,7 @@ footer .logo {
   margin-left: max(24px, calc((100vw - 1160px) / 2));
 }
 .about-hero h1 {
-  font-size: 66px;
+  font-size: calc(66px * var(--text-scale, 1));
 }
 .about-story {
   position: relative;
@@ -2883,9 +2892,9 @@ footer .logo {
   right: 5%;
   bottom: 32px;
   max-width: 300px;
-  color: var(--teal);
+  color: var(--teal-ink);
   font-family: "Caveat", cursive;
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
   transform: rotate(-2deg);
 }
 
@@ -2954,7 +2963,7 @@ footer .logo {
     padding-block: 45px 75px;
   }
   .hero-story h1 {
-    font-size: 48px;
+    font-size: calc(48px * var(--text-scale, 1));
   }
   .hero-story .hero-actions {
     align-items: flex-start;
@@ -2984,7 +2993,7 @@ footer .logo {
     height: 45px;
   }
   .opening-note p {
-    font-size: 27px;
+    font-size: calc(27px * var(--text-scale, 1));
   }
   .neighbourhood-stories {
     padding-block: 75px;
@@ -3006,7 +3015,7 @@ footer .logo {
   }
   .advice-intro h2,
   .invite-copy h2 {
-    font-size: 38px;
+    font-size: calc(38px * var(--text-scale, 1));
   }
   .advice-pages .feature-card,
   .advice-pages .feature-card:nth-child(even) {
@@ -3059,7 +3068,7 @@ footer .logo {
     gap: 8px;
   }
   .detail-heading h1 {
-    font-size: 38px;
+    font-size: calc(38px * var(--text-scale, 1));
   }
   .viewing-journal-note {
     margin-left: 0;
@@ -3078,7 +3087,7 @@ footer .logo {
     inset-inline: -15px;
   }
   .screen-header h1 {
-    font-size: 40px;
+    font-size: calc(40px * var(--text-scale, 1));
   }
   .scrapbook-note {
     min-height: 230px;
@@ -3098,28 +3107,29 @@ footer .logo {
     margin-top: 30px;
   }
   .about-hero h1 {
-    font-size: 43px;
+    font-size: calc(43px * var(--text-scale, 1));
   }
 }
 
 /* Haven's snug: warmer, tactile surfaces inspired by paper menus, timber and Edinburgh pubs. */
 .nav-wrap {
-  background: color-mix(in srgb, var(--charcoal) 98%, transparent);
+  background: color-mix(in srgb, var(--ink-bg) 98%, transparent);
   border-color: color-mix(in srgb, var(--cream) 18%, transparent);
-  box-shadow: 0 5px 24px color-mix(in srgb, var(--charcoal) 16%, transparent);
+  box-shadow: 0 5px 24px color-mix(in srgb, var(--shadow) 16%, transparent);
 }
 .nav-wrap .logo,
 .nav-wrap .text-button,
 .nav-wrap .nav-links > button,
 .nav-wrap .menu-button {
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .nav-wrap .logo-mark {
   background: var(--teal);
   border: 1px solid color-mix(in srgb, var(--cream) 35%, transparent);
 }
-.nav-wrap .logo-dot {
-  color: var(--terracotta-ink);
+.nav-wrap .logo-dot,
+footer .logo-dot {
+  color: var(--terracotta); /* on the dark top bar */
 }
 .nav-wrap .nav-links > button:hover,
 .nav-wrap .nav-links > button.active {
@@ -3142,12 +3152,12 @@ footer .logo {
   box-shadow: 0 5px 14px color-mix(in srgb, var(--teal) 16%, transparent);
 }
 .button:hover {
-  background: var(--charcoal);
+  background: var(--ink-bg);
   border-color: var(--charcoal);
 }
 .button-secondary {
   background: transparent;
-  color: var(--teal);
+  color: var(--teal-ink);
   border-color: var(--teal);
 }
 h1,
@@ -3184,13 +3194,13 @@ h2,
   border-radius: 0 34px 34px 0;
 }
 .hero h1 em {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .hero-visual > img {
   border-radius: 170px 170px 26px 26px;
   filter: saturate(0.88) sepia(0.1);
   box-shadow:
-    0 24px 55px color-mix(in srgb, var(--charcoal) 20%, transparent),
+    0 24px 55px color-mix(in srgb, var(--shadow) 20%, transparent),
     10px 10px 0 var(--terracotta);
 }
 .eyebrow {
@@ -3199,7 +3209,7 @@ h2,
   border: 1px solid color-mix(in srgb, var(--sage) 35%, transparent);
 }
 .section-kicker {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .score-ring {
   border-color: color-mix(in srgb, var(--sage) 25%, transparent);
@@ -3210,10 +3220,10 @@ h2,
 .floating-pill,
 .match-card {
   border: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--charcoal) 17%, transparent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--shadow) 17%, transparent);
 }
 .floating-pill {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .feature-card,
 .property-card,
@@ -3223,17 +3233,17 @@ h2,
 .empty-card,
 .screen-results {
   background:
-    linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.84)),
+    linear-gradient(color-mix(in srgb, var(--card) 84%, transparent), color-mix(in srgb, var(--card) 84%, transparent)),
     repeating-linear-gradient(0deg, transparent 0 5px, color-mix(in srgb, var(--terracotta) 9%, transparent) 5px 6px);
   border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   border-radius: 18px;
-  box-shadow: 0 7px 22px color-mix(in srgb, var(--charcoal) 7%, transparent);
+  box-shadow: 0 7px 22px color-mix(in srgb, var(--shadow) 7%, transparent);
 }
 .feature-card {
   border-top: 4px solid var(--terracotta);
 }
 .feature-icon {
-  color: var(--teal);
+  color: var(--teal-ink);
   background: color-mix(in srgb, var(--terracotta) 14%, transparent);
 }
 .feature-card:nth-child(2) .feature-icon,
@@ -3245,30 +3255,30 @@ h2,
 .property-status button,
 .mission button,
 .dashboard-grid .section-title button {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .steps-section {
   background:
-    linear-gradient(color-mix(in srgb, var(--charcoal) 95%, transparent), color-mix(in srgb, var(--charcoal) 95%, transparent)),
+    linear-gradient(color-mix(in srgb, var(--ink-bg) 95%, transparent), color-mix(in srgb, var(--ink-bg) 95%, transparent)),
     url("https://images.unsplash.com/photo-1604403965718-439a879557da?auto=format&fit=crop&w=1600&q=70")
       center / cover;
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .steps-section h2,
 .steps-section h3,
 .steps-section .section-kicker {
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .steps-section p,
 .steps-section .step p {
-  color: color-mix(in srgb, var(--cream) 76%, transparent);
+  color: color-mix(in srgb, var(--on-ink) 76%, transparent);
 }
 .steps-section .step > span {
   color: var(--terracotta-ink);
 }
 .step-icon {
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   border-color: var(--terracotta);
 }
 .mission {
@@ -3281,7 +3291,7 @@ h2,
   bottom: 32px;
   color: color-mix(in srgb, var(--terracotta) 38%, transparent);
   font-family: "Fraunces", serif;
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
   font-style: italic;
 }
 .onboarding-page {
@@ -3293,7 +3303,7 @@ h2,
   border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
   border-top: 6px solid var(--teal);
   border-radius: 20px;
-  box-shadow: 0 18px 44px color-mix(in srgb, var(--charcoal) 10%, transparent);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--shadow) 10%, transparent);
 }
 .progress-track i,
 .choice-grid button.selected {
@@ -3305,7 +3315,7 @@ h2,
 }
 .choice-grid button.selected > span {
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   border-color: var(--cream);
 }
 .journey-builder {
@@ -3315,7 +3325,7 @@ h2,
   display: block;
   margin-bottom: 9px;
   color: var(--charcoal);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   font-weight: 700;
 }
 .destination-input {
@@ -3327,7 +3337,7 @@ h2,
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--surface);
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .destination-input input {
   min-width: 0;
@@ -3345,7 +3355,7 @@ h2,
   gap: 6px;
   padding: 0 18px;
   border: 0;
-  background: var(--charcoal);
+  background: var(--ink-bg);
   color: white;
   font-weight: 700;
 }
@@ -3372,9 +3382,9 @@ h2,
   flex: 0 0 28px;
   place-items: center;
   border-radius: 50%;
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
   color: white;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   font-weight: 700;
 }
 .destination-list > div > span:nth-child(2) {
@@ -3385,7 +3395,7 @@ h2,
 .destination-list small {
   margin-top: 2px;
   color: var(--sage-ink);
-  font-size: 10px;
+  font-size: calc(10px * var(--text-scale, 1));
 }
 .destination-list button {
   display: grid;
@@ -3394,14 +3404,14 @@ h2,
   place-items: center;
   border: 0;
   background: transparent;
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .journey-privacy {
   display: flex;
   gap: 8px;
   margin-top: 18px;
   color: var(--sage-ink);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .onboarding-buttons {
   display: flex;
@@ -3412,7 +3422,7 @@ h2,
   border: 0;
   background: transparent;
   color: var(--sage-ink);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -3421,7 +3431,7 @@ h2,
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--charcoal) 24%, transparent));
+  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--shadow) 24%, transparent));
 }
 .property-image > button,
 .property-image .match-badge {
@@ -3431,7 +3441,7 @@ h2,
   background: var(--teal);
 }
 .match-badge.medium {
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
 }
 .journey-snapshot {
   display: flex;
@@ -3448,12 +3458,12 @@ h2,
   flex-direction: column;
 }
 .journey-snapshot b {
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .journey-snapshot small {
   margin-top: 2px;
   color: var(--sage-ink);
-  font-size: 9px;
+  font-size: calc(9px * var(--text-scale, 1));
 }
 .status-good {
   color: var(--charcoal);
@@ -3488,7 +3498,7 @@ h2,
   border-color: color-mix(in srgb, var(--sage) 25%, transparent);
   border-top-color: var(--sage);
   border-right-color: var(--sage);
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .screening-teaser,
 .safe-note,
@@ -3499,10 +3509,10 @@ h2,
 .section-title > b,
 .dashboard-stats b,
 .compare-property > b {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .compare-row span.highlight {
-  color: var(--teal);
+  color: var(--teal-ink);
   background: color-mix(in srgb, var(--terracotta) 8%, transparent);
 }
 .compare-property.blank,
@@ -3513,31 +3523,31 @@ h2,
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(color-mix(in srgb, var(--charcoal) 83%, transparent), color-mix(in srgb, var(--charcoal) 83%, transparent)),
+    linear-gradient(color-mix(in srgb, var(--ink-bg) 83%, transparent), color-mix(in srgb, var(--ink-bg) 83%, transparent)),
     url("https://images.unsplash.com/photo-1707048736052-ba0dbf47637e?auto=format&fit=crop&w=1600&q=80")
       center 42% / cover;
 }
 .about-hero h1,
 .about-hero .section-kicker {
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .about-hero p {
-  color: color-mix(in srgb, var(--cream) 80%, transparent);
+  color: color-mix(in srgb, var(--on-ink) 80%, transparent);
 }
 footer {
   background:
     repeating-linear-gradient(90deg, color-mix(in srgb, var(--cream) 2.5%, transparent) 0 1px, transparent 1px 24px),
-    var(--charcoal);
+    var(--ink-bg);
 }
 footer .button {
   background: var(--cream);
-  color: var(--teal);
+  color: var(--teal-ink);
   border-color: var(--cream);
 }
 
 @media (max-width: 900px) {
   .nav-wrap .nav-links {
-    background: var(--charcoal);
+    background: var(--ink-bg);
   }
 }
 @media (max-width: 640px) {
@@ -3548,7 +3558,7 @@ footer .button {
   }
   .hero-visual > img {
     box-shadow:
-      0 20px 40px color-mix(in srgb, var(--charcoal) 20%, transparent),
+      0 20px 40px color-mix(in srgb, var(--shadow) 20%, transparent),
       5px 6px 0 var(--terracotta);
   }
   .onboarding-buttons {
@@ -3583,8 +3593,8 @@ footer .button {
   border: 1px solid color-mix(in srgb, var(--cream) 35%, transparent);
   border-radius: 999px;
   background: transparent;
-  color: var(--cream);
-  font-size: 13px;
+  color: var(--on-ink);
+  font-size: calc(13px * var(--text-scale, 1));
   font-weight: 600;
 }
 .user-badge span {
@@ -3617,7 +3627,7 @@ footer .button {
   font-weight: 600;
 }
 .auth-prompt > svg {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .auth-prompt > span {
   flex: 1 1 220px;
@@ -3627,9 +3637,9 @@ footer .button {
   align-items: center;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--terracotta-ink);
+  background: var(--terracotta-strong);
   color: white;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3667,8 +3677,8 @@ footer .button {
   border: 1px solid var(--teal);
   border-radius: 999px;
   background: var(--surface);
-  color: var(--teal);
-  font-size: 13px;
+  color: var(--teal-ink);
+  font-size: calc(13px * var(--text-scale, 1));
   font-weight: 700;
 }
 .read-aloud-button:hover,
@@ -3687,15 +3697,15 @@ footer .button {
 /* Footer text: the Figma export set it to the footer's own background colour (invisible). */
 footer .logo,
 footer .logo > span:last-child {
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .footer-inner p,
 .footer-inner > div > button:not(.button),
 .footer-bottom {
-  color: color-mix(in srgb, var(--cream) 82%, transparent);
+  color: color-mix(in srgb, var(--on-ink) 82%, transparent);
 }
 .footer-inner > div > button:not(.button):hover {
-  color: var(--cream);
+  color: var(--on-ink);
 }
 .auth-error {
   display: flex;
@@ -3715,7 +3725,7 @@ footer .logo > span:last-child {
   flex: 1 1 300px;
 }
 .auth-error .text-button {
-  color: var(--teal);
+  color: var(--teal-ink);
   font-weight: 700;
 }
 
@@ -3749,7 +3759,7 @@ footer .logo > span:last-child {
 .evidence-info {
   display: inline-block;
   position: relative;
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 600;
 }
 .evidence-info > summary {
@@ -3768,7 +3778,7 @@ footer .logo > span:last-child {
 .evidence-info > summary:hover,
 .evidence-info[open] > summary {
   border-color: var(--teal);
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .evidence-pop {
   position: absolute;
@@ -3781,9 +3791,9 @@ footer .logo > span:last-child {
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--surface);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--charcoal) 18%, transparent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--shadow) 18%, transparent);
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   font-weight: 400;
 }
 .evidence-pop > div {
@@ -3810,7 +3820,7 @@ footer .logo > span:last-child {
   border-radius: 4px;
   background: color-mix(in srgb, var(--sage) 22%, var(--surface));
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -3820,9 +3830,9 @@ footer .logo > span:last-child {
   bottom: 10px;
   padding: 3px 8px;
   border-radius: 4px;
-  background: color-mix(in srgb, var(--charcoal) 78%, transparent);
-  color: var(--cream);
-  font-size: 11px;
+  background: color-mix(in srgb, var(--shadow) 78%, transparent);
+  color: var(--on-ink);
+  font-size: calc(11px * var(--text-scale, 1));
 }
 .property-facts {
   display: flex;
@@ -3846,7 +3856,7 @@ footer .logo > span:last-child {
   background: var(--surface);
 }
 .profile-bar > svg {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .profile-bar > span {
   flex: 1 1 260px;
@@ -3857,7 +3867,7 @@ footer .logo > span:last-child {
   padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: white;
+  background: var(--card);
   color: var(--charcoal);
 }
 .list-note {
@@ -3900,7 +3910,7 @@ footer .logo > span:last-child {
 }
 .facts-grid dt {
   color: var(--sage-ink);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
   font-weight: 600;
 }
 .facts-grid dd {
@@ -3943,7 +3953,7 @@ footer .logo > span:last-child {
   border-left-style: dashed;
 }
 .finding h3 {
-  font-size: 17px;
+  font-size: calc(17px * var(--text-scale, 1));
 }
 .next-step {
   padding: 8px 12px;
@@ -3954,7 +3964,7 @@ footer .logo > span:last-child {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 16px;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .persona-picks {
   display: grid;
@@ -4053,7 +4063,7 @@ footer .logo > span:last-child {
 }
 .report-section h2 {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: calc(20px * var(--text-scale, 1));
 }
 .report-section ul {
   display: grid;
@@ -4067,18 +4077,18 @@ footer .logo > span:last-child {
 }
 .cites {
   color: var(--sage-ink);
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
 }
 .cites a {
-  color: var(--teal);
+  color: var(--teal-ink);
 }
 .detail-price .evidence-value {
   font-family: "Fraunces", serif;
-  font-size: 30px;
-  color: var(--teal);
+  font-size: calc(30px * var(--text-scale, 1));
+  color: var(--teal-ink);
 }
 .property-cost .evidence-value {
-  font-size: 18px;
+  font-size: calc(18px * var(--text-scale, 1));
 }
 .detail-page .profile-bar {
   margin-top: 64px;
@@ -4088,7 +4098,7 @@ footer .logo > span:last-child {
 }
 .report-header h1 {
   font-family: "Fraunces", serif;
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: calc(clamp(30px, 4vw, 44px) * var(--text-scale, 1));
   line-height: 1.1;
 }
 .report-header .read-aloud {
@@ -4103,19 +4113,19 @@ footer .logo > span:last-child {
   border-radius: 9px;
 }
 .rent-context h3 {
-  font-size: 14px;
+  font-size: calc(14px * var(--text-scale, 1));
   margin: 0 0 8px;
 }
 .rent-context ul {
   margin: 0 0 8px;
   padding-left: 18px;
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   line-height: 1.5;
 }
 .rent-context small {
   display: block;
   color: var(--charcoal);
-  font-size: 11px;
+  font-size: calc(11px * var(--text-scale, 1));
   line-height: 1.45;
 }
 
@@ -4130,7 +4140,7 @@ footer .logo > span:last-child {
 .evidence-controls label {
   display: grid;
   gap: 4px;
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .evidence-controls select {
   font: inherit;
@@ -4161,7 +4171,7 @@ footer .logo > span:last-child {
 }
 .evidence-list small {
   color: var(--charcoal);
-  font-size: 12px;
+  font-size: calc(12px * var(--text-scale, 1));
 }
 .evidence-signals {
   display: flex;
@@ -4193,7 +4203,7 @@ footer .logo > span:last-child {
   align-items: center;
 }
 .evidence-or {
-  font-size: 13px;
+  font-size: calc(13px * var(--text-scale, 1));
   color: var(--charcoal);
 }
 .evidence-signin {
@@ -4229,8 +4239,8 @@ footer .logo > span:last-child {
 }
 .progress-top .onboarding-back {
   font-weight: 600;
-  font-size: 14px;
-  color: var(--teal);
+  font-size: calc(14px * var(--text-scale, 1));
+  color: var(--teal-ink);
   padding: 6px 0;
   margin: 0;
 }
@@ -4286,4 +4296,316 @@ footer .logo > span:last-child {
 }
 .evidence-list li > .button {
   flex: none;
+}
+
+/* ===================================================================================== */
+/* Accessibility settings (state/accessibility.tsx sets these attributes on <html>)       */
+/* ===================================================================================== */
+
+:root[data-theme="dark"] {
+  --charcoal: #ede4d6;
+  --cream: #1a1817;
+  --paper: #221f1d;
+  --surface: #262321;
+  --card: #2b2826;
+  --line: #4a443e;
+  --teal-ink: #74c7c9;
+  --terracotta-ink: #e5a487;
+  --sage-ink: #9fc8c3;
+  --ink-bg: #403b37;
+  --on-ink: #f6efe4;
+  --shadow: #000000;
+}
+
+:root[data-contrast="high"] {
+  --charcoal: #000000;
+  --cream: #ffffff;
+  --paper: #ffffff;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --line: #000000;
+  --teal: #00585b;
+  --teal-ink: #00474a;
+  --terracotta-ink: #6e3423;
+  --sage-ink: #24433f;
+  --ink-bg: #000000;
+  --on-ink: #ffffff;
+}
+
+:root[data-theme="dark"][data-contrast="high"] {
+  --charcoal: #ffffff;
+  --cream: #000000;
+  --paper: #000000;
+  --surface: #000000;
+  --card: #000000;
+  --line: #ffffff;
+  --teal: #005f62;
+  --teal-ink: #8ce9eb;
+  --terracotta-ink: #ffbea5;
+  --sage-ink: #bfece7;
+  --ink-bg: #1f1f1f;
+  --on-ink: #ffffff;
+}
+
+/* Plain backgrounds and solid borders in high contrast: no textures or faint lines. */
+:root[data-contrast="high"] body {
+  background: var(--cream);
+}
+:root[data-contrast="high"] :where(button, input, select, textarea, [class*="card"]) {
+  border-color: var(--line);
+}
+
+/* Fonts: everything, headings included, so decorative faces don't get in the way. */
+:root[data-font="lexend"] body,
+:root[data-font="lexend"] body * {
+  font-family: "Lexend", "DM Sans", sans-serif !important;
+}
+:root[data-font="atkinson"] body,
+:root[data-font="atkinson"] body * {
+  font-family: "Atkinson Hyperlegible", "DM Sans", sans-serif !important;
+}
+:root[data-font="opendyslexic"] body,
+:root[data-font="opendyslexic"] body * {
+  font-family: "OpenDyslexic", "DM Sans", sans-serif !important;
+}
+
+/* Text spacing (WCAG 1.4.12 levels). */
+:root[data-spacing="wide"] :where(p, li, dd, dt, td, th, label, small, span, b, a, button, h1, h2, h3, h4) {
+  line-height: 1.6 !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.16em !important;
+}
+:root[data-spacing="wide"] p {
+  margin-bottom: 1.2em;
+}
+
+/* Reduce motion: the same as the system setting, on request. */
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+:root[data-links="underline"] :where(a, .text-button, .nav-links button) {
+  text-decoration: underline !important;
+  text-underline-offset: 0.18em;
+}
+
+:root[data-focus="strong"] :focus-visible {
+  outline: 4px solid var(--teal-ink) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 7px var(--card) !important;
+}
+
+/* --- the settings card ---------------------------------------------------------------- */
+
+.a11y-nav-button {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--teal-ink);
+}
+.a11y-nav-button:hover {
+  border-color: var(--teal-ink);
+}
+.mobile-actions > button:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  color: var(--charcoal);
+}
+
+/* The settings open in a native <dialog> over any page. */
+.a11y-dialog {
+  width: min(880px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: var(--charcoal);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.a11y-dialog::backdrop {
+  background: color-mix(in srgb, var(--shadow) 55%, transparent);
+}
+.a11y-dialog[open] {
+  animation: a11y-dialog-in 0.18s ease-out;
+}
+@keyframes a11y-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.a11y-card {
+  position: relative;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card);
+}
+.a11y-card > h2 {
+  margin: 10px 0 6px;
+  font-size: calc(30px * var(--text-scale, 1));
+}
+.a11y-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--charcoal);
+}
+.a11y-close:hover {
+  border-color: var(--teal-ink);
+}
+.a11y-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+}
+.a11y-card > p {
+  max-width: 62ch;
+  margin-bottom: 18px;
+}
+.a11y-choice {
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+}
+.a11y-choice legend {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.a11y-segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.a11y-segmented label,
+.a11y-fonts label,
+.a11y-toggles label {
+  position: relative;
+  cursor: pointer;
+}
+.a11y-segmented input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+}
+.a11y-segmented span {
+  display: inline-block;
+  min-width: 64px;
+  padding: 9px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  text-align: center;
+}
+.a11y-segmented input:checked + span {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #ffffff;
+  font-weight: 700;
+}
+.a11y-segmented input:focus-visible + span {
+  outline: 3px solid var(--teal-ink);
+  outline-offset: 2px;
+}
+.a11y-fonts,
+.a11y-toggles {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.a11y-fonts label,
+.a11y-toggles label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.a11y-fonts label:has(input:checked),
+.a11y-toggles label:has(input:checked) {
+  border-color: var(--teal-ink);
+  box-shadow: inset 0 0 0 1px var(--teal-ink);
+}
+.a11y-fonts input,
+.a11y-toggles input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex: none;
+  accent-color: var(--teal);
+}
+.a11y-fonts span,
+.a11y-toggles span {
+  display: grid;
+  gap: 2px;
+}
+.a11y-fonts small,
+.a11y-toggles small {
+  opacity: 0.8;
+}
+/* Each font option previews itself (once that font has been chosen and loaded). */
+.a11y-font-lexend b {
+  font-family: "Lexend", "DM Sans", sans-serif;
+}
+.a11y-font-atkinson b {
+  font-family: "Atkinson Hyperlegible", "DM Sans", sans-serif;
+}
+.a11y-font-opendyslexic b {
+  font-family: "OpenDyslexic", "DM Sans", sans-serif;
+}
+@media (max-width: 640px) {
+  .a11y-card {
+    padding: 20px 16px;
+  }
+}
+.a11y-close:focus-visible,
+.a11y-dialog:focus-visible {
+  outline: 3px solid var(--teal-ink);
+  outline-offset: 2px;
+}
+
+/* Map controls (zoom buttons, credits) come from MapLibre's own stylesheet, which knows
+   nothing about Haven's themes: give them the theme's surfaces, and lighten the dark
+   built-in icons in dark mode. */
+:root .maplibregl-ctrl-group,
+:root .maplibregl-ctrl-attrib,
+:root .maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact {
+  background: var(--card);
+  color: var(--charcoal);
+}
+:root .maplibregl-ctrl-group button + button {
+  border-top-color: var(--line);
+}
+:root .maplibregl-ctrl-attrib a {
+  color: var(--charcoal);
+}
+:root[data-theme="dark"] .maplibregl-ctrl-icon,
+:root[data-theme="dark"] .maplibregl-ctrl-attrib-button {
+  filter: invert(1) brightness(1.1);
 }

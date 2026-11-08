@@ -104,5 +104,5 @@ class Backend(Protocol):
         ...
 
     def read_aloud(self, text: str) -> bytes:
-        """Synthesise ``text`` as MP3 audio."""
+        """Synthesise ``text`` as WAV audio."""
         ...

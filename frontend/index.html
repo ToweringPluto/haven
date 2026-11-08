@@ -11,6 +11,25 @@
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.png" />
     <meta name="theme-color" content="#006b6f" />
+    <script>
+      // Apply saved accessibility settings before first paint (src/state/accessibility.tsx
+      // keeps them up to date after that).
+      (function () {
+        var s = {};
+        try {
+          s = JSON.parse(localStorage.getItem("haven.accessibility") || "{}") || {};
+        } catch (e) {}
+        var root = document.documentElement;
+        var dark =
+          s.theme === "dark" ||
+          (s.theme !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        root.dataset.theme = dark ? "dark" : "light";
+        root.style.colorScheme = dark ? "dark" : "light";
+        if (s.highContrast) root.dataset.contrast = "high";
+        if (s.textScale) root.style.setProperty("--text-scale", String(s.textScale));
+        if (s.reduceMotion) root.dataset.motion = "reduce";
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />

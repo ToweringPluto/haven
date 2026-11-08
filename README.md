@@ -13,7 +13,7 @@ This makes housing decisions difficult because the information that matters most
 - **Hidden in the true cost:** council tax, energy and recurring costs can make an apparently affordable property unaffordable.
 - **Personal and contextual:** a step, unreliable lift or inaccessible route may matter greatly to one renter and not at all to another.
 - **Distributed across sources:** transport, amenities, property details and public information are not usually presented together.
-- **Difficult to observe:** possible damp, mould, access barriers or missing evidence may only become apparent in photographs, floor plans or documents.
+- **Difficult to observe:** possible damp, mould, access barriers or missing evidence may only become apparent in photographs or documents.
 
 Haven makes these factors more visible by bringing together structured property data, renter requirements, location data and uploaded evidence. It turns them into a transparent assessment of what appears suitable, what may be a concern and what the renter should investigate next.
 
@@ -25,7 +25,7 @@ Haven uses different methods for different kinds of decisions. The method is cho
 | --- | --- | --- |
 | What will the property cost each month? | Listing or user-provided rent; council tax data; estimated energy and recurring costs | Deterministic calculations produce estimated monthly expenditure and compare it with the renter's budget |
 | Can the property meet stated requirements? | Property facts, user requirements and location or transport data | Transparent rules check barriers such as steps, lift availability, route distance and transport access |
-| What may be difficult to observe? | User-uploaded images, floor plans and property documents | Separate computer-vision and document-processing models surface potential concerns, missing evidence and uncertainty |
+| What may be difficult to observe? | User-uploaded photos and property documents | Google Gemini screens photos for possible concerns and document processing extracts facts; both report missing evidence and uncertainty |
 | What does the evidence mean for this renter? | Structured outputs, source metadata and the renter's priorities | A grounded plain-language explanation gives reasons and suggested next steps |
 
 Machine learning is useful where the evidence is difficult to observe directly. An initial experiment could use labelled property images to classify visual signals such as possible damp or mould, or detect features such as an entrance step. Labels should be based on explicit annotation guidelines and reviewed examples; performance should be measured on held-out data using class-specific precision, recall and false-positive and false-negative analysis.
@@ -53,7 +53,7 @@ The system investigates the gap by:
 1. **Collecting listing and user-provided information** such as rent, council tax band, EPC rating, floor, lift availability and entrance details.
 2. **Adding attributable context** from public datasets, transport services and location data, with the source and date recorded.
 3. **Combining it with the renter's context** such as budget, priorities and accessibility requirements.
-4. **Gathering additional evidence** from uploaded photographs, floor plans and property documents.
+4. **Gathering additional evidence** from uploaded photographs and property documents.
 5. **Applying calculations, rules and scoped ML models** to expose costs, barriers, potential concerns and missing information.
 6. **Presenting the evidence and uncertainty** in an actionable report rather than hiding it behind an unexplained score.
 
@@ -102,10 +102,9 @@ For example:
 
 ### 4. AI property screening
 
-The user can upload a photograph, floor plan or property document. Different processing tasks may flag:
+The user can upload a photograph or a property document. Different processing tasks may flag:
 
 - **Image analysis:** possible damp or mould, visible entrance steps or other apparent access barriers.
-- **Floor-plan analysis:** possible layout constraints or missing access information.
 - **Document processing:** extracted facts, missing evidence or features that require further inspection.
 
 These are potential signals for investigation, not diagnoses or certifications. Accessibility is particularly contextual: a photograph or generic property field cannot establish whether a home works for a specific person without that person's requirements and further verification.
@@ -141,7 +140,9 @@ These are potential signals for investigation, not diagnoses or certifications. 
 | Property and location data | Listing, user-provided and attributable public data | Record source, date, coverage and known gaps |
 | Requirement checks | Rules grounded in renter-provided priorities | Test edge cases and review accessibility assumptions with users |
 | Image analysis | Google Gemini rates possible damp, mould and entrance steps in photos (after a photo-quality check); ratings carry no confidence score | Build an annotated Edinburgh dataset, evaluate precision and recall, and test false-positive and false-negative rates |
-| Floor plans and documents | Proposed extraction and screening | Evaluate OCR, extraction accuracy and insufficient-evidence handling |
+| Documents | Rent, council tax band and EPC rating read from uploaded documents (text and OCR) and checked against the listing | Evaluate OCR, extraction accuracy and insufficient-evidence handling |
+| Floor plans | Not included: Haven has no floor plan dataset | Add only once there is an attributable floor plan dataset for Edinburgh homes |
+| Read-aloud | Reports are read aloud by Google Gemini text-to-speech (signed in, when configured) or the browser's built-in voice | Check pronunciation of Edinburgh place names and reading of figures |
 | Personalised report | Sections built from the findings' own wording, each sentence citing its evidence; optional Gemini rewording is rejected if it changes facts or sounds certain | Check that generated text preserves evidence, uncertainty and source context |
 
 ## Proposed technical approach
@@ -152,11 +153,11 @@ Haven is designed as a hybrid decision-support system:
 | --- | --- | --- |
 | True cost | Deterministic calculations | Estimated monthly expenditure |
 | Explicit requirements | Rules and structured data | Transparent checks and reasons |
-| Image screening | Computer vision classification or detection | Potential visual concerns, evidence quality and calibrated confidence |
-| Floor plans and documents | OCR, document extraction and task-specific rules or classifiers | Extracted facts, missing evidence and features requiring inspection |
+| Image screening | Google Gemini vision model, after a deterministic photo-quality check | Potential visual concerns and evidence quality, as likelihood labels with no confidence score (Gemini's ratings aren't calibrated) |
+| Documents | OCR, document extraction and task-specific rules | Extracted facts, missing evidence and features requiring inspection |
 | Explanation | AI-generated natural-language summary grounded in structured results | Personalised report and next steps |
 
-The important principle is **evidence before prediction**. Where a result can be calculated or checked with a clear rule, Haven should do that directly. ML is reserved for patterns that are hard to observe, and every prediction should be presented with its evidence, confidence and limitations.
+The important principle is **evidence before prediction**. Where a result can be calculated or checked with a clear rule, Haven should do that directly. ML is reserved for patterns that are hard to observe, and every prediction should be presented with its evidence and limitations, and with a confidence score only where that score has been calibrated.
 
 ## Status and limitations
 
@@ -216,4 +217,6 @@ The dev server proxies `/v1` to the FastAPI backend on port 8000 (`uv run --dire
 
 ## Sign-in (Auth0)
 
-Browsing, costs and requirement checks are public. Uploads, reports, saved homes, editing your profile, deleting your data, photo screening and read-aloud need a signed-in user, and fall back to clearly labelled sample results when signed out or when a service is unavailable, so the demo never depends on sign-in. Auth0 is optional: with no `VITE_AUTH0_*` variables set, the app runs in public/sample mode. Tenant setup and environment variables are in [`docs/AUTH0_SETUP.md`](docs/AUTH0_SETUP.md).
+Browsing, costs and requirement checks are public. Uploads, reports, saved homes, editing your profile, deleting your data and photo screening need a signed-in user, and fall back to clearly labelled sample results when signed out or when a service is unavailable, so the demo never depends on sign-in. Read-aloud uses Gemini's voice when signed in and configured, and the browser's own voice otherwise.
+
+Accessibility settings (colour theme, high contrast, text size, a dyslexia-friendly or high-legibility font, wider text spacing, reduced motion, underlined links, a bold keyboard focus outline and read-aloud speed) open in a pop-up from the cog at the right of the top bar (or "Accessibility settings" in the phone menu), over whatever page you are on. They're saved in the browser, so they work signed out. Auth0 is optional: with no `VITE_AUTH0_*` variables set, the app runs in public/sample mode. Tenant setup and environment variables are in [`docs/AUTH0_SETUP.md`](docs/AUTH0_SETUP.md).

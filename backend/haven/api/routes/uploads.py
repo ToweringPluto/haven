@@ -1,4 +1,4 @@
-"""Uploaded evidence: photos, floor plans and documents (signed in)."""
+"""Uploaded evidence: photos and documents (signed in)."""
 
 from typing import Annotated
 
@@ -18,14 +18,14 @@ router = APIRouter(prefix="/uploads", tags=["uploads"])
     "",
     response_model=Upload,
     status_code=201,
-    summary="Upload a photo, floor plan or document (signed in)",
+    summary="Upload a photo or document (signed in)",
     description="Multipart upload of a JPEG, PNG, WebP or PDF file (max 15 MB by default). "
     "The upload belongs to the signed-in user. "
     "The type is checked from the file's content, not its name: anything else is rejected "
     "with 415, and larger files with 413. Images are stored with EXIF/GPS metadata removed "
     "(`metadata_stripped: true`); PDFs are stored unchanged. Photos are screened for possible "
     "issues (signals to inspect, never diagnoses; a signal may be 'insufficient_evidence'), "
-    "floor plans get a quality grade and documents have their facts extracted. The fixture "
+    "and documents have their facts extracted. The fixture "
     "backend (`HAVEN_BACKEND=fixtures`) does not store or screen the file.",
     responses=ex.json_response(201, ex.per_persona("upload"))
     | problem_responses(401, 404, 413, 415, 422, 503),
@@ -33,7 +33,7 @@ router = APIRouter(prefix="/uploads", tags=["uploads"])
 async def create_upload(
     backend: BackendDep,
     user: CurrentUserDep,
-    file: Annotated[UploadFile, File(description="The photo, floor plan or document.")],
+    file: Annotated[UploadFile, File(description="The photo or document.")],
     kind: Annotated[UploadKind, Form(description="What the file is.")],
     property_id: Annotated[
         str | None, Form(description="Property the evidence is about, if any.")

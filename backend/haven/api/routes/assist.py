@@ -24,8 +24,11 @@ IMAGE_SIGNATURES: dict[str, tuple[bytes, ...]] = {
     "image/webp": (b"RIFF",),  # plus "WEBP" at offset 8, checked below
 }
 BINARY = {"type": "string", "format": "binary"}
-MP3_RESPONSE: dict[int | str, dict[str, Any]] = {
-    200: {"description": "MP3 audio.", "content": {"audio/mpeg": {"schema": BINARY}}}
+WAV_RESPONSE: dict[int | str, dict[str, Any]] = {
+    200: {
+        "description": "WAV audio (16-bit mono PCM).",
+        "content": {"audio/wav": {"schema": BINARY}},
+    }
 }
 
 
@@ -83,10 +86,12 @@ async def photo_screen(request: Request, user: PhotoScreenUser, backend: Backend
     "/read-aloud",
     response_class=Response,
     summary="Read text aloud (signed in)",
-    description="Returns MP3 audio of the text (max `HAVEN_READ_ALOUD_MAX_CHARS` characters, "
-    "default 5000). Rate limited per user (`HAVEN_READ_ALOUD_RATE_LIMIT` per "
-    "`HAVEN_RATE_LIMIT_WINDOW_SECONDS`). The fixture backend returns 501.",
-    responses=MP3_RESPONSE | problem_responses(401, 413, 422, 429, 501, 503),
+    description="Returns WAV audio of the text (max `HAVEN_READ_ALOUD_MAX_CHARS` characters, "
+    "default 5000), spoken by Google Gemini when `HAVEN_READ_ALOUD_PROVIDER=gemini`; the text "
+    "is sent to Google and not stored. `501` when no speech service is configured (clients "
+    "can fall back to the browser's own voice), `503` if the service fails. Rate limited per "
+    "user (`HAVEN_READ_ALOUD_RATE_LIMIT` per `HAVEN_RATE_LIMIT_WINDOW_SECONDS`).",
+    responses=WAV_RESPONSE | problem_responses(401, 413, 422, 429, 501, 503),
 )
 def read_aloud(
     request: Request,
@@ -97,4 +102,4 @@ def read_aloud(
     settings: Settings = request.app.state.settings
     if len(body.text) > settings.read_aloud_max_chars:
         raise PayloadTooLarge(f"Text must be {settings.read_aloud_max_chars} characters or fewer.")
-    return Response(content=backend.read_aloud(body.text), media_type="audio/mpeg")
+    return Response(content=backend.read_aloud(body.text), media_type="audio/wav")

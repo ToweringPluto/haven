@@ -1,7 +1,7 @@
 # Frontend integration guide
 
 This guide is for the team building the Haven frontend. The contract between us is
-[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.2.0**).
+[`contracts/openapi.yaml`](../contracts/openapi.yaml) (OpenAPI 3.1, contract version **0.3.0**).
 The spec is generated from the backend's pydantic models, so treat it as the source of truth. If
 this guide disagrees with the spec, the spec wins, and please tell us.
 
@@ -24,7 +24,7 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
 
 - Interactive docs: <http://localhost:8000/docs>. Raw spec: <http://localhost:8000/openapi.json>.
 - Liveness: `GET /healthz` → `{"status": "ok"}`.
-- **Current behaviour (contract 0.2.0):** profiles are the illustrative persona data in
+- **Current behaviour (contract 0.3.0):** profiles are the illustrative persona data in
   [`contracts/examples/`](../contracts/examples/) plus anything you create. Listings are
   read-only: renters can't add them.
   - `GET /v1/properties` lists 11 **fictional seed properties** first (`seed-prop-*`, from
@@ -62,8 +62,9 @@ uv run --directory backend poe serve        # http://localhost:8000, auto-reload
     with EXIF/GPS metadata removed (`metadata_stripped: true`); PDFs unchanged. `DELETE` removes
     the file. Uploads are screened when stored: photos get `evidence_quality` and one signal per
     kind (Google Gemini when the server has `HAVEN_VISION_PROVIDER=gemini`, otherwise every
-    signal is `insufficient_evidence`); floor plans get `evidence_quality` only; documents get
-    `extracted_facts`. Pass the upload ids to `POST /v1/assessments` to include them.
+    signal is `insufficient_evidence`); documents get `extracted_facts`. There is no floor plan
+    upload: Haven has no floor plan data (removed in 0.3.0). Pass the upload ids to
+    `POST /v1/assessments` to include them.
   - Profiles, reports, upload records and saved homes are saved in the database when the
     server has `HAVEN_DATABASE_URL` set; without it they're kept in memory and lost on restart.
     Each belongs to the signed-in user who created it; anyone else gets `404`.
@@ -108,7 +109,7 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | 2 | Property detail | `GET /v1/properties/{property_id}` | |
 | 3 | True monthly cost | `POST /v1/properties/{property_id}/cost` | Body `{"profile_id": "..."}` (optional). Without a profile, `budget_comparison` is `unknown`. |
 | 4 | Requirement checks | `POST /v1/properties/{property_id}/suitability` | Body `{"profile_id": "..."}`. Returns one `Finding` per applicable rule: `meets` / `concern` / `unknown`. |
-| 5 | Upload evidence | `POST /v1/uploads` | **Signed in.** **multipart/form-data**: `file`, `kind` (`photo` \| `floor_plan` \| `document`), optional `property_id`. Returns `201` with an `Upload`. |
+| 5 | Upload evidence | `POST /v1/uploads` | **Signed in.** **multipart/form-data**: `file`, `kind` (`photo` \| `document`), optional `property_id`. Returns `201` with an `Upload`. |
 | 5 | Your uploads | `GET /v1/uploads` | **Signed in.** `{items: [...]}`; add `?property_id=` for one home. Use it to show a renter's files again after a reload. |
 | 5 | Delete evidence | `DELETE /v1/uploads/{upload_id}` | **Signed in.** `204`. Removes the file and its derived signals. Only your own uploads. |
 | 6 | Generate the report | `POST /v1/assessments` | **Signed in.** The report is saved to the account. Body `{"profile_id", "property_id", "upload_ids": [...]}`. Returns the full `Report`. |
@@ -118,7 +119,7 @@ All endpoints live under `/v1`. Request and response bodies are JSON unless note
 | – | Saved homes | `GET /v1/me/saved-homes`, `PUT /v1/me/saved-homes` | **Signed in.** `{property_ids: [...]}`. `PUT` replaces the whole list. |
 | – | Delete all my data | `DELETE /v1/me` | **Signed in.** Deletes every profile, report, upload (with its file) and saved home of the user; returns the counts. |
 | – | Screen a photo | `POST /v1/photo-screen` | **Signed in.** Raw image body (`Content-Type: image/jpeg`, `image/png` or `image/webp`, max 5 MB). Sent to Google Gemini for screening when configured; never stored by Haven. Returns `PhotoScreen`. |
-| – | Read text aloud | `POST /v1/read-aloud` | **Signed in.** Body `{"text": "..."}` (max 5000 characters). Returns `audio/mpeg`. |
+| – | Read text aloud | `POST /v1/read-aloud` | **Signed in.** Body `{"text": "..."}` (max 5000 characters). Returns `audio/wav`, spoken by Google Gemini when the server has `HAVEN_READ_ALOUD_PROVIDER=gemini`. `501` means no speech service is set up: use the browser's `speechSynthesis` instead (the app does). |
 
 ## 3. Payload walkthrough: wheelchair user persona
 

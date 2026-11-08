@@ -155,7 +155,7 @@ export interface Signal {
   note: string | null;
 }
 
-export type UploadKind = "photo" | "floor_plan" | "document";
+export type UploadKind = "photo" | "document";
 
 export interface Upload {
   id: string;
