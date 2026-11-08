@@ -15,10 +15,10 @@ from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel
 from sqlalchemy import JSON, Column, Engine, String, select
-from sqlmodel import Field, Session, SQLModel, create_engine
+from sqlmodel import Field, Session, SQLModel
 
 from haven.config import Settings
-from haven.store.db import sqlalchemy_url
+from haven.store.db import engine_for
 
 logger = logging.getLogger(__name__)
 
@@ -195,9 +195,8 @@ def make_record_store(settings: Settings) -> RecordStore:
     """
     if settings.database_url is None:
         return MemoryRecordStore()
-    url = sqlalchemy_url(settings.database_url.get_secret_value())
     try:
-        return SqlRecordStore(create_engine(url, pool_pre_ping=True))
+        return SqlRecordStore(engine_for(settings.database_url.get_secret_value()))
     except Exception as exc:  # noqa: BLE001 - any driver/network error falls back to memory
         logger.error(
             "Couldn't use HAVEN_DATABASE_URL (%s); records will not be saved across restarts.",

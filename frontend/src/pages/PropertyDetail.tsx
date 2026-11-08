@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/client";
 import type { Evidence, Property, Upload } from "../api/types";
+import { useCreateReport } from "../api/useCreateReport";
 import { useLoad } from "../api/useLoad";
 import { BackLink } from "../components/BackLink";
 import { Button } from "../components/Button";
@@ -46,8 +47,7 @@ export default function PropertyDetail() {
   const [suitability] = useLoad(propertyId && profileId && `${propertyId}:${profileId}`, () =>
     api.suitability(id, profileId!),
   );
-  const [reportError, setReportError] = useState<string | null>(null);
-  const [creatingReport, setCreatingReport] = useState(false);
+  const { create, creating: creatingReport, error: reportError } = useCreateReport();
   const [uploads, setUploads] = useState<Upload[]>([]);
 
   // Signed in: show the files the renter already added to this home (they're on the account).
@@ -90,17 +90,8 @@ export default function PropertyDetail() {
 
   const createReport = async () => {
     if (!profileId) return;
-    setCreatingReport(true);
-    setReportError(null);
-    const res = await api.createAssessment(
-      profileId,
-      p.id,
-      uploads.filter((u) => u.property_id === p.id).map((u) => u.id),
-      await getAccessToken(),
-    );
-    setCreatingReport(false);
-    if (res.status === "ok") go("report", res.data.id);
-    else setReportError(res.message);
+    const reportId = await create(profileId, p.id, uploads);
+    if (reportId) go("report", reportId);
   };
 
   return (
