@@ -1,4 +1,4 @@
-"""Uploaded evidence (photo, floor plan or document) and what screening found in it."""
+"""Uploaded evidence (photo or document) and what screening found in it."""
 
 from datetime import datetime
 

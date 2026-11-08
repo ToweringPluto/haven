@@ -8,7 +8,7 @@
 * ``POST /v1/uploads`` / ``DELETE /v1/uploads/{id}`` → :class:`haven.store.UploadStore`
   (files on disk under ``Settings.upload_dir``, type sniffed from magic bytes, image
   metadata stripped). Photos are screened (quality gate, then the configured screener:
-  Gemini or none); floor plans get a quality grade; documents have their facts extracted.
+  Gemini or none); documents have their facts extracted.
 * ``POST /v1/photo-screen`` → the same screening pipeline, in memory only.
 * ``POST /v1/assessments`` → cost + rule findings + document conflicts + upload signals, with
   sections from :func:`haven.explain.build_sections` (optionally reworded by Gemini). The
@@ -21,10 +21,10 @@
   (``data/seed/properties.yaml``, fictional and marked illustrative) first, then the persona
   fixture properties. Renters can't add listings.
 
-Read-aloud still has no speech service (501).
+* ``POST /v1/read-aloud`` → :mod:`haven.speech` (Gemini text-to-speech, WAV audio) when
+  ``HAVEN_READ_ALOUD_PROVIDER=gemini``; 501 when no speech service is configured.
 """
 
-import io
 import logging
 import uuid
 from collections.abc import Callable
@@ -61,11 +61,11 @@ from haven.screening import (
     Screener,
     ScreeningPipeline,
     ScreeningResult,
-    assess_quality,
     make_screener,
 )
 from haven.screening.documents import extract_document
 from haven.screening.screeners import SIGNAL_KINDS, insufficient
+from haven.speech import SpeechError, SpeechModel, make_speech
 from haven.store import (
     MemoryRecordStore,
     RecordStore,
@@ -98,6 +98,7 @@ class EngineBackend(FixtureBackend):
         settings: Settings | None = None,
         screener: Screener | None = None,
         wording_model: JsonModel | None = None,
+        speech: SpeechModel | None = None,
     ) -> None:
         super().__init__(directory)
         self.settings = Settings() if settings is None else settings
@@ -111,6 +112,7 @@ class EngineBackend(FixtureBackend):
         if wording_model is None and self.settings.report_wording == "gemini":
             wording_model = make_gemini(self.settings)
         self.wording_model = wording_model
+        self.speech = make_speech(self.settings) if speech is None else speech
         self._references = references
         self.seed = load_seed() if seed is None else seed
         clash = {p.id for p in self.seed} & self._properties.keys()
@@ -172,6 +174,18 @@ class EngineBackend(FixtureBackend):
             raise UnsupportedMediaType("The image couldn't be read.") from exc
         return PhotoScreen(evidence_quality=result.quality.quality, signals=result.signals)
 
+    # --- read-aloud --------------------------------------------------------------------
+
+    def read_aloud(self, text: str) -> bytes:
+        if self.speech is None:
+            return super().read_aloud(text)  # 501: no speech service configured
+        try:
+            return self.speech.speak(text)
+        except SpeechError as exc:
+            raise ServiceUnavailable(
+                "Read-aloud is temporarily unavailable. Try again shortly."
+            ) from exc
+
     # --- uploads -----------------------------------------------------------------------
 
     def create_upload(
@@ -211,21 +225,12 @@ class EngineBackend(FixtureBackend):
                 content, filename=upload.filename, content_type=upload.content_type
             )
             return upload.model_copy(update={"extracted_facts": extraction.facts})
-        if upload.kind is UploadKind.photo:
-            result = self._screen_upload_image(content, upload.id)
-            if result is None:
-                return upload
-            return upload.model_copy(
-                update={"evidence_quality": result.quality.quality, "signals": result.signals}
-            )
-        # Floor plan: a quality grade only; the photo signals don't apply to drawings.
-        try:
-            with Image.open(io.BytesIO(content)) as image:
-                image.load()
-                report = assess_quality(image, self.settings.quality)
-        except (UnidentifiedImageError, OSError, ValueError):
+        result = self._screen_upload_image(content, upload.id)
+        if result is None:
             return upload
-        return upload.model_copy(update={"evidence_quality": report.quality})
+        return upload.model_copy(
+            update={"evidence_quality": result.quality.quality, "signals": result.signals}
+        )
 
     # --- reports -----------------------------------------------------------------------
 

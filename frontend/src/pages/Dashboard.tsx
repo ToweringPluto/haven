@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useEnumLabel } from "../api/enums";
 import { api } from "../api/client";
 import { useLoad } from "../api/useLoad";
 import { useAuth } from "../auth/AuthProvider";
+import { AccessibilitySettings } from "../components/AccessibilitySettings";
 import { Button } from "../components/Button";
 import { EdinburghSketch } from "../components/EdinburghSketch";
 import { Icon } from "../components/Icon";
@@ -15,7 +16,7 @@ import { useRenterProfile } from "../state/renterProfile";
 import { useShortlist } from "../state/shortlist";
 
 export default function Dashboard() {
-  const { go } = useNavigation();
+  const { go, param } = useNavigation();
   const label = useEnumLabel();
   const { draft, saved: profile, deleteProfile, reset: resetProfile } = useRenterProfile();
   const { saved, syncError, reset: resetShortlist } = useShortlist();
@@ -26,6 +27,14 @@ export default function Dashboard() {
   );
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  // `#/dashboard/accessibility` (the nav button) jumps straight to the settings.
+  useEffect(() => {
+    if (param !== "accessibility") return;
+    const section = document.getElementById("accessibility");
+    section?.scrollIntoView({ block: "start" });
+    section?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+  }, [param]);
 
   const removeProfile = async () => {
     if (!window.confirm("Delete your saved renter profile? Your reports keep their own copy.")) {
@@ -205,6 +214,8 @@ export default function Dashboard() {
           </aside>
         </div>
       )}
+      <AccessibilitySettings />
+
       {notice && (
         <p className="screen-notice" role="status">
           {notice}

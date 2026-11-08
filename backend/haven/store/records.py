@@ -13,7 +13,7 @@ import logging
 from datetime import UTC, datetime
 from typing import Any, Literal, Protocol
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 from sqlalchemy import JSON, Column, Engine, String, select
 from sqlmodel import Field, Session, SQLModel
 
@@ -70,6 +70,20 @@ class RecordStore(Protocol):
         ...
 
 
+def _readable[M: BaseModel](
+    model: type[M], rows: list[tuple[str, dict[str, Any]]], kind: str
+) -> list[M]:
+    """Parse rows, skipping any saved under an older contract that no longer validates
+    (e.g. a ``floor_plan`` upload from before 0.3.0), so one stale record can't break a list."""
+    out: list[M] = []
+    for record_id, data in rows:
+        try:
+            out.append(model.model_validate(data))
+        except ValidationError:
+            logger.warning("Skipping unreadable %s record %s (older format).", kind, record_id)
+    return out
+
+
 def _record_id(record: BaseModel) -> str:
     record_id = getattr(record, "id", None)
     if not isinstance(record_id, str):
@@ -98,11 +112,12 @@ class MemoryRecordStore:
     def list[M: BaseModel](
         self, kind: Kind, model: type[M], *, owner_sub: str | None = None
     ) -> list[M]:
-        return [
-            model.model_validate(data)
-            for (k, _), (owner, data) in self._rows.items()
+        rows = [
+            (record_id, data)
+            for (k, record_id), (owner, data) in self._rows.items()
             if k == kind and (owner_sub is None or owner == owner_sub)
         ]
+        return _readable(model, rows, kind)
 
     def owner(self, kind: Kind, record_id: str) -> object:
         row = self._rows.get((kind, record_id))
@@ -160,7 +175,8 @@ class SqlRecordStore:
             query = query.where(RecordRow.owner_sub == owner_sub)  # type: ignore[arg-type]
         query = query.order_by(RecordRow.created_at)  # type: ignore[arg-type]
         with Session(self.engine) as session:
-            return [model.model_validate(row.data) for row in session.scalars(query)]
+            rows = [(row.id, row.data) for row in session.scalars(query)]
+        return _readable(model, rows, kind)
 
     def owner(self, kind: Kind, record_id: str) -> object:
         with Session(self.engine) as session:

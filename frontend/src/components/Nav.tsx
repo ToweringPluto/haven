@@ -20,8 +20,8 @@ export function Nav() {
   const { page, go } = useNavigation();
   const [open, setOpen] = useState(false);
 
-  const navigate = (next: Page) => {
-    go(next);
+  const navigate = (next: Page, param?: string) => {
+    go(next, param);
     setOpen(false);
   };
 
@@ -45,6 +45,9 @@ export function Nav() {
             );
           })}
           <div className="mobile-actions">
+            <button type="button" onClick={() => navigate("dashboard", "accessibility")}>
+              <Icon name="access" size={18} /> Accessibility
+            </button>
             <UserBadge onClick={() => navigate("dashboard")} />
             <LoginButton variant="text" />
             <LogoutButton />
@@ -52,6 +55,15 @@ export function Nav() {
           </div>
         </div>
         <div className="nav-actions">
+          <button
+            type="button"
+            className="a11y-nav-button"
+            onClick={() => go("dashboard", "accessibility")}
+            aria-label="Accessibility settings"
+            title="Accessibility settings"
+          >
+            <Icon name="access" />
+          </button>
           <UserBadge onClick={() => go("dashboard")} />
           <LoginButton variant="text" />
           <LogoutButton />

@@ -11,14 +11,8 @@ import { Status } from "./Status";
 const ACCEPT_ANY = "image/jpeg,image/png,image/webp,application/pdf";
 const MAX_BYTES = 15 * 1024 * 1024;
 
-const KINDS: { value: UploadKind; label: string }[] = [
-  { value: "photo", label: "Photo" },
-  { value: "floor_plan", label: "Floor plan" },
-  { value: "document", label: "Document (e.g. lease, EPC)" },
-];
-
 /**
- * Photos, floor plans and documents the renter attaches to this home's report. Photos get the
+ * Photos and documents the renter attaches to this home's report. Photos get the
  * AI check (possible damp, mould, entrance step). Uploads are saved to the signed-in renter's
  * account, so they come back after a reload. Every upload has a delete control (UI obligation 6);
  * signals are shown with their likelihood label.
@@ -36,7 +30,6 @@ export function EvidenceUploads({
   const { isConfigured, isAuthenticated, isLoading, login, getAccessToken } = useAuth();
   const photoInput = useRef<HTMLInputElement>(null);
   const otherInput = useRef<HTMLInputElement>(null);
-  const [otherKind, setOtherKind] = useState<UploadKind>("document");
   const [busy, setBusy] = useState<UploadKind | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   // Previews of photos chosen in this visit (the server doesn't send files back).
@@ -115,26 +108,16 @@ export function EvidenceUploads({
             <Icon name="upload" size={18} />
             {busy === "photo" ? "Checking photo…" : "Upload a photo for the AI check"}
           </Button>
-          <span className="evidence-or">or add</span>
-          <label>
-            <span className="visually-hidden">File type</span>
-            <select value={otherKind} onChange={(e) => setOtherKind(e.target.value as UploadKind)}>
-              {KINDS.filter((k) => k.value !== "photo").map((k) => (
-                <option key={k.value} value={k.value}>
-                  {k.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <span className="evidence-or">or add a document (e.g. lease, EPC)</span>
           <input
             ref={otherInput}
             type="file"
             accept={ACCEPT_ANY}
             hidden
-            onChange={(e) => add(otherKind, e)}
+            onChange={(e) => add("document", e)}
           />
           <Button secondary onClick={() => otherInput.current?.click()} disabled={busy !== null}>
-            {busy && busy !== "photo" ? "Reading…" : "Choose file"}
+            {busy === "document" ? "Reading…" : "Choose document"}
           </Button>
         </div>
       )}
@@ -161,7 +144,7 @@ export function EvidenceUploads({
                 <div>
                   <b>{u.filename}</b>
                   <small>
-                    {KINDS.find((k) => k.value === u.kind)?.label}
+                    {label("upload_kind", u.kind)}
                     {u.evidence_quality &&
                       ` · Photo quality: ${label("evidence_quality", u.evidence_quality)}`}
                   </small>

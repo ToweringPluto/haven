@@ -121,7 +121,7 @@ LABELS: dict[str, tuple[type[StrEnum], dict[str, str]]] = {
     ),
     "upload_kind": (
         UploadKind,
-        {"photo": "Photo", "floor_plan": "Floor plan", "document": "Document"},
+        {"photo": "Photo", "document": "Document"},
     ),
     "priority": (
         Priority,

@@ -65,3 +65,11 @@ def test_silently_dropped_database_falls_back_quickly(monkeypatch: pytest.Monkey
     started = time.monotonic()
     assert isinstance(make_record_store(settings), MemoryRecordStore)
     assert time.monotonic() - started < 10
+
+
+def test_list_skips_records_saved_in_an_older_format() -> None:
+    from haven.domain import Upload
+
+    store = MemoryRecordStore()
+    store._rows[("upload", "old")] = ("auth0|u", {"id": "old", "kind": "floor_plan"})
+    assert store.list("upload", Upload, owner_sub="auth0|u") == []

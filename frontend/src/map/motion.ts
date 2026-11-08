@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
+/** The system setting, or Haven's own "Reduce motion" accessibility setting. */
 export const prefersReducedMotion = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  typeof window !== "undefined" &&
+  (document.documentElement.dataset.motion === "reduce" ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
 const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
 

@@ -4,6 +4,14 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
+## 0.3.0 (2026-11-08)
+
+**Breaking** (agreed with the frontend, which is updated in the same change).
+
+- **Removed** `floor_plan` from `UploadKind` (and from the `upload_kind` labels in `GET /v1/meta/enums`). Haven has no floor plan dataset or model, so `POST /v1/uploads` now accepts only `photo` and `document`; `kind=floor_plan` is `422`. Upload records saved under an older format are skipped when listing, not an error.
+- `POST /v1/read-aloud` now returns **`audio/wav`** (16-bit mono PCM), not `audio/mpeg`. On the engine backend it speaks the text with Google Gemini text-to-speech when `HAVEN_READ_ALOUD_PROVIDER=gemini` (the text is sent to Google and not stored); `501` when no speech service is configured, `503` if it fails.
+- New server settings: `HAVEN_READ_ALOUD_PROVIDER`, `HAVEN_GEMINI_TTS_MODEL` (default `gemini-3.8-flash-lite-tts`), `HAVEN_GEMINI_TTS_VOICE` (default `Kore`).
+
 ## 0.2.0 (2026-11-08)
 
 **Breaking** (agreed with the frontend, which is updated in the same change).

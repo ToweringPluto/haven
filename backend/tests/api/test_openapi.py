@@ -68,7 +68,7 @@ EXPECTED = {
     ("POST", "/v1/read-aloud"),
 }
 # Operations whose success response is a documented binary body rather than JSON.
-BINARY_RESPONSES = {("POST", "/v1/read-aloud"): "audio/mpeg"}
+BINARY_RESPONSES = {("POST", "/v1/read-aloud"): "audio/wav"}
 
 
 def test_all_expected_routes_exist() -> None:
