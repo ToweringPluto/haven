@@ -13,13 +13,13 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from sqlmodel import create_engine
 
-from haven.api.app import create_app
 from haven.api.engines import EngineBackend
 from haven.config import CONTRACT_EXAMPLES_DIR
 from haven.explain import HEADINGS, certainty_phrases
 from haven.gemini import GeminiError
 from haven.screening.gemini import GeminiScreener
 from haven.store import SqlRecordStore, UploadStore
+from tests.api.auth_helpers import OTHER_USER, signed_in
 
 SEED_PROPERTY = "seed-prop-leith"  # council tax band C in the seed file
 
@@ -81,7 +81,7 @@ def make_backend(tmp_path: Path, *, error: Exception | None = None, db: str = ""
 
 @pytest.fixture
 def client(tmp_path: Path) -> TestClient:
-    return TestClient(create_app(backend=make_backend(tmp_path)))
+    return signed_in(make_backend(tmp_path))
 
 
 def upload(client: TestClient, content: bytes, name: str, ctype: str, kind: str) -> Any:
@@ -122,7 +122,7 @@ def test_document_upload_has_extracted_facts(client: TestClient) -> None:
 
 
 def test_gemini_failure_never_fails_an_upload(tmp_path: Path) -> None:
-    client = TestClient(create_app(backend=make_backend(tmp_path, error=GeminiError("down"))))
+    client = signed_in(make_backend(tmp_path, error=GeminiError("down")))
     body = upload(client, jpeg(), "kitchen.jpg", "image/jpeg", "photo")
     assert body["evidence_quality"] == "good"
     assert {s["likelihood"] for s in body["signals"]} == {"insufficient_evidence"}
@@ -169,15 +169,63 @@ def test_report_for_new_profile_and_seed_property(client: TestClient) -> None:
 
 
 def test_records_survive_a_restart(tmp_path: Path) -> None:
-    first = TestClient(create_app(backend=make_backend(tmp_path)))
+    first = signed_in(make_backend(tmp_path))
     profile = first.post("/v1/profiles", json=PROFILE).json()
     report = first.post(
         "/v1/assessments", json={"profile_id": profile["id"], "property_id": SEED_PROPERTY}
     ).json()
 
-    second = TestClient(create_app(backend=make_backend(tmp_path)))
+    second = signed_in(make_backend(tmp_path))
     assert second.get(f"/v1/profiles/{profile['id']}").json() == profile
     assert second.get(f"/v1/reports/{report['id']}").json() == report
+    assert [r["id"] for r in second.get("/v1/reports").json()["items"]] == [report["id"]]
+
+
+def test_my_data_is_private_and_deletable(tmp_path: Path) -> None:
+    backend = make_backend(tmp_path)
+    me, other = signed_in(backend), signed_in(backend, OTHER_USER)
+    profile = me.post("/v1/profiles", json=PROFILE).json()
+    photo = upload(me, jpeg(), "kitchen.jpg", "image/jpeg", "photo")
+    report = me.post(
+        "/v1/assessments", json={"profile_id": profile["id"], "property_id": SEED_PROPERTY}
+    ).json()
+    me.put("/v1/me/saved-homes", json={"property_ids": [SEED_PROPERTY, SEED_PROPERTY]})
+
+    assert me.get("/v1/me/saved-homes").json() == {"property_ids": [SEED_PROPERTY]}
+    assert [
+        u["id"] for u in me.get(f"/v1/uploads?property_id={SEED_PROPERTY}").json()["items"]
+    ] == [photo["id"]]
+    # Someone else can't see, use, change or delete any of it.
+    assert other.get(f"/v1/reports/{report['id']}").status_code == 404
+    assert other.get("/v1/uploads").json() == {"items": []}
+    assert other.get("/v1/me/saved-homes").json() == {"property_ids": []}
+    assert other.delete(f"/v1/uploads/{photo['id']}").status_code == 404
+    assert other.put(f"/v1/profiles/{profile['id']}", json=PROFILE).status_code == 404
+    assessment = {"profile_id": profile["id"], "property_id": SEED_PROPERTY}
+    assert other.post("/v1/assessments", json=assessment).status_code == 404
+
+    edited = me.put(f"/v1/profiles/{profile['id']}", json={**PROFILE, "monthly_budget_gbp": 700})
+    assert edited.json()["id"] == profile["id"] and edited.json()["monthly_budget_gbp"] == 700
+
+    deleted = me.delete("/v1/me").json()
+    assert deleted == {"profiles": 1, "reports": 1, "uploads": 1, "saved_homes": True}
+    assert me.get(f"/v1/profiles/{profile['id']}").status_code == 404
+    assert me.get(f"/v1/reports/{report['id']}").status_code == 404
+    assert me.get("/v1/uploads").json() == {"items": []}
+    assert not any(tmp_path.rglob(f"{photo['id']}.*"))
+
+
+def test_listings_cant_be_added(client: TestClient) -> None:
+    assert client.post("/v1/properties", json={}).status_code == 405
+
+
+def test_uploads_and_reports_need_sign_in(anon_client: TestClient) -> None:
+    files = {"file": ("a.jpg", jpeg(), "image/jpeg")}
+    assert anon_client.post("/v1/uploads", files=files, data={"kind": "photo"}).status_code == 503
+    body = {"profile_id": "persona-student", "property_id": SEED_PROPERTY}
+    assert anon_client.post("/v1/assessments", json=body).status_code == 503
+    # Example reports stay public.
+    assert anon_client.get("/v1/reports/ill-report-st").status_code == 200
 
 
 def test_unknown_upload_in_assessment_is_404(client: TestClient) -> None:

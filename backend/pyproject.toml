@@ -1,6 +1,6 @@
 [project]
 name = "haven"
-version = "0.1.4"
+version = "0.2.0"
 description = "Haven (Housing And Visibility Edinburgh Network): decision-support API for Edinburgh renters"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"

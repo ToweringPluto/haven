@@ -47,7 +47,10 @@ def test_get_profile(client: TestClient, example: Example, persona: str) -> None
     assert response.json() == example(persona, "profile")
 
 
-def test_create_profile_assigns_id_and_can_be_fetched(client: TestClient, example: Example) -> None:
+def test_create_profile_assigns_id_and_can_be_fetched(
+    anon_client: TestClient, example: Example
+) -> None:
+    client = anon_client
     body = {k: v for k, v in example("student", "profile").items() if k != "id"}
     response = client.post("/v1/profiles", json=body)
     assert response.status_code == 201
@@ -110,21 +113,8 @@ def test_unknown_property_is_404(client: TestClient) -> None:
     assert_problem(client.get("/v1/properties/ill-prop-does-not-exist"), 404)
 
 
-def test_create_property(client: TestClient, example: Example) -> None:
-    body = {k: v for k, v in example("student", "properties")["items"][0].items() if k != "id"}
-    response = client.post("/v1/properties", json=body)
-    assert response.status_code == 201
-    created = response.json()
-    assert {k: v for k, v in created.items() if k != "id"} == body
-    assert client.get(f"/v1/properties/{created['id']}").json() == created
-
-
-def test_create_property_rejects_value_without_insufficient_status(
-    client: TestClient, example: Example
-) -> None:
-    body = {k: v for k, v in example("student", "properties")["items"][0].items() if k != "id"}
-    body["has_lift"] = {**body["has_lift"], "value": None, "status": "known"}
-    assert_problem(client.post("/v1/properties", json=body), 422)
+def test_listings_are_read_only(client: TestClient) -> None:
+    assert client.post("/v1/properties", json={}).status_code == 405
 
 
 # --- cost + suitability ----------------------------------------------------------------
@@ -159,14 +149,6 @@ def test_cost_for_unmatched_pair_is_not_invented(fixture_client: TestClient) -> 
     )
     body = assert_problem(response, 501)
     assert "fixture" in body["detail"]
-
-
-def test_cost_for_created_property_is_not_invented(
-    fixture_client: TestClient, example: Example
-) -> None:
-    body = {k: v for k, v in example("student", "properties")["items"][0].items() if k != "id"}
-    created = fixture_client.post("/v1/properties", json=body).json()
-    assert_problem(fixture_client.post(f"/v1/properties/{created['id']}/cost", json={}), 501)
 
 
 def test_cost_unknown_profile_is_404(fixture_client: TestClient) -> None:
@@ -249,8 +231,8 @@ def test_delete_upload(fixture_client: TestClient) -> None:
     assert_problem(fixture_client.delete(f"/v1/uploads/{created['id']}"), 404)
 
 
-def test_delete_fixture_upload(fixture_client: TestClient) -> None:
-    assert fixture_client.delete("/v1/uploads/ill-upload-wu-entrance").status_code == 204
+def test_example_uploads_cant_be_deleted(fixture_client: TestClient) -> None:
+    assert fixture_client.delete("/v1/uploads/ill-upload-wu-entrance").status_code == 404
 
 
 # --- assessments + reports -------------------------------------------------------------

@@ -61,13 +61,6 @@ def profile_inputs() -> dict[str, Json]:
     return {p: {"summary": SUMMARIES[p], "value": without_id(load(p, "profile"))} for p in PERSONAS}
 
 
-def property_inputs() -> dict[str, Json]:
-    return {
-        p: {"summary": SUMMARIES[p], "value": without_id(load(p, "properties")["items"][0])}
-        for p in PERSONAS
-    }
-
-
 def single(value: Json, summary: str = "Illustrative example") -> dict[str, Json]:
     return {"example": {"summary": summary, "value": value}}
 
@@ -115,3 +108,33 @@ def read_aloud_examples() -> dict[str, Json]:
             },
         }
     }
+
+
+def upload_list() -> dict[str, Json]:
+    return single({"items": [load("tight_budget", "upload")]}, "One upload")
+
+
+def report_list() -> dict[str, Json]:
+    report = load("tight_budget", "report")
+    summary = {
+        "id": report["id"],
+        "created_at": report["created_at"],
+        "property_id": report["property"]["id"],
+        "property_title": report["property"]["title"],
+        "property_area": report["property"]["area"],
+        "profile_label": report["profile"]["label"],
+    }
+    return single({"items": [summary]}, "One saved report")
+
+
+SAVED_HOMES = {"property_ids": ["seed-prop-leith", "seed-prop-gorgie"]}
+
+
+def saved_homes() -> dict[str, Json]:
+    return single(SAVED_HOMES, "Two saved homes")
+
+
+def deleted_data() -> dict[str, Json]:
+    return single(
+        {"profiles": 1, "reports": 2, "uploads": 3, "saved_homes": True}, "Everything removed"
+    )

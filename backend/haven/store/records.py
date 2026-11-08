@@ -1,4 +1,4 @@
-"""Saved records: renter profiles, user-added properties and reports.
+"""Saved records: renter profiles, reports, upload records and saved homes.
 
 With ``HAVEN_DATABASE_URL`` set (Tiger Cloud Postgres), records live in one table,
 ``haven_records``, keyed by ``(kind, id)``, with the pydantic model stored as JSON, so they
@@ -22,7 +22,13 @@ from haven.store.db import sqlalchemy_url
 
 logger = logging.getLogger(__name__)
 
-type Kind = Literal["profile", "property", "report"]
+type Kind = Literal["profile", "report", "upload", "saved_homes"]
+
+#: Marker for "no such record" from :meth:`RecordStore.owner` (``None`` means "no owner").
+MISSING = object()
+
+#: ``(kind, id)`` keys of records (a named alias: the stores define a ``list`` method).
+type RecordKeys = list[tuple[str, str]]
 
 
 class RecordRow(SQLModel, table=True):
@@ -49,6 +55,18 @@ class RecordStore(Protocol):
     ) -> list[M]:
         """Records of ``kind`` owned by ``owner_sub`` (all of them when it's ``None``),
         oldest first."""
+        ...
+
+    def owner(self, kind: Kind, record_id: str) -> object:
+        """The record's ``owner_sub`` (``None`` if it has no owner), or :data:`MISSING`."""
+        ...
+
+    def delete(self, kind: Kind, record_id: str) -> bool:
+        """Remove one record. ``False`` if there was no such record."""
+        ...
+
+    def delete_owned(self, owner_sub: str) -> RecordKeys:
+        """Remove every record owned by ``owner_sub``; return their ``(kind, id)`` keys."""
         ...
 
 
@@ -85,6 +103,19 @@ class MemoryRecordStore:
             for (k, _), (owner, data) in self._rows.items()
             if k == kind and (owner_sub is None or owner == owner_sub)
         ]
+
+    def owner(self, kind: Kind, record_id: str) -> object:
+        row = self._rows.get((kind, record_id))
+        return MISSING if row is None else row[0]
+
+    def delete(self, kind: Kind, record_id: str) -> bool:
+        return self._rows.pop((kind, record_id), None) is not None
+
+    def delete_owned(self, owner_sub: str) -> RecordKeys:
+        keys = [key for key, (owner, _) in self._rows.items() if owner == owner_sub]
+        for key in keys:
+            del self._rows[key]
+        return keys
 
 
 class SqlRecordStore:
@@ -130,6 +161,30 @@ class SqlRecordStore:
         query = query.order_by(RecordRow.created_at)  # type: ignore[arg-type]
         with Session(self.engine) as session:
             return [model.model_validate(row.data) for row in session.scalars(query)]
+
+    def owner(self, kind: Kind, record_id: str) -> object:
+        with Session(self.engine) as session:
+            row = session.get(RecordRow, (kind, record_id))
+            return MISSING if row is None else row.owner_sub
+
+    def delete(self, kind: Kind, record_id: str) -> bool:
+        with Session(self.engine) as session:
+            row = session.get(RecordRow, (kind, record_id))
+            if row is None:
+                return False
+            session.delete(row)
+            session.commit()
+            return True
+
+    def delete_owned(self, owner_sub: str) -> RecordKeys:
+        query = select(RecordRow).where(RecordRow.owner_sub == owner_sub)  # type: ignore[arg-type]
+        with Session(self.engine) as session:
+            rows = list(session.scalars(query))
+            keys = [(row.kind, row.id) for row in rows]
+            for row in rows:
+                session.delete(row)
+            session.commit()
+            return keys
 
 
 def make_record_store(settings: Settings) -> RecordStore:

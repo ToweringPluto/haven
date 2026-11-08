@@ -1,4 +1,4 @@
-"""Generate ``data/seed/properties.yaml``: 8 fictional, illustrative Edinburgh properties.
+"""Generate ``data/seed/properties.yaml``: 11 fictional, illustrative Edinburgh properties.
 
 Nothing here is a real listing. What is and isn't fictional:
 
@@ -137,7 +137,7 @@ SPECS: tuple[Spec, ...] = (
         property_type="flat",
         epc_band="F",
         descriptor="ground-floor",
-        edge_case="cheapest rent in the seed but EPC F (heating cost risk)",
+        edge_case="cheap rent but EPC F (heating cost risk)",
         edge_fields=("rent_pcm_gbp", "epc_rating"),
     ),
     Spec(
@@ -223,6 +223,63 @@ SPECS: tuple[Spec, ...] = (
         has_lift=False,
         entrance_steps=3,
         council_tax_band="D",
+    ),
+    Spec(
+        slug="dalry",
+        area="Dalry",
+        street="Dalry Road",
+        osm_way=362445600,
+        latitude=55.94089,
+        longitude=-3.22390,
+        bedrooms=1,
+        rent_pcm_gbp=625,
+        floor_area_m2=38,
+        floor_level=2,
+        has_lift=False,
+        entrance_steps=3,
+        council_tax_band="A",
+        property_type="flat",
+        descriptor="tenement",
+        edge_case="low rent (lower-budget demo) but up two flights with no lift",
+        edge_fields=("rent_pcm_gbp", "floor_level", "has_lift"),
+    ),
+    Spec(
+        slug="sighthill",
+        area="Sighthill",
+        street="Calder Road",
+        osm_way=41421727,
+        latitude=55.92045,
+        longitude=-3.30188,
+        bedrooms=1,
+        rent_pcm_gbp=595,
+        floor_area_m2=45,
+        floor_level=0,
+        has_lift=False,
+        entrance_steps=0,
+        council_tax_band="A",
+        property_type="flat",
+        descriptor="step-free ground-floor",
+        edge_case="cheapest rent in the seed and step-free (lower-budget access demo)",
+        edge_fields=("rent_pcm_gbp", "floor_level", "entrance_steps"),
+    ),
+    Spec(
+        slug="wester-hailes",
+        area="Wester Hailes",
+        street="Wester Hailes Road",
+        osm_way=4435839,
+        latitude=55.90977,
+        longitude=-3.27575,
+        bedrooms=2,
+        rent_pcm_gbp=695,
+        floor_area_m2=62,
+        floor_level=5,
+        has_lift=True,
+        entrance_steps=0,
+        council_tax_band="B",
+        property_type="flat",
+        descriptor="high-rise",
+        edge_case="low-rent 2-bed (lower-budget demo) on the 5th floor with a lift",
+        edge_fields=("rent_pcm_gbp", "floor_level", "has_lift", "entrance_steps"),
     ),
 )
 
@@ -319,12 +376,14 @@ def build_seed() -> SeedFile:
                 "generated_on": GENERATED_ON,
                 "random_seed": RANDOM_SEED,
                 "notes": (
-                    "All 8 properties are FICTIONAL ('Illustrative property — not a real "
-                    "listing'). Rents, bedrooms, floor areas, floors, lifts, steps, council tax "
-                    "bands and other costs are hand-chosen illustrative values, not statistics. "
+                    f"All {len(SPECS)} properties are FICTIONAL ('Illustrative property — not a "
+                    "real listing'). Rents, bedrooms, floor areas, floors, lifts, steps, "
+                    "council tax bands and other costs are hand-chosen illustrative values, not "
+                    "statistics. "
                     "EPC band, main fuel and (where no edge case fixes it) property type are "
                     "drawn with the fixed random seed, weighted by Edinburgh EPC certificate "
-                    "counts. Coordinates are points on real public streets (no house numbers)."
+                    "counts. Coordinates are points on real public streets (no house numbers); the "
+                    "Dalry, Sighthill and Wester Hailes points were looked up on 2026-11-08."
                 ),
                 "epc_distribution_source": f"data/reference/{ENERGY_MODEL_FILE}.yaml "
                 f"({model.meta.source_url}, release {model.dataset_release})",

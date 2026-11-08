@@ -21,5 +21,6 @@
       "max_travel_minutes": 45
     }
   ],
-  "other_recurring_costs": []
+  "other_recurring_costs": [],
+  "preferred_areas": []
 }

@@ -1,4 +1,7 @@
-"""Properties, their cost breakdown and their suitability for a renter profile."""
+"""Properties, their cost breakdown and their suitability for a renter profile.
+
+Listings are read-only: renters can't add them.
+"""
 
 from typing import Annotated
 
@@ -7,7 +10,7 @@ from fastapi import APIRouter, Body
 from haven.api import examples as ex
 from haven.api.deps import BackendDep
 from haven.api.errors import problem_responses
-from haven.api.schemas import CostRequest, PropertyInput, PropertyList, SuitabilityRequest
+from haven.api.schemas import CostRequest, PropertyList, SuitabilityRequest
 from haven.domain import CostBreakdown, Property, SuitabilityAssessment
 
 router = APIRouter(prefix="/properties", tags=["properties"])
@@ -21,23 +24,6 @@ router = APIRouter(prefix="/properties", tags=["properties"])
 )
 def list_properties(backend: BackendDep) -> PropertyList:
     return PropertyList(items=backend.list_properties())
-
-
-@router.post(
-    "",
-    response_model=Property,
-    status_code=201,
-    summary="Add a property",
-    description="Every fact carries its provenance. Send a missing fact as "
-    '`{"value": null, "status": "insufficient", ...}` rather than leaving it out. '
-    "The server assigns the id.",
-    responses=ex.json_response(201, ex.property_examples()) | problem_responses(422),
-)
-def create_property(
-    backend: BackendDep,
-    data: Annotated[PropertyInput, Body(openapi_examples=ex.property_inputs())],
-) -> Property:
-    return backend.create_property(data)
 
 
 @router.get(

@@ -40,3 +40,8 @@ class RenterProfile(BaseModel):
     access: AccessRequirements = Field(default_factory=AccessRequirements)
     destinations: list[Destination] = Field(default_factory=list)
     other_recurring_costs: list[RecurringCost] = Field(default_factory=list)
+    preferred_areas: list[str] = Field(
+        default_factory=list,
+        description="Neighbourhoods the renter would like to live in (listed first); empty = "
+        "anywhere.",
+    )

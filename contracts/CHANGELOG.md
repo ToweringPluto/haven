@@ -4,6 +4,17 @@ Changes to `contracts/openapi.yaml`, the API contract between the Haven backend 
 
 Every change to the contract gets an entry here saying what changed and whether it is **breaking**. Breaking changes are agreed with the frontend team first. Versions follow semver on `info.version`: breaking → major (minor while in 0.x), additive → minor (patch while in 0.x).
 
+## 0.2.0 (2026-11-08)
+
+**Breaking** (agreed with the frontend, which is updated in the same change).
+
+- **Removed** `POST /v1/properties` and the `PropertyInput` schema: renters can't add listings. Listings come only from the seed and the persona fixtures.
+- **Sign-in now required** (Auth0 bearer token; `401` without one, `503` when sign-in isn't configured on the server) for `POST /v1/uploads`, `DELETE /v1/uploads/{upload_id}` and `POST /v1/assessments`. Uploads and reports belong to the signed-in user. Someone else's upload, report or profile is `404`. The example uploads can be cited in an assessment but can no longer be deleted.
+- `GET /v1/reports/{report_id}` accepts an optional token: example reports are public, a saved report is only returned to its owner.
+- New, signed in: `GET /v1/uploads` (optional `?property_id=`; `UploadList`), `GET /v1/reports` (`ReportList` of `ReportSummary`, newest first), `PUT` and `DELETE /v1/profiles/{profile_id}` (your own profiles only), `GET` and `PUT /v1/me/saved-homes` (`SavedHomes`), and `DELETE /v1/me` (deletes every profile, report, upload with its file, and saved home of the user; returns `DeletedData`).
+- `RenterProfile` and `ProfileInput` have a new optional field `preferred_areas` (list of neighbourhood names; empty means anywhere).
+- The seed has three more fictional low-rent listings (£595–£695 a month; 11 in all) for lower-budget demos.
+
 ## 0.1.4 (2026-11-07)
 
 Additive, not breaking.
